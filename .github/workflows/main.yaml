@@ -43,13 +43,13 @@ jobs:
         run: |
           python3 listfiles.py | xargs -I {} markdown-renderer -i {}
 
-      # - name: Deploy to Tencent Server
-      #   uses: easingthemes/ssh-deploy@v2
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.TENCENT_SERVER_SSH_KEY }}
-      #     ARGS: "-rltgoDzvO --delete"
-      #     SOURCE: "./"
-      #     REMOTE_HOST: ${{ secrets.TENCENT_REMOTE_HOST }}
-      #     REMOTE_USER: ${{ secrets.TENCENT_REMOTE_USER }}
-      #     TARGET: ${{ secrets.TENCENT_REMOTE_TARGET }}
-      #     EXCLUDE: "/markdown-renderer/, /.github/, /.git/"
+      - name: Deploy to Tencent Server
+        uses: easingthemes/ssh-deploy@v2
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.TENCENT_SERVER_SSH_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.TENCENT_REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.TENCENT_REMOTE_USER }}
+          TARGET: ${{ secrets.TENCENT_REMOTE_TARGET }}
+          EXCLUDE: "/markdown-renderer/, /.github/, /.git/"
