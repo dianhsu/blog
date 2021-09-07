@@ -46,9 +46,8 @@ def dfs(dirname: str):
             dfs(path)
 
 
-def convert(path):
-
-    subprocess.run(["markdown-renderer", "-i", "path"])
+def convert(path: str):
+    subprocess.run(["markdown-renderer", "-i", path])
 
 
 if __name__ == '__main__':
