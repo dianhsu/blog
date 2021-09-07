@@ -10,6 +10,8 @@ ignore_suffix = []
 required_prefix = []
 required_suffix = ['.md']
 
+# 检查文件是不是满足忽略条件的
+
 
 def check(path: str):
     for it in ignore_prefix:
@@ -36,6 +38,7 @@ arr = []
 
 
 def dfs(dirname: str):
+    # 遍历文件夹，找到渲染的markdown文件
     for it in os.listdir(dirname):
         path = os.path.join(dirname, it)
         if not check(path):
@@ -47,11 +50,12 @@ def dfs(dirname: str):
 
 
 def convert(path: str):
+    # 调用外部渲染工具，渲染一个HTML页面
     subprocess.run(["markdown-renderer", "-i", path])
 
 
 if __name__ == '__main__':
-    pool = Pool(10)
+    pool = Pool()
     dfs('.')
     pool.map(convert, arr)
     pool.close()
