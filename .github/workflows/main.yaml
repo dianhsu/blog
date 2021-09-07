@@ -41,7 +41,7 @@ jobs:
           python3 listfiles.py
       - name: generate html
         run: |
-          python3 listfiles.py | xargs -I {} markdown-renderer -i {}
+          python3 convert.py
 
       - name: Deploy to Tencent Server
         uses: easingthemes/ssh-deploy@v2
