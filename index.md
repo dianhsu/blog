@@ -43,7 +43,7 @@ title: LeetCode - dianhsu.top
 - 🕥[第255场周赛](./weekly-contest/255.html)
 - 🕥[第256场周赛](./weekly-contest/256.html)
 - 🕥[第60场双周赛](./biweekly-contest/60.html)
-- 🕥[第256场周赛](./weekly-contest/257.html)
+- 🕥[第257场周赛](./weekly-contest/257.html)
 
 
 ## 统计
