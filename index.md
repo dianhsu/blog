@@ -42,6 +42,10 @@ title: LeetCode - dianhsu.top
 - 🕥[第59场双周赛](./biweekly-contest/59.html)
 - 🕥[第255场周赛](./weekly-contest/255.html)
 - 🕥[第256场周赛](./weekly-contest/256.html)
+- 🕥[第60场双周赛](./biweekly-contest/60.html)
+- 🕥[第256场周赛](./weekly-contest/257.html)
+
+
 ## 统计
 
 | 编号        | 排名        | 比赛名称                                                              | 得分 | 完成时间  | 题目1 | 题目2 | 题目3 | 题目4 |
@@ -76,6 +80,9 @@ title: LeetCode - dianhsu.top
 | 28          | `669/3030`  | 🌛[第59场双周赛](https://leetcode-cn.com/contest/biweekly-contest-59/) | `7`  | `0:30:03` | ✅     | ✅     | ❌     | ❌     |
 | 29          | `282/4332`  | 🌞[第255场周赛](https://leetcode-cn.com/contest/weekly-contest-255)    | `12` | `0:43:28` | ✅     | ✅     | ✅     | ❌     |
 | 30          | `149/4131`  | 🌞[第256场周赛](https://leetcode-cn.com/contest/weekly-contest-256)    | `20` | `1:49:23` | ✅     | ✅     | ✅     | ✅     |
+| 31          | `532/2848`  | 🌛[第60场双周赛](https://leetcode-cn.com/contest/biweekly-contest-59/) | `12` | `1:14:43` | ✅     | ✅     | ✅     | ❌     |
+| 32          | `72/4277`   | 🌞[第257场周赛](https://leetcode-cn.com/contest/weekly-contest-257)    | `18` | `1:19:35` | ✅     | ✅     | ✅     | ✅     |
+
 ## 硬广告
 欢迎加入我们的LeetCode交流群（QQ群：752399419），每周相约周赛
 
