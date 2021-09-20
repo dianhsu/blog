@@ -44,7 +44,9 @@ title: LeetCode - dianhsu.top
 - 🕥[第256场周赛](./weekly-contest/256.html)
 - 🕥[第60场双周赛](./biweekly-contest/60.html)
 - 🕥[第257场周赛](./weekly-contest/257.html)
+- 🕥[第258场周赛](./weekly-contest/258.html)
 - 🕥[第61场双周赛](./biweekly-contest/61.html)
+
 
 ## 统计
 
@@ -82,7 +84,8 @@ title: LeetCode - dianhsu.top
 | 30          | `149/4131`  | 🌞[第256场周赛](https://leetcode-cn.com/contest/weekly-contest-256)    | `20` | `1:49:23` | ✅     | ✅     | ✅     | ✅     |
 | 31          | `532/2848`  | 🌛[第60场双周赛](https://leetcode-cn.com/contest/biweekly-contest-60/) | `12` | `1:14:43` | ✅     | ✅     | ✅     | ❌     |
 | 32          | `72/4277`   | 🌞[第257场周赛](https://leetcode-cn.com/contest/weekly-contest-257)    | `18` | `1:19:35` | ✅     | ✅     | ✅     | ✅     |
-| 33(Virtual) | `97/2534`   | 🌛[第61场双周赛](https://leetcode-cn.com/contest/biweekly-contest-61/) | `18` | `0:57:18` | ✅     | ✅     | ✅     | ✅     |
+| 33          | `134/4515`  | 🌞[第258场周赛](https://leetcode-cn.com/contest/weekly-contest-258)    | `18` | `1:28:32` | ✅     | ✅     | ✅     | ✅     |
+| 34(Virtual) | `97/2534`   | 🌛[第61场双周赛](https://leetcode-cn.com/contest/biweekly-contest-61/) | `18` | `0:57:18` | ✅     | ✅     | ✅     | ✅     |
 
 ## 硬广告
 欢迎加入我们的LeetCode交流群（QQ群：752399419），每周相约周赛
