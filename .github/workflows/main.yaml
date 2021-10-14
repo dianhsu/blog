@@ -51,5 +51,5 @@ jobs:
           SOURCE: "./"
           REMOTE_HOST: ${{ secrets.TENCENT_REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.TENCENT_REMOTE_USER }}
-          TARGET: ${{ secrets.TENCENT_REMOTE_TARGET }}
+          TARGET: ${{ secrets.TENCENT_REMOTE_TARGET }}/leetcode/
           EXCLUDE: "/markdown-renderer/, /.github/, /.git/"
