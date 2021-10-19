@@ -95,7 +95,3 @@ title: LeetCode - dianhsu.top
 | 38          | `313/3367`  | 🌞[第261场周赛](https://leetcode-cn.com/contest/weekly-contest-261)    | `7`  | `0:06:37` | ✅     | ✅     | ❌     | ❌     |
 | 39(Virtual) | `47/4260`   | 🌞[第262场周赛](https://leetcode-cn.com/contest/weekly-contest-262)    | `18` | `0:55:32` | ✅     | ✅     | ✅     | ✅     |
 
-## 硬广告
-欢迎加入我们的LeetCode交流群（QQ群：752399419），每周相约周赛
-
-@import "https://cdn.dianhsu.top/vscode/2021-05-22-22-56-17.png" {height=500}
