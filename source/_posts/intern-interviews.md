@@ -1,7 +1,13 @@
 ---
 title: 2022春天的实习面试经历
 date: 2022-05-11 01:12:11
-tags:
+tags: 
+    - 面试
+    - Microsoft
+    - Bytedance
+    - Alibaba
+    - Hulu
+categories: 面试
 ---
 
 > 目前已经接到微软的实习offer，所以将之前的面试内容都贴在这里了
@@ -515,7 +521,7 @@ tags:
             return 0;
         }
         ```
-### 2022.05.06 Hulu实习二面
+## 2022.05.06 Hulu实习三面
 - 面试时间: 90分钟
 - 面试经过:
     1. 自我介绍
