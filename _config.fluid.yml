@@ -931,7 +931,18 @@ links:
       link: "https://www.eririspace.cn/",
       avatar: "https://www.eririspace.cn/medias/err2.jpg"
     }
-
+    - {
+      title: "Ximena's story",
+      intro: "只道寻常",
+      link: "https://blog.ximena.top/",
+      avatar: "https://blog.ximena.top/medias/logo.png"
+    }
+    - {
+      title: "Bruce12138",
+      intro: "戴哥🐮🍺",
+      link: "https://www.cnblogs.com/brucekz/",
+      avatar: "https://userpic.codeforces.org/1960180/title/fc829829cc0bc7a5.jpg"
+    }
 
   # 当成员头像加载失败时，替换为指定图片
   # When the member avatar fails to load, replace the specified image
