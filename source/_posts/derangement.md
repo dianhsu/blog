@@ -3,6 +3,7 @@ title: 全错排问题
 date: 2022-05-10 18:10:51
 tags: [算法, 数论]
 categories: 算法
+math: true
 ---
 
 > 参考：[http://oi-wiki.com/math/combination/#_11](http://oi-wiki.com/math/combination/#_11)

@@ -6,6 +6,7 @@ tags:
     - 算法
     - 数论
 categories: 算法
+math: true
 ---
 
 

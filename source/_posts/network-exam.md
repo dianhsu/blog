@@ -4,6 +4,7 @@ date: 2022-05-10 18:52:33
 tags: 
     - 计算机网络
 categories: 计算机网络
+mermaid: true
 ---
 
 # 计算机网络的一些复习题

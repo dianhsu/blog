@@ -5,6 +5,8 @@ tags:
     - 面试
     - 操作系统
 categories: 操作系统
+mermaid: true
+math: true
 ---
 
 
