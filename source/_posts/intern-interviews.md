@@ -4,10 +4,11 @@ date: 2022-05-11 01:12:11
 tags: 
     - 面试
     - Microsoft
-    - Bytedance
+    - ByteDance
     - Alibaba
     - Hulu
 categories: 面试
+math: true
 ---
 
 > 目前已经接到微软的实习offer，所以将之前的面试内容都贴在这里了
@@ -530,7 +531,7 @@ categories: 面试
     4. 了解Redis吗
     5. 问了一下消息队列的熟悉情况
     6. 最后还有很多时间，写个算法题：[八数码](https://www.acwing.com/problem/content/181/)
-        这个题通常有三种解法：1，朴素BFS；2.双向BFS；3.A*算法。其中可以用康托展开来保存访问状态。（再也不敢说康托展开是useless了）
+        这个题通常有三种解法：1，朴素BFS；2.双向BFS；3.A\*算法。其中可以用康托展开来保存访问状态。（再也不敢说康托展开是useless了）
         然后面试的时候，凭着对康托展开微弱的印象，现场手搓，果然搓不出来（寄）。
         然后A*又忘记怎么求八数码的估价。
         然后一紧张，忘记能双向BFS优化一下。

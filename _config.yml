@@ -104,6 +104,7 @@ theme: fluid
 deploy:
   type: ''
 
+
 ## markdown 渲染引擎配置，默认是hexo-renderer-marked，这个插件渲染速度更快，且有新特性
 markdown:
   render:

@@ -217,7 +217,7 @@ custom_html: ''
 # 网页访问统计
 # Analysis of website visitors
 web_analytics:  # 网页访问统计
-  enable: false
+  enable: true
 
   # 百度统计的 Key，值需要获取下方链接中 `hm.js?` 后边的字符串
   # Baidu analytics, get the string behind `hm.js?`
@@ -409,7 +409,7 @@ footer:
     # 统计数据来源，使用 leancloud 需要设置 `web_analytics: leancloud` 中的参数；使用 busuanzi 不需要额外设置，但是有时不稳定，另外本地运行时 busuanzi 显示统计数据很大属于正常现象，部署后会正常
     # Data source. If use leancloud, you need to set the parameter in `web_analytics: leancloud`
     # Options: busuanzi | leancloud
-    source: "busuanzi"
+    source: "leancloud"
 
     # 页面显示的文本，{}是数字的占位符（必须包含)，下同
     # Displayed text, {} is a placeholder for numbers (must be included), the same below
@@ -745,10 +745,10 @@ waline:
   meta: ['nick', 'mail', 'link']
   requiredMeta: ['nick']
   lang: 'zh-CN'
-  emoji: ['https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo']
+  emoji: ['https://unpkg.com/@waline/emojis@1.0.1/bilibili', 'https://unpkg.com/@waline/emojis@1.0.1/alus', 'https://unpkg.com/@waline/emojis@1.0.1/qq', 'https://unpkg.com/@waline/emojis@1.0.1/weibo', 'https://unpkg.com/@waline/emojis@1.0.1/tieba']
   dark: 'html[data-user-color-scheme="dark"]'
   avatar: 'retro'
-  avatarCDN: 'https://seccdn.libravatar.org/avatar/'
+  avatarCDN: 'https://gravatar.loli.net/avatar/'
   avatarForce: false
   wordLimit: 0
   pageSize: 10
@@ -940,14 +940,26 @@ links:
     - {
       title: "Bruce12138",
       intro: "戴哥🐮🍺",
-      link: "https://www.cnblogs.com/brucekz/",
-      avatar: "https://userpic.codeforces.org/1960180/title/fc829829cc0bc7a5.jpg"
+      link: "http://www.bruce12138.com/",
+      avatar: "https://userpic.codeforces.org/1919869/title/bf94d293f2e6dff1.jpg"
     }
     - {
       title: "玖的数学&算法录",
       intro: "数学大佬，快膜",
       link: "https://jiucherish.com/",
       avatar: "https://jiucherish.com/images/avatar.jpg"
+    }
+    - {
+      title: "Patricky",
+      intro: "Patricky Star is that pink Asteroidea in SpongeBob SquarePants!",
+      link: "https://algo.teko7a.top/",
+      avatar: "https://algo.teko7a.top/img/patricky.jpeg"
+    }
+    - {
+      title: "SantoriN2k's blog",
+      intro: "WUST KING!!!",
+      link: "http://nzk520.top/",
+      avatar: "https://userpic.codeforces.org/2084239/title/7953f100da99db23.jpg"
     }
 
   # 当成员头像加载失败时，替换为指定图片
@@ -957,7 +969,7 @@ links:
   # 友链下方自定义区域，支持 HTML，可插入例如申请友链的文字
   # Custom content at the bottom of the links
   custom:
-    enable: false
+    enable: true
     content: '<hr><p>在下方留言申请加入我的友链，按如下格式提供信息：</p><ul><li>博客名：Fluid</li><li>简介：Fluid 主题官方博客</li><li>链接：https://hexo.fluid-dev.com</li><li>图片：https://hexo.fluid-dev.com/img/favicon.png</li></ul>'
 
   # 评论插件
@@ -987,44 +999,44 @@ static_prefix:
   internal_css: /css
   internal_img: /img
 
-  anchor: https://cdn.jsdelivr.net/npm/anchor-js@4/
+  anchor: https://cdn.staticfile.org/anchor-js/4.3.1/
 
-  github_markdown: https://cdn.jsdelivr.net/npm/github-markdown-css@4/
+  github_markdown: https://cdn.staticfile.org/github-markdown-css/4.0.0/
 
-  jquery: https://cdn.jsdelivr.net/npm/jquery@3/dist/
+  jquery: https://cdn.staticfile.org/jquery/3.6.0/
 
-  bootstrap: https://cdn.jsdelivr.net/npm/bootstrap@4/dist/
+  bootstrap: https://cdn.staticfile.org/bootstrap/4.6.1/
 
-  highlightjs: https://cdn.jsdelivr.net/npm/highlight.js@10/
+  highlightjs: https://cdn.staticfile.org/highlight.js/10.7.2/
 
-  prismjs: https://cdn.jsdelivr.net/npm/prismjs@1/
+  prismjs: https://cdn.staticfile.org/prism/1.28.0/
 
-  tocbot: https://cdn.jsdelivr.net/npm/tocbot@4/dist/
+  tocbot: https://cdn.staticfile.org/tocbot/4.18.2/
 
-  typed: https://cdn.jsdelivr.net/npm/typed.js@2/lib/
+  typed: https://cdn.bootcdn.net/ajax/libs/typed.js/2.0.12/
 
-  fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/
+  fancybox: https://cdn.staticfile.org/fancybox/3.5.7/
 
-  nprogress: https://cdn.jsdelivr.net/npm/nprogress@0/
+  nprogress: https://cdn.staticfile.org/nprogress/0.2.0/
 
-  mathjax: https://cdn.jsdelivr.net/npm/mathjax@3/es5/
+  mathjax: https://cdn.staticfile.org/mathjax/3.2.0/es5/
 
-  katex: https://cdn.jsdelivr.net/npm/katex@0/dist/
+  katex: https://cdn.staticfile.org/KaTeX/0.15.3/
 
   busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/
 
-  clipboard: https://cdn.jsdelivr.net/npm/clipboard@2/dist/
+  clipboard: https://cdn.staticfile.org/clipboard.js/2.0.11/
 
-  mermaid: https://cdn.jsdelivr.net/npm/mermaid@8/dist/
+  mermaid: https://cdn.staticfile.org/mermaid/8.14.0/
 
-  valine: https://cdn.jsdelivr.net/npm/valine@1/dist/
+  valine: https://cdn.staticfile.org/valine/1.4.18/
 
-  waline: https://cdn.jsdelivr.net/npm/@waline/client@1/dist/
+  waline: https://cdn.staticfile.org/waline/1.6.0/
 
-  gitalk: https://cdn.jsdelivr.net/npm/gitalk@1/dist/
+  gitalk: https://cdn.staticfile.org/gitalk/1.7.2/
 
-  disqusjs: https://cdn.jsdelivr.net/npm/disqusjs@1/dist/
+  disqusjs: https://cdn.staticfile.org/disqusjs/1.3.0/
 
-  twikoo: https://cdn.jsdelivr.net/npm/twikoo@1/dist/
+  twikoo: https://cdn.staticfile.org/twikoo/1.5.9/
 
-  hint: https://cdn.jsdelivr.net/npm/hint.css@2/
+  hint: https://cdn.staticfile.org/hint.css/2.7.0/
