@@ -5,4 +5,5 @@ categories: Codeforces
 tags: 
     - 算法
     - Codeforces
+math: true
 ---

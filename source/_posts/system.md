@@ -7,6 +7,7 @@ tags:
 categories: 操作系统
 mermaid: true
 math: true
+index_img: https://cdn.dianhsu.top/blog%2F748771.jpg
 ---
 
 

@@ -4,6 +4,7 @@ date: 2022-05-10 16:36:14
 tags: [算法, 数学, 图论, 几何, 字符串]
 categories: 算法
 math: true
+index_img: https://cdn.dianhsu.top/blog%2Ffd68b9d44d2dc4cf3606a9e01cdca850634b8d4f.jpeg
 ---
 
 算法竞赛编程模板，主要用于线上比赛，可以直接从这里复制代码提交到OJ平台，代码风格主要是函数式和面向对象。

@@ -5,6 +5,7 @@ tags:
     - 计算机网络
 categories: 计算机网络
 mermaid: true
+index_img: https://cdn.dianhsu.top/blog%2F692811.png
 ---
 
 # 计算机网络的一些复习题

@@ -5,6 +5,7 @@ tags:
     - C++
     - 面试
 catogories: C++
+index_img: https://cdn.dianhsu.top/blog%2F940596.jpg
 ---
 # C++语言面试的一些问题
 ## 语言基础
