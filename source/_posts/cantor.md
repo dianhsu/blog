@@ -7,6 +7,7 @@ tags:
     - 数论
 categories: 算法
 math: true
+index_img: https://cdn.dianhsu.top/img/2022-05-21-14-58-07.jpeg
 ---
 
 
