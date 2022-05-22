@@ -1164,6 +1164,7 @@ T lucas(T n, T m, T p, const function<T(T, T)>& C){
     return res;
 }
 ```
+
 ### BSGS
 在$a$和$p$互质的情况下，求解
 $$
@@ -1202,6 +1203,7 @@ T BSGS(T a, T b, T p, T c = 1){
     return -1;
 }
 ```
+
 ### exBSGS
 求解
 $$
@@ -1271,6 +1273,7 @@ T exBSGS(T a, T b, T p){
     return ans;
 }
 ```
+
 ### 莫比乌斯函数（线性筛）
 ```cpp
 template<int N, typename T = int>
@@ -1341,6 +1344,7 @@ int Contar(int* t){
     return ret;
 }
 ```
+
 #### 反向
 ```cpp
 /**
@@ -1371,6 +1375,7 @@ void ReverseContar(int contar_val, int* t){
     }
 }
 ```
+
 ### Miller Rabin & Pollard Rho
 ```cpp
 random_device rd;
@@ -1423,6 +1428,7 @@ ll PollardRho(ll n){
 }
 
 ```
+
 ### 快速傅立叶变换
 ```cpp
 template<typename T>
@@ -1727,6 +1733,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 ```
+
 ### ST表（稀疏表）(C++17)
 
 ```cpp
