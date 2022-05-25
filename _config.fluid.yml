@@ -633,7 +633,7 @@ post:
     specific: true
 
     # Options: mathjax | katex
-    engine: mathjax
+    engine: katex
 
   # 流程图，基于 mermaid-js，具体请见：https://hexo.fluid-dev.com/docs/guide/#mermaid-流程图
   # Flow chart, based on mermaid-js, see: https://hexo.fluid-dev.com/docs/en/guide/#mermaid
@@ -744,7 +744,7 @@ waline:
   meta: ['nick', 'mail', 'link']
   requiredMeta: ['nick']
   lang: 'zh-CN'
-  emoji: ['https://unpkg.com/@waline/emojis@1.0.1/bilibili', 'https://unpkg.com/@waline/emojis@1.0.1/alus', 'https://unpkg.com/@waline/emojis@1.0.1/qq', 'https://unpkg.com/@waline/emojis@1.0.1/weibo', 'https://unpkg.com/@waline/emojis@1.0.1/tieba']
+  emoji: ['https://static.dianhsu.top/@waline/emojis@1.0.1/bilibili', 'https://static.dianhsu.top/@waline/emojis@1.0.1/alus', 'https://static.dianhsu.top/@waline/emojis@1.0.1/qq', 'https://static.dianhsu.top/@waline/emojis@1.0.1/weibo', 'https://static.dianhsu.top/@waline/emojis@1.0.1/tieba']
   dark: 'html[data-user-color-scheme="dark"]'
   wordLimit: 0
   pageSize: 10
@@ -954,7 +954,7 @@ links:
       title: "Patricky",
       intro: "Patricky Star is that pink Asteroidea in SpongeBob SquarePants!",
       link: "https://algo.teko7a.top/",
-      avatar: "https://algo.teko7a.top/img/patricky.jpeg"
+      avatar: "https://algo.teko7a.top/images/patricky.jpeg"
     }
     - {
       title: "SantoriN2k's blog",
