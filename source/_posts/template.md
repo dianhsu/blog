@@ -1274,6 +1274,11 @@ T exBSGS(T a, T b, T p){
 }
 ```
 
+### Cayley 公式（Caylay's formula）
+
+完全图 $K_n$ 有 $n^{n - 2}$ 棵生成树。
+
+
 ### 莫比乌斯函数（线性筛）
 ```cpp
 template<int N, typename T = int>
