@@ -9,7 +9,7 @@ description: ''
 keywords:
 author: Dian Hsu
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -106,17 +106,28 @@ deploy:
 
 
 ## markdown 渲染引擎配置，默认是hexo-renderer-marked，这个插件渲染速度更快，且有新特性
-markdown:
-  render:
+# markdown:
+#   render:
+#     html: true
+#     xhtmlOut: false
+#     breaks: true
+#     linkify: true
+#     typographer: true
+#     quotes: '“”‘’'
+#   plugins:
+#     - markdown-it-footnote
+#     - markdown-it-sup
+#     - markdown-it-sub
+#     - markdown-it-abbr
+#     - markdown-it-emoji
+
+markdown_it_plus:
+    highlight: true
     html: true
-    xhtmlOut: false
+    xhtmlOut: true
     breaks: true
+    langPrefix:
     linkify: true
-    typographer: true
-    quotes: '“”‘’'
-  plugins:
-    - markdown-it-footnote
-    - markdown-it-sup
-    - markdown-it-sub
-    - markdown-it-abbr
-    - markdown-it-emoji
+    typographer:
+    quotes: “”‘’
+    pre_class: highlight

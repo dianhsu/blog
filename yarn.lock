@@ -431,9 +431,9 @@
   "version" "1.8.1"
 
 "fast-equals@^3.0.1":
-  "integrity" "sha512-iY0fAmW7fzxHp22VCRLpOgWbsWsF+DJWi1jhc8w+VGlJUiS+KcGZV2A8t+Q9oTQwhG3L1W8Lu/oe3ZyOPdhZjw=="
-  "resolved" "https://registry.npmjs.org/fast-equals/-/fast-equals-3.0.2.tgz"
-  "version" "3.0.2"
+  "integrity" "sha512-NCe8qxnZFARSHGztGMZOO/PC1qa5MIFB5Hp66WdzbCRAz8U8US3bx1UTgLS49efBQPcUtO9gf5oVEY8o7y/7Kg=="
+  "resolved" "https://registry.npmjs.org/fast-equals/-/fast-equals-3.0.3.tgz"
+  "version" "3.0.3"
 
 "filelist@^1.0.1":
   "integrity" "sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q=="
@@ -613,6 +613,15 @@
   dependencies:
     "nanocolors" "^0.2.12"
 
+"hexo-math@^4.0.0":
+  "integrity" "sha512-oMVa9bVXljQ8F3y0euVwOhkkiTfH3vxEV+dWT7lWbxNjtxV9MvpTG4BkDNSgM1frv+sP549FuPx39KqqEHmAgA=="
+  "resolved" "https://registry.npmjs.org/hexo-math/-/hexo-math-4.0.0.tgz"
+  "version" "4.0.0"
+  dependencies:
+    "hexo-util" "^2.2.0"
+    "katex" "^0.12.0"
+    "mathjax" "^3.0.5"
+
 "hexo-pagination@1.0.0":
   "integrity" "sha512-miEVFgxchPr2qNWxw0JWpJ9R/Yaf7HjHBZVjvCCcqfbsLyYtCvIfJDxcEwz1sDOC/fLzYPqNnhUI73uNxBHRSA=="
   "resolved" "https://registry.npmjs.org/hexo-pagination/-/hexo-pagination-1.0.0.tgz"
@@ -672,7 +681,7 @@
   "resolved" "https://registry.npmjs.org/hexo-theme-fluid/-/hexo-theme-fluid-1.9.0.tgz"
   "version" "1.9.0"
 
-"hexo-util@^2.0.0", "hexo-util@^2.6.1":
+"hexo-util@^2.0.0", "hexo-util@^2.2.0", "hexo-util@^2.6.1":
   "integrity" "sha512-xj1jUrId2qTe8L/tRizWWRl+j7X1Zzh5rCVtffboOU0p/EfbPomxIxDvntTHT3fcqgvLHsncqJF9V5j7+buOqA=="
   "resolved" "https://registry.npmjs.org/hexo-util/-/hexo-util-2.6.1.tgz"
   "version" "2.6.1"
@@ -686,7 +695,7 @@
     "prismjs" "^1.17.1"
     "strip-indent" "^3.0.0"
 
-"hexo@^6.0.0":
+"hexo@^6.2.0":
   "integrity" "sha512-HOpt3vUOz/T0rWTDb/CtWuBJwYARPwbpvGwsaz0RPu/l5I6AmKE+UA0lJZf14iPS3JIt/HiOcTZ3Qz22A+PE8w=="
   "resolved" "https://registry.npmjs.org/hexo/-/hexo-6.2.0.tgz"
   "version" "6.2.0"
@@ -857,6 +866,13 @@
   dependencies:
     "commander" "^2.19.0"
 
+"katex@^0.12.0":
+  "integrity" "sha512-y+8btoc/CK70XqcHqjxiGWBOeIL8upbS0peTPXTvgrh21n1RiWWcIpSWM+4uXq+IAgNh9YYQWdc7LVDPDAEEAg=="
+  "resolved" "https://registry.npmjs.org/katex/-/katex-0.12.0.tgz"
+  "version" "0.12.0"
+  dependencies:
+    "commander" "^2.19.0"
+
 "linkify-it@^2.0.0":
   "integrity" "sha512-GnAl/knGn+i1U/wjBz3akz2stz+HrHLsxMwHQGofCDfPvlf+gDKN58UtfmUquTY4/MXeE2x7k19KQmeoZi94Iw=="
   "resolved" "https://registry.npmjs.org/linkify-it/-/linkify-it-2.2.0.tgz"
@@ -885,11 +901,6 @@
   "integrity" "sha1-m+4OmpkKljupbfaYDE/dsF37Tcw="
   "resolved" "https://registry.npmjs.org/markdown-it-emoji/-/markdown-it-emoji-1.4.0.tgz"
   "version" "1.4.0"
-
-"markdown-it-emoji@^2.0.2":
-  "integrity" "sha512-zLftSaNrKuYl0kR5zm4gxXjHaOI3FAOEaloKmRA5hijmJZvSjmxcokOLlzycb/HXlUFWzXqpIEoyEMCE4i9MvQ=="
-  "resolved" "https://registry.npmjs.org/markdown-it-emoji/-/markdown-it-emoji-2.0.2.tgz"
-  "version" "2.0.2"
 
 "markdown-it-footnote@^3.0.1":
   "integrity" "sha512-YZMSuCGVZAjzKMn+xqIco9d1cLGxbELHZ9do/TSYVzraooV8ypsppKNmUJ0fVH5ljkCInQAtFpm8Rb3eXSrt5w=="
@@ -931,6 +942,11 @@
     "linkify-it" "^2.0.0"
     "mdurl" "^1.0.1"
     "uc.micro" "^1.0.5"
+
+"mathjax@^3.0.5":
+  "integrity" "sha512-blUch14trKnfQHjDjy1kdg5bN8jK0bdHbkerQBKCrZ3Anpb81zZ7xnj5J55vsqQoG+Irz3BHBDzRssjeehkzxg=="
+  "resolved" "https://registry.npmjs.org/mathjax/-/mathjax-3.2.1.tgz"
+  "version" "3.2.1"
 
 "mdurl@^1.0.1":
   "integrity" "sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4="
