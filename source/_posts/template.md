@@ -724,10 +724,14 @@ public:
         ots << arg.val;
         return ots;
     }
+    friend int abs(const MInt& arg){
+        return arg.val;
+    }
 private:
     int val;
 };
 ```
+
 ### 素数筛
 #### 单个正整数判断是不是质数
 ```cpp
@@ -812,6 +816,7 @@ vector<int> OddFilter() {
     return prime;
 }
 ```
+
 ### 类欧几里得算法
 $$
     f(N, a, b, c) = \sum_{i = 0}^N \lfloor \frac{a \times i + b}{c} \rfloor \\
@@ -878,6 +883,7 @@ int main(){
 }
 
 ```
+
 ### 拓展欧几里得
 
 ```cpp
@@ -907,6 +913,7 @@ int euler_phi(int n) {
   return ans;
 }
 ```
+
 #### 批量求欧拉函数（线性筛）
 ```cpp
 vector<int> eularFunction(int n){
@@ -934,6 +941,7 @@ vector<int> eularFunction(int n){
     return phi;
 }
 ```
+
 #### 筛法求约数个数（线性筛）
 ```cpp
 vector<int> SieveOfEuler(int n){
@@ -965,6 +973,7 @@ vector<int> SieveOfEuler(int n){
     return ret;
 }
 ```
+
 ### 中国剩余定理 & 扩展中国剩余定理
 ```cpp
 template<typename T>
@@ -1078,6 +1087,66 @@ struct Matrix{
     }
 };
 ```
+
+### 高斯消元
+```cpp
+template<typename T>
+struct Gauss{
+  Gauss(int argR, int argC): r(argR), c(argC), mat(r, vector<T>(c, 0)), idx(r, 0){
+    assert(argC >= argR);
+    iota(idx.begin(), idx.end(), 0);
+  }
+  T& operator () (int row, int col){
+    return mat[row][col];
+  }
+  int r, c;
+  friend istream& operator >> (istream& its, Gauss& arg){
+    for(int i = 0; i < arg.r; ++i){
+      for(int j = 0; j < arg.c; ++j){
+        its >> arg(i, j);
+      }
+    }
+    return its;
+  }
+  friend ostream& operator << (ostream& ots, Gauss& arg){
+    for(int i = 0; i < arg.r; ++i){
+      for(int j = 0; j < arg.c; ++j){
+        ots << arg(arg.idx[i], j);
+        if(j + 1 != arg.c) ots << " ";
+      }
+      if(i + 1 != arg.r) ots << "\n";
+    }
+    return ots;
+  }
+  vector<vector<T>> mat;
+  vector<int> idx;
+  bool elimination(){
+    for(int i = 0; i < r; ++i){
+      int cur = i;
+      for(int j = i + 1; j < r; ++j){
+        if(abs(mat[idx[j]][i]) > abs(mat[idx[cur]][i])){
+          cur = j;
+        }
+      }
+      swap(idx[i], idx[cur]);
+      T rmul = mat[idx[i]][i];
+      if(abs(rmul) < 1e-8) return false;
+      for(int j = i; j < c; ++j){
+        mat[idx[i]][j] /= rmul; 
+      }
+      for(int i1 = 0; i1 < r; ++i1){
+        if(i1 == i) continue;
+        T cmul = mat[idx[i1]][i];
+        for(int j = i; j < c; ++j){
+          mat[idx[i1]][j] -= mat[idx[i]][j] * cmul;
+        }
+      }
+    }
+    return true;
+  }
+};
+```
+
 
 ### 乘法逆元
 #### 扩展欧几里得算法
