@@ -647,20 +647,20 @@ public:
         while(p){
             if(p & 1) ret = (ret * 1ll * base) % MOD;
             p >>= 1;
-            base = (ret * 1ll * base) % MOD;
+            base = (base * 1ll * base) % MOD;
         }
         return ret;
     }
     MInt(): val(0) {}
     MInt(int tv): val(tv) {}
-    MInt operator + (const MInt& arg){ return MInt((val * 1ll + arg.val) % MOD); }
-    MInt operator - (const MInt& arg){ return MInt((val * 1ll + MOD - arg.val) % MOD); }
-    MInt operator * (const MInt& arg){ return MInt((val * 1ll * arg.val) % MOD); }
-    MInt operator / (const MInt& arg){ return MInt((val * 1ll * selfPow(arg.val, MOD - 2)) % MOD); }
-    MInt operator + (const int argv){ return MInt((val * 1ll + argv) % MOD); }
-    MInt operator - (const int argv){ return MInt((val * 1ll + MOD - argv) % MOD); }
-    MInt operator * (const int argv){ return MInt((val * 1ll * argv) % MOD); }
-    MInt operator / (const int argv){ return MInt((val * 1ll * selfPow(argv, MOD - 2)) % MOD); }
+    MInt operator + (const MInt& arg) const { return MInt((val * 1ll + arg.val) % MOD); }
+    MInt operator - (const MInt& arg) const { return MInt((val * 1ll + MOD - arg.val) % MOD); }
+    MInt operator * (const MInt& arg) const { return MInt((val * 1ll * arg.val) % MOD); }
+    MInt operator / (const MInt& arg) const { return MInt((val * 1ll * selfPow(arg.val, MOD - 2)) % MOD); }
+    MInt operator + (const int argv) const { return MInt((val * 1ll + argv) % MOD); }
+    MInt operator - (const int argv) const { return MInt((val * 1ll + MOD - argv) % MOD); }
+    MInt operator * (const int argv) const { return MInt((val * 1ll * argv) % MOD); }
+    MInt operator / (const int argv) const { return MInt((val * 1ll * selfPow(argv, MOD - 2)) % MOD); }
     MInt& operator += (const MInt& arg){
         this->val = (this->val * 1ll + arg.val) % MOD;
         return *this;
@@ -701,9 +701,10 @@ public:
         this->val = argv % MOD;
         return *this;
     }
-    int get(){
-        return this->val;
+    bool operator == (const int argv) const{
+        return val == argv;
     }
+    
     friend MInt operator + (const int argv, const MInt& arg){
         return MInt((arg.val * 1ll + argv) % MOD);
     }
@@ -725,7 +726,7 @@ public:
         return ots;
     }
     friend int abs(const MInt& arg){
-        return arg.val;
+        return abs(arg.val);
     }
 private:
     int val;
@@ -1053,7 +1054,7 @@ struct Matrix{
         assert(sz == arg.sz);
         Matrix ret(sz);
         for(int i = 0; i < sz * sz; ++i){
-            ret.data[i] = arg.data[i] + data[i];
+            ret.data[i] = data[i] + arg.data[i];
         }
         return ret;
     }
@@ -1092,58 +1093,58 @@ struct Matrix{
 ```cpp
 template<typename T>
 struct Gauss{
-  Gauss(int argR, int argC): r(argR), c(argC), mat(r, vector<T>(c, 0)), idx(r, 0){
-    assert(argC >= argR);
-    iota(idx.begin(), idx.end(), 0);
-  }
-  T& operator () (int row, int col){
-    return mat[row][col];
-  }
-  int r, c;
-  friend istream& operator >> (istream& its, Gauss& arg){
-    for(int i = 0; i < arg.r; ++i){
-      for(int j = 0; j < arg.c; ++j){
-        its >> arg(i, j);
-      }
+    Gauss(int argR, int argC): r(argR), c(argC), mat(r, vector<T>(c, 0)), idx(r, 0){
+        assert(argC >= argR);
+        iota(idx.begin(), idx.end(), 0);
     }
-    return its;
-  }
-  friend ostream& operator << (ostream& ots, Gauss& arg){
-    for(int i = 0; i < arg.r; ++i){
-      for(int j = 0; j < arg.c; ++j){
-        ots << arg(arg.idx[i], j);
-        if(j + 1 != arg.c) ots << " ";
-      }
-      if(i + 1 != arg.r) ots << "\n";
+    T& operator () (int row, int col){
+        return mat[row][col];
     }
-    return ots;
-  }
-  vector<vector<T>> mat;
-  vector<int> idx;
-  bool elimination(){
-    for(int i = 0; i < r; ++i){
-      int cur = i;
-      for(int j = i + 1; j < r; ++j){
-        if(abs(mat[idx[j]][i]) > abs(mat[idx[cur]][i])){
-          cur = j;
+    int r, c;
+    friend istream& operator >> (istream& its, Gauss& arg){
+        for(int i = 0; i < arg.r; ++i){
+            for(int j = 0; j < arg.c; ++j){
+                its >> arg(i, j);
+            }
         }
-      }
-      swap(idx[i], idx[cur]);
-      T rmul = mat[idx[i]][i];
-      if(abs(rmul) < 1e-8) return false;
-      for(int j = i; j < c; ++j){
-        mat[idx[i]][j] /= rmul; 
-      }
-      for(int i1 = 0; i1 < r; ++i1){
-        if(i1 == i) continue;
-        T cmul = mat[idx[i1]][i];
-        for(int j = i; j < c; ++j){
-          mat[idx[i1]][j] -= mat[idx[i]][j] * cmul;
-        }
-      }
+        return its;
     }
-    return true;
-  }
+    friend ostream& operator << (ostream& ots, Gauss& arg){
+        for(int i = 0; i < arg.r; ++i){
+            for(int j = 0; j < arg.c; ++j){
+                ots << arg(arg.idx[i], j);
+                if(j + 1 != arg.c) ots << " ";
+            }
+            if(i + 1 != arg.r) ots << "\n";
+        }
+        return ots;
+    }
+    vector<vector<T>> mat;
+    vector<int> idx;
+    bool elimination(const function<bool(T)>& isZero, const function<T(T)>& inv){
+        for(int i = 0; i < r; ++i){
+            int cur = i;
+            for(int j = i + 1; j < r; ++j){
+                if(abs(mat[idx[j]][i]) > abs(mat[idx[cur]][i])){
+                    cur = j;
+                }
+            }
+            swap(idx[i], idx[cur]);
+            if(isZero(mat[idx[i]][i])) return false;
+            T mul = inv(mat[idx[i]][i]);
+            for(int j = i; j < c; ++j){
+                mat[idx[i]][j] *= mul;
+            }
+            for(int i1 = 0; i1 < r; ++i1){
+                if(i1 == i) continue;
+                T cmul = mat[idx[i1]][i];
+                for(int j = i; j < c; ++j){
+                    mat[idx[i1]][j] -= mat[idx[i]][j] * cmul;
+                }
+            }
+        }
+        return true;
+    }
 };
 ```
 
@@ -1902,6 +1903,8 @@ protected:
 
 ### Splay树
 > https://loj.ac/p/104
+> 有误，暂未修
+
 ```cpp
 #include <vector>
 #include <array>
