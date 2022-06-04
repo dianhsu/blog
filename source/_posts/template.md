@@ -1025,129 +1025,6 @@ bool excrt(pair<T, T>& res, vector<pair<T, T>>& args){
     return true;
 }
 ```
-### 矩阵
->  矩阵模板，搭配模数可以当成矩阵快速幂。
-```cpp
-template<typename T>
-struct Matrix{
-    std::vector<T> data;
-    int sz;
-    // 构造全0矩阵，或者斜对角填上自定义数字
-    Matrix(int sz, T v = 0): sz(sz), data(sz * sz, 0){
-        int cur = 0;
-        do{
-            data[cur] = v;
-            cur += sz + 1;
-        }while(cur < sz * sz);
-    }
-    //从vector中构造矩阵
-    Matrix(int sz, std::vector<T>& arg): sz(sz), data(sz * sz, 0){
-        assert(arg.size() >= sz * sz);
-        for(int i = 0; i < sz * sz; ++i) data[i] = arg[i];
-    }
-    //从vector中构造矩阵，右值
-    Matrix(int sz, std::vector<T>&& arg): sz(sz), data(sz * sz, 0){
-        assert(arg.size() >= sz * sz);
-        for(int i = 0; i < sz * sz; ++i) data[i] = arg[i];
-    }
-    Matrix operator + (const Matrix& arg){
-        assert(sz == arg.sz);
-        Matrix ret(sz);
-        for(int i = 0; i < sz * sz; ++i){
-            ret.data[i] = data[i] + arg.data[i];
-        }
-        return ret;
-    }
-    Matrix operator * (const Matrix& arg){
-        assert(sz == arg.sz);
-        Matrix ret(sz);
-        for(int i = 0; i < sz; ++i){
-            for(int j = 0; j < sz; ++j){
-                for(int k = 0; k < sz; ++k){
-                    ret.data[i * sz + j] += data[i * sz + k] * arg.data[k * sz + j];
-                }
-            }
-        }
-        return ret;
-    }
-    Matrix operator - (const Matrix& arg){
-        assert(sz == arg.sz);
-        Matrix ret(sz);
-        for(int i = 0; i < sz * sz; ++i) ret.data[i] = data[i] - arg.data[i];
-        return ret;
-    }
-    friend std::ostream & operator << (std::ostream& ots, const Matrix& arg){
-        for(int i = 0; i < arg.sz; ++i){
-            for(int j = 0; j < arg.sz; ++j){
-                if(j) ots << " ";
-                ots << arg.data[i * arg.sz + j];
-            }
-            if(i + 1 != arg.sz) ots << "\n";
-        }
-        return ots;
-    }
-};
-```
-
-### 高斯消元
-```cpp
-template<typename T>
-struct Gauss{
-    Gauss(int argR, int argC): r(argR), c(argC), mat(r, vector<T>(c, 0)), idx(r, 0){
-        assert(argC >= argR);
-        iota(idx.begin(), idx.end(), 0);
-    }
-    T& operator () (int row, int col){
-        return mat[row][col];
-    }
-    int r, c;
-    friend istream& operator >> (istream& its, Gauss& arg){
-        for(int i = 0; i < arg.r; ++i){
-            for(int j = 0; j < arg.c; ++j){
-                its >> arg(i, j);
-            }
-        }
-        return its;
-    }
-    friend ostream& operator << (ostream& ots, Gauss& arg){
-        for(int i = 0; i < arg.r; ++i){
-            for(int j = 0; j < arg.c; ++j){
-                ots << arg(arg.idx[i], j);
-                if(j + 1 != arg.c) ots << " ";
-            }
-            if(i + 1 != arg.r) ots << "\n";
-        }
-        return ots;
-    }
-    vector<vector<T>> mat;
-    vector<int> idx;
-    bool elimination(const function<bool(T)>& isZero, const function<T(T)>& inv){
-        for(int i = 0; i < r; ++i){
-            int cur = i;
-            for(int j = i + 1; j < r; ++j){
-                if(abs(mat[idx[j]][i]) > abs(mat[idx[cur]][i])){
-                    cur = j;
-                }
-            }
-            swap(idx[i], idx[cur]);
-            if(isZero(mat[idx[i]][i])) return false;
-            T mul = inv(mat[idx[i]][i]);
-            for(int j = i; j < c; ++j){
-                mat[idx[i]][j] *= mul;
-            }
-            for(int i1 = 0; i1 < r; ++i1){
-                if(i1 == i) continue;
-                T cmul = mat[idx[i1]][i];
-                for(int j = i; j < c; ++j){
-                    mat[idx[i1]][j] -= mat[idx[i]][j] * cmul;
-                }
-            }
-        }
-        return true;
-    }
-};
-```
-
 
 ### 乘法逆元
 #### 扩展欧几里得算法
@@ -1503,8 +1380,172 @@ ll PollardRho(ll n){
 }
 
 ```
+### 线性代数
+#### 矩阵
+>  矩阵模板，搭配模数可以当成矩阵快速幂。
+```cpp
+template<typename T>
+struct Matrix{
+    std::vector<T> data;
+    int sz;
+    // 构造全0矩阵，或者斜对角填上自定义数字
+    Matrix(int sz, T v = 0): sz(sz), data(sz * sz, 0){
+        int cur = 0;
+        do{
+            data[cur] = v;
+            cur += sz + 1;
+        }while(cur < sz * sz);
+    }
+    //从vector中构造矩阵
+    Matrix(int sz, std::vector<T>& arg): sz(sz), data(sz * sz, 0){
+        assert(arg.size() >= sz * sz);
+        for(int i = 0; i < sz * sz; ++i) data[i] = arg[i];
+    }
+    //从vector中构造矩阵，右值
+    Matrix(int sz, std::vector<T>&& arg): sz(sz), data(sz * sz, 0){
+        assert(arg.size() >= sz * sz);
+        for(int i = 0; i < sz * sz; ++i) data[i] = arg[i];
+    }
+    Matrix operator + (const Matrix& arg) const {
+        assert(sz == arg.sz);
+        Matrix ret(sz);
+        for(int i = 0; i < sz * sz; ++i){
+            ret.data[i] = data[i] + arg.data[i];
+        }
+        return ret;
+    }
+    Matrix operator * (const Matrix& arg) const {
+        assert(sz == arg.sz);
+        Matrix ret(sz);
+        for(int i = 0; i < sz; ++i){
+            for(int j = 0; j < sz; ++j){
+                for(int k = 0; k < sz; ++k){
+                    ret.data[i * sz + j] += data[i * sz + k] * arg.data[k * sz + j];
+                }
+            }
+        }
+        return ret;
+    }
+    Matrix operator - (const Matrix& arg) const {
+        assert(sz == arg.sz);
+        Matrix ret(sz);
+        for(int i = 0; i < sz * sz; ++i) ret.data[i] = data[i] - arg.data[i];
+        return ret;
+    }
+    friend std::ostream & operator << (std::ostream& ots, const Matrix& arg){
+        for(int i = 0; i < arg.sz; ++i){
+            for(int j = 0; j < arg.sz; ++j){
+                if(j) ots << " ";
+                ots << arg.data[i * arg.sz + j];
+            }
+            if(i + 1 != arg.sz) ots << "\n";
+        }
+        return ots;
+    }
+};
+```
 
-### 快速傅立叶变换
+#### 高斯消元
+```cpp
+template<typename T>
+struct Gauss{
+    Gauss(int argR, int argC): r(argR), c(argC), mat(r, vector<T>(c, 0)), idx(r, 0){
+        assert(argC >= argR);
+        iota(idx.begin(), idx.end(), 0);
+    }
+    T& operator () (int row, int col){
+        return mat[row][col];
+    }
+    int r, c;
+    friend istream& operator >> (istream& its, Gauss& arg){
+        for(int i = 0; i < arg.r; ++i){
+            for(int j = 0; j < arg.c; ++j){
+                its >> arg(i, j);
+            }
+        }
+        return its;
+    }
+    friend ostream& operator << (ostream& ots, Gauss& arg){
+        for(int i = 0; i < arg.r; ++i){
+            for(int j = 0; j < arg.c; ++j){
+                ots << arg(arg.idx[i], j);
+                if(j + 1 != arg.c) ots << " ";
+            }
+            if(i + 1 != arg.r) ots << "\n";
+        }
+        return ots;
+    }
+    vector<vector<T>> mat;
+    vector<int> idx;
+    bool elimination(const function<bool(T)>& isZero, const function<T(T)>& inv){
+        for(int i = 0; i < r; ++i){
+            int cur = i;
+            for(int j = i + 1; j < r; ++j){
+                if(abs(mat[idx[j]][i]) > abs(mat[idx[cur]][i])){
+                    cur = j;
+                }
+            }
+            swap(idx[i], idx[cur]);
+            if(isZero(mat[idx[i]][i])) return false;
+            T mul = inv(mat[idx[i]][i]);
+            for(int j = i; j < c; ++j){
+                mat[idx[i]][j] *= mul;
+            }
+            for(int i1 = 0; i1 < r; ++i1){
+                if(i1 == i) continue;
+                T cmul = mat[idx[i1]][i];
+                for(int j = i; j < c; ++j){
+                    mat[idx[i1]][j] -= mat[idx[i]][j] * cmul;
+                }
+            }
+        }
+        return true;
+    }
+};
+```
+
+
+#### 线性基
+```cpp
+struct LBase{
+  vector<long long> _data;
+  LBase(): _data(64, 0){}
+  bool insert(long long x){
+    for(int i = 63 - __builtin_clzll(x); i >= 0; --i){
+      if((x >> i) & 1){
+        if(_data[i]) x ^= _data[i];
+        else{
+          _data[i] = x;
+          break;
+        }
+      }
+    }
+    return x > 0;
+  }
+  LBase& operator += (const LBase& arg){
+    for(auto ptr = arg._data.rbegin(); ptr != arg._data.rend(); ++ptr){
+      this->insert(*ptr);
+    }
+    return *this;
+  }
+  long long query(){
+    long long ret = 0;
+    for(auto ptr = _data.rbegin(); ptr != _data.rend(); ++ptr){
+      if(*ptr){
+        if((ret ^ (*ptr)) > ret) ret ^= *ptr;
+      }
+    }
+    return ret;
+  }
+  int count(){
+    int ret = 0;
+    for(auto& it: _data) if(it) ++ret;
+    return ret;
+  }
+};
+```
+### 多项式
+#### 快速傅立叶变换
 ```cpp
 template<typename T>
 void butterflyDiagram(vector<complex<T>>& vec){
