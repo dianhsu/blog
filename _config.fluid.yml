@@ -421,7 +421,7 @@ footer:
   beian:
     enable: true
     # ICP证号
-    icp_text: 鄂ICP备2020020124号-1
+    icp_text: 鄂ICP备2020020124号-2
     # 公安备案号，不填则只显示ICP
     police_text: 
     # 公安备案的编号，用于URL跳转查询
@@ -739,7 +739,7 @@ valine:
 # Derived from Valine, with self-hosted service and new features
 # See: https://waline.js.org/
 waline:
-  serverURL: 'https://waline.dianhsu.top'
+  serverURL: 'https://waline.dianhsu.com'
   path: window.location.pathname
   meta: ['nick', 'mail', 'link']
   requiredMeta: ['nick']

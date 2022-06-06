@@ -22,45 +22,8 @@ index_img: https://cdn.dianhsu.top/img/2022-06-04-23-48-18.png
 
 ![暴力猴](https://cdn.dianhsu.top/img/2022-06-04-23-37-06.png)
 
-将下面脚本代码粘贴到编辑器内。
+从[GitHub](https://github.com/dianhsu/cf-code/blob/main/script.js)下载脚本代码，并粘贴到编辑器内。
 
-```javascript
-// ==UserScript==
-// @name        GYM code view - codeforces.com
-// @namespace   Violentmonkey Scripts
-// @match       https://codeforces.com/gym/*/status
-// @grant       MIT
-// @version     1.0
-// @author      dianhsu
-// @run-at      document-idle
-// @description 2022/6/4 15:41:09
-// ==/UserScript==
-
-function init(){
-  let items = document.querySelector('.status-frame-datatable').querySelectorAll('tr')
-  let reg = /\d+/g;
-  let contestId = window.location.pathname.match(reg);
-  items.forEach(function(item){
-    if(item.className === 'first-row'){
-      let th = document.createElement('th');
-      th.class = 'top right';
-      th.append("View");
-      item.append(th);
-    }else{
-      let submissionId = item.dataset.submissionId;
-      let td = document.createElement('td');
-      let a = document.createElement('a');
-      a.append('code');
-      a.title = 'code';
-      a.target = '_blank';
-      a.href = `https://cf.dianhsu.com/gym/${contestId}/submission/${submissionId}`;
-      td.append(a);
-      item.append(td);
-    }
-  });
-};
-init();
-```
 如下图所示
 
 ![暴力猴中的脚本页面](https://cdn.dianhsu.top/img/2022-06-04-23-39-20.png)
@@ -69,16 +32,23 @@ init();
 
 # 如何获取代码
 
-打开一场GYM比赛的`status`页面，列表中多了一列`Views`，如下图所示。
+打开一场GYM比赛的`status`页面，列表中第一列代码编号变成了可以点击的链接啦，如下图所示。
+![安装插件之后](https://cdn.dianhsu.top/img/2022-06-06-12-52-37.png)
 
-![GYM中的Status页面](https://cdn.dianhsu.top/img/2022-06-04-23-42-20.png)
+对比一下安装插件之前的页面。
 
-点击`code`链接，就会在新标签页中显示出代码。
+![安装插件之前](https://cdn.dianhsu.top/img/2022-06-06-12-51-50.png)
+
+点击一下代码编号的链接，就跳转到了贴代码的网站。
 
 ![跳转到了贴代码的网站](https://cdn.dianhsu.top/img/2022-06-04-23-44-21.png)
 
+PS：原本个人submission里面的无法查看的代码也可以查看啦
+
+
 # 其他的一些说明
 
-1. 目前还没做代码高亮，后续有想法
+1. 目前还没做代码高亮，后续有想法。 PS：已实现
 2. 有些比赛需要通过邀请链接才能进去查看比赛。这个逻辑后台已经写了，前端没想好放在哪。
-3. 后端源码 [cf-code](https://github.com/dianhsu/cf-code)
+3. 插件和后端源码 [cf-code](https://github.com/dianhsu/cf-code)
+
