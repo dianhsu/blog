@@ -18,17 +18,8 @@ index_img: https://cdn.dianhsu.top/img/2022-06-04-23-48-18.png
 
 # 安装过程
 
-安装好了暴力猴之后，打开暴力猴，点击`+`新建一个脚本
+访问[脚本安装链接](https://raw.githubusercontent.com/dianhsu/cf-code/main/script.user.js)，点击`确认安装`即可。
 
-![暴力猴](https://cdn.dianhsu.top/img/2022-06-04-23-37-06.png)
-
-从[GitHub](https://github.com/dianhsu/cf-code/blob/main/script.js)下载脚本代码，并粘贴到编辑器内。
-
-如下图所示
-
-![暴力猴中的脚本页面](https://cdn.dianhsu.top/img/2022-06-04-23-39-20.png)
-
-最后点击右上角保存即可。
 
 # 如何获取代码
 
