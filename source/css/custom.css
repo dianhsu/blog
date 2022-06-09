@@ -1,0 +1,4 @@
+.katex .mathdefault{
+    font-family: KaTeX_Math !important;
+    font-style: italic !important;
+}
