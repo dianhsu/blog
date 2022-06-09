@@ -862,7 +862,7 @@ about:
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
-  avatar: https://cdn.dianhsu.top/blog/icons/QQ20220507-11.jpg
+  avatar: https://gravatar.loli.net/avatar/691c0f6ff8700a3f4cc036d75b4cb4d1?s=400
   name: "dianhsu"
   intro: "算法竞赛爱好者，耶耶耶余爱好羽毛球"
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
@@ -961,6 +961,12 @@ links:
       intro: "WUST KING!!!",
       link: "http://nzk520.top/",
       avatar: "https://userpic.codeforces.org/2084239/title/7953f100da99db23.jpg"
+    }
+    - {
+      title: "kongfang",
+      intro: "国奖收割机，经典算法、数据算法双开选手",
+      link: "https://www.cm4k3r.cn",
+      avatar: "https://www.cm4k3r.cn/images/avatar.png"
     }
 
   # 当成员头像加载失败时，替换为指定图片
