@@ -23,7 +23,7 @@
     "hexo-renderer-markdown-it-plus": "^1.0.4",
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^3.0.0",
-    "hexo-theme-fluid": "^1.8.14"
+    "hexo-theme-fluid": "^1.9.2"
   },
   "resolutions": {
     "stylus": "^0.54.8"
