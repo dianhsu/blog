@@ -1544,6 +1544,31 @@ struct LBase{
   }
 };
 ```
+
+### 自适应辛普森
+
+```cpp
+template<typename T>
+T simpson(T l, T r, const function<T(T)>& f){
+  T mid = (l + r) / 2;
+  return (r - l) * (f(l) + 4 * f(mid) + f(r)) / 6;
+}
+
+template<typename T>
+T asr(T l, T r, T delta, T ans, int step, const function<T(T)>& f){
+  T mid = (l + r) / 2;
+  T fl = simpson<T>(l, mid, f), fr = simpson<T>(mid, r, f);
+  if(abs(fl + fr - ans) <= 15 * delta and step < 0){
+    return fl + fr + (fl + fr - ans) / 15;
+  }
+  return asr(l, mid, delta / 2, fl, step - 1, f) + asr(mid, r, delta / 2, fr, step - 1, f);
+}
+template<typename T = double>
+T adaptiveSimpson(T l, T r, T delta, const function<T(T)>& f){
+  return asr<T>(l, r, delta, simpson<T>(l, r, f), 12, f);
+}
+```
+
 ### 多项式
 #### 快速傅立叶变换
 ```cpp
