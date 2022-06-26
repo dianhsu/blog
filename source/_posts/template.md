@@ -1267,7 +1267,54 @@ public:
 private:
     vector<T> muArr;
 };
+```
 
+### 杜教筛
+```cpp
+template<int N = 5000000>
+struct Du{
+  Du(): vis(N + 1, 0), mu(N + 1, 0), musum(N + 1, 0) {
+    mu[1] = 1;
+    for(int i = 2; i <= N; ++i){
+      if(!vis[i]){
+        pri.push_back(i);
+        mu[i] = -1;
+      }
+      for(auto& it: pri){
+        if(1ll * i * it > N) break;
+        vis[i * it] = 1;
+        if(i % it){
+          mu[i * it] = - mu[i];
+        }else{
+          mu[i * it] = 0;
+          break;
+        }
+      }
+    }
+    for(int i = 1; i <= N; ++i) musum[i] = musum[i - 1] + mu[i];
+  }
+  long long getMuSum(int x){
+    if(x <= N) return musum[x];
+    if(lazyMu.count(x)) return lazyMu[x];
+    long long ret = 1;
+    for(long long i = 2, j; i <= x; i = j + 1){
+      j = x / (x / i);
+      ret -= getMuSum(x / i) * (j - i + 1);
+    }
+    return lazyMu[x] = ret;
+  }
+  long long getPhiSum(int x){
+    long long ret = 0;
+    for(long long i = 1, j; i <= x; i = j + 1){
+      j = x / (x / i);
+      ret += (getMuSum(j) - getMuSum(i - 1)) * (x / i) * (x / i);
+    }
+    return (ret - 1) / 2 + 1;
+  }
+  map<int, long long> lazyMu;
+  vector<int> mu, musum, pri;
+  vector<bool> vis;
+};
 ```
 
 ### 康拓展开
