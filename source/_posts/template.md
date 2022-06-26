@@ -1073,7 +1073,7 @@ vector<int> reverse(int n, int MOD){
 template<typename T = long long, int P = 1000000007>
 class Combination{
 public:
-    Combination(int n, T p): div(n + 1, 1), mul(n + 1, 1){
+    Combination(int n): div(n + 1, 1), mul(n + 1, 1){
         for(int i = 1; i <= n; ++i) mul[i] = mul[i - 1] * i % P;
         div[n] = qPow(mul[n], P - 2);
         for(int i = n - 1; i > 0; --i) div[i] = div[i + 1] * (i + 1) % P;
