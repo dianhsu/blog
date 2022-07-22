@@ -18,11 +18,11 @@
 
 # 用于浏览器标签的图标
 # Icon for browser tab
-favicon: https://cdn.dianhsu.top/blog/icons/QQ20220507-11.jpg
+favicon: https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg
 
 # 用于苹果设备的图标
 # Icon for Apple touch
-apple_touch_icon: https://cdn.dianhsu.top/blog/icons/QQ20220507-11.jpg
+apple_touch_icon: https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg
 
 # 浏览器标签页中的标题分隔符，效果： 文章名 - 站点名
 # Title separator in browser tab, eg: article - site
@@ -437,7 +437,7 @@ footer:
 index:
   # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
   # Path of Banner image, can be a relative path or an absolute path, the same on other pages
-  banner_img: https://cdn.dianhsu.top/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
+  banner_img: https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
 
   # 头图高度，屏幕百分比
   # Height ratio of banner image
@@ -509,7 +509,7 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: https://cdn.dianhsu.top/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
+  banner_img: https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
   banner_img_height: 70
   banner_mask_alpha: 0.3
 
@@ -744,7 +744,7 @@ waline:
   meta: ['nick', 'mail', 'link']
   requiredMeta: ['nick']
   lang: 'zh-CN'
-  emoji: ['https://static.dianhsu.top/@waline/emojis@1.0.1/bilibili', 'https://static.dianhsu.top/@waline/emojis@1.0.1/alus', 'https://static.dianhsu.top/@waline/emojis@1.0.1/qq', 'https://static.dianhsu.top/@waline/emojis@1.0.1/weibo', 'https://static.dianhsu.top/@waline/emojis@1.0.1/tieba']
+  emoji: ['https://static.dianhsu.com/@waline/emojis@1.0.1/bilibili', 'https://static.dianhsu.com/@waline/emojis@1.0.1/alus', 'https://static.dianhsu.com/@waline/emojis@1.0.1/qq', 'https://static.dianhsu.com/@waline/emojis@1.0.1/weibo', 'https://static.dianhsu.com/@waline/emojis@1.0.1/tieba']
   dark: 'html[data-user-color-scheme="dark"]'
   wordLimit: 0
   pageSize: 10
@@ -798,7 +798,7 @@ cusdis:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: https://cdn.dianhsu.top/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
+  banner_img: https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -810,7 +810,7 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: https://cdn.dianhsu.top/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
+  banner_img: https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -840,7 +840,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: https://cdn.dianhsu.top/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
+  banner_img: https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
   banner_img_height: 80
   banner_mask_alpha: 0.3
   subtitle:
@@ -858,7 +858,7 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: https://cdn.dianhsu.top/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
+  banner_img: https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -871,9 +871,9 @@ about:
     - { class: "iconfont icon-github-fill", link: "https://github.com/dianhsu", tip: "GitHub" }
     - { class: "iconfont icon-bilibili", link: "https://space.bilibili.com/25564781/", tip: "BiliBili" }
     - { class: "iconfont icon-codeforces", link: "https://codeforces.com/profile/xdO_o", tip: "Codeforces" }
-    - { class: "iconfont icon-qq-fill", link: "https://cdn.dianhsu.top/image/qrcode_1648693362115.jpg", tip: "QQ group" }
+    - { class: "iconfont icon-qq-fill", link: "https://cdn.dianhsu.com/image/qrcode_1648693362115.jpg", tip: "QQ group" }
     - { class: "iconfont icon-zhihu-fill", link: "https://www.zhihu.com/people/missalgo", tip: "dianhsu" }
-    - { class: "iconfont icon-addrcard", link: "https://cdn.dianhsu.top/resume.pdf", tip: "Resume"}
+    - { class: "iconfont icon-addrcard", link: "https://cdn.dianhsu.com/resume.pdf", tip: "Resume"}
 
 
 #---------------------------
@@ -884,7 +884,7 @@ about:
 # Custom Page through `hexo new page`
 #---------------------------
 page:
-  banner_img: https://cdn.dianhsu.top/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
+  banner_img: https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -895,7 +895,7 @@ page:
 #---------------------------
 page404:
   enable: true
-  banner_img: https://cdn.dianhsu.top/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
+  banner_img: https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
   banner_img_height: 85
   banner_mask_alpha: 0.3
   subtitle: "Page not found"
@@ -907,7 +907,7 @@ page404:
 #---------------------------
 links:
   enable: true
-  banner_img: https://cdn.dianhsu.top/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
+  banner_img: https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -1026,7 +1026,7 @@ static_prefix:
 
   mathjax: https://lib.baomitu.com/mathjax/3.2.0/es5/
 
-  katex: https://static.dianhsu.top/katex@0.16.0/dist/
+  katex: https://static.dianhsu.com/katex@0.16.0/dist/
 
   busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/
 

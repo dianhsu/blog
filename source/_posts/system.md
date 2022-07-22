@@ -7,7 +7,7 @@ tags:
 categories: 操作系统
 mermaid: true
 math: true
-index_img: https://cdn.dianhsu.top/blog%2F748771.jpg
+index_img: https://cdn.dianhsu.com/blog%2F748771.jpg
 ---
 
 
@@ -139,7 +139,7 @@ while(TRUE){
 ```
 ##### 哲学家就餐问题
 
-![哲学家就餐问题](http://cdn.dianhsu.top/img/20210529204400.png)
+![哲学家就餐问题](http://cdn.dianhsu.com/img/20210529204400.png)
 
 ```
 begin
@@ -267,7 +267,7 @@ end;
 
 > 下面图片来自[https://zhuanlan.zhihu.com/p/30700602](https://zhuanlan.zhihu.com/p/30700602)
 
-![作业状态及其切换](http://cdn.dianhsu.top/img/20210530155835.png)
+![作业状态及其切换](http://cdn.dianhsu.com/img/20210530155835.png)
 
 作业从提交给系统，直到完成任务后退出系统前，在整个活动过程中处于不同的状态。通常，作业状态分为四种：提交、后备、执行和完成。
 

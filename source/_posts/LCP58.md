@@ -5,7 +5,7 @@ tags:
     - LeetCode
     - LC春季赛
     - 立体几何
-index_img: https://cdn.dianhsu.top/blog/505102-anime-series-love-live.jpeg
+index_img: https://cdn.dianhsu.com/blog/505102-anime-series-love-live.jpeg
 categories: LeetCode
 ---
 

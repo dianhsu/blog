@@ -4,7 +4,7 @@ date: 2022-05-10 18:12:34
 tags: [算法, 搜索, 启发式搜索]
 categories: 算法
 math: true
-index_img: https://cdn.dianhsu.top/img/2022-05-21-14-57-23.jpeg
+index_img: https://cdn.dianhsu.com/img/2022-05-21-14-57-23.jpeg
 ---
 
 
@@ -20,4 +20,4 @@ $$f(n)=g(n)+h(n)$$
 - 如果 $h(n)$ 为 $0$ ，即只需求出起点到任意顶点 $n$ 的最短路径 $g(n)$ ，而不计算任何评估函数 $h(n)$，则转化为单源最短路径问题，即Dijkstra算法，此时需要计算最多的顶点；
 
 演示图如下（来源：维基百科）：
-![A star](https://cdn.dianhsu.top/img/20210618141517.gif)
+![A star](https://cdn.dianhsu.com/img/20210618141517.gif)

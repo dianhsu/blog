@@ -5,7 +5,7 @@ tags:
     - 计算机网络
 categories: 计算机网络
 mermaid: true
-index_img: https://cdn.dianhsu.top/blog%2F692811.png
+index_img: https://cdn.dianhsu.com/blog%2F692811.png
 ---
 
 # 计算机网络的一些复习题
@@ -48,7 +48,7 @@ Hadoop 由许多元素构成。其最底部是 Hadoop Distributed File System（
 
 SDN的整体架构由下到上（由南到北）分为数据平面、控制平面和应用平面，具体下图所示。其中，数据平面由交换机等网络通用硬件组成，各个网络设备之间通过不同规则形成的SDN数据通路连接；控制平面包含了逻辑上为中心的SDN控制器，它掌握着全局网络信息，负责各种转发规则的控制；应用平面包含着各种基于SDN的网络应用，用户无需关心底层细节就可以编程、部署新应用。
 
-![SDN](http://cdn.dianhsu.top/img/20210528161844.png)
+![SDN](http://cdn.dianhsu.com/img/20210528161844.png)
 
 控制平面与数据平面之间通过SDN控制数据平面接口（control-data-plane interface，简称CDPI）进行通信，它具有统一的通信标准，主要负责将控制器中的转发规则下发至转发设备，最主要应用的是OpenFlow协议。控制平面与应用平面之间通过SDN北向接口（northbound interface，简称NBI）进行通信，而NBI并非统一标准，它允许用户根据自身需求定制开发各种网络管理应用。
 
@@ -166,7 +166,7 @@ Cache存储的另一个重要因素是存储的可靠性，目前，多数存储
 > 参考：[计算机网络高级编程（第2版）吴功宜](https://item.jd.com/11768206.html) 第241页
 
 传统网络和主动网络的比较
-![传统网络和主动网络的比较](http://cdn.dianhsu.top/img/20210528161955.png)
+![传统网络和主动网络的比较](http://cdn.dianhsu.com/img/20210528161955.png)
 
 > 参考：[主动网络_百度百科](https://baike.baidu.com/item/%E4%B8%BB%E5%8A%A8%E7%BD%91%E7%BB%9C)
 
@@ -377,7 +377,7 @@ graph LR
 ***根据[RFC950](https://datatracker.ietf.org/doc/html/rfc950)文档第六页，子网号不能用全0或者全1***
 > It is useful to preserve and extend the interpretation of these special addresses in subnetted networks. This means the values of all zeros and all ones in the subnet field should not be assigned to actual (physical) subnets.
 
-根据2021年05月28日[聊天消息](http://cdn.dianhsu.top/img/20210528152557.png)，后面的计算是在允许子网号全0或者全1的情况下计算的。
+根据2021年05月28日[聊天消息](http://cdn.dianhsu.com/img/20210528152557.png)，后面的计算是在允许子网号全0或者全1的情况下计算的。
 
 
 | 子网  | 地址范围         | 子网掩码      | 可用地址范围                    |
@@ -406,14 +406,14 @@ graph LR
 
 202.115.28.202和202.115.28.135需要设置路由器才能通信。
 
-![网络连接示意图](http://cdn.dianhsu.top/img/20210528170827.png)
+![网络连接示意图](http://cdn.dianhsu.com/img/20210528170827.png)
 
 ## :rocket:综述题
 
 ### :fire:请阐述物联网的层次结构模型
 > 参考：[计算机网络高级编程（第2版）吴功宜](https://item.jd.com/11768206.html) 第606页
 
-![物联网层次结构模型](http://cdn.dianhsu.top/img/20210527194424.png)
+![物联网层次结构模型](http://cdn.dianhsu.com/img/20210527194424.png)
 
 > 参考：[物联网的层次结构如何划分？_百度知道](https://zhidao.baidu.com/question/475079093.html)
 
@@ -428,7 +428,7 @@ graph LR
 
 集中式P2P网络与传统C/S模式存在着相同之处，即集中式P2P网络中也存在这中心服务器，但是两者之间有很大的区别。下图表示出集中式P2P网络与传统C/S工作模式的区别。
 
-![集中式P2P网络与传统C/S工作方式的区别](http://cdn.dianhsu.top/img/20210527193750.png)
+![集中式P2P网络与传统C/S工作方式的区别](http://cdn.dianhsu.com/img/20210527193750.png)
 
 在传统的C/S模式中，网络中共享文件存储在服务器磁盘中。当节点A用户希望下载《梁祝》的MP3文件时，节点A向文件服务器发送一个文件读取指令。文件服务器在接收到文件读取请求指令，并判断节点A为合法用户之后，服务器将它所需要的《梁祝》MP3文件传送给节点A。而在集中式P2P网络中，中心目录服务器只提供共享文件存储节点的位置搜索服务，共享文件的交换只存在与对等节点之间。
 

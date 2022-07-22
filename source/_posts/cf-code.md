@@ -5,7 +5,7 @@ categories: 工具
 tags:
     - 工具
     - Codeforces
-index_img: https://cdn.dianhsu.top/img/2022-06-04-23-48-18.png
+index_img: https://cdn.dianhsu.com/img/2022-06-04-23-48-18.png
 ---
 
 # 简介
@@ -24,15 +24,15 @@ index_img: https://cdn.dianhsu.top/img/2022-06-04-23-48-18.png
 # 如何获取代码
 
 打开一场GYM比赛的`status`页面，列表中第一列代码编号变成了可以点击的链接啦，如下图所示。
-![安装插件之后](https://cdn.dianhsu.top/img/2022-06-06-12-52-37.png)
+![安装插件之后](https://cdn.dianhsu.com/img/2022-06-06-12-52-37.png)
 
 对比一下安装插件之前的页面。
 
-![安装插件之前](https://cdn.dianhsu.top/img/2022-06-06-12-51-50.png)
+![安装插件之前](https://cdn.dianhsu.com/img/2022-06-06-12-51-50.png)
 
 点击一下代码编号的链接，就跳转到了贴代码的网站。
 
-![跳转到了贴代码的网站](https://cdn.dianhsu.top/img/2022-06-04-23-44-21.png)
+![跳转到了贴代码的网站](https://cdn.dianhsu.com/img/2022-06-04-23-44-21.png)
 
 PS：原本个人submission里面的无法查看的代码也可以查看啦
 

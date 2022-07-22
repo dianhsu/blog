@@ -5,7 +5,7 @@ tags:
     - C++
     - 面试
 catogories: C++
-index_img: https://cdn.dianhsu.top/blog%2F940596.jpg
+index_img: https://cdn.dianhsu.com/blog%2F940596.jpg
 ---
 # C++语言面试的一些问题
 ## 语言基础
@@ -621,7 +621,7 @@ malloc是在堆上分配内存，需要程序员自己回收内存；局部变�
 
 ### 程序有哪些section，分别的作用？程序启动的过程？怎么判断数据分配在栈上还是堆上？
 
-![linux memory](https://cdn.dianhsu.top/image/linux_memory_demo.png)
+![linux memory](https://cdn.dianhsu.com/image/linux_memory_demo.png)
 
 一个程序有哪些section：
 如上图，从低地址到高地址，一个程序由代码段、数据段、 BSS 段组成。
@@ -675,7 +675,7 @@ BSS段通常是指用来存放程序中未初始化的或者初始化为0的全�
 
 ### 内存模型，堆栈，常量区。
 
-![linux memory](https://cdn.dianhsu.top/image/linux_memory_demo.png)
+![linux memory](https://cdn.dianhsu.com/image/linux_memory_demo.png)
 
 内存模型（内存布局）：
 
