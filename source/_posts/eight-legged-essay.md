@@ -72,6 +72,106 @@ index_img: https://cdn.dianhsu.com/img/2022-07-23-11-46-55.jpeg
 
 ## C++14/17/20新特性
 ### C++14新特性 [^2]
+#### 函数返回值类型推导
+C++14 对函数返回类型推导规则做了优化，先看一段代码：
+```cpp
+#include <iostream>
+
+using namespace std;
+
+auto func(int i){
+    return i;
+}
+
+int main(){
+    cout << func(4) << endl;
+    return 0;
+}
+```
+
+使用C++11编译：
+```
+~/test$ g++ test.cc -std=c++11
+test.cc:5:16: error: ‘func’ function uses ‘auto’ type specifier without trailing return type
+ auto func(int i) {
+                ^
+test.cc:5:16: note: deduced return type only available with -std=c++14 or -std=gnu++14
+```
+上面的代码使用 C++11 是不能通过编译的，通过编译器输出的信息也可以看见这个特性需要到 C++14 才被支持。
+
+返回值类型推导也可以用在模板中：
+```cpp
+#include <iostream>
+using namespace std;
+
+template<typename T>
+auto func(T t){ return t; }
+
+int main(){
+    cout << func(4) << endl;
+    cout << func(3.4) << endl;
+    return 0;
+}
+```
+**注意**
+1. 函数内如果有多个return语句，它们必须返回相同类型，否则编译失败。
+    ```cpp
+    auto func(bool flag){
+        if(flag) return 1;
+        else return 2.3; // error
+    }
+    // inconsistent deduction for auto return type: 'int' and then 'double'
+    ```
+2. 如果return语句返回初始化列表，返回值类型推导也失败。
+    ```cpp
+    auto func(){
+        return {1, 2, 3};   // error returning initializer list
+    }
+    ```
+3. 如果函数是虚函数，不能使用返回类型推导。
+    ```cpp
+    struct A{
+        // error: virtual function cannot have deduced return type
+        virtual auto func() { return 1; }
+    }
+    ```
+4. 返回类型推导可以在前向声明中，但是在使用他们之前，翻译单元中必须能够得到函数定义。
+    ```cpp
+    auto f();       // declared, not yet defined.
+    auto f() { return 42; }     // defined, return type is int
+
+    int main(){
+        cout << f() << endl;
+    }
+    ```
+5. 返回类型推导可以用在递归函数中，但是递归调用必须以至少一个返回语句作为先导，以便编译器推导出返回类型。
+    ```cpp
+    auto sum(int i){
+        if(i == 1) return i;
+        else return sum(i - 1) + i;
+    }
+    ```
+#### lambda参数auto
+在C++11中，lambda表达式参数需要使用具体的类型声明：
+```cpp
+auto f = [](int a) { return a; }
+```
+在C++14中，对此进行优化，lambda表达式参数可以直接是auto：
+```cpp
+auto f = [](auto a){ return a; }
+cout << f(1) << endl;
+cout << f(2.3f) << endl;
+```
+#### 变量模板
+C++14支持变量模板：
+```cpp
+template<class T>
+constexpr T pi = T(3.1415926535897932385L);
+int main(){
+    cout << pi(int) << endl;
+    cout << pi(double) << endl;
+}
+```
 ### C++17新特性 [^3]
 ### C++20新特性
 ## C++协程
