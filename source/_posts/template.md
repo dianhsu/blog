@@ -293,8 +293,13 @@ public:
     bool mg(int x, int y){
         int tx = tf(x), ty = tf(y);
         if(tx != ty){
-            fa[ty] = tx;
-            cnt[tx] += cnt[ty];
+            if(cnt[tx] >= cnt[ty]){ // 启发式合并
+                fa[ty] = tx;
+                cnt[tx] += cnt[ty];
+            }else{
+                fa[tx] = ty;
+                cnt[ty] += cnt[tx];
+            }
             return true;
         }
         return false;
