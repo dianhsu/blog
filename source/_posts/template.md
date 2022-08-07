@@ -286,7 +286,7 @@ private:
 ```cpp
 class DSU{
 public:
-    DSU(int size_): sz(size_), fa(size_, 0), cnt(size_, 1) {}
+    explicit DSU(int size_): sz(size_), fa(size_, 0), cnt(size_, 1) {}
     int tf(int x){
         return x == fa[x] ? x : fa[x] = tf(fa[x]);
     }
@@ -294,18 +294,22 @@ public:
         int tx = tf(x), ty = tf(y);
         if(tx != ty){
             fa[ty] = tx;
-            cnt[tx] += ty;
+            cnt[tx] += cnt[ty];
             return true;
         }
         return false;
     }
-    pair<int, int> operator [] (const int idx) const{
-        return {fa[idx], cnt[idx]};
+    pair<int, int> operator [] (const int idx) {
+        return {tf(idx), cnt[tf(idx)]};
+    }
+    int size(){
+        return sz;
     }
 private:
     int sz;
     vector<int> fa, cnt;
 };
+
 ```
 
 ### 网络流
