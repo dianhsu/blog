@@ -280,6 +280,29 @@ private:
 ```
 ## 图论
 
+### 并查集（DSU）
+> 能Copy的时候，就不用手搓了
+
+```cpp
+class DSU{
+public:
+    DSU(int size_): sz(size_), fa(size_, 0), cnt(size_, 1) {}
+    int tf(int x){
+        return x == fa[x] ? x : fa[x] = tf(fa[x]);
+    }
+    bool mg(int x, int y){
+        int tx = tf(x), ty = tf(y);
+        if(tx != ty){
+
+            return true;
+        }
+        return false;
+    }
+private:
+    int sz;
+    vector<int> fa, cnt;
+};
+```
 
 ### 网络流
 
