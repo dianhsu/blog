@@ -293,10 +293,14 @@ public:
     bool mg(int x, int y){
         int tx = tf(x), ty = tf(y);
         if(tx != ty){
-
+            fa[ty] = tx;
+            cnt[tx] += ty;
             return true;
         }
         return false;
+    }
+    pair<int, int> operator [] (const int idx) const{
+        return {fa[idx], cnt[idx]};
     }
 private:
     int sz;
