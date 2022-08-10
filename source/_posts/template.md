@@ -286,7 +286,9 @@ private:
 ```cpp
 class DSU{
 public:
-    explicit DSU(int size_): sz(size_), fa(size_, 0), cnt(size_, 1) {}
+    explicit DSU(int size_): sz(size_), fa(size_, 0), cnt(size_, 1) {
+        iota(fa.begin(), fa.end(), 0);
+    }
     int tf(int x){
         return x == fa[x] ? x : fa[x] = tf(fa[x]);
     }
