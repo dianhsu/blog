@@ -80,5 +80,10 @@ index_img: https://cdn.dianhsu.com/img/2022-07-23-00-26-30.jpeg
   - "aabaaaa" 返回 `2`
 
 # 2022.08.11 趋势科技 一面
+> 面试时间大概40分钟
+
+- 问了下本科和研究生之间的gap
+- 写了个tail，遗憾的是我对系统API不了解，没有写出来
+- 漫谈技术
 
 *To be continued...*
