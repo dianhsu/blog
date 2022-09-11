@@ -1,5 +1,5 @@
 ---
-title: template-string
+title: 字符串模板
 math: true
 date: 2022-09-11 12:11:54
 categories:
@@ -10,7 +10,7 @@ tags:
     - 字符串
 index_img: https://cdn.dianhsu.com/img/2022-09-11-13-27-46.jpeg
 ---
-
+字符串，就是由字符连接而成的序列。
 # KMP
 
 ```cpp
