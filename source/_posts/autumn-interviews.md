@@ -152,5 +152,19 @@ index_img: https://cdn.dianhsu.com/img/2022-07-23-00-26-30.jpeg
 第四部分反问环节，这部分我就问了一个问题，就是面试总共有几轮，面试官回答了一下面试的流程，总共三轮技术面，一轮行为面试。
 
 
+# 2022.09.23 深信服 一面
+> 面试时间大概25分钟
+
+1. 自我介绍
+2. 项目介绍
+3. 写个题吧：[最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)
+4. 再写个题把：[二叉树的直径](https://leetcode.cn/problems/diameter-of-binary-tree/)
+5. 问了下实验室里面研究方向，然后发现我的研究方向并不熟悉，于是就没再问了。
+6. 问了下平时刷题的平台和cf的分数
+7. 问个题：在 $[a, b]$ 区间内，有多少个数与 $m$ 互质（$1 \leq a \leq b \leq 10^9, 1 \leq m \leq 10^9$）。
+8. 介绍下AC自动机吧
+
+
+
 
 *To be continued...*
