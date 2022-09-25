@@ -118,7 +118,7 @@ spb.ba = spa;
 > std::weak_ptr 的另一用法是打断 std::shared_ptr 所管理的对象组成的环状引用。若这种环被孤立（例如无指向环中的外部共享指针），则 shared_ptr 引用计数无法抵达零，而内存被泄露。能令环中的指针之一为弱指针以避免此情况。
 
 ##### Implement a simple smart pointer (shared_ptr)
-It's designed with two classes. The first one is `ReferenceCount`, it's used to count the reference number of the object. The second one is `MySharedPtr`, it's used to manage the object. The `MySharedPtr` class has a pointer to the `ReferenceCount` class. When the `MySharedPtr` class is created, it will create a `ReferenceCount` class and set the reference number to 1. When the `MySharedPtr` class is copied, it will increase the reference number of the `ReferenceCount` class. When the `MySharedPtr` class is deleted, it will decrease the reference number of the `ReferenceCount` class. When the reference number of the `ReferenceCount` class is 0, it will delete the object and the `ReferenceCount` class.
+It's designed with two classes. The first is `ReferenceCount`, it's used to count the reference number of the object. The second is `MySharedPtr`, it's used to manage the object. The `MySharedPtr` class has a pointer to the `ReferenceCount` class. When the `MySharedPtr` class is created, it will create a `ReferenceCount` class and set the reference number to 1. When the `MySharedPtr` class is copied, it will increase the reference number of the `ReferenceCount` class. When the `MySharedPtr` class is deleted, it will decrease the reference number of the `ReferenceCount` class. When the reference number of the `ReferenceCount` class is 0, it will delete the object and the `ReferenceCount` class.
 ```cpp
 #include <algorithm>
 #include <iostream>
