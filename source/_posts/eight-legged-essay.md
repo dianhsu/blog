@@ -117,6 +117,81 @@ spb.ba = spa;
 
 > std::weak_ptr 的另一用法是打断 std::shared_ptr 所管理的对象组成的环状引用。若这种环被孤立（例如无指向环中的外部共享指针），则 shared_ptr 引用计数无法抵达零，而内存被泄露。能令环中的指针之一为弱指针以避免此情况。
 
+##### Implement a simple smart pointer (shared_ptr)
+It's designed with two classes. The first one is `ReferenceCount`, it's used to count the reference number of the object. The second one is `MySharedPtr`, it's used to manage the object. The `MySharedPtr` class has a pointer to the `ReferenceCount` class. When the `MySharedPtr` class is created, it will create a `ReferenceCount` class and set the reference number to 1. When the `MySharedPtr` class is copied, it will increase the reference number of the `ReferenceCount` class. When the `MySharedPtr` class is deleted, it will decrease the reference number of the `ReferenceCount` class. When the reference number of the `ReferenceCount` class is 0, it will delete the object and the `ReferenceCount` class.
+```cpp
+#include <algorithm>
+#include <iostream>
+#include <mutex>
+using namespace std;
+class ReferenceCount{
+public:
+    explicit ReferenceCount(int ref = 1): cnt(ref){
+    }
+    void add_ref(){
+        ++cnt;
+    }
+    void remove_ref(){
+        --cnt;
+    }
+    [[nodiscard]] unsigned get() const{
+        return cnt;
+    }
+private:
+    unsigned int cnt;
+};
+template<typename T>
+class MySharedPtr{
+public:
+    explicit MySharedPtr(T* argPtr): targetPtr(argPtr), cntPtr(new ReferenceCount()){}
+    MySharedPtr(): targetPtr(nullptr), cntPtr(nullptr){}
+    MySharedPtr(const MySharedPtr& argSharedPtr): targetPtr(argSharedPtr.targetPtr), cntPtr(argSharedPtr.cntPtr){
+        m1.lock();
+        if(cntPtr){
+            cntPtr->add_ref();
+        }
+        m1.unlock();
+    }
+    ~MySharedPtr(){
+        m1.lock();
+        if(cntPtr){
+            cntPtr->remove_ref();
+        }
+        if(!cntPtr->get()){
+            delete targetPtr;
+            delete cntPtr;
+            targetPtr = nullptr;
+            cntPtr = nullptr;
+        }
+        m1.unlock();
+    }
+    T* getTargetPtr(){
+        return targetPtr;
+    }
+    ReferenceCount* getReferenceCountPtr(){
+        return cntPtr;
+    }
+    T& operator * (){
+        return *targetPtr;
+    }
+    T* operator -> (){
+        return targetPtr;
+    }
+private:
+    mutex m1;
+    T* targetPtr;
+    ReferenceCount *cntPtr;
+};
+int main(){
+    auto ptr = new pair<int, int>{1, 2};
+    MySharedPtr<pair<int, int>> ptr1(ptr);
+    MySharedPtr<pair<int, int>> ptr2(ptr1);
+    cout << ptr2->first << endl;
+    cout << (*ptr2).second << endl;
+    return 0;
+}
+```
+
 #### 右值引用与移动构造函数
 
 
