@@ -690,10 +690,10 @@ hexo-tag-mmedia@1:
     json5 "^2.2.0"
     utility "^1.17.0"
 
-hexo-theme-fluid@^1.8.14:
-  version "1.9.3"
-  resolved "https://registry.npmjs.org/hexo-theme-fluid/-/hexo-theme-fluid-1.9.3.tgz"
-  integrity sha512-PJhEG1N+0HYK3XA+IbBrb2eHtqHAXJoM9Cy921H9m3gb3syKT0PxURUe4+BKD35ITeXTd8o65ExRintBBfu02Q==
+hexo-theme-fluid@^1.9.4:
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/hexo-theme-fluid/-/hexo-theme-fluid-1.9.4.tgz#a83dc3e2d24fb74bec2bb32c15b544c055e3445f"
+  integrity sha512-EaXUh4J6mQZjzKnyNtYHt0U0rIIlGJMsiT+IYHhKXnNrQyaOqMz3H9QC7+o37yzssARiPG3Uc0RtHn3S1DRLoQ==
 
 hexo-util@^2.0.0, hexo-util@^2.7.0:
   version "2.7.0"

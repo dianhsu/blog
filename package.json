@@ -24,7 +24,7 @@
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^3.0.0",
     "hexo-tag-mmedia": "1",
-    "hexo-theme-fluid": "^1.8.14"
+    "hexo-theme-fluid": "^1.9.4"
   },
   "resolutions": {
     "stylus": "^0.54.8"
