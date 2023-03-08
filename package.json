@@ -13,18 +13,19 @@
     "version": "6.3.0"
   },
   "dependencies": {
-    "hexo": "^6.2.0",
+    "hexo": "^6.3.0",
+    "hexo-deployer-git": "^4.0.0",
     "hexo-deployer-sftp": "^0.4.1",
-    "hexo-generator-archive": "^1.0.0",
-    "hexo-generator-category": "^1.0.0",
-    "hexo-generator-index": "^2.0.0",
-    "hexo-generator-tag": "^1.0.0",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-index": "^3.0.0",
+    "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-markdown-it-plus": "^1.0.4",
-    "hexo-renderer-stylus": "^2.0.0",
+    "hexo-renderer-markdown-it-plus": "^1.0.6",
+    "hexo-renderer-stylus": "^2.1.0",
     "hexo-server": "^3.0.0",
-    "hexo-tag-mmedia": "1",
-    "hexo-theme-fluid": "^1.8.14"
+    "hexo-tag-mmedia": "^1.1.7",
+    "hexo-theme-fluid": "^1.9.4"
   },
   "resolutions": {
     "stylus": "^0.54.8"
