@@ -1,0 +1,1345 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <link rel="icon" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dian Hsu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="目前已经接到微软的实习offer，所以将之前的面试内容都贴在这里了   2022.02.28 微软实习正式批一面  面试时长：约45分钟 面试经过：  面试官自我介绍 我的自我介绍 根据简历上面问了一下项目和本科毕业之后的经历 写了一道算法题：数组中的逆序对数目（归并排序，平衡树，树状数组或线段树） 参考：数组中的逆序对 #include &lt;bits&#x2F;stdc++.h&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022春天的实习面试经历">
+<meta property="og:url" content="https://dianhsu.com/2022/05/11/intern-interviews/index.html">
+<meta property="og:site_name" content="dianhsuのblog">
+<meta property="og:description" content="目前已经接到微软的实习offer，所以将之前的面试内容都贴在这里了   2022.02.28 微软实习正式批一面  面试时长：约45分钟 面试经过：  面试官自我介绍 我的自我介绍 根据简历上面问了一下项目和本科毕业之后的经历 写了一道算法题：数组中的逆序对数目（归并排序，平衡树，树状数组或线段树） 参考：数组中的逆序对 #include &lt;bits&#x2F;stdc++.h&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.dianhsu.com/blog%2FQQ20220514-0.jpg">
+<meta property="article:published_time" content="2022-05-10T17:12:11.000Z">
+<meta property="article:modified_time" content="2023-03-08T02:21:06.626Z">
+<meta property="article:author" content="Dian Hsu">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="Microsoft">
+<meta property="article:tag" content="ByteDance">
+<meta property="article:tag" content="Alibaba">
+<meta property="article:tag" content="Hulu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.dianhsu.com/blog%2FQQ20220514-0.jpg">
+  
+  
+  
+  <title>2022春天的实习面试经历 - dianhsuのblog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dianhsu.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gHBUbGnezwPEckLGQuK5MYV1-MdYXbMMI","app_key":"kokqnKgfEiMRyh31b4ofNY5k","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2022春天的实习面试经历"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-11 01:12" pubdate>
+          2022年5月11日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          105 分钟
+        
+      </span>
+    
+
+    
+    
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2022春天的实习面试经历</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>目前已经接到微软的实习offer，所以将之前的面试内容都贴在这里了</p>
+</blockquote>
+<h2 id="20220228-微软实习正式批一面"><a class="markdownIt-Anchor" href="#20220228-微软实习正式批一面"></a> 2022.02.28 微软实习正式批一面</h2>
+<ul>
+<li>面试时长：约45分钟</li>
+<li>面试经过：
+<ol>
+<li>面试官自我介绍</li>
+<li>我的自我介绍</li>
+<li>根据简历上面问了一下项目和本科毕业之后的经历</li>
+<li>写了一道算法题：数组中的逆序对数目（归并排序，平衡树，树状数组或线段树）<br />
+参考：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/">数组中的逆序对</a> <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
+
+using namespace std;
+
+int handle(vector&lt;int&gt;&amp; vec)&#123;
+    int ret &#x3D; 0;
+    int sz &#x3D; vec.size();
+    if(sz &lt;&#x3D; 1) return 0;
+    int mid &#x3D; sz &#x2F; 2;
+    vector&lt;int&gt; vec1, vec2;
+    vec1.insert(vec1.end(), vec.begin(), vec.begin() + mid);
+    vec2.insert(vec2.end(), vec.begin() + mid, vec.end());
+    ret +&#x3D; handle(vec1);
+    ret +&#x3D; handle(vec2);
+    vec.clear();
+    int pos1 &#x3D; 0, pos2 &#x3D; 0;
+    while(pos1 &lt; vec1.size() or pos2 &lt; vec2.size())&#123;
+        if(pos1 &lt; vec1.size() and pos2 &lt; vec2.size())&#123;
+            if(vec1[pos1] &gt; vec2[pos2])&#123;
+                ret +&#x3D; vec1.size() - pos1;
+                vec.push_back(vec2[pos2++]);
+            &#125;else&#123;
+                vec.push_back(vec1[pos1++]);
+            &#125;
+        &#125;else if(pos1 &lt; vec1.size())&#123;
+            vec.push_back(vec1[pos1++]);
+        &#125;else if(pos2 &lt; vec2.size())&#123;
+            ret +&#x3D; vec1.size() - pos1;
+            vec.push_back(vec2[pos2++]);
+        &#125;
+    &#125;
+    return ret;
+&#125;
+    
+int main()&#123;
+    vector&lt;int&gt; arr&#123;7,6,8,3,5&#125;;
+    int ans &#x3D; handle(arr);
+    cout &lt;&lt; ans &lt;&lt; endl;
+    vector&lt;int&gt; brr&#123;9,8,7,6,5,4,3,2,1&#125;;
+    vector&lt;int&gt; crr&#123;1,2,3,4,5,6,7,8,9&#125;;
+    vector&lt;int&gt; drr&#123;1, 1&#125;;
+    cout &lt;&lt; handle(brr) &lt;&lt; endl;
+    cout &lt;&lt; handle(crr) &lt;&lt; endl;
+    cout &lt;&lt; handle(drr) &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+</li>
+<li>场景题：考虑在一个短链接生成系统中，如何设计短链接生成。</li>
+<li>反问：简历有没有什么问题</li>
+</ol>
+</li>
+</ul>
+<h2 id="20220301-字节跳动飞书实习一面"><a class="markdownIt-Anchor" href="#20220301-字节跳动飞书实习一面"></a> 2022.03.01 字节跳动飞书实习一面</h2>
+<ul>
+<li>
+<p>面试时长：约28分钟</p>
+</li>
+<li>
+<p>面试经过：</p>
+<ol>
+<li>自我介绍</li>
+<li>问了一下之前在百度实习的项目的内容</li>
+<li>C++的面向对象的特点</li>
+<li>多态的实现形式</li>
+<li>讲一讲Python语言和C++语言的区别</li>
+<li>三次握手的过程</li>
+<li>保证TCP传输的可靠性的实现</li>
+<li>浏览器输入网址之后的过程</li>
+<li>C++虚函数，纯虚函数，虚析构函数</li>
+<li>C++的vector的底层实现</li>
+<li>智能指针（用过，但是不太熟。直接说没怎么用）</li>
+<li>线程和进程</li>
+<li>虚拟内存</li>
+<li>进程调度的状态</li>
+<li>写个代码：给定一个query字符串，和pattern字符串，问能不能在pattern字符串中插入若干个小写字母，使得query串和pattern串一致。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>query</th>
+<th>pattern</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FoolBar</code></td>
+<td><code>FB</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>FoolBarTest</code></td>
+<td><code>FB</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>FoolBar</code></td>
+<td><code>FBa</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>FoolBar</code></td>
+<td><code>FaB</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+  <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
+
+using namespace std;
+
+bool match(string query, string pattern)&#123;
+    int n &#x3D; query.size(), m &#x3D; pattern.size();
+    int i &#x3D; 0, j &#x3D; 0;
+    while(i &lt; n or j &lt; m)&#123;
+        if(i &lt; n and j &lt; m)&#123;
+            if(query[i] &#x3D;&#x3D; pattern[j])&#123;
+                i++;
+                j++;
+            &#125;else if(islower(query[i]))&#123;
+                ++i;
+            &#125;else&#123;
+                return false;
+            &#125;
+        &#125;else if(j &lt; m)&#123;
+            return false;
+        &#125;else if(i &lt; n)&#123;
+            if(isupper(query[i]))
+                return false;
+            ++i;
+        &#125;
+    &#125;
+    return true;
+&#125;
+int main()&#123;
+    cout &lt;&lt; match(&quot;FoolBar&quot;, &quot;FB&quot;) &lt;&lt; endl;
+    cout &lt;&lt; match(&quot;FoolBarTest&quot;, &quot;FB&quot;) &lt;&lt; endl;
+    cout &lt;&lt; match(&quot;FoolBar&quot;, &quot;FBa&quot;) &lt;&lt; endl;
+    cout &lt;&lt; match(&quot;FoolBar&quot;, &quot;FaB&quot;) &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+<ol start="16">
+<li>反问：没什么问题</li>
+</ol>
+</li>
+</ul>
+<h2 id="20220304-微软实习正式批三面"><a class="markdownIt-Anchor" href="#20220304-微软实习正式批三面"></a> 2022.03.04 微软实习正式批三面</h2>
+<blockquote>
+<p>备注：一面和二面是平行的，一面通过之后就没有二面了。</p>
+</blockquote>
+<ul>
+<li>面试时长：约36分钟</li>
+<li>面试经过：
+<ol>
+<li>我的自我介绍</li>
+<li>问了下在百度实习的情况</li>
+<li>写一道算法题<br />
+类似的题目：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/swap-for-longest-repeated-character-substring/">单字符重复子串的最大长度</a>   <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;*
+
+Given an array with around 100K elements, each element is within [0,100K ], how to get maxsubsequencelength with same value if you have a opportunity to swap two elements?
+
+2 2 3 1 4 5 1 1 0 1 7 &#x3D;&gt; 4
+
+*&#x2F;
+#include &lt;bits&#x2F;stdc++.h&gt;
+using namespace std;
+typedef pair&lt;int, int&gt; PII;
+int solve(vector&lt;int&gt; arr)&#123;
+    if(arr.size() &#x3D;&#x3D; 0) return 0;
+    map&lt;int, vector&lt;PII&gt;&gt; mp;
+    int n &#x3D; arr.size();
+    int cur &#x3D; 0;
+    for(int i &#x3D; 0; i &lt; n; ++i)&#123;
+        if(arr[i] !&#x3D; arr[cur])&#123;
+            &#x2F;&#x2F; cur, i - 1
+            if(mp.count(arr[cur])) mp[arr[cur]].push_back(&#123;cur, i - 1&#125;);
+            else mp[arr[cur]] &#x3D; &#123;PII&#123;cur, i - 1&#125;&#125;;
+            cur &#x3D; i;
+        &#125;
+    &#125;
+    if(cur &lt; n)&#123;
+        mp[arr[cur]].push_back(&#123;cur, n - 1&#125;);
+    &#125;
+    int ans &#x3D; 1;
+    for(auto&amp; [_, vec]: mp)&#123;
+        if(vec.size() &#x3D;&#x3D; 1)&#123;
+            auto&amp; it &#x3D; vec.front();
+            ans &#x3D; max(ans, it.second - it.first + 1);
+        &#125;else if(vec.size() &#x3D;&#x3D; 2)&#123;
+            auto&amp; it1 &#x3D; vec[0];
+            auto&amp; it2 &#x3D; vec[1];
+            if(it1.second + 2 &#x3D;&#x3D; it2.first)&#123;
+                ans &#x3D; max(ans, it2.second - it2.first + 1 + it1.second - it1.first + 1);
+            &#125;else&#123;
+                ans &#x3D; max(ans, it1.second - it1.first + 2);
+                ans &#x3D; max(ans, it2.second - it2.first + 2);
+            &#125;
+        &#125;else&#123;
+            int m &#x3D; vec.size();
+            ans &#x3D; max(ans, vec[0].second - vec[0].first + 2);
+            for(int i &#x3D; 1; i &lt; m; ++i)&#123;
+                ans &#x3D; max(ans, vec[i].second - vec[i].first + 2);
+                if(vec[i - 1].second + 2 &#x3D;&#x3D; vec[i].first)&#123;
+                    ans &#x3D; max(ans, vec[i].second - vec[i].first + 1 + vec[i - 1].second - vec[i - 1].first + 1 + 1);
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    return ans;
+&#125;
+
+int main()&#123;
+    cout &lt;&lt; solve(&#123;2, 2, 3, 1, 4, 5, 1, 1, 0, 1, 7&#125;) &lt;&lt; endl;
+    cout &lt;&lt; solve(&#123;2, 2, 2, 1, 2, 2, 2&#125;) &lt;&lt; endl;
+    cout &lt;&lt; solve(&#123;2, 2, 1, 2, 2, 2&#125;) &lt;&lt; endl;
+    cout &lt;&lt; solve(&#123;2, 1, 2, 2, 1, 2, 2, 2&#125;) &lt;&lt; endl;
+    cout &lt;&lt; solve(&#123;2&#125;) &lt;&lt; endl;
+    cout &lt;&lt; solve(&#123;&#125;) &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+</li>
+<li>有三枚硬币，指定一种得到1/7概率的情况。</li>
+<li>反问：部门情况</li>
+</ol>
+</li>
+</ul>
+<h2 id="20220308-字节跳动飞书实习二面"><a class="markdownIt-Anchor" href="#20220308-字节跳动飞书实习二面"></a> 2022.03.08 字节跳动飞书实习二面</h2>
+<ul>
+<li>面试时长：约60分钟</li>
+<li>面试经过：
+<ol>
+<li>
+<p>自我介绍</p>
+</li>
+<li>
+<p>介绍下在百度实习的项目</p>
+</li>
+<li>
+<p>介绍下去年做的项目</p>
+</li>
+<li>
+<p>讲讲几种设计模式</p>
+</li>
+<li>
+<p>写个单例</p>
+   <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class Config&#123;
+private:
+    Config(): ptr(nullptr)&#123;&#125;
+    void update(string s)&#123;
+        delete ptr;
+        ptr &#x3D; new string(s);
+    &#125;
+    string query()&#123;
+        if(ptr &#x3D;&#x3D; nullptr) ptr &#x3D; new string(&quot;123&quot;);
+        return *ptr;
+    &#125;
+&#125;;
+
+static int val &#x3D; 0;
+int query()&#123;
+    return val;
+&#125;
+void update(int x)&#123;
+    val &#x3D; x;
+&#125;</code></pre></div></figure>
+</li>
+<li>
+<p>说一下数据库的隔离模式</p>
+</li>
+<li>
+<p>开放性问题：讲一下如何考虑操作系统拷贝一个文件</p>
+</li>
+<li>
+<p>开放性问题：word文档如何单词纠错</p>
+</li>
+<li>
+<p>算法题：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/trapping-rain-water/">一维接雨水</a></p>
+   <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class Solution &#123;
+public:
+    int trap(vector&lt;int&gt;&amp; height) &#123;
+        vector&lt;int&gt; st1, st2;
+        vector&lt;int&gt; pref(height.size());
+        int n &#x3D; height.size();
+        pref[0] &#x3D; height[0];
+        for(int i &#x3D; 1; i &lt; n; ++i)&#123;
+            pref[i] &#x3D; pref[i - 1] + height[i];
+        &#125;
+        for(int i &#x3D; 0; i &lt; n; ++i)&#123;
+            while(!st2.empty() and height[i] &gt;&#x3D; height[st2.back()]) st2.pop_back();
+            st2.push_back(i);
+        &#125;
+        for(int i &#x3D; n - 1; i &gt;&#x3D; 0; --i)&#123;
+            while(!st1.empty() and height[i] &gt;&#x3D; height[st1.back()]) st1.pop_back();
+            st1.push_back(i);
+        &#125;
+        reverse(st1.begin(), st1.end());
+        reverse(st2.begin(), st2.end());
+        int ans &#x3D; 0;
+        for(int i &#x3D; 1; i &lt; st1.size(); ++i)&#123;
+            int curp &#x3D; st1[i], prep &#x3D; st1[i - 1];
+            int ts &#x3D; height[prep] * (curp - prep - 1) - (pref[curp - 1] - pref[prep]);
+            ans +&#x3D; ts;
+        &#125;
+        for(int i &#x3D; 1; i &lt; st2.size(); ++i)&#123;
+            int curp &#x3D; st2[i], prep &#x3D; st2[i - 1];
+            int ts &#x3D; height[prep] * (prep - curp - 1) - (pref[prep - 1] - pref[curp]);
+            ans +&#x3D; ts;
+        &#125;
+        int tl &#x3D; st1.back(), tr &#x3D; st2.back();
+        ans +&#x3D; (tr - tl) * height[tl] - (pref[tr] - pref[tl]);
+        return ans;
+    &#125;
+&#125;;</code></pre></div></figure>
+</li>
+<li>
+<p>反问：部门情况和面试流程</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="20220310-蚂蚁集团大安全技术部实习一面"><a class="markdownIt-Anchor" href="#20220310-蚂蚁集团大安全技术部实习一面"></a> 2022.03.10 蚂蚁集团大安全技术部实习一面</h2>
+<blockquote>
+<p>备注：电话面试，感觉闲聊为主</p>
+</blockquote>
+<ul>
+<li>面试时长：约25分钟</li>
+<li>面试过程：
+<ol>
+<li>面试官自我介绍</li>
+<li>我的自我介绍</li>
+<li>询问百度实习经过</li>
+<li>一顿闲聊</li>
+<li>重载函数的规则和底层实现</li>
+<li>const关键字</li>
+<li>malloc、free和new、delete</li>
+<li>delete和delete []</li>
+<li>函数的调用约定（参数的入栈顺序）</li>
+<li>vector扩容</li>
+<li>什么情况下vector的迭代器会失效（扩容和删除元素）</li>
+<li>动态库和静态库（没写过）</li>
+<li>跨平台开发</li>
+<li>本科和研究生之间的gap</li>
+<li>有空去做下笔试（补充，3月14日完成笔试）</li>
+<li>反问：没啥问题</li>
+<li>面试官再介绍了一下蚂蚁和阿里</li>
+</ol>
+</li>
+</ul>
+<h2 id="20220314-字节跳动飞书实习三面"><a class="markdownIt-Anchor" href="#20220314-字节跳动飞书实习三面"></a> 2022.03.14 字节跳动飞书实习三面</h2>
+<ul>
+<li>面试时长：22分钟</li>
+<li>面试经过：<br />
+hr面，主要了解下个人情况和职业规划等。<br />
+本来是视频面，因为通讯不好，改成电话面试。</li>
+</ul>
+<h2 id="20220316-美团实习一面"><a class="markdownIt-Anchor" href="#20220316-美团实习一面"></a> 2022.03.16 美团实习一面</h2>
+<blockquote>
+<p>备注：主动终止流程</p>
+</blockquote>
+<h2 id="20220329-hulu实习一面"><a class="markdownIt-Anchor" href="#20220329-hulu实习一面"></a> 2022.03.29 Hulu实习一面</h2>
+<ul>
+<li>面试时长：60分钟</li>
+<li>面试经过：
+<ol>
+<li>C++虚函数是怎么实现的</li>
+<li>struct和class区别</li>
+<li>C和C++区别</li>
+<li>除了面向过程和面向对象，你还知道其他编程思想吗</li>
+<li>说一下inline</li>
+<li>选个项目讲一下</li>
+<li>写个题吧<br />
+给定一个正整数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>，计算出满足一下条件的整数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>的个数：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>k</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 &lt; k &lt; n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68354em;vertical-align:-0.0391em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>，并且<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>具有相同个数的的正因数。<br />
+比如<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>14</mn></mrow><annotation encoding="application/x-tex">14</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">4</span></span></span></span>的正因数有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>7</mn><mo separator="true">,</mo><mn>14</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 2, 7, 14)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">7</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">4</span><span class="mclose">)</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>15</mn></mrow><annotation encoding="application/x-tex">15</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">5</span></span></span></span>的正因数有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>3</mn><mo separator="true">,</mo><mn>5</mn><mo separator="true">,</mo><mn>15</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1, 3, 5, 15)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mclose">)</span></span></span></span>， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">k=14</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">4</span></span></span></span>满足条件。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>7</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(3 \leq n \leq 10^7)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 面试的时候只想到基于调和级数的O(n*log(n))的算法，这里补充一下O(n)的算法
+&#x2F;&#x2F; 基于线性筛，http:&#x2F;&#x2F;oi-wiki.com&#x2F;math&#x2F;number-theory&#x2F;sieve&#x2F;#_10
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+using namespace std;
+vector&lt;int&gt; SieveOfEuler(int n)&#123;
+    vector&lt;int&gt; ret(n + 1, 0); &#x2F;&#x2F;约数个数
+    vector&lt;int&gt; vis(n + 1, 0); &#x2F;&#x2F;是否访问标记
+    vector&lt;int&gt; prime; &#x2F;&#x2F; 质数表
+    vector&lt;int&gt; num(n + 1, 0); &#x2F;&#x2F; 最小质数因子出现次数
+    ret[1] &#x3D; 1;
+    for(int i &#x3D; 2; i &lt;&#x3D; n; ++i)&#123;
+        if(!vis[i])&#123;
+            vis[i] &#x3D; 1;
+            prime.push_back(i);
+            ret[i] &#x3D; 2;
+            num[i] &#x3D; 1;
+        &#125;
+        for(auto&amp; it: prime)&#123;
+            if(n &#x2F; it &lt; i) break;
+            vis[it * i] &#x3D; 1;
+            if(i % it &#x3D;&#x3D; 0)&#123;
+                num[i * it] &#x3D; num[i] + 1;
+                ret[i * it] &#x3D; ret[i] &#x2F; num[i * it] * (num[i * it] + 1);
+                break;
+            &#125;else&#123;
+                num[i * it] &#x3D; 1;
+                ret[i * it] &#x3D; ret[i] * 2;
+            &#125;
+        &#125;
+    &#125;
+    return ret;
+&#125;
+int main()&#123;
+    int n &#x3D; 1e7;
+    auto&amp;&amp; res &#x3D; SieveOfEuler(n);
+    int ans &#x3D; 0;
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++i)&#123;
+        if(res[i] &#x3D;&#x3D; res[i - 1])&#123;
+            ++ans;
+        &#125;
+    &#125;
+    cout &lt;&lt; ans &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+</li>
+<li>面试官介绍了一下部门情况</li>
+</ol>
+</li>
+</ul>
+<h2 id="20220411-hulu实习二面"><a class="markdownIt-Anchor" href="#20220411-hulu实习二面"></a> 2022.04.11 Hulu实习二面</h2>
+<ul>
+<li>面试时间：60分钟</li>
+<li>面试经过：
+<ol>
+<li>自我介绍一下</li>
+<li>讲一下之前的百度实习项目</li>
+<li>先写个题吧 <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 有两个没有刻度的水桶和一个蓄水量无限的水池，一个容量为x升，
+&#x2F;&#x2F; 另一个容量为y升，每次取水&#x2F;倒水视为一次操作，现需要量出z升水
+&#x2F;&#x2F; Q1：能否实现
+&#x2F;&#x2F; Q2：最少需要多少次操作
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
+#include &lt;algorithm&gt;
+#include &lt;numeric&gt;
+
+using namespace std;
+typedef tuple&lt;int, int, int&gt; TII;
+
+int solve(int x, int y, int z) &#123;
+    if (z % gcd(x, y) !&#x3D; 0) return -1; &#x2F;&#x2F; 不可实现
+    queue&lt;tuple&lt;int, int, int&gt;&gt; Q;
+    map&lt;tuple&lt;int, int, int&gt;, int&gt; mp;
+    tuple&lt;int, int, int&gt; ini&#123;0, 0, 0&#125;;
+    mp[ini] &#x3D; 0;
+    Q.push(ini);
+    while (!Q.empty()) &#123;
+        TII it &#x3D; Q.front();
+        Q.pop();
+        if (get&lt;2&gt;(it) &#x3D;&#x3D; z) &#123;
+            return mp[it];
+        &#125;
+        auto[tx, ty, tz] &#x3D; it;
+        TII nex1&#123;x, ty, tz&#125;;    &#x2F;&#x2F; 将水从池子中灌入到x容器中
+        TII nex2&#123;tx, y, tz&#125;;    &#x2F;&#x2F; 将水从池子中灌入到y容器中
+        TII nex3&#123;min(tx + ty, x), max(0, tx + ty - x), tz&#125;; &#x2F;&#x2F; 将水从y容器灌入到x容器中
+        TII nex4&#123;max(tx + ty - y, 0), min(tx + ty, y), tz&#125;; &#x2F;&#x2F; 将水从x容器灌入到y容器中
+        TII nex5&#123;tx, 0, tz&#125;;    &#x2F;&#x2F; 清空y容器
+        TII nex6&#123;0, ty, tz&#125;;    &#x2F;&#x2F; 清空x容器
+        TII nex7&#123;0, ty, tz + tx&#125;;   &#x2F;&#x2F; 将水从x容器中灌入到z
+        TII nex8&#123;tx, 0, tz + ty&#125;;   &#x2F;&#x2F; 将水从y容器中灌入到z
+        vector&lt;TII&gt; nexs&#123;nex1, nex2, nex3, nex4, nex5, nex6, nex7, nex8&#125;;
+        for (auto &amp;nx: nexs) &#123;
+            if (!mp.count(nx) and get&lt;2&gt;(nx) &lt;&#x3D; z) &#123;
+                mp[nx] &#x3D; mp[it] + 1;
+                Q.push(nx);
+            &#125;
+        &#125;
+    &#125;
+    return -1;
+&#125;
+
+int main() &#123;
+    cout &lt;&lt; solve(1, 2, 3) &lt;&lt; endl;
+    cout &lt;&lt; solve(2, 2, 1) &lt;&lt; endl;
+    cout &lt;&lt; solve(2, 2, 2) &lt;&lt; endl;
+    cout &lt;&lt; solve(2, 2, 0) &lt;&lt; endl;
+    cout &lt;&lt; solve(3, 1, 2) &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+</li>
+<li>那就再写个题吧 <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 在电影院中有一排座位，0代表空，1代表已经有人在座位上了，现在又来了2个人，因为疫情需要，把它安排某个没人的座位上，使任意两人直接距离最大，返回其中最短的距离。(座位足够的情况下)
+
+&#x2F;&#x2F; 以下是面试的时候和面试官讨论的情况：
+&#x2F;&#x2F; 所有区间两边都有人 - 要么做一个区间，要么两个不同区间
+&#x2F;&#x2F; 有1-2个一边没有人的区间
+&#x2F;&#x2F; 只有一个空区间
+#include &lt;string&gt;
+#include &lt;iostream&gt;
+using namespace std;
+&#x2F;&#x2F; 求左右端点都是1的最小的区间和最大三个区间的长度
+tuple&lt;int, int, int, int&gt; subSolve(const string&amp; str)&#123;
+    assert(str.front() &#x3D;&#x3D; &#39;1&#39; and str.back() &#x3D;&#x3D; &#39;1&#39;);
+    int cur &#x3D; 0;
+    int max1 &#x3D; 0, max2 &#x3D; 0, max3 &#x3D; 0;
+    int ans &#x3D; INT_MAX;
+    auto&amp;&amp; update &#x3D; [&amp;](int val)&#123;
+        if(val &gt; max1)&#123;
+            max3 &#x3D; max2;
+            max2 &#x3D; max1;
+            max1 &#x3D; val;
+        &#125;else if(val &gt; max2)&#123;
+            max3 &#x3D; max2;
+            max2 &#x3D; max1;
+        &#125;else if(val &gt; max3)&#123;
+            max3 &#x3D; val;
+        &#125;
+    &#125;;
+    for(int i &#x3D; 1; i &lt; (int)str.size(); ++i)&#123;
+        if(str[i] &#x3D;&#x3D; &#39;1&#39;)&#123;
+            if(i - cur &gt; 1)&#123;
+                update(i - cur);
+            &#125;
+            ans &#x3D; min(ans, i - cur);
+            cur &#x3D; i;
+        &#125;
+    &#125;
+    return &#123;ans, max1, max2, max3&#125;;
+&#125;
+int solve(string str)&#123;
+    if(str.front() &#x3D;&#x3D; &#39;1&#39; and str.back() &#x3D;&#x3D; &#39;1&#39;)&#123; &#x2F;&#x2F; 左右端点都是1的情况
+        auto [minv, mx1, mx2, mx3] &#x3D; subSolve(str);
+        return min(minv, max(mx1 &#x2F; 3, mx2 &#x2F; 2));
+    &#125;else if(str.front() &#x3D;&#x3D; &#39;1&#39;)&#123;   &#x2F;&#x2F; 左端点是1的情况
+        auto rPos &#x3D; str.find_last_of(&#39;1&#39;);
+        if(rPos &#x3D;&#x3D; 0)&#123;
+            return (int)(str.size() - 3 - rPos) &#x2F; 2 + 1;
+        &#125;else&#123;
+            auto [minv, mx1, mx2, mx3] &#x3D; subSolve(str.substr(0, rPos + 1));
+            int len &#x3D; str.size() - 1 - rPos;
+            int tmpv &#x3D; solve(str.substr(0, rPos + 1));
+            int ttv &#x3D; min(len - 1, min(minv, mx1 &#x2F; 2));
+            return min(minv, max((int)(str.size() - 3 - rPos) &#x2F; 2 + 1, max(tmpv, ttv)));
+        &#125;
+    &#125;else if(str.back() &#x3D;&#x3D; &#39;1&#39;)&#123;    &#x2F;&#x2F; 右端点是1的情况，翻转一下字符串，就得到了上面的一种情况
+        reverse(str.begin(), str.end());
+        return solve(str);
+    &#125;else&#123;  &#x2F;&#x2F; 左右端点都是0的情况
+        auto lPos &#x3D; str.find_first_of(&#39;1&#39;);
+        if(lPos &#x3D;&#x3D; string::npos)&#123;   &#x2F;&#x2F; 没有1的情况
+            return str.size() - 1;
+        &#125;else&#123;  &#x2F;&#x2F; 有1的情况
+            int rPos &#x3D; str.find_last_of(&#39;1&#39;);
+            int candinate &#x3D; min(str.size() - rPos - 1, lPos);
+            auto tmp &#x3D; max(solve(str.substr(0, rPos + 1)), solve(str.substr(lPos)));
+            if(lPos !&#x3D; rPos)&#123;
+                auto [minv, x1, x2, x3] &#x3D; subSolve(str.substr(lPos, rPos - lPos + 1));
+                candinate &#x3D; min(candinate, minv);
+            &#125;
+            return max(candinate, tmp);
+        &#125;
+    &#125;
+&#125;
+
+int main()&#123;
+    cout &lt;&lt; solve(&quot;1000100001&quot;) &lt;&lt; endl;
+    cout &lt;&lt; solve(&quot;10000000000000100101&quot;) &lt;&lt; endl;
+    cout &lt;&lt; solve(&quot;1000001001&quot;) &lt;&lt; endl;
+    cout &lt;&lt; solve(&quot;0000010001&quot;) &lt;&lt; endl;
+    cout &lt;&lt; solve(&quot;000000000010001&quot;) &lt;&lt; endl;
+    cout &lt;&lt; solve(&quot;000100000000000000000&quot;) &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="20220506-hulu实习三面寄"><a class="markdownIt-Anchor" href="#20220506-hulu实习三面寄"></a> 2022.05.06 Hulu实习三面（寄）</h2>
+<ul>
+<li>面试时间: 90分钟</li>
+<li>面试经过:
+<ol>
+<li>自我介绍</li>
+<li>聊一下百度实习的Contributions</li>
+<li>问了一下简历上第二个项目的情况</li>
+<li>了解Redis吗</li>
+<li>问了一下消息队列的熟悉情况</li>
+<li>最后还有很多时间，写个算法题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/181/">八数码</a><br />
+这个题通常有三种解法：1，朴素BFS；2.双向BFS；3.A*算法。其中可以用康托展开来保存访问状态。（再也不敢说康托展开是useless了）<br />
+然后面试的时候，凭着对康托展开微弱的印象，现场手搓，果然搓不出来（寄）。<br />
+然后A*又忘记怎么求八数码的估价。<br />
+然后一紧张，忘记能双向BFS优化一下。<br />
+最后面试官说时间不多了，10分钟写完bfs草草下机（寄）。</li>
+</ol>
+</li>
+</ul>
+<h2 id="20220518-hulu实习四面寄"><a class="markdownIt-Anchor" href="#20220518-hulu实习四面寄"></a> 2022.05.18 Hulu实习四面（寄）</h2>
+<h2 id="20220518-hulu实习五面寄"><a class="markdownIt-Anchor" href="#20220518-hulu实习五面寄"></a> 2022.05.18 Hulu实习五面（寄）</h2>
+<h2 id="最后补充一下笔试情况"><a class="markdownIt-Anchor" href="#最后补充一下笔试情况"></a> 最后补充一下笔试情况</h2>
+<ul>
+<li>微软：3道编程题，全部完成。代码细节可以优化，时间复杂度无法优化。</li>
+<li>字节跳动：内推免笔试</li>
+<li>美团：5道编程题，第二题只过了55%，其余都做出来了</li>
+<li>阿里巴巴：3道编程题，全部做出来了</li>
+<li>亚马逊：3道编程题，全部做出来了</li>
+<li>Hulu：3道编程题，全部做出来了</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%9D%A2%E8%AF%95/" class="category-chain-item">面试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9D%A2%E8%AF%95/">#面试</a>
+      
+        <a href="/tags/Microsoft/">#Microsoft</a>
+      
+        <a href="/tags/ByteDance/">#ByteDance</a>
+      
+        <a href="/tags/Alibaba/">#Alibaba</a>
+      
+        <a href="/tags/Hulu/">#Hulu</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2022春天的实习面试经历</div>
+      <div>https://dianhsu.com/2022/05/11/intern-interviews/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Dian Hsu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/13/LCP58/" title="LCP 58. 积木拼接">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">LCP 58. 积木拼接</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/10/tool/" title="工具">
+                        <span class="hidden-mobile">工具</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"dianhsu/blog-raw","repo-id":"MDEwOlJlcG9zaXRvcnkzNzE1NzgxOTE=","category":"General","category-id":"MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyOTcxODAy","theme-light":"light","theme-dark":"dark","mapping":"title","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN","loading":"lazy"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      鄂ICP备2020020124号-2
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

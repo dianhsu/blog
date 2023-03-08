@@ -1,0 +1,1323 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <link rel="icon" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dian Hsu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="A. Compare T-Shirt Sizes 题目大意 给你两个T恤的尺码，问你两个T恤的尺码的大小关系。尺码是有三种主要类型SML，分别代表Small，Medium，Large。SML的大小关系是S &lt; M &lt; L。Small和Large两种类型的尺码，可以在前面加上若干个X。X越多，对于S类型就越小，对于L类型就越大。 题解 主要是分类型讨论，然后判断大小关系。  如果两个T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round 826 (Div.3)">
+<meta property="og:url" content="https://dianhsu.com/2022/10/12/cf1741/index.html">
+<meta property="og:site_name" content="dianhsuのblog">
+<meta property="og:description" content="A. Compare T-Shirt Sizes 题目大意 给你两个T恤的尺码，问你两个T恤的尺码的大小关系。尺码是有三种主要类型SML，分别代表Small，Medium，Large。SML的大小关系是S &lt; M &lt; L。Small和Large两种类型的尺码，可以在前面加上若干个X。X越多，对于S类型就越小，对于L类型就越大。 题解 主要是分类型讨论，然后判断大小关系。  如果两个T">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.dianhsu.com/img/2022-10-14-14-43-52.png">
+<meta property="article:published_time" content="2022-10-12T02:45:30.000Z">
+<meta property="article:modified_time" content="2023-03-08T02:21:06.623Z">
+<meta property="article:author" content="Dian Hsu">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Codeforces">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.dianhsu.com/img/2022-10-14-14-43-52.png">
+  
+  
+  
+  <title>Codeforces Round 826 (Div.3) - dianhsuのblog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dianhsu.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gHBUbGnezwPEckLGQuK5MYV1-MdYXbMMI","app_key":"kokqnKgfEiMRyh31b4ofNY5k","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Codeforces Round 826 (Div.3)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-12 10:45" pubdate>
+          2022年10月12日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          111 分钟
+        
+      </span>
+    
+
+    
+    
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Codeforces Round 826 (Div.3)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="a-compare-t-shirt-sizes"><a class="markdownIt-Anchor" href="#a-compare-t-shirt-sizes"></a> A. Compare T-Shirt Sizes</h1>
+<p><strong>题目大意</strong></p>
+<p>给你两个T恤的尺码，问你两个T恤的尺码的大小关系。尺码是有三种主要类型SML，分别代表Small，Medium，Large。SML的大小关系是S &lt; M &lt; L。Small和Large两种类型的尺码，可以在前面加上若干个X。X越多，对于S类型就越小，对于L类型就越大。</p>
+<p><strong>题解</strong></p>
+<p>主要是分类型讨论，然后判断大小关系。</p>
+<ol>
+<li>如果两个T恤的类型字符串完全相同：那么这两个T恤的尺码大小相同。</li>
+<li>如果两个T恤的类型字符串不同：
+<ol>
+<li>如果两个T恤的主要类型（SML）相同：
+<ol>
+<li>S类型的T恤，X的个数越多，尺码越小。</li>
+<li>L类型的T恤，X的个数越多，尺码越大。</li>
+</ol>
+</li>
+<li>如果两个T恤的主要类型不同：
+<ol>
+<li>第一件T恤尺寸大于第二件T恤尺寸的条件是：
+<ol>
+<li>第一件T恤的主要类型是L</li>
+<li>第一件T恤的主要类型是M，第二件T恤的主要类型是S</li>
+</ol>
+</li>
+<li>其他情况是第一件T恤尺寸小于第二件T恤尺寸。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong>参考代码</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
+
+using namespace std;
+
+int main()&#123;
+  int t;
+  cin &gt;&gt; t;
+  while(t--)&#123;
+    string a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    if(a &#x3D;&#x3D; b) cout &lt;&lt; &quot;&#x3D;\n&quot;;
+    else&#123;
+      if(a.back() &#x3D;&#x3D; b.back())&#123;
+        if(a.back() &#x3D;&#x3D; &#39;S&#39;)&#123;
+          cout &lt;&lt; (a.length() &gt; b.length() ? &quot;&lt;&quot; : &quot;&gt;&quot;) &lt;&lt; endl;
+        &#125;else&#123;
+          cout &lt;&lt; (a.length() &gt; b.length() ? &quot;&gt;&quot; : &quot;&lt;&quot;) &lt;&lt; endl;
+        &#125;
+      &#125;else if(a.back() &#x3D;&#x3D; &#39;L&#39; or (a.back() &#x3D;&#x3D; &#39;M&#39; and b.back() &#x3D;&#x3D; &#39;S&#39;))&#123;
+        cout &lt;&lt; &quot;&gt;&quot; &lt;&lt; endl;
+      &#125;else&#123;
+        cout &lt;&lt; &quot;&lt;&quot; &lt;&lt; endl;
+      &#125;
+    &#125;
+  &#125;
+  return 0;
+&#125;</code></pre></div></figure>
+<h1 id="b-funny-permutation"><a class="markdownIt-Anchor" href="#b-funny-permutation"></a> B. Funny Permutation</h1>
+<p><strong>题目大意</strong></p>
+<p>给你一个长度为n，构造一个元素为1到n的排列p，使得这个排列满足以下条件：</p>
+<ol>
+<li>对于任意的i，都有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo mathvariant="normal">≠</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">p_i \neq i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span>。</li>
+<li>对于任意一个i，都有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><msub><mi>p</mi><mi>i</mi></msub><mo>−</mo><msub><mi>p</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mi mathvariant="normal">∣</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">| p_i - p_{i - 1} | = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 或者 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><msub><mi>p</mi><mi>i</mi></msub><mo>−</mo><msub><mi>p</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mi mathvariant="normal">∣</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">| p_i - p_{i + 1} | = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></li>
+</ol>
+<p><strong>题解</strong></p>
+<ol>
+<li>如果n为偶数，那么可以直接构造一个递减的排列， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo separator="true">,</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n, n - 1, n - 2, \dots, 2, 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7777700000000001em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span></span></span></span>。逆序之后因为偶数是放在奇数编号的位置，奇数都放在偶数编号位置，所以满足条件1。</li>
+<li>如果n为奇数，那么可以将前面三个元素移动到末尾，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo separator="true">,</mo><mn>5</mn><mo separator="true">,</mo><mn>6</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>n</mi><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">4, 5, 6, \dots, n - 1, n, 1, 2, 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">3</span></span></span></span>。如果n等于3，那么无法构造出一个满足两个条件的排列，所以输出-1。</li>
+</ol>
+<p><strong>参考代码</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
+ 
+using namespace std;
+ 
+int main()&#123;
+  int t;
+  cin &gt;&gt; t;
+  while(t--)&#123;
+    int n;
+    cin &gt;&gt; n;
+    if(n &amp; 1)&#123;
+      if(n &#x3D;&#x3D; 3) cout &lt;&lt; -1 &lt;&lt; endl;
+      else&#123;
+        for(int i &#x3D; 4; i &lt;&#x3D; n; ++i) cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; &quot;1 2 3&quot; &lt;&lt; endl;
+      &#125;
+    &#125;else&#123;
+      for(int i &#x3D; n; i &gt;&#x3D; 1; --i)&#123;
+         cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+      &#125;
+      cout &lt;&lt; endl;
+    &#125;
+  &#125;
+  return 0;
+&#125;</code></pre></div></figure>
+<h1 id="c-minimize-the-thickness"><a class="markdownIt-Anchor" href="#c-minimize-the-thickness"></a> C. Minimize the Thickness</h1>
+<p><strong>题目大意</strong></p>
+<p>给你一个长度为n的序列<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span>，序列中每个数都是正整数。现在需要将序列且分成若干个连续子序列。</p>
+<ul>
+<li>每个子序列的和相同</li>
+<li>原本的序列中的每个数，都必须在某个子序列中，并且仅在一个子序列中</li>
+</ul>
+<p>然后让你求一个分割方法，使得分割之后的子序列中最长的子序列的长度（ans）最小。</p>
+<p><strong>题解</strong></p>
+<p>初始化<code>ans = n</code>。通过枚举第一个子序列的长度，枚举第一个子序列的和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">S_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。然后对于每个<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">S_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，检查将序列分割成每个子序列和均为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">S_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的情况是否存在，如果存在，那么将这种分割方法的最长长度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>e</mi><msub><mi>n</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">len_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>更新到结果当中，<code>ans = min(ans, len);</code>。</p>
+<p><strong>参考代码</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
+
+using namespace std;
+
+int main()&#123;
+  int t;
+  cin &gt;&gt; t;
+  while(t--)&#123;
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;int&gt; arr(n + 1, 0);
+    vector&lt;int&gt; sum(n + 1, 0);
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++i)&#123;
+      cin &gt;&gt; arr[i];
+      sum[i] &#x3D; sum[i - 1] + arr[i];
+    &#125;
+    int ans &#x3D; n;
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++i)&#123;
+      int ts &#x3D; sum[i];
+      if(sum[n] % ts &#x3D;&#x3D; 0)&#123;
+        int cnt &#x3D; 0;
+        int len &#x3D; i;
+        int pre &#x3D; 0;
+        for(int j &#x3D; 1; j &lt;&#x3D; n; ++j)&#123;
+          if(sum[j] % ts &#x3D;&#x3D; 0)&#123;
+            ++cnt;
+            len &#x3D; max(len, j - pre);
+            pre &#x3D; j;
+          &#125;
+        &#125;
+        if(cnt &gt;&#x3D; sum[n] &#x2F; ts)&#123;
+          ans &#x3D; min(ans, len);
+        &#125;
+      &#125;
+    &#125;
+    cout &lt;&lt; ans &lt;&lt; endl;
+  &#125;
+  return 0;
+&#125;</code></pre></div></figure>
+<h1 id="d-masha-and-a-beautiful-tree"><a class="markdownIt-Anchor" href="#d-masha-and-a-beautiful-tree"></a> D. Masha and a Beautiful Tree</h1>
+<p><strong>题目大意</strong></p>
+<p>给你一个有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 个叶子节点的满二叉树，数上的每个叶子节点上面都有一个值，这些值从左到右构成了一个从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 的一个排列。<br />
+每次操作，你可以选择一个非叶子节点，交换其左右孩子子树。<br />
+问能否通过这样的操作，使得叶子节点上面的数值，从左到右构成一个递增的排列。如果能构成这样的排列，求最少的操作次数。</p>
+<p><strong>题解</strong></p>
+<p>可以从最深的节点开始考虑，在每个节点上标记他的子树的叶子节点的最小值和最大值区间，如果每个非叶子节点的左子树的叶子节点的最小值和最大值区间和右子树的叶子节点的最小值和最大值区间重叠，那么就不能将这个子树的叶子节点通过操作转化成一个连续递增的排列。如果这个非叶子节点的左子树的最大值小于右子树的最小值，那么就不需要交换这个节点的左子树和右子树。如果这个非叶子节点的左子树的最小值大于右子树的最大值，那么就需要在这个节点上进行一次左子树和右子树的交换。</p>
+<p><strong>参考代码</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
+
+using namespace std;
+int main()&#123;
+  int t;
+  cin &gt;&gt; t;
+  while(t--)&#123;
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;int&gt; arr(n);
+    for(auto&amp; it: arr)&#123;
+      cin &gt;&gt; it;
+      --it;
+    &#125;
+    auto&amp;&amp; dfs &#x3D; [&amp;](auto&amp;&amp; self, int l, int r) -&gt; tuple&lt;int, int, int&gt;&#123;
+      if(l &#x3D;&#x3D; r)&#123;
+        return &#123;arr[l], arr[r], 0&#125;;
+      &#125;
+      auto [ll, lr, lo] &#x3D; self(self, l, (l + r) &#x2F; 2);
+      auto [rl, rr, ro] &#x3D; self(self, (l + r) &#x2F; 2 + 1, r);
+      int ml &#x3D; min(ll, rl), mr &#x3D; max(lr, rr);
+      int mo &#x3D; 0;
+      if(lo &#x3D;&#x3D; -1 or ro &#x3D;&#x3D; -1)&#123;
+        return &#123;ml, mr, -1&#125;;
+      &#125;
+      else mo &#x3D; lo + ro;
+      if(ll &gt; rr)&#123;
+        return &#123;ml, mr, mo + 1&#125;;
+      &#125;else if(lr &lt; rl)&#123;
+        return &#123;ml, mr, mo&#125;;
+      &#125;else&#123;
+        return &#123;ml, mr, -1&#125;;
+      &#125;
+    &#125;;
+    auto [x, y, v] &#x3D; dfs(dfs, 0, n - 1);
+    cout &lt;&lt; v &lt;&lt; endl;
+  &#125;
+  return 0;
+&#125;</code></pre></div></figure>
+<h1 id="e-sending-a-sequence-over-the-network"><a class="markdownIt-Anchor" href="#e-sending-a-sequence-over-the-network"></a> E. Sending a Sequence Over the Network</h1>
+<p><strong>题目大意</strong></p>
+<p>给你一个长度为n序列seq，问你能不能将序列seq分割成若干段，使得每段的左边或者右边伴随一个子段的长度。</p>
+<p><strong>题解</strong></p>
+<p>这个题目采用动态规划。<code>dp[i]</code>代表长度为i的前缀是否满足这样的分割条件。初始化dp为false，dp[0]为true。对于每个位置i，分别假定seq[i]为序列在i左边的序列长度，或者序列在i右边的序列长度。</p>
+<p>那么转移方式就是：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">if(arr[i] &lt; i) dp[i] |&#x3D; dp[i - arr[i] - 1];
+if(arr[i] + i &lt;&#x3D; n) dp[i + arr[i]] |&#x3D; dp[i - 1];</code></pre></div></figure>
+<p>最后检查<code>dp[n]</code>是否为true。</p>
+<p><strong>参考代码</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
+
+using namespace std;
+
+int main() &#123;
+  int t;
+  cin &gt;&gt; t;
+  while(t--)&#123;
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;int&gt; arr(n + 1, 0);
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++i)&#123;
+      cin &gt;&gt; arr[i];
+    &#125;
+    vector&lt;int&gt; dp(n + 1, 0);
+    dp[0] &#x3D; 1;
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++i)&#123;
+      if(arr[i] &lt; i)&#123;
+        dp[i] &#x3D; dp[i] | dp[i - arr[i] - 1];
+      &#125;
+      if(arr[i] + i &lt;&#x3D; n)&#123;
+        dp[i + arr[i]] &#x3D; dp[i + arr[i]] | dp[i - 1];
+      &#125;
+    &#125;
+    cout &lt;&lt; (dp[n] ? &quot;YES&quot; : &quot;NO&quot;) &lt;&lt; endl;
+  &#125;
+  return 0;
+&#125;
+</code></pre></div></figure>
+<h1 id="f-multi-colored-segments"><a class="markdownIt-Anchor" href="#f-multi-colored-segments"></a> F. Multi-Colored Segments</h1>
+<p><strong>题目大意</strong></p>
+<p>有n条带有颜色线段 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>a</mi><mi>l</mi><mo stretchy="false">(</mo><msub><mi>l</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>r</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Interval(l_i, r_i, c_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> , 对于每条线段，问离他最近的不同颜色的线段的距离。如果它与不同颜色线段相交，那么结果为0。</p>
+<p><strong>题解</strong></p>
+<p>考虑使用线段树来解决这个问题。线段树中的每个节点需要保存它所对应的区间的覆盖长度。线段树还需要具有以下功能：</p>
+<ul>
+<li>将一个覆盖区间插入线段树</li>
+<li>将一个覆盖区间从线段树中移除</li>
+<li>查询区间内的覆盖长度</li>
+<li>查询区间内的被覆盖的最左端点</li>
+<li>查询区间内的被覆盖的最右端点</li>
+</ul>
+<p>然后，开始动手写这个题<br />
+首先把所有的区间按照颜色分类，然后把所有的区间都放入线段树当中。<br />
+对于每个颜色，将此颜色的所有覆盖区间从线段树中移除。然后对于当前颜色的每一条覆盖区间，分别求当前区间覆盖的长度、当前区间左边的被覆盖的最右端点和当前区间右侧被覆盖的最左端点。最后将当前颜色的所有覆盖区间插入到线段树当中。</p>
+<p>最后，需要注意的是，在处理线段树的时候，需要将区间的端点进行离散化。因为如果用动态开点的线段树会mle，别问我为什么会知道。</p>
+<p><strong>参考代码</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
+
+using namespace std;
+
+#define b2e(...) begin(__VA_ARGS__), end(__VA_ARGS__)
+#define initIO()                                                               \
+  ios::sync_with_stdio(false);                                                 \
+  cin.tie(nullptr);                                                            \
+  cout.tie(nullptr);                                                           \
+  cout &lt;&lt; fixed &lt;&lt; setprecision(10)
+#define debug(x...)                                                            \
+  do &#123;                                                                         \
+    cout &lt;&lt; &quot;\033[32;1m&quot; &lt;&lt; #x &lt;&lt; &quot; -&gt; &quot;;                                      \
+    rd_debug(x);                                                               \
+  &#125; while (0)
+void rd_debug() &#123; cout &lt;&lt; &quot;\033[39;0m&quot; &lt;&lt; endl; &#125;
+template &lt;class T, class... Ts&gt; void rd_debug(const T &amp;arg, const Ts &amp;...args) &#123;
+  cout &lt;&lt; arg &lt;&lt; &quot; &quot;;
+  rd_debug(args...);
+&#125;
+#define PF(x) ((x) * (x))
+#define LF(x) ((x)*PF(x))
+
+typedef long long ll;
+typedef unsigned long long ull;
+typedef pair&lt;int, int&gt; PII;
+typedef pair&lt;ll, ll&gt; PLL;
+
+const double eps &#x3D; 1e-6;
+const int MOD &#x3D; 1e9 + 7;
+const int inf &#x3D; 0x3f3f3f3f;
+const ll infl &#x3D; 0x3f3f3f3f3f3f3f3fll;
+
+#define LEFT (node[cur].l)
+#define RIGHT (node[cur].r)
+#define MID ((l + r) &gt;&gt; 1)
+
+struct Node &#123;
+  int l, r;
+  int lazy;
+  int len;
+&#125;;
+struct Seg &#123;
+  Seg() : node(2) &#123;
+  &#125;
+  void add(int cur, int l, int r, int st, int ed, int tv) &#123;
+    if (ed &lt; l or r &lt; st)
+      return;
+    if (st &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; ed) &#123;
+      node[cur].lazy +&#x3D; tv;
+      if (node[cur].lazy &gt; 0) &#123;
+        node[cur].len &#x3D; r - l + 1;
+      &#125; else &#123;
+        node[cur].len &#x3D; 0;
+        if (LEFT)
+          node[cur].len +&#x3D; node[LEFT].len;
+        if (RIGHT)
+          node[cur].len +&#x3D; node[RIGHT].len;
+      &#125;
+      return;
+    &#125;
+    if (!LEFT) &#123;
+      LEFT &#x3D; node.size();
+      node.push_back(&#123;0, 0, 0, 0&#125;);
+    &#125;
+    if (!RIGHT) &#123;
+      RIGHT &#x3D; node.size();
+      node.push_back(&#123;0, 0, 0, 0&#125;);
+    &#125;
+    add(LEFT, l, MID, st, ed, tv);
+    add(RIGHT, MID + 1, r, st, ed, tv);
+    if (node[cur].lazy &gt; 0) &#123;
+      node[cur].len &#x3D; r - l + 1;
+    &#125; else &#123;
+      node[cur].len &#x3D; node[LEFT].len + node[RIGHT].len;
+    &#125;
+  &#125;
+  auto query(int cur, int l, int r, int st, int ed) -&gt; int &#123;
+    if (ed &lt; l or r &lt; st)
+      return 0;
+    if (node[cur].lazy) &#123;
+      return min(r, ed) - max(l, st) + 1;
+    &#125;
+    if(node[cur].len &#x3D;&#x3D; 0)
+      return 0;
+    if (st &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; ed) &#123;
+      return node[cur].len;
+    &#125;
+    int ret &#x3D; 0;
+    if (LEFT)
+      ret +&#x3D; query(LEFT, l, MID, st, ed);
+    if (RIGHT)
+      ret +&#x3D; query(RIGHT, MID + 1, r, st, ed);
+    return ret;
+  &#125;
+  auto queryPosL(int cur, int l, int r, int st, int ed) -&gt; int &#123;
+    if (ed &lt; l or r &lt; st)
+      return -1;
+    if (node[cur].lazy) &#123;
+      return max(l, st);
+    &#125;
+    if(node[cur].len &#x3D;&#x3D; 0) return -1;
+    if (st &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; ed) &#123;
+      if (node[cur].lazy &gt; 0)
+        return l;
+      if (LEFT) &#123;
+        int ret &#x3D; queryPosL(LEFT, l, MID, st, ed);
+        if (ret !&#x3D; -1)
+          return ret;
+      &#125;
+      if (RIGHT) &#123;
+        int ret &#x3D; queryPosL(RIGHT, MID + 1, r, st, ed);
+        if (ret !&#x3D; -1)
+          return ret;
+      &#125;
+      return -1;
+    &#125;
+    int ret &#x3D; -1;
+    if (LEFT)
+      ret &#x3D; queryPosL(LEFT, l, MID, st, ed);
+    if (ret !&#x3D; -1)
+      return ret;
+    if (RIGHT)
+      ret &#x3D; queryPosL(RIGHT, MID + 1, r, st, ed);
+    return ret;
+  &#125;
+  auto queryPosR(int cur, int l, int r, int st, int ed) -&gt; int &#123;
+    if (ed &lt; l or r &lt; st)
+      return -1;
+    if (node[cur].lazy) &#123;
+      return min(r, ed);
+    &#125;
+    if(node[cur].len &#x3D;&#x3D; 0) return -1;
+    if (st &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; ed) &#123;
+      if (node[cur].lazy &gt; 0)
+        return r;
+      if (RIGHT) &#123;
+        int ret &#x3D; queryPosR(RIGHT, MID + 1, r, st, ed);
+        if (ret !&#x3D; -1)
+          return ret;
+      &#125;
+      if (LEFT) &#123;
+        int ret &#x3D; queryPosR(LEFT, l, MID, st, ed);
+        if (ret !&#x3D; -1)
+          return ret;
+      &#125;
+      return -1;
+    &#125;
+    int ret &#x3D; -1;
+    if (RIGHT)
+      ret &#x3D; queryPosR(RIGHT, MID + 1, r, st, ed);
+    if (ret !&#x3D; -1)
+      return ret;
+    if (LEFT)
+      ret &#x3D; queryPosR(LEFT, l, MID, st, ed);
+    return ret;
+  &#125;
+  vector&lt;Node&gt; node;
+&#125;;
+
+int main() &#123;
+  initIO();
+  int t;
+  cin &gt;&gt; t;
+  Seg seg;
+  while (t--) &#123;
+    int n;
+    cin &gt;&gt; n;
+    map&lt;int, vector&lt;tuple&lt;int, int, int&gt;&gt;&gt; mp;
+    vector&lt;int&gt; ans(n, inf);
+    vector&lt;int&gt; pos;
+    for (int i &#x3D; 0; i &lt; n; i++) &#123;
+      int l, r, h;
+      cin &gt;&gt; l &gt;&gt; r &gt;&gt; h;
+      mp[h].push_back(&#123;l, r, i&#125;);
+      pos.push_back(l);
+      pos.push_back(r);
+    &#125;
+    sort(pos.begin(), pos.end());
+    pos.erase(unique(pos.begin(), pos.end()), pos.end());
+    auto&amp;&amp; getPos &#x3D; [&amp;](int x) -&gt; int&#123;
+      return lower_bound(pos.begin(), pos.end(), x) - pos.begin() + 1;
+    &#125;;
+    for(auto&amp; [h, v]: mp)&#123;
+      for(auto&amp; [l, r, i]: v)&#123;
+        seg.add(1, 1, pos.size(), getPos(l), getPos(r), 1);
+      &#125;
+    &#125;
+    for(auto&amp; [h, v] : mp) &#123;
+      for (auto &amp;[l, r, i] : v) &#123;
+        seg.add(1, 1, pos.size(), getPos(l), getPos(r), -1);
+      &#125;
+      for (auto &amp;[l, r, i] : v) &#123;
+        int qs &#x3D; seg.query(1, 1, pos.size(), getPos(l), getPos(r));
+        if (qs &gt; 0) &#123;
+          ans[i] &#x3D; 0;
+        &#125; else &#123;
+          int ql &#x3D; seg.queryPosL(1, 1, pos.size(), getPos(r) + 1, pos.size());
+          if (ql !&#x3D; -1) &#123;
+            ans[i] &#x3D; min(ans[i], pos[ql - 1] - r);
+          &#125;
+          int qr &#x3D; seg.queryPosR(1, 1, pos.size(), 1, getPos(l) - 1);
+          if (qr !&#x3D; -1) &#123;
+            ans[i] &#x3D; min(ans[i], l - pos[qr - 1]);
+          &#125;
+        &#125;
+      &#125;
+      for (auto &amp;[l, r, i] : v) &#123;
+        seg.add(1, 1, pos.size(), getPos(l), getPos(r), 1);
+      &#125;
+    &#125;
+    for(auto&amp; [h, v] : mp) &#123;
+      for (auto &amp;[l, r, i] : v) &#123;
+        seg.add(1, 1, pos.size(), getPos(l), getPos(r), -1);
+      &#125;
+    &#125;
+    for (auto &amp;it : ans) &#123;
+      cout &lt;&lt; it &lt;&lt; &quot; &quot;;
+    &#125;
+    cout &lt;&lt; &#39;\n&#39;;
+  &#125;
+  return 0;
+&#125;</code></pre></div></figure>
+<h1 id="g-multi-colored-segments"><a class="markdownIt-Anchor" href="#g-multi-colored-segments"></a> G. Multi-Colored Segments</h1>
+<p><strong>题目大意</strong></p>
+<p>K住在一个有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>个节点的m条边的无向联通图的编号为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>的点。晚上，他有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>个朋友要从他家返回各自的家。有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>（ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>&lt;</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">k &lt; 6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span> ）个朋友没有车，这<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>个人将会步行回家，如果没有其他人载他一程。其他有车的朋友可以载无限个朋友，但是有车的朋友回家的时候，只会走从K的家到他家的最短的一条路径。K希望你帮他算一下，最少有多少朋友需要步行回家。</p>
+<p><strong>题解</strong></p>
+<p>首先将没有车的朋友给他编号，分别是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0, 1, 2, \dots, k - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。因为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>比较小，我们就可以用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">2^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span>个状态来代表每个有车的人回家的途中，可以捎上哪些朋友。<br />
+然后通过bfs来计算每个有车的人回家途中可以走的路线长度和每条路线可以捎的朋友的状态。</p>
+<p>最后使用背包，根据每个有车的人能捎带的朋友的状态，来统计多个有车的人能捎的朋友的最大数量。从而得到需要步行回家的朋友的最少数量。</p>
+<p><strong>参考代码</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;bits&#x2F;stdc++.h&gt;
+
+using namespace std;
+
+#define b2e(...) begin(__VA_ARGS__), end(__VA_ARGS__)
+#define initIO()                                                               \
+  ios::sync_with_stdio(false);                                                 \
+  cin.tie(nullptr);                                                            \
+  cout.tie(nullptr);                                                           \
+  cout &lt;&lt; fixed &lt;&lt; setprecision(10)
+#define debug(x...)                                                            \
+  do &#123;                                                                         \
+    cout &lt;&lt; &quot;\033[32;1m&quot; &lt;&lt; #x &lt;&lt; &quot; -&gt; &quot;;                                      \
+    rd_debug(x);                                                               \
+  &#125; while (0)
+void rd_debug() &#123; cout &lt;&lt; &quot;\033[39;0m&quot; &lt;&lt; endl; &#125;
+template &lt;class T, class... Ts&gt; void rd_debug(const T &amp;arg, const Ts &amp;...args) &#123;
+  cout &lt;&lt; arg &lt;&lt; &quot; &quot;;
+  rd_debug(args...);
+&#125;
+#define PF(x) ((x) * (x))
+#define LF(x) ((x)*PF(x))
+
+typedef long long ll;
+typedef unsigned long long ull;
+typedef pair&lt;int, int&gt; PII;
+typedef pair&lt;ll, ll&gt; PLL;
+
+const double eps &#x3D; 1e-6;
+const int MOD &#x3D; 1e9 + 7;
+const int inf &#x3D; 0x3f3f3f3f;
+const ll infl &#x3D; 0x3f3f3f3f3f3f3f3fll;
+
+int main() &#123;
+  initIO();
+  int t;
+  cin &gt;&gt; t;
+  while (t--) &#123;
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    vector&lt;vector&lt;int&gt;&gt; g(n + 1);
+    for (int i &#x3D; 0; i &lt; m; ++i) &#123;
+      int x, y;
+      cin &gt;&gt; x &gt;&gt; y;
+      g[x].push_back(y);
+      g[y].push_back(x);
+    &#125;
+    int f;
+    cin &gt;&gt; f;
+    vector&lt;int&gt; location(f + 1);
+    for (int i &#x3D; 1; i &lt;&#x3D; f; ++i)
+      cin &gt;&gt; location[i];
+    vector&lt;int&gt; noBike, hasBike;
+    vector&lt;int&gt; vis(f + 1, 1);
+    int h;
+    cin &gt;&gt; h;
+    for(int i &#x3D; 0; i &lt; h; ++i)&#123;
+      int tv;
+      cin &gt;&gt; tv;
+      noBike.push_back(location[tv]);
+      vis[tv] &#x3D; 0;
+    &#125;
+    for(int i &#x3D; 1; i &lt;&#x3D; f; ++i)&#123;
+      if(vis[i])&#123;
+        hasBike.push_back(location[i]);
+      &#125;
+    &#125;
+    vector&lt;int&gt; dis(n + 1, inf);
+    dis[1] &#x3D; 0;
+    vector flag(n + 1, vector&lt;int&gt;(1 &lt;&lt; h, 0));
+    flag[1][0] &#x3D; 1;
+    queue&lt;int&gt; q;
+    q.push(1);
+
+    while (!q.empty()) &#123;
+      auto cur &#x3D; q.front();
+      q.pop();
+      for (auto &amp;v : g[cur]) &#123;
+        if (dis[v] &gt; dis[cur] + 1) &#123;
+          dis[v] &#x3D; dis[cur] + 1;
+          for(int j &#x3D; 0; j &lt; (1 &lt;&lt; h); ++j)&#123;
+            if(flag[cur][j])&#123;
+              int tv &#x3D; j;
+              flag[v][tv] &#x3D; 1;
+              for(int k &#x3D; 0; k &lt; h; ++k)&#123;
+                if(v &#x3D;&#x3D; noBike[k])&#123;
+                  tv |&#x3D; (1 &lt;&lt; k);
+                &#125;
+              &#125;
+              flag[v][tv] &#x3D; 1;
+            &#125;
+          &#125;
+          q.push(v);
+        &#125; else if (dis[v] &#x3D;&#x3D; dis[cur] + 1) &#123;
+          for(int j &#x3D; 0; j &lt; (1 &lt;&lt; h); ++j)&#123;
+            if(flag[cur][j])&#123;
+              flag[v][j] &#x3D; 1;
+              int tv &#x3D; j;
+              for(int k &#x3D; 0; k &lt; h; ++k)&#123;
+                if(v &#x3D;&#x3D; noBike[k])&#123;
+                  tv |&#x3D; (1 &lt;&lt; k);
+                &#125;
+              &#125;
+              flag[v][tv] &#x3D; 1;
+            &#125;
+          &#125;
+        &#125;
+      &#125;
+    &#125;
+    vector&lt;int&gt; dp(1 &lt;&lt; h, 0);
+    dp[0] &#x3D; 1;
+    int ans &#x3D; 0;
+    for(auto&amp; idx: hasBike)&#123;
+      for(int j &#x3D; (1 &lt;&lt; h) - 1; j &gt;&#x3D; 0; --j)&#123;
+        if(dp[j])&#123;
+          for(int k &#x3D; 0; k &lt; (1 &lt;&lt; h); ++k)&#123;
+            if(flag[idx][k])&#123;
+              dp[j | k] &#x3D; 1;
+            &#125;
+          &#125;
+        &#125;
+      &#125;
+    &#125;
+    for(int i &#x3D; 0; i &lt; (1 &lt;&lt; h); ++i) if(dp[i]) ans &#x3D; max(ans, __builtin_popcount(i));
+    cout &lt;&lt; h - ans &lt;&lt; endl;
+  &#125;
+  return 0;
+&#125;</code></pre></div></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Codeforces/" class="category-chain-item">Codeforces</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+      
+        <a href="/tags/Codeforces/">#Codeforces</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Codeforces Round 826 (Div.3)</div>
+      <div>https://dianhsu.com/2022/10/12/cf1741/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Dian Hsu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年10月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/11/6-1810/" title="MIT 6.1810 Operating System Engineering">
+                        <span class="hidden-mobile">MIT 6.1810 Operating System Engineering</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"dianhsu/blog-raw","repo-id":"MDEwOlJlcG9zaXRvcnkzNzE1NzgxOTE=","category":"General","category-id":"MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyOTcxODAy","theme-light":"light","theme-dark":"dark","mapping":"title","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN","loading":"lazy"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      鄂ICP备2020020124号-2
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

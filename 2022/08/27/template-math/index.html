@@ -1,0 +1,1662 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <link rel="icon" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dian Hsu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="模数(int) class MInt&amp;#123; public:     static int selfPow(int base, int p)&amp;#123;         int ret &#x3D; 1;         while(p)&amp;#123;             if(p &amp; 1) ret &#x3D; (ret * 1ll * base) % MOD;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="万物皆数">
+<meta property="og:url" content="https://dianhsu.com/2022/08/27/template-math/index.html">
+<meta property="og:site_name" content="dianhsuのblog">
+<meta property="og:description" content="模数(int) class MInt&amp;#123; public:     static int selfPow(int base, int p)&amp;#123;         int ret &#x3D; 1;         while(p)&amp;#123;             if(p &amp; 1) ret &#x3D; (ret * 1ll * base) % MOD;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.dianhsu.com/img/2022-08-27-13-28-19.jpeg">
+<meta property="article:published_time" content="2022-08-27T05:31:59.000Z">
+<meta property="article:modified_time" content="2023-03-08T02:21:06.630Z">
+<meta property="article:author" content="Dian Hsu">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="CPP">
+<meta property="article:tag" content="模板">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.dianhsu.com/img/2022-08-27-13-28-19.jpeg">
+  
+  
+  
+  <title>万物皆数 - dianhsuのblog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dianhsu.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gHBUbGnezwPEckLGQuK5MYV1-MdYXbMMI","app_key":"kokqnKgfEiMRyh31b4ofNY5k","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="万物皆数"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-27 13:31" pubdate>
+          2022年8月27日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          21k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          179 分钟
+        
+      </span>
+    
+
+    
+    
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">万物皆数</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="模数int"><a class="markdownIt-Anchor" href="#模数int"></a> 模数(int)</h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class MInt&#123;
+public:
+    static int selfPow(int base, int p)&#123;
+        int ret &#x3D; 1;
+        while(p)&#123;
+            if(p &amp; 1) ret &#x3D; (ret * 1ll * base) % MOD;
+            p &gt;&gt;&#x3D; 1;
+            base &#x3D; (base * 1ll * base) % MOD;
+        &#125;
+        return ret;
+    &#125;
+    MInt(): val(0) &#123;&#125;
+    MInt(int tv): val(tv) &#123;&#125;
+    MInt operator + (const MInt&amp; arg) const &#123; return MInt((val * 1ll + arg.val) % MOD); &#125;
+    MInt operator - (const MInt&amp; arg) const &#123; return MInt((val * 1ll + MOD - arg.val) % MOD); &#125;
+    MInt operator * (const MInt&amp; arg) const &#123; return MInt((val * 1ll * arg.val) % MOD); &#125;
+    MInt operator &#x2F; (const MInt&amp; arg) const &#123; return MInt((val * 1ll * selfPow(arg.val, MOD - 2)) % MOD); &#125;
+    MInt operator + (const int argv) const &#123; return MInt((val * 1ll + argv) % MOD); &#125;
+    MInt operator - (const int argv) const &#123; return MInt((val * 1ll + MOD - argv) % MOD); &#125;
+    MInt operator * (const int argv) const &#123; return MInt((val * 1ll * argv) % MOD); &#125;
+    MInt operator &#x2F; (const int argv) const &#123; return MInt((val * 1ll * selfPow(argv, MOD - 2)) % MOD); &#125;
+    MInt&amp; operator +&#x3D; (const MInt&amp; arg)&#123;
+        this-&gt;val &#x3D; (this-&gt;val * 1ll + arg.val) % MOD;
+        return *this;
+    &#125;
+    MInt&amp; operator -&#x3D; (const MInt&amp; arg)&#123;
+        this-&gt;val &#x3D; (this-&gt;val * 1ll + MOD - arg.val) % MOD;
+        return *this;
+    &#125;
+    MInt&amp; operator *&#x3D; (const MInt&amp; arg)&#123;
+        this-&gt;val &#x3D; (this-&gt;val * 1ll * arg.val) % MOD;
+        return *this;
+    &#125;
+    MInt&amp; operator &#x2F;&#x3D; (const MInt&amp; arg)&#123;
+        this-&gt;val &#x3D; (this-&gt;val * 1ll * selfPow(arg.val, MOD - 2)) % MOD;
+        return *this;
+    &#125;
+    MInt&amp; operator +&#x3D; (const int argv)&#123;
+        this-&gt;val &#x3D; (this-&gt;val * 1ll + argv) % MOD;
+        return *this;
+    &#125;
+    MInt&amp; operator -&#x3D; (const int argv)&#123;
+        this-&gt;val &#x3D; (this-&gt;val * 1ll + MOD - argv) % MOD;
+        return *this;
+    &#125;
+    MInt&amp; operator *&#x3D; (const int argv)&#123;
+        this-&gt;val &#x3D; (this-&gt;val * 1ll * argv) % MOD;
+        return *this;
+    &#125;
+    MInt&amp; operator &#x2F;&#x3D; (const int argv)&#123;
+        this-&gt;val &#x3D; (this-&gt;val * 1ll * selfPow(argv, MOD - 2)) % MOD;
+        return *this;
+    &#125;
+    MInt&amp; operator &#x3D; (const MInt&amp; arg)&#123;
+        this-&gt;val &#x3D; arg.val % MOD;
+        return *this;
+    &#125;
+    MInt&amp; operator &#x3D; (const int argv)&#123;
+        this-&gt;val &#x3D; argv % MOD;
+        return *this;
+    &#125;
+    bool operator &#x3D;&#x3D; (const int argv) const&#123;
+        return val &#x3D;&#x3D; argv;
+    &#125;
+    
+    friend MInt operator + (const int argv, const MInt&amp; arg)&#123;
+        return MInt((arg.val * 1ll + argv) % MOD);
+    &#125;
+    friend MInt operator - (const int argv, const MInt&amp; arg)&#123;
+        return MInt((argv * 1ll + MOD - arg.val) % MOD);
+    &#125;
+    friend MInt operator * (const int argv, const MInt&amp; arg)&#123;
+        return MInt((arg.val * 1ll * argv) % MOD);
+    &#125;
+    friend MInt operator &#x2F; (const int argv, const MInt&amp; arg)&#123;
+        return MInt((argv * 1ll * MInt::selfPow(arg.val, MOD - 2))% MOD);
+    &#125;
+    friend istream&amp; operator &gt;&gt; (istream&amp; its, MInt&amp; arg)&#123;
+        its &gt;&gt; arg.val;
+        return its;
+    &#125;
+    friend ostream&amp; operator &lt;&lt; (ostream&amp; ots, const MInt&amp; arg)&#123;
+        ots &lt;&lt; arg.val;
+        return ots;
+    &#125;
+    friend int abs(const MInt&amp; arg)&#123;
+        return abs(arg.val);
+    &#125;
+private:
+    int val;
+&#125;;</code></pre></div></figure>
+<h1 id="素数筛"><a class="markdownIt-Anchor" href="#素数筛"></a> 素数筛</h1>
+<h2 id="单个正整数判断是不是质数"><a class="markdownIt-Anchor" href="#单个正整数判断是不是质数"></a> 单个正整数判断是不是质数</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">bool isPrime(int x)&#123;
+    if(x &lt;&#x3D; 1) return false;
+    int cur &#x3D; 2;
+    while(cur * cur &lt;&#x3D; x)&#123;
+        if(x % cur !&#x3D; 0)&#123;
+            return false;
+        &#125;
+        ++cur;
+    &#125;
+    return true;
+&#125;</code></pre></div></figure>
+<h2 id="埃拉托斯特尼筛法"><a class="markdownIt-Anchor" href="#埃拉托斯特尼筛法"></a> 埃拉托斯特尼筛法</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;int N&gt;
+vector&lt;int&gt; SieveOfEratosthenes() &#123;
+    vector&lt;int&gt; prime;
+    bitset&lt;N + 1&gt; notPrime;
+    notPrime[0] &#x3D; notPrime[1] &#x3D; 1;
+    for (int i &#x3D; 2; i &lt;&#x3D; N; ++i) &#123;
+        if (!notPrime[i]) &#123;
+            prime.push_back(i);
+            if ((long long) i * i &lt;&#x3D; N) &#123;
+                for (int j &#x3D; i * i; j &lt;&#x3D; N; j +&#x3D; i) &#123;
+                    notPrime[j] &#x3D; 1;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    return prime;
+&#125;
+</code></pre></div></figure>
+<h2 id="线性筛欧式筛"><a class="markdownIt-Anchor" href="#线性筛欧式筛"></a> 线性筛（欧式筛）</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;int N&gt;
+vector&lt;int&gt; SieveOfEuler() &#123;
+    vector&lt;int&gt; prime;
+    bitset&lt;N + 1&gt; notPrime;
+    for (int i &#x3D; 2; i &lt;&#x3D; N; ++i) &#123;
+        if (!notPrime[i]) &#123;
+            prime.push_back(i);
+        &#125;
+        for (auto it : prime) &#123;
+            if ((long long) it * i &lt;&#x3D; N) &#123;
+                notPrime[it * i] &#x3D; 1;
+                if (i % it &#x3D;&#x3D; 0) &#123;
+                    break;
+                &#125;
+            &#125;else&#123;
+                break;
+            &#125;
+        &#125;
+    &#125;
+    return prime;
+&#125;</code></pre></div></figure>
+<h2 id="奇数筛"><a class="markdownIt-Anchor" href="#奇数筛"></a> 奇数筛</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;int N&gt;
+vector&lt;int&gt; OddFilter() &#123;
+    if (N &lt; 2) return &#123;&#125;;
+    vector&lt;int&gt; prime&#123;2&#125;;
+    bitset&lt;N + 1&gt; notPrime;
+    notPrime[0] &#x3D; notPrime[1] &#x3D; 1;
+    for (int i &#x3D; 3; i * i &lt;&#x3D; N; i +&#x3D; 2) &#123;
+        if (!notPrime[i]) &#123;
+            for (int j &#x3D; i; j * i &lt;&#x3D; N; j +&#x3D; 2) &#123;
+                notPrime[j * i] &#x3D; 1;
+            &#125;
+        &#125;
+    &#125;
+    for (int i &#x3D; 3; i &lt;&#x3D; N; i +&#x3D; 2) &#123;
+        if (!notPrime[i]) &#123;
+            prime.push_back(i);
+        &#125;
+    &#125;
+    return prime;
+&#125;</code></pre></div></figure>
+<h1 id="类欧几里得算法"><a class="markdownIt-Anchor" href="#类欧几里得算法"></a> 类欧几里得算法</h1>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>N</mi><mo separator="true">,</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mi>N</mi></munderover><mo stretchy="false">⌊</mo><mfrac><mrow><mi>a</mi><mo>×</mo><mi>i</mi><mo>+</mo><mi>b</mi></mrow><mi>c</mi></mfrac><mo stretchy="false">⌋</mo><mspace linebreak="newline"></mspace><mi>g</mi><mo stretchy="false">(</mo><mi>N</mi><mo separator="true">,</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mi>N</mi></munderover><mo stretchy="false">⌊</mo><mfrac><mrow><mi>a</mi><mo>×</mo><mi>i</mi><mo>+</mo><mi>b</mi></mrow><mi>c</mi></mfrac><msup><mo stretchy="false">⌋</mo><mn>2</mn></msup><mspace linebreak="newline"></mspace><mi>h</mi><mo stretchy="false">(</mo><mi>N</mi><mo separator="true">,</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mi>N</mi></munderover><mi>i</mi><mo>×</mo><mo stretchy="false">⌊</mo><mfrac><mrow><mi>a</mi><mo>×</mo><mi>i</mi><mo>+</mo><mi>b</mi></mrow><mi>c</mi></mfrac><mo stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">    f(N, a, b, c) = \sum_{i = 0}^N \lfloor \frac{a \times i + b}{c} \rfloor \\
+    g(N, a, b, c) = \sum_{i = 0}^N \lfloor \frac{a \times i + b}{c} \rfloor ^2 \\
+    h(N, a, b, c) = \sum_{i = 0}^N i \times \lfloor \frac{a \times i + b}{c} \rfloor
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.106005em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283360000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mopen">⌊</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">c</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">⌋</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.106005em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283360000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mopen">⌊</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">c</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose"><span class="mclose">⌋</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.106005em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283360000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">0</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.05744em;vertical-align:-0.686em;"></span><span class="mopen">⌊</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">c</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">⌋</span></span></span></span></span></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+const int MOD &#x3D; 998244353;
+int qPow(int b, int p)&#123;
+    int ret &#x3D; 1;
+    while(p)&#123;
+        if(p &amp; 1) ret &#x3D; 1ll * ret * b % MOD;
+        b &#x3D; 1ll * b * b % MOD;
+        p &gt;&gt;&#x3D; 1;
+    &#125;
+    return ret;
+&#125;
+const int inv2 &#x3D; qPow(2, MOD - 2);
+const int inv6 &#x3D; qPow(6, MOD - 2);
+template&lt;typename T&gt;
+tuple&lt;T, T, T&gt; euclidean(T n, T a, T b, T c)&#123;
+    T ac &#x3D; a &#x2F; c, bc &#x3D; b &#x2F; c, m &#x3D; (a * n + b) &#x2F; c, n1 &#x3D; n + 1, n21 &#x3D; n * 2 + 1;
+    if(a &#x3D;&#x3D; 0)&#123;
+        return &#123;
+            bc * n1 % MOD, 
+            bc * n % MOD * n1 % MOD * inv2 % MOD,
+            bc * bc % MOD * n1 % MOD
+        &#125;;
+    &#125;
+    if(a &gt;&#x3D; c or b &gt;&#x3D; c)&#123;
+        T f &#x3D; n * n1 % MOD * inv2 % MOD * ac % MOD + bc * n1 % MOD;
+        T g &#x3D; ac * n % MOD * n1 % MOD * n21 % MOD * inv6 % MOD + bc * n % MOD * n1 % MOD * inv2 % MOD;
+        T h &#x3D; ac * ac % MOD * n % MOD * n1 % MOD * n21 % MOD * inv6 % MOD + bc * bc % MOD * n1 % MOD + ac * bc % MOD * n % MOD * n1 % MOD;
+        f %&#x3D; MOD, g %&#x3D; MOD, h %&#x3D; MOD;
+        auto [tf, tg, th] &#x3D; euclidean(n, a % c, b % c, c);
+        h +&#x3D; th + 2 * bc % MOD * tf % MOD + 2 * ac % MOD * tg % MOD;
+        g +&#x3D; tg;
+        f +&#x3D; tf;
+        return &#123;f % MOD, g % MOD, h % MOD&#125;;
+    &#125;
+    auto [tf, tg, th] &#x3D; euclidean(m - 1, c, c - b - 1, a);
+    T f &#x3D; (n * m % MOD + MOD - tf) % MOD;
+    T g &#x3D; (n * m % MOD * n1 % MOD + MOD - th + MOD - tf) % MOD * inv2 % MOD;
+    T h &#x3D; (n * m % MOD * (m + 1) % MOD + 2 * (MOD - tg) + 2 * (MOD - tf) + MOD - f) % MOD;
+    return &#123;f, g, h&#125;;
+&#125;
+typedef long long ll;
+int main()&#123;
+    int t;
+    cin &gt;&gt; t;
+    while(t--)&#123;
+        ll n, a, b, c;
+        cin &gt;&gt; n &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+        auto [f, g, h] &#x3D; euclidean(n, a, b, c);
+        cout &lt;&lt; f &lt;&lt; &quot; &quot; &lt;&lt; h &lt;&lt; &quot; &quot; &lt;&lt; g &lt;&lt; endl;
+    &#125;
+    return 0;
+&#125;
+</code></pre></div></figure>
+<h1 id="拓展欧几里得"><a class="markdownIt-Anchor" href="#拓展欧几里得"></a> 拓展欧几里得</h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+T exgcd(T a, T b, T&amp; x, T&amp; y)&#123;
+    if(b &#x3D;&#x3D; 0)&#123;
+        x &#x3D; 1;
+        y &#x3D; 0;
+        return a;
+    &#125;
+    T d &#x3D; exgcd(b, a % b, y, x);
+    y -&#x3D; (a &#x2F; b) * x;
+    return d;
+&#125;</code></pre></div></figure>
+<h1 id="欧拉函数"><a class="markdownIt-Anchor" href="#欧拉函数"></a> 欧拉函数</h1>
+<h2 id="单个欧拉函数"><a class="markdownIt-Anchor" href="#单个欧拉函数"></a> 单个欧拉函数</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int euler_phi(int n) &#123;
+  int ans &#x3D; n;
+  for (int i &#x3D; 2; i * i &lt;&#x3D; n; i++)
+    if (n % i &#x3D;&#x3D; 0) &#123;
+      ans &#x3D; ans &#x2F; i * (i - 1);
+      while (n % i &#x3D;&#x3D; 0) n &#x2F;&#x3D; i;
+    &#125;
+  if (n &gt; 1) ans &#x3D; ans &#x2F; n * (n - 1);
+  return ans;
+&#125;</code></pre></div></figure>
+<h2 id="批量求欧拉函数线性筛"><a class="markdownIt-Anchor" href="#批量求欧拉函数线性筛"></a> 批量求欧拉函数（线性筛）</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector&lt;int&gt; eularFunction(int n)&#123;
+    vector&lt;int&gt; isPrime(n + 1, 1), phi(n + 1, 0);
+    vector&lt;int&gt; prime;
+    int cnt &#x3D; 0;
+    isPrime[1] &#x3D; 0;
+    phi[1] &#x3D; 1;
+    for(int i &#x3D; 2; i &lt;&#x3D; n; ++i)&#123;
+        if(isPrime[i])&#123;
+            prime.push_back(i);
+            phi[i] &#x3D; i - 1;
+        &#125;
+        for(auto it: prime)&#123;
+            if(i * it &gt; n) break;
+            isPrime[i * it] &#x3D; 0;
+            if(i % it)&#123;
+                phi[i * it] &#x3D; phi[i] * phi[it];
+            &#125;else&#123;
+                phi[i * it] &#x3D; phi[i] * it;
+                break;
+            &#125;
+        &#125;
+    &#125;
+    return phi;
+&#125;</code></pre></div></figure>
+<h2 id="筛法求约数个数线性筛"><a class="markdownIt-Anchor" href="#筛法求约数个数线性筛"></a> 筛法求约数个数（线性筛）</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector&lt;int&gt; SieveOfEuler(int n)&#123;
+    vector&lt;int&gt; ret(n + 1, 0); &#x2F;&#x2F;约数个数
+    vector&lt;int&gt; vis(n + 1, 0); &#x2F;&#x2F;是否访问标记
+    vector&lt;int&gt; prime; &#x2F;&#x2F; 质数表
+    vector&lt;int&gt; num(n + 1, 0); &#x2F;&#x2F; 最小质数因子出现次数
+    ret[1] &#x3D; 1;
+    for(int i &#x3D; 2; i &lt;&#x3D; n; ++i)&#123;
+        if(!vis[i])&#123;
+            vis[i] &#x3D; 1;
+            prime.push_back(i);
+            ret[i] &#x3D; 2;
+            num[i] &#x3D; 1;
+        &#125;
+        for(auto&amp; it: prime)&#123;
+            if(n &#x2F; it &lt; i) break;
+            vis[it * i] &#x3D; 1;
+            if(i % it &#x3D;&#x3D; 0)&#123;
+                num[i * it] &#x3D; num[i] + 1;
+                ret[i * it] &#x3D; ret[i] &#x2F; num[i * it] * (num[i * it] + 1);
+                break;
+            &#125;else&#123;
+                num[i * it] &#x3D; 1;
+                ret[i * it] &#x3D; ret[i] * 2;
+            &#125;
+        &#125;
+    &#125;
+    return ret;
+&#125;</code></pre></div></figure>
+<h1 id="中国剩余定理-扩展中国剩余定理"><a class="markdownIt-Anchor" href="#中国剩余定理-扩展中国剩余定理"></a> 中国剩余定理 &amp; 扩展中国剩余定理</h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+T exgcd(T a, T b, T&amp; x, T&amp; y)&#123;
+    if(b &#x3D;&#x3D; 0)&#123;
+        x &#x3D; 1, y &#x3D; 0;
+        return a;
+    &#125;
+    T d &#x3D; exgcd(b, a % b, y, x);
+    y -&#x3D; (a &#x2F; b) * x;
+    return d;
+&#125;
+template&lt;typename T&gt;
+T mul(T b, T n, T p)&#123;
+    T ans &#x3D; 0;
+    while(n)&#123;
+        if(n &amp; 1) ans &#x3D; (ans + b % p) % p;
+        b &#x3D; (b + b) % p;
+        n &gt;&gt;&#x3D; 1;
+    &#125;
+    return ans;
+&#125;
+template&lt;typename T&gt;
+T crt(vector&lt;pair&lt;T, T&gt;&gt;&amp; args)&#123;
+    T M &#x3D; 1, ans &#x3D; 0, x, y;
+    for(auto&amp; it: args) M *&#x3D; it.first;
+    for(auto&amp; it: args)&#123;
+        T b &#x3D; M &#x2F; it.first;
+        exgcd(it.first, b, x, y);
+        y &#x3D; (y % it.first + it.first) % it.first;
+        ans &#x3D; (ans + mul(mul(it.second, b, M), y, M)) % M;
+    &#125;
+    return ans;
+&#125;
+template&lt;typename T&gt;
+bool excrt(pair&lt;T, T&gt;&amp; res, vector&lt;pair&lt;T, T&gt;&gt;&amp; args)&#123;
+    res &#x3D; args.front();
+    for(int i &#x3D; 1; i &lt; args.size(); ++i)&#123;
+        T c &#x3D; (args[i].second - res.second % args[i].first + args[i].first) % args[i].first;   
+        T x, y;
+        T v &#x3D; exgcd(res.first, args[i].first, x, y);
+        if(c % v) return false;
+        x &#x3D; mul(x, c &#x2F; v, args[i].first &#x2F; v);
+        res.second &#x3D; (res.second + x * res.first);
+        res.first *&#x3D; args[i].first &#x2F; v;
+        res.second &#x3D; (res.second % res.first + res.first) % res.first;
+    &#125;
+    return true;
+&#125;</code></pre></div></figure>
+<h1 id="乘法逆元"><a class="markdownIt-Anchor" href="#乘法逆元"></a> 乘法逆元</h1>
+<h2 id="扩展欧几里得算法"><a class="markdownIt-Anchor" href="#扩展欧几里得算法"></a> 扩展欧几里得算法</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+T exgcd(T a, T b, T&amp; x, T&amp; y)&#123;
+    if(b &#x3D;&#x3D; 0)&#123;
+        x &#x3D; 1, y &#x3D; 0;
+        return a;
+    &#125;
+    T d &#x3D; exgcd(b, a % b, y, x);
+    y -&#x3D; (a &#x2F; b) * x;
+    return d;
+&#125;</code></pre></div></figure>
+<h2 id="快速幂算法"><a class="markdownIt-Anchor" href="#快速幂算法"></a> 快速幂算法</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+T qPow(T b, T n, T p)&#123;
+    T res &#x3D; 1;
+    while(n)&#123;
+        if(n &amp; 1) res &#x3D; res * b % p;
+        b &#x3D; b * b % p;
+        n &gt;&gt;&#x3D; 1;
+    &#125;
+    return res;
+&#125;</code></pre></div></figure>
+<h2 id="批量乘法逆元"><a class="markdownIt-Anchor" href="#批量乘法逆元"></a> 批量乘法逆元</h2>
+<blockquote>
+<p>MOD需要是质数</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector&lt;int&gt; reverse(int n, int MOD)&#123;
+    std::vector&lt;int&gt; inv(n + 1, 1);
+    for (int i &#x3D; 2; i &lt;&#x3D; n; ++i) &#123;
+        inv[i] &#x3D; (long long) (MOD - MOD &#x2F; i) * inv[MOD % i] % MOD;
+    &#125;
+    return inv;
+&#125;</code></pre></div></figure>
+<h1 id="阶乘逆元求组合数"><a class="markdownIt-Anchor" href="#阶乘逆元求组合数"></a> 阶乘逆元（求组合数）</h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T &#x3D; long long, int P &#x3D; 1000000007&gt;
+class Combination&#123;
+public:
+    Combination(int n): div(n + 1, 1), mul(n + 1, 1)&#123;
+        for(int i &#x3D; 1; i &lt;&#x3D; n; ++i) mul[i] &#x3D; mul[i - 1] * i % P;
+        div[n] &#x3D; qPow(mul[n], P - 2);
+        for(int i &#x3D; n - 1; i &gt; 0; --i) div[i] &#x3D; div[i + 1] * (i + 1) % P;
+    &#125;
+    T operator () (int n, int m)&#123;
+        if(m &lt; 0) return 0;
+        if(m &gt; n) return 0;
+        return mul[n] * div[m] % P * div[n - m] % P;
+    &#125;
+    
+private:
+    T qPow(T b, T n)&#123;
+        T ret &#x3D; 1;
+        while(n)&#123;
+            if(n &amp; 1) ret &#x3D; ret * b % P;
+            b &#x3D; b * b % P;
+            n &gt;&gt;&#x3D; 1;
+        &#125;
+        return ret;
+    &#125;
+    vector&lt;T&gt; div, mul;
+&#125;;</code></pre></div></figure>
+<h1 id="卢卡斯定理"><a class="markdownIt-Anchor" href="#卢卡斯定理"></a> 卢卡斯定理</h1>
+<p>对于质数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span>，有</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mi>n</mi><mi>m</mi></mfrac><mo fence="true">)</mo></mrow><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mi>p</mi><mo>=</mo><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mrow><mo stretchy="false">⌊</mo><mi>n</mi><mi mathvariant="normal">/</mi><mi>p</mi><mo stretchy="false">⌋</mo></mrow><mrow><mo stretchy="false">⌊</mo><mi>m</mi><mi mathvariant="normal">/</mi><mi>p</mi><mo stretchy="false">⌋</mo></mrow></mfrac><mo fence="true">)</mo></mrow><mo>⋅</mo><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mrow><mo stretchy="false">⌊</mo><mi>n</mi><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mi>p</mi><mo stretchy="false">⌋</mo></mrow><mrow><mo stretchy="false">⌊</mo><mi>m</mi><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mi>p</mi><mo stretchy="false">⌋</mo></mrow></mfrac><mo fence="true">)</mo></mrow><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mi>p</mi></mrow><annotation encoding="application/x-tex">    \binom{n}{m} \bmod p = \binom{\lfloor n / p \rfloor}{\lfloor m / p \rfloor} \cdot \binom{\lfloor n \bmod p \rfloor}{\lfloor m \bmod p \rfloor} \bmod p 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1075599999999999em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">m</span></span></span><span style="top:-3.6769999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">⌊</span><span class="mord mathnormal">m</span><span class="mord">/</span><span class="mord mathnormal">p</span><span class="mclose">⌋</span></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">⌊</span><span class="mord mathnormal">n</span><span class="mord">/</span><span class="mord mathnormal">p</span><span class="mclose">⌋</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">⌊</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">p</span><span class="mclose">⌋</span></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">⌊</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">p</span><span class="mclose">⌋</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span></span></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+T lucas(T n, T m, T p, const function&lt;T(T, T)&gt;&amp; C)&#123;
+    if(m &#x3D;&#x3D; 0) return 1;
+    T c &#x3D; C(n % p, m % p);
+    T res &#x3D; (c * lucas(n &#x2F; p, m &#x2F; p, p, C)) % p;
+    return res;
+&#125;</code></pre></div></figure>
+<h1 id="bsgs"><a class="markdownIt-Anchor" href="#bsgs"></a> BSGS</h1>
+<p>在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span>互质的情况下，求解</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>a</mi><mi>x</mi></msup><mo>≡</mo><mi>b</mi><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mi>p</mi></mrow><annotation encoding="application/x-tex">    a ^ x \equiv b \bmod p
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7143919999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span></span></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+T qPow(T b, T n, T p)&#123;
+    T ret &#x3D; 1;
+    while(n)&#123;
+        if(n &amp; 1) ret &#x3D; ret * b % p;
+        b &#x3D; b * b % p;
+        n &gt;&gt;&#x3D; 1;
+    &#125;
+    return ret;
+&#125;
+template&lt;typename T&gt;
+T BSGS(T a, T b, T p, T c &#x3D; 1)&#123;
+    map&lt;T, T&gt; mp;
+    T t &#x3D; (T)sqrt(p) + 1;
+    b %&#x3D; p;
+    ll tmp &#x3D; 1;
+    for(int i &#x3D; 0; i &lt; t; ++i)&#123;
+        T tv &#x3D; b * tmp % p;
+        mp[tv] &#x3D; i;
+        tmp &#x3D; (tmp * a) % p;
+    &#125;
+    a &#x3D; qPow(a, t, p);
+    if(a &#x3D;&#x3D; 0) return b &#x3D;&#x3D; 0 ? 1 : -1;
+    for(int i &#x3D; 0; i &lt;&#x3D; t; ++i)&#123;
+        ll tv &#x3D; qPow&lt;T&gt;(a, i, p) * c % p;
+        if(mp.count(tv) and i * t - mp[tv] &gt;&#x3D; 0)&#123;
+            return i * t - mp[tv];
+        &#125;
+    &#125;
+    return -1;
+&#125;</code></pre></div></figure>
+<h1 id="exbsgs"><a class="markdownIt-Anchor" href="#exbsgs"></a> exBSGS</h1>
+<p>求解</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>a</mi><mi>x</mi></msup><mo>≡</mo><mi>b</mi><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mi>p</mi></mrow><annotation encoding="application/x-tex">    a ^ x \equiv b \bmod p
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7143919999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">d</span></span></span><span class="mspace" style="margin-right:0.05555555555555555em;"></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span></span></span></span></span></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+T exgcd(T a, T b, T&amp; x, T&amp; y)&#123;
+    if(b &#x3D;&#x3D; 0)&#123;
+        x &#x3D; 1, y &#x3D; 0;
+        return a;
+    &#125;
+    T d &#x3D; exgcd(b, a % b, y, x);
+    y -&#x3D; (a &#x2F; b) * x;
+    return d;
+&#125;
+template&lt;typename T&gt;
+T qPow(T b, T n, T p)&#123;
+    T ret &#x3D; 1;
+    while(n)&#123;
+        if(n &amp; 1) ret &#x3D; ret * b % p;
+        b &#x3D; b * b % p;
+        n &gt;&gt;&#x3D; 1;
+    &#125;
+    return ret;
+&#125;
+template&lt;typename T&gt;
+T BSGS(T a, T b, T p, T c &#x3D; 1)&#123;
+    map&lt;T, T&gt; mp;
+    T t &#x3D; (T)sqrt(p) + 1;
+    b %&#x3D; p;
+    ll tmp &#x3D; 1;
+    for(int i &#x3D; 0; i &lt; t; ++i)&#123;
+        T tv &#x3D; b * tmp % p;
+        mp[tv] &#x3D; i;
+        tmp &#x3D; (tmp * a) % p;
+    &#125;
+    a &#x3D; qPow(a, t, p);
+    if(a &#x3D;&#x3D; 0) return b &#x3D;&#x3D; 0 ? 1 : -1;
+    for(int i &#x3D; 0; i &lt;&#x3D; t; ++i)&#123;
+        ll tv &#x3D; qPow&lt;T&gt;(a, i, p) * c % p;
+        if(mp.count(tv) and i * t - mp[tv] &gt;&#x3D; 0)&#123;
+            return i * t - mp[tv];
+        &#125;
+    &#125;
+    return -1;
+&#125;
+template&lt;typename T&gt;
+T exBSGS(T a, T b, T p)&#123;
+    a %&#x3D; p, b %&#x3D; p;
+    if(b &#x3D;&#x3D; 1 or p &#x3D;&#x3D; 1) return 0;
+    T cnt &#x3D; 0;
+    T d, ad &#x3D; 1;
+    T na &#x3D; 1;
+    while((d &#x3D; gcd(a, p)) !&#x3D; 1)&#123;
+        if(b % d) return -1;
+        ++cnt;
+        b &#x2F;&#x3D; d, p &#x2F;&#x3D; d;
+        ad &#x3D; ad * (a &#x2F; d) % p;
+        if(ad &#x3D;&#x3D; b) return cnt;
+    &#125;
+    T tx, ty;
+    T dv &#x3D; exgcd&lt;T&gt;(ad, p, tx, ty);
+    tx &#x3D; (tx % p + p) % p;
+    T ans &#x3D; BSGS&lt;T&gt;(a, b * tx % p, p);
+    if(ans &gt;&#x3D; 0) ans +&#x3D; cnt;
+    return ans;
+&#125;</code></pre></div></figure>
+<h1 id="cayley-公式caylays-formula"><a class="markdownIt-Anchor" href="#cayley-公式caylays-formula"></a> Cayley 公式（Caylay’s formula）</h1>
+<p>完全图 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">K_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">n^{n - 2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span> 棵生成树。</p>
+<h1 id="莫比乌斯函数线性筛"><a class="markdownIt-Anchor" href="#莫比乌斯函数线性筛"></a> 莫比乌斯函数（线性筛）</h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;int N, typename T &#x3D; int&gt;
+class Mu &#123;
+public:
+    Mu() : muArr(N + 1), pref(N + 1) &#123;
+        bitset&lt;N + 1&gt; notPrime;
+        muArr[1] &#x3D; 1;
+        for (int i &#x3D; 2; i &lt;&#x3D; N; ++i) &#123;
+            if (!notPrime[i]) &#123;
+                prime.push_back(i);
+                muArr[i] &#x3D; -1;
+            &#125;
+            for (auto it : prime) &#123;
+                if (N &#x2F; i &gt;&#x3D; it) &#123;
+                    notPrime[it * i] &#x3D; 1;
+                    if (i % it &#x3D;&#x3D; 0) &#123;
+                        break;
+                    &#125; else &#123;
+                        muArr[i * it] &#x3D; -muArr[i];
+                    &#125;
+                &#125; else &#123;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+        pref[0] &#x3D; 0;
+        for (int i &#x3D; 1; i &lt;&#x3D; N; ++i) &#123;
+            pref[i] &#x3D; pref[i - 1] + muArr[i];
+        &#125;
+    &#125;
+
+    T&amp; operator[](int i) &#123;
+        return muArr[i];
+    &#125;
+
+    vector&lt;T&gt; pref;
+    vector&lt;T&gt; prime;
+private:
+    vector&lt;T&gt; muArr;
+&#125;;</code></pre></div></figure>
+<h1 id="杜教筛"><a class="markdownIt-Anchor" href="#杜教筛"></a> 杜教筛</h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;int N &#x3D; 5000000&gt;
+struct Du&#123;
+  Du(): vis(N + 1, 0), mu(N + 1, 0), musum(N + 1, 0) &#123;
+    mu[1] &#x3D; 1;
+    for(int i &#x3D; 2; i &lt;&#x3D; N; ++i)&#123;
+      if(!vis[i])&#123;
+        pri.push_back(i);
+        mu[i] &#x3D; -1;
+      &#125;
+      for(auto&amp; it: pri)&#123;
+        if(1ll * i * it &gt; N) break;
+        vis[i * it] &#x3D; 1;
+        if(i % it)&#123;
+          mu[i * it] &#x3D; - mu[i];
+        &#125;else&#123;
+          mu[i * it] &#x3D; 0;
+          break;
+        &#125;
+      &#125;
+    &#125;
+    for(int i &#x3D; 1; i &lt;&#x3D; N; ++i) musum[i] &#x3D; musum[i - 1] + mu[i];
+  &#125;
+  long long getMuSum(int x)&#123;
+    if(x &lt;&#x3D; N) return musum[x];
+    if(lazyMu.count(x)) return lazyMu[x];
+    long long ret &#x3D; 1;
+    for(long long i &#x3D; 2, j; i &lt;&#x3D; x; i &#x3D; j + 1)&#123;
+      j &#x3D; x &#x2F; (x &#x2F; i);
+      ret -&#x3D; getMuSum(x &#x2F; i) * (j - i + 1);
+    &#125;
+    return lazyMu[x] &#x3D; ret;
+  &#125;
+  long long getPhiSum(int x)&#123;
+    long long ret &#x3D; 0;
+    for(long long i &#x3D; 1, j; i &lt;&#x3D; x; i &#x3D; j + 1)&#123;
+      j &#x3D; x &#x2F; (x &#x2F; i);
+      ret +&#x3D; (getMuSum(j) - getMuSum(i - 1)) * (x &#x2F; i) * (x &#x2F; i);
+    &#125;
+    return (ret - 1) &#x2F; 2 + 1;
+  &#125;
+  map&lt;int, long long&gt; lazyMu;
+  vector&lt;int&gt; mu, musum, pri;
+  vector&lt;bool&gt; vis;
+&#125;;</code></pre></div></figure>
+<h1 id="康拓展开"><a class="markdownIt-Anchor" href="#康拓展开"></a> 康拓展开</h1>
+<h2 id="正向"><a class="markdownIt-Anchor" href="#正向"></a> 正向</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;**
+ * @brief 康拓展开
+ * @param t 排列，这里设定排列的长度是9
+ * @return Contar值
+ * @author dianhsu
+ **&#x2F;
+int radix[] &#x3D; &#123;1, 1, 2, 6, 24, 120, 720, 5040, 40320&#125;;
+template&lt;int LEN&#x3D;9&gt;
+int Contar(int* t)&#123;
+    int ret &#x3D; 0;
+    for(int i &#x3D; 0; i &lt; LEN; ++i)&#123;
+        int tmp &#x3D; 0;
+        for(int j &#x3D; i + 1; j &lt; LEN; ++j)&#123;
+            if(t[i] &gt; t[j])&#123;
+                ++tmp;
+            &#125;
+        &#125;
+        ret +&#x3D; radix[LEN - 1 - i] * tmp;
+    &#125;
+    return ret;
+&#125;</code></pre></div></figure>
+<h2 id="反向"><a class="markdownIt-Anchor" href="#反向"></a> 反向</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;**
+ * @brief 康拓展开的逆运算
+ * @param contar_val Contar 值
+ * @param t 返回的Contar序列
+ * @author dianhsu
+ * *&#x2F;
+int radix[] &#x3D; &#123;1, 1, 2, 6, 24, 120, 720, 5040, 40320&#125;;
+template&lt;int LEN&#x3D;9&gt;
+void ReverseContar(int contar_val, int* t)&#123;
+    int vis[LEN];
+    memset(vis, 0, sizeof vis);
+    for(int i &#x3D; 0; i &lt; LEN; ++i)&#123;
+        int idx &#x3D; contar_val &#x2F; radix[LEN - 1 - i];
+        contar_val &#x3D; contar_val % radix[LEN - 1 - i];
+        for(int j &#x3D; 0; j &lt; LEN; ++j)&#123;
+            if(vis[j] &#x3D;&#x3D; 0)&#123;
+                if(idx &#x3D;&#x3D; 0)&#123;
+                    vis[j] &#x3D; 1;
+                    t[i] &#x3D; j;
+                    break;
+                &#125;else&#123;
+                    --idx;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre></div></figure>
+<h1 id="miller-rabin-pollard-rho"><a class="markdownIt-Anchor" href="#miller-rabin-pollard-rho"></a> Miller Rabin &amp; Pollard Rho</h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">random_device rd;
+mt19937_64 gen(rd());
+uniform_int_distribution&lt;ll&gt; dis(0);
+
+ll qPow(ll b, ll p, ll mod)&#123;
+    ll ret &#x3D; 1;
+    while(p)&#123;
+        if(p &amp; 1) ret &#x3D; (__int128)ret * b % mod;
+        b &#x3D; (__int128)b * b % mod;
+        p &gt;&gt;&#x3D; 1;
+    &#125;
+    return ret;
+&#125;
+bool MillerRabin(ll p)&#123;
+    if(p &lt; 2) return false;
+    if(p &lt; 4) return true;
+    ll d &#x3D; p - 1;
+    int r &#x3D; 0;
+    while((d &amp; 1) &#x3D;&#x3D; 0) ++r, d &gt;&gt;&#x3D; 1;
+    for(ll k &#x3D; 0; k &lt; 10; ++k)&#123;
+        ll rv &#x3D; dis(gen) % (p - 2) + 2;   
+        ll x &#x3D; qPow(rv, d, p);
+        if(x &#x3D;&#x3D; 1 or x &#x3D;&#x3D; p - 1) continue;
+        for(int i &#x3D; 0; i &lt; r - 1; ++i)&#123;
+            x &#x3D; (__int128) x * x % p;
+            if(x &#x3D;&#x3D; p - 1) break;
+        &#125;
+        if(x !&#x3D; p - 1) return false;
+    &#125;
+
+    return true;
+&#125;
+ll PollardRho(ll n)&#123;
+    ll c &#x3D; rand() % (n - 1) + 1;
+    ll s &#x3D; 0, t &#x3D; 0;
+    for(ll goal &#x3D; 1, val &#x3D; 1; ; goal *&#x3D; 2, s &#x3D; t, val &#x3D; 1)&#123;
+        for(ll step &#x3D; 1; step &lt;&#x3D; goal; ++step)&#123;
+            t &#x3D; ((__int128) t * t + c) % n;
+            val &#x3D; (__int128)val * abs(t - s) % n;
+            if(step % 127 &#x3D;&#x3D; 0)&#123;
+                ll d &#x3D; gcd(val, n);
+                if(d &gt; 1) return d;
+            &#125;
+        &#125;
+        ll d &#x3D; gcd(val, n);
+        if(d &gt; 1) return d;
+    &#125;
+&#125;
+</code></pre></div></figure>
+<h1 id="线性代数"><a class="markdownIt-Anchor" href="#线性代数"></a> 线性代数</h1>
+<h2 id="矩阵"><a class="markdownIt-Anchor" href="#矩阵"></a> 矩阵</h2>
+<blockquote>
+<p>矩阵模板，搭配模数可以当成矩阵快速幂。</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+struct Matrix&#123;
+    std::vector&lt;T&gt; data;
+    int sz;
+    &#x2F;&#x2F; 构造全0矩阵，或者斜对角填上自定义数字
+    Matrix(int sz, T v &#x3D; 0): sz(sz), data(sz * sz, 0)&#123;
+        int cur &#x3D; 0;
+        do&#123;
+            data[cur] &#x3D; v;
+            cur +&#x3D; sz + 1;
+        &#125;while(cur &lt; sz * sz);
+    &#125;
+    &#x2F;&#x2F;从vector中构造矩阵
+    Matrix(int sz, std::vector&lt;T&gt;&amp; arg): sz(sz), data(sz * sz, 0)&#123;
+        assert(arg.size() &gt;&#x3D; sz * sz);
+        for(int i &#x3D; 0; i &lt; sz * sz; ++i) data[i] &#x3D; arg[i];
+    &#125;
+    &#x2F;&#x2F;从vector中构造矩阵，右值
+    Matrix(int sz, std::vector&lt;T&gt;&amp;&amp; arg): sz(sz), data(sz * sz, 0)&#123;
+        assert(arg.size() &gt;&#x3D; sz * sz);
+        for(int i &#x3D; 0; i &lt; sz * sz; ++i) data[i] &#x3D; arg[i];
+    &#125;
+    Matrix operator + (const Matrix&amp; arg) const &#123;
+        assert(sz &#x3D;&#x3D; arg.sz);
+        Matrix ret(sz);
+        for(int i &#x3D; 0; i &lt; sz * sz; ++i)&#123;
+            ret.data[i] &#x3D; data[i] + arg.data[i];
+        &#125;
+        return ret;
+    &#125;
+    Matrix operator * (const Matrix&amp; arg) const &#123;
+        assert(sz &#x3D;&#x3D; arg.sz);
+        Matrix ret(sz);
+        for(int i &#x3D; 0; i &lt; sz; ++i)&#123;
+            for(int j &#x3D; 0; j &lt; sz; ++j)&#123;
+                for(int k &#x3D; 0; k &lt; sz; ++k)&#123;
+                    ret.data[i * sz + j] +&#x3D; data[i * sz + k] * arg.data[k * sz + j];
+                &#125;
+            &#125;
+        &#125;
+        return ret;
+    &#125;
+    Matrix operator - (const Matrix&amp; arg) const &#123;
+        assert(sz &#x3D;&#x3D; arg.sz);
+        Matrix ret(sz);
+        for(int i &#x3D; 0; i &lt; sz * sz; ++i) ret.data[i] &#x3D; data[i] - arg.data[i];
+        return ret;
+    &#125;
+    friend std::ostream &amp; operator &lt;&lt; (std::ostream&amp; ots, const Matrix&amp; arg)&#123;
+        for(int i &#x3D; 0; i &lt; arg.sz; ++i)&#123;
+            for(int j &#x3D; 0; j &lt; arg.sz; ++j)&#123;
+                if(j) ots &lt;&lt; &quot; &quot;;
+                ots &lt;&lt; arg.data[i * arg.sz + j];
+            &#125;
+            if(i + 1 !&#x3D; arg.sz) ots &lt;&lt; &quot;\n&quot;;
+        &#125;
+        return ots;
+    &#125;
+&#125;;</code></pre></div></figure>
+<h2 id="高斯消元"><a class="markdownIt-Anchor" href="#高斯消元"></a> 高斯消元</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+struct Gauss&#123;
+    Gauss(int argR, int argC): r(argR), c(argC), mat(r, vector&lt;T&gt;(c, 0)), idx(r, 0)&#123;
+        assert(argC &gt;&#x3D; argR);
+        iota(idx.begin(), idx.end(), 0);
+    &#125;
+    T&amp; operator () (int row, int col)&#123;
+        return mat[row][col];
+    &#125;
+    int r, c;
+    friend istream&amp; operator &gt;&gt; (istream&amp; its, Gauss&amp; arg)&#123;
+        for(int i &#x3D; 0; i &lt; arg.r; ++i)&#123;
+            for(int j &#x3D; 0; j &lt; arg.c; ++j)&#123;
+                its &gt;&gt; arg(i, j);
+            &#125;
+        &#125;
+        return its;
+    &#125;
+    friend ostream&amp; operator &lt;&lt; (ostream&amp; ots, Gauss&amp; arg)&#123;
+        for(int i &#x3D; 0; i &lt; arg.r; ++i)&#123;
+            for(int j &#x3D; 0; j &lt; arg.c; ++j)&#123;
+                ots &lt;&lt; arg(arg.idx[i], j);
+                if(j + 1 !&#x3D; arg.c) ots &lt;&lt; &quot; &quot;;
+            &#125;
+            if(i + 1 !&#x3D; arg.r) ots &lt;&lt; &quot;\n&quot;;
+        &#125;
+        return ots;
+    &#125;
+    vector&lt;vector&lt;T&gt;&gt; mat;
+    vector&lt;int&gt; idx;
+    bool elimination(const function&lt;bool(T)&gt;&amp; isZero, const function&lt;T(T)&gt;&amp; inv)&#123;
+        for(int i &#x3D; 0; i &lt; r; ++i)&#123;
+            int cur &#x3D; i;
+            for(int j &#x3D; i + 1; j &lt; r; ++j)&#123;
+                if(abs(mat[idx[j]][i]) &gt; abs(mat[idx[cur]][i]))&#123;
+                    cur &#x3D; j;
+                &#125;
+            &#125;
+            swap(idx[i], idx[cur]);
+            if(isZero(mat[idx[i]][i])) return false;
+            T mul &#x3D; inv(mat[idx[i]][i]);
+            for(int j &#x3D; i; j &lt; c; ++j)&#123;
+                mat[idx[i]][j] *&#x3D; mul;
+            &#125;
+            for(int i1 &#x3D; 0; i1 &lt; r; ++i1)&#123;
+                if(i1 &#x3D;&#x3D; i) continue;
+                T cmul &#x3D; mat[idx[i1]][i];
+                for(int j &#x3D; i; j &lt; c; ++j)&#123;
+                    mat[idx[i1]][j] -&#x3D; mat[idx[i]][j] * cmul;
+                &#125;
+            &#125;
+        &#125;
+        return true;
+    &#125;
+&#125;;</code></pre></div></figure>
+<h2 id="线性基"><a class="markdownIt-Anchor" href="#线性基"></a> 线性基</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct LBase&#123;
+  vector&lt;long long&gt; _data;
+  LBase(): _data(64, 0)&#123;&#125;
+  bool insert(long long x)&#123;
+    for(int i &#x3D; 63 - __builtin_clzll(x); i &gt;&#x3D; 0; --i)&#123;
+      if((x &gt;&gt; i) &amp; 1)&#123;
+        if(_data[i]) x ^&#x3D; _data[i];
+        else&#123;
+          _data[i] &#x3D; x;
+          break;
+        &#125;
+      &#125;
+    &#125;
+    return x &gt; 0;
+  &#125;
+  LBase&amp; operator +&#x3D; (const LBase&amp; arg)&#123;
+    for(auto ptr &#x3D; arg._data.rbegin(); ptr !&#x3D; arg._data.rend(); ++ptr)&#123;
+      this-&gt;insert(*ptr);
+    &#125;
+    return *this;
+  &#125;
+  long long query()&#123;
+    long long ret &#x3D; 0;
+    for(auto ptr &#x3D; _data.rbegin(); ptr !&#x3D; _data.rend(); ++ptr)&#123;
+      if(*ptr)&#123;
+        if((ret ^ (*ptr)) &gt; ret) ret ^&#x3D; *ptr;
+      &#125;
+    &#125;
+    return ret;
+  &#125;
+  int count()&#123;
+    int ret &#x3D; 0;
+    for(auto&amp; it: _data) if(it) ++ret;
+    return ret;
+  &#125;
+&#125;;</code></pre></div></figure>
+<h1 id="自适应辛普森"><a class="markdownIt-Anchor" href="#自适应辛普森"></a> 自适应辛普森</h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+T simpson(T l, T r, const function&lt;T(T)&gt;&amp; f)&#123;
+  T mid &#x3D; (l + r) &#x2F; 2;
+  return (r - l) * (f(l) + 4 * f(mid) + f(r)) &#x2F; 6;
+&#125;
+
+template&lt;typename T&gt;
+T asr(T l, T r, T delta, T ans, int step, const function&lt;T(T)&gt;&amp; f)&#123;
+  T mid &#x3D; (l + r) &#x2F; 2;
+  T fl &#x3D; simpson&lt;T&gt;(l, mid, f), fr &#x3D; simpson&lt;T&gt;(mid, r, f);
+  if(abs(fl + fr - ans) &lt;&#x3D; 15 * delta and step &lt; 0)&#123;
+    return fl + fr + (fl + fr - ans) &#x2F; 15;
+  &#125;
+  return asr(l, mid, delta &#x2F; 2, fl, step - 1, f) + asr(mid, r, delta &#x2F; 2, fr, step - 1, f);
+&#125;
+template&lt;typename T &#x3D; double&gt;
+T adaptiveSimpson(T l, T r, T delta, const function&lt;T(T)&gt;&amp; f)&#123;
+  return asr&lt;T&gt;(l, r, delta, simpson&lt;T&gt;(l, r, f), 12, f);
+&#125;</code></pre></div></figure>
+<h1 id="多项式"><a class="markdownIt-Anchor" href="#多项式"></a> 多项式</h1>
+<h2 id="快速傅立叶变换"><a class="markdownIt-Anchor" href="#快速傅立叶变换"></a> 快速傅立叶变换</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+void butterflyDiagram(vector&lt;complex&lt;T&gt;&gt;&amp; vec)&#123;
+    assert(__builtin_popcount(vec.size()) &#x3D;&#x3D; 1);
+    vector&lt;int&gt; rev(vec.size());
+    for(int i &#x3D; 0; i &lt; vec.size(); ++i)&#123;
+        rev[i] &#x3D; rev[i &gt;&gt; 1] &gt;&gt; 1;
+        if(i &amp; 1)&#123;
+            rev[i] |&#x3D; (vec.size() &gt;&gt; 1);
+        &#125;
+    &#125;
+    for(int i &#x3D; 0; i &lt; vec.size(); ++i)&#123;
+        if(i &lt; rev[i])&#123;
+            swap(vec[i], vec[rev[i]]);
+        &#125;
+    &#125;
+&#125;
+&#x2F;&#x2F; on &#x3D;&#x3D; 1 时是 DFT，on &#x3D;&#x3D; -1 时是 IDFT
+template&lt;typename T&gt;
+void fft(vector&lt;complex&lt;T&gt;&gt;&amp; vec, int on)&#123;
+    assert(__builtin_popcount(vec.size()) &#x3D;&#x3D; 1);
+    butterflyDiagram(vec);
+    for(int h &#x3D; 1; h &lt; vec.size(); h &lt;&lt;&#x3D; 1)&#123;
+        complex&lt;T&gt; wn(cos(M_PI &#x2F; h), sin(on * M_PI &#x2F; h));
+        for(int j &#x3D; 0; j &lt; vec.size(); j +&#x3D; h * 2)&#123;
+            complex&lt;T&gt; w(1, 0);
+            for(int k &#x3D; j; k &lt; j + h; ++k)&#123;
+                assert(k &lt; vec.size() and h + k &lt; vec.size());
+                auto u &#x3D; vec[k];
+                auto t &#x3D; w * vec[k + h];
+                vec[k] &#x3D; u + t;
+                vec[k + h] &#x3D; u - t;
+                w *&#x3D; wn;
+            &#125;
+        &#125;
+    &#125;
+    if(on &#x3D;&#x3D; -1)&#123;
+        for(auto&amp; it: vec)&#123;
+            it.real(it.real() &#x2F; vec.size());
+        &#125;
+    &#125;
+&#125;</code></pre></div></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A8%A1%E6%9D%BF/" class="category-chain-item">模板</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+        <a href="/tags/CPP/">#CPP</a>
+      
+        <a href="/tags/%E6%A8%A1%E6%9D%BF/">#模板</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>万物皆数</div>
+      <div>https://dianhsu.com/2022/08/27/template-math/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Dian Hsu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/28/database/" title="数据库">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数据库</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/27/template-game/" title="一切，尽在卡牌中。">
+                        <span class="hidden-mobile">一切，尽在卡牌中。</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"dianhsu/blog-raw","repo-id":"MDEwOlJlcG9zaXRvcnkzNzE1NzgxOTE=","category":"General","category-id":"MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyOTcxODAy","theme-light":"light","theme-dark":"dark","mapping":"title","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN","loading":"lazy"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      鄂ICP备2020020124号-2
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

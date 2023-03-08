@@ -1,0 +1,1769 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <link rel="icon" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dian Hsu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="C++  虚函数  虚函数，纯虚函数和虚析构函数 [1]   C++ 中的虚函数的作用主要是实现了多态的机制。关于多态，简而言之就是用父类型的指针指向其子类的实例，然后通过父类的指针调用实际子类的成员函数。这种技术可以让父类的指针有“多种形态”，这是一种泛型技术。如果调用非虚函数，则无论实际对象是什么类型，都执行基类类型所定义的函数。非虚函数总是在编译时根据调用该函数的对象，引用或指针的类型而确">
+<meta property="og:type" content="article">
+<meta property="og:title" content="八股文收集">
+<meta property="og:url" content="https://dianhsu.com/2022/07/23/eight-legged-essay/index.html">
+<meta property="og:site_name" content="dianhsuのblog">
+<meta property="og:description" content="C++  虚函数  虚函数，纯虚函数和虚析构函数 [1]   C++ 中的虚函数的作用主要是实现了多态的机制。关于多态，简而言之就是用父类型的指针指向其子类的实例，然后通过父类的指针调用实际子类的成员函数。这种技术可以让父类的指针有“多种形态”，这是一种泛型技术。如果调用非虚函数，则无论实际对象是什么类型，都执行基类类型所定义的函数。非虚函数总是在编译时根据调用该函数的对象，引用或指针的类型而确">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.dianhsu.com/img/2022-07-23-11-46-55.jpeg">
+<meta property="article:published_time" content="2022-07-23T01:41:22.000Z">
+<meta property="article:modified_time" content="2023-03-08T02:21:06.625Z">
+<meta property="article:author" content="Dian Hsu">
+<meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="数据库原理">
+<meta property="article:tag" content="软件设计模式">
+<meta property="article:tag" content="计算机组成原理">
+<meta property="article:tag" content="编译原理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.dianhsu.com/img/2022-07-23-11-46-55.jpeg">
+  
+  
+  
+  <title>八股文收集 - dianhsuのblog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dianhsu.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gHBUbGnezwPEckLGQuK5MYV1-MdYXbMMI","app_key":"kokqnKgfEiMRyh31b4ofNY5k","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="八股文收集"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-23 09:41" pubdate>
+          2022年7月23日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          30k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          247 分钟
+        
+      </span>
+    
+
+    
+    
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">八股文收集</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h1>
+<h2 id="虚函数"><a class="markdownIt-Anchor" href="#虚函数"></a> 虚函数</h2>
+<h3 id="虚函数纯虚函数和虚析构函数-sup-idfnref1-classfootnote-refa-hreffn1-relfootnotespan-classhint-top-hint-rounded-aria-labelc岗位面试真题宝典httpswwwnowcodercomissuetutorialtutorialid100691spanasup"><a class="markdownIt-Anchor" href="#虚函数纯虚函数和虚析构函数-sup-idfnref1-classfootnote-refa-hreffn1-relfootnotespan-classhint-top-hint-rounded-aria-labelc岗位面试真题宝典httpswwwnowcodercomissuetutorialtutorialid100691spanasup"></a> 虚函数，纯虚函数和虚析构函数 <sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[C++岗位面试真题宝典](https://www.nowcoder.com/issue/tutorial?tutorialId=10069)">[1]</span></a></sup></h3>
+<ul>
+<li>
+<p>C++ 中的虚函数的作用主要是实现了多态的机制。关于多态，简而言之就是用父类型的指针指向其子类的实例，然后通过父类的指针调用实际子类的成员函数。这种技术可以让父类的指针有“多种形态”，这是一种泛型技术。如果调用非虚函数，则无论实际对象是什么类型，都执行基类类型所定义的函数。非虚函数总是在编译时根据调用该函数的对象，引用或指针的类型而确定。如果调用虚函数，则直到运行时才能确定调用哪个函数，运行的虚函数是引用所绑定或指针所指向的对象所属类型定义的版本。虚函数必须是基类的非静态成员函数。虚函数的作用是实现动态联编，也就是在程序的运行阶段动态地选择合适的成员函数，在定义了虚函数后，可以在基类的派生类中对虚函数重新定义，在派生类中重新定义的函数应与虚函数具有相同的形参个数和形参类型。以实现统一的接口，不同定义过程。如果在派生类中没有对虚函数重新定义，则它继承其基类的虚函数。</p>
+  <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class Person&#123;
+    public:
+        &#x2F;&#x2F;虚函数
+        virtual void GetName()&#123;
+            cout&lt;&lt;&quot;PersonName:xiaosi&quot;&lt;&lt;endl;
+        &#125;;
+&#125;;
+class Student:public Person&#123;
+    public:
+        void GetName()&#123;
+            cout&lt;&lt;&quot;StudentName:xiaosi&quot;&lt;&lt;endl;
+        &#125;;
+&#125;;
+int main()&#123;
+    &#x2F;&#x2F;指针
+    Person *person &#x3D; new Student();
+    &#x2F;&#x2F;基类调用子类的函数
+    person-&gt;GetName();&#x2F;&#x2F;StudentName:xiaosi
+&#125;</code></pre></div></figure>
+<p>虚函数（Virtual Function）是通过一张虚函数表（Virtual Table）来实现的。简称为V-Table。在这个表中，主是要一个类的虚函数的地址表，这张表解决了继承、覆盖的问题，保证其容真实反应实际的函数。这样，在有虚函数的类的实例中这个表被分配在了这个实例的内存中，所以，当我们用父类的指针来操作一个子类的时候，这张虚函数表就显得由为重要了，它就像一个地图一样，指明了实际所应该调用的函数。</p>
+</li>
+<li>
+<p>纯虚函数是在基类中声明的虚函数，它在基类中没有定义，但要求任何派生类都要定义自己的实现方法。在基类中实现纯虚函数的方法是在函数原型后加<code>=0</code>（<code>virtual void GetName() = 0</code>）。在很多情况下，基类本身生成对象是不合情理的。例如，动物作为一个基类可以派生出老虎、孔雀等子类，但动物本身生成对象明显不合常理。为了解决上述问题，将函数定义为纯虚函数，则编译器要求在派生类中必须予以重写以实现多态性。同时含有纯虚拟函数的类称为抽象类，它不能生成对象。这样就很好地解决了上述两个问题。将函数定义为纯虚函数能够说明，该函数为后代类型提供了可以覆盖的接口，但是这个类中的函数绝不会调用。声明了纯虚函数的类是一个抽象类。所以，用户不能创建类的实例，只能创建它的派生类的实例。必须在继承类中重新声明函数（不要后面的＝0）否则该派生类也不能实例化，而且它们在抽象类中往往没有定义。定义纯虚函数的目的在于，使派生类仅仅只是继承函数的接口。纯虚函数的意义，让所有的类对象（主要是派生类对象）都可以执行纯虚函数的动作，但类无法为纯虚函数提供一个合理的缺省实现。所以类纯虚函数的声明就是在告诉子类的设计者，“你必须提供一个纯虚函数的实现，但我不知道你会怎样实现它”。</p>
+  <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;抽象类
+class Person&#123;
+    public:
+        &#x2F;&#x2F;纯虚函数
+        virtual void GetName()&#x3D;0;
+&#125;;
+class Student:public Person&#123;
+    public:
+        Student()&#123;
+        &#125;;
+        void GetName()&#123;
+            cout&lt;&lt;&quot;StudentName:xiaosi&quot;&lt;&lt;endl;
+        &#125;;
+&#125;;
+int main()&#123;
+    Student student;
+&#125;</code></pre></div></figure>
+</li>
+</ul>
+<h3 id="引入虚函数带来的问题sup-idfnref4-classfootnote-refa-hreffn4-relfootnotespan-classhint-top-hint-rounded-aria-label为什么-c-中使用虚函数时会影响效率httpswwwzhihucomquestion22958966answer231956124spanasup"><a class="markdownIt-Anchor" href="#引入虚函数带来的问题sup-idfnref4-classfootnote-refa-hreffn4-relfootnotespan-classhint-top-hint-rounded-aria-label为什么-c-中使用虚函数时会影响效率httpswwwzhihucomquestion22958966answer231956124spanasup"></a> 引入虚函数带来的问题<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="[为什么 C++ 中使用虚函数时会影响效率？](https://www.zhihu.com/question/22958966/answer/23195612)">[4]</span></a></sup></h3>
+<p>虚函数影响效率有两点原因，第一，Cache命中率不够好，一般函数可能编译后的指令就在当前函数地址附近，这样很可能在调用前目标函数代码已经被载入指令cache. 但是虚拟函数不在cache中的概率高。而且一调函数就可能在cache中载入虚函数表，如果这个虚函数又调用其它的虚函数，那么可能又得载入到cache中导致cache被占用，指令和数据的cache命中率下降。 第二点编译器不好优化。因为编译器只知道你要调用的是一个不确定的地址处的函数，没法知道更多细节，也就没法替你做更多优化。</p>
+<h2 id="c-sort-函数的实现"><a class="markdownIt-Anchor" href="#c-sort-函数的实现"></a> C++ sort 函数的实现</h2>
+<blockquote>
+<p>Reference: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Introsort">https://en.wikipedia.org/wiki/Introsort</a></p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/gcc-mirror/gcc/blob/master/libstdc++-v3/include/bits/stl_algo.h">libstdc++</a> 和 <a target="_blank" rel="noopener" href="https://github.com/llvm/llvm-project/blob/main/libcxx/include/__algorithm/sort.h">libc++</a> 中的 sort函数的实现中，主体部分是使用了 Introsort 算法。</p>
+<p>内省排序（英语：Introsort）是由David Musser在1997年设计的排序算法。这个排序算法首先从快速排序开始，当递归深度超过一定深度（深度为排序元素数量的对数值）后转为堆排序。采用这个方法，内省排序既能在常规数据集上实现快速排序的高性能，又能在最坏情况下仍保持 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 的时间复杂度。由于这两种算法都属于比较排序算法，所以内省排序也是一个比较排序算法。</p>
+<h2 id="c11141720新特性"><a class="markdownIt-Anchor" href="#c11141720新特性"></a> C++11/14/17/20新特性</h2>
+<h3 id="c11新特性"><a class="markdownIt-Anchor" href="#c11新特性"></a> C++11新特性</h3>
+<h4 id="智能指针"><a class="markdownIt-Anchor" href="#智能指针"></a> 智能指针</h4>
+<h5 id="unique_ptr"><a class="markdownIt-Anchor" href="#unique_ptr"></a> unique_ptr</h5>
+<blockquote>
+<p>为动态申请的内存提供异常安全<br />
+将动态申请内存的所有权传递给某个函数(不能给复制，只能移动)<br />
+从某个函数返回动态申请内存的所有权<br />
+在容器中保存指针</p>
+</blockquote>
+<p>在那些要不是为了避免不安全的异常问题（以及为了保证指针所指向的对象都被正确地删除释放），我们不可以使用内建指针的情况下，我们可以在容器中保存unique_ptr以代替内建指针</p>
+<h5 id="shared_ptr-weak_ptr"><a class="markdownIt-Anchor" href="#shared_ptr-weak_ptr"></a> shared_ptr &amp; weak_ptr</h5>
+<p>当 shared_ref_cnt 被减为0时，自动释放 ptr 指针所指向的对象。当 shared_ref_cnt 与 weak_ref_cnt 都变成0时，才释放 ptr_manage 对象。<br />
+如此以来，只要有相关联的 shared_ptr 存在，对象就存在。weak_ptr 不影响对象的生命周期。当用 weak_ptr 访问对象时，对象有可能已被释放了，要先 lock()。<br />
+weak_ptr可以保存一个“弱引用”，指向一个已经用shared_ptr进行管理的对象。为了访问这个对象，一个weak_ptr可以通过shared_ptr的构造函数或者是weak_ptr的成员函数lock()转化为一个shared_ptr。当最后一个指向这个对象的shared_ptr退出其生命周期并且这个对象被释放之后，将无法从指向这个对象的weak_ptr获得一个shared_ptr指针，shared_ptr的构造函数会抛出异常，而weak_ptr::lock也会返回一个空指针。</p>
+<h6 id="weak_ptr防止循环引用"><a class="markdownIt-Anchor" href="#weak_ptr防止循环引用"></a> weak_ptr防止循环引用</h6>
+<p>众所周知，shared_ptr可能造成循环引用问题，那么weak_ptr是怎么解决循环引用问题的呢？看一个例子</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class A &#123;
+public:
+    shared_ptr&lt;B&gt; ab;
+    &#x2F;&#x2F; 这里可以加上构造／析构函数看下是否能够被调用
+&#125;;
+class B &#123;
+public:
+    shared_ptr&lt;A&gt; ba;
+    &#x2F;&#x2F; 这里可以加上构造／析构函数看下是否能够被调用
+&#125;;
+shared_ptr&lt;A&gt; spa &#x3D; make_shared&lt;A&gt;();  &#x2F;&#x2F; 定义一个A对象
+shared_ptr&lt;B&gt; spb &#x3D; make_shared&lt;B&gt;();  &#x2F;&#x2F; 定义一个A对象
+spa.ab &#x3D; spb; &#x2F;&#x2F;shared_ptr计数成员_Sp_counted_base浅拷贝，use ref＋＋
+spb.ba &#x3D; spa;</code></pre></div></figure>
+<p>显然，由于A、B互相引用，都无法释放，造成内存泄漏(示例参考自blog)</p>
+<p>怎样打破这种循环引用？cppreference的说法是</p>
+<blockquote>
+<p>std::weak_ptr 的另一用法是打断 std::shared_ptr 所管理的对象组成的环状引用。若这种环被孤立（例如无指向环中的外部共享指针），则 shared_ptr 引用计数无法抵达零，而内存被泄露。能令环中的指针之一为弱指针以避免此情况。</p>
+</blockquote>
+<h5 id="implement-a-simple-smart-pointer-shared_ptr"><a class="markdownIt-Anchor" href="#implement-a-simple-smart-pointer-shared_ptr"></a> Implement a simple smart pointer (shared_ptr)</h5>
+<p>It’s designed with two classes. The first is <code>ReferenceCount</code>, it’s used to count the reference number of the object. The second is <code>MySharedPtr</code>, it’s used to manage the object. The <code>MySharedPtr</code> class has a pointer to the <code>ReferenceCount</code> class. When the <code>MySharedPtr</code> class is created, it will create a <code>ReferenceCount</code> class and set the reference number to 1. When the <code>MySharedPtr</code> class is copied, it will increase the reference number of the <code>ReferenceCount</code> class. When the <code>MySharedPtr</code> class is deleted, it will decrease the reference number of the <code>ReferenceCount</code> class. When the reference number of the <code>ReferenceCount</code> class is 0, it will delete the object and the <code>ReferenceCount</code> class.</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;mutex&gt;
+using namespace std;
+class ReferenceCount&#123;
+public:
+    explicit ReferenceCount(int ref &#x3D; 1): cnt(ref)&#123;
+    &#125;
+    void add_ref()&#123;
+        ++cnt;
+    &#125;
+    void remove_ref()&#123;
+        --cnt;
+    &#125;
+    [[nodiscard]] unsigned get() const&#123;
+        return cnt;
+    &#125;
+private:
+    unsigned int cnt;
+&#125;;
+template&lt;typename T&gt;
+class MySharedPtr&#123;
+public:
+    explicit MySharedPtr(T* argPtr): targetPtr(argPtr), cntPtr(new ReferenceCount())&#123;&#125;
+    MySharedPtr(): targetPtr(nullptr), cntPtr(nullptr)&#123;&#125;
+    MySharedPtr(const MySharedPtr&amp; argSharedPtr): targetPtr(argSharedPtr.targetPtr), cntPtr(argSharedPtr.cntPtr)&#123;
+        m1.lock();
+        if(cntPtr)&#123;
+            cntPtr-&gt;add_ref();
+        &#125;
+        m1.unlock();
+    &#125;
+    ~MySharedPtr()&#123;
+        m1.lock();
+        if(cntPtr)&#123;
+            cntPtr-&gt;remove_ref();
+        &#125;
+        if(!cntPtr-&gt;get())&#123;
+            delete targetPtr;
+            delete cntPtr;
+            targetPtr &#x3D; nullptr;
+            cntPtr &#x3D; nullptr;
+        &#125;
+        m1.unlock();
+    &#125;
+    T* getTargetPtr()&#123;
+        return targetPtr;
+    &#125;
+    ReferenceCount* getReferenceCountPtr()&#123;
+        return cntPtr;
+    &#125;
+    T&amp; operator * ()&#123;
+        return *targetPtr;
+    &#125;
+    T* operator -&gt; ()&#123;
+        return targetPtr;
+    &#125;
+private:
+    mutex m1;
+    T* targetPtr;
+    ReferenceCount *cntPtr;
+&#125;;
+int main()&#123;
+    auto ptr &#x3D; new pair&lt;int, int&gt;&#123;1, 2&#125;;
+    MySharedPtr&lt;pair&lt;int, int&gt;&gt; ptr1(ptr);
+    MySharedPtr&lt;pair&lt;int, int&gt;&gt; ptr2(ptr1);
+    cout &lt;&lt; ptr2-&gt;first &lt;&lt; endl;
+    cout &lt;&lt; (*ptr2).second &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+<h4 id="右值引用与移动构造函数"><a class="markdownIt-Anchor" href="#右值引用与移动构造函数"></a> 右值引用与移动构造函数</h4>
+<h3 id="c14新特性-sup-idfnref2-classfootnote-refa-hreffn2-relfootnotespan-classhint-top-hint-rounded-aria-labelc14新特性的所有知识点全在这儿啦httpssegmentfaultcoma11900000234414272spanasup"><a class="markdownIt-Anchor" href="#c14新特性-sup-idfnref2-classfootnote-refa-hreffn2-relfootnotespan-classhint-top-hint-rounded-aria-labelc14新特性的所有知识点全在这儿啦httpssegmentfaultcoma11900000234414272spanasup"></a> C++14新特性 <sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="[C++14新特性的所有知识点全在这儿啦！](https://segmentfault.com/a/1190000023441427)">[2]</span></a></sup></h3>
+<h4 id="函数返回值类型推导"><a class="markdownIt-Anchor" href="#函数返回值类型推导"></a> 函数返回值类型推导</h4>
+<p>C++14 对函数返回类型推导规则做了优化，先看一段代码：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;iostream&gt;
+
+using namespace std;
+
+auto func(int i)&#123;
+    return i;
+&#125;
+
+int main()&#123;
+    cout &lt;&lt; func(4) &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+<p>使用C++11编译：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">~&#x2F;test$ g++ test.cc -std&#x3D;c++11
+test.cc:5:16: error: ‘func’ function uses ‘auto’ type specifier without trailing return type
+ auto func(int i) &#123;
+                ^
+test.cc:5:16: note: deduced return type only available with -std&#x3D;c++14 or -std&#x3D;gnu++14</code></pre></div></figure>
+<p>上面的代码使用 C++11 是不能通过编译的，通过编译器输出的信息也可以看见这个特性需要到 C++14 才被支持。</p>
+<p>返回值类型推导也可以用在模板中：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+template&lt;typename T&gt;
+auto func(T t)&#123; return t; &#125;
+
+int main()&#123;
+    cout &lt;&lt; func(4) &lt;&lt; endl;
+    cout &lt;&lt; func(3.4) &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+<p><strong>注意</strong></p>
+<ol>
+<li>函数内如果有多个return语句，它们必须返回相同类型，否则编译失败。 <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">auto func(bool flag)&#123;
+    if(flag) return 1;
+    else return 2.3; &#x2F;&#x2F; error
+&#125;
+&#x2F;&#x2F; inconsistent deduction for auto return type: &#39;int&#39; and then &#39;double&#39;</code></pre></div></figure>
+</li>
+<li>如果return语句返回初始化列表，返回值类型推导也失败。 <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">auto func()&#123;
+    return &#123;1, 2, 3&#125;;   &#x2F;&#x2F; error returning initializer list
+&#125;</code></pre></div></figure>
+</li>
+<li>如果函数是虚函数，不能使用返回类型推导。 <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct A&#123;
+    &#x2F;&#x2F; error: virtual function cannot have deduced return type
+    virtual auto func() &#123; return 1; &#125;
+&#125;</code></pre></div></figure>
+</li>
+<li>返回类型推导可以在前向声明中，但是在使用他们之前，翻译单元中必须能够得到函数定义。 <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">auto f();       &#x2F;&#x2F; declared, not yet defined.
+auto f() &#123; return 42; &#125;     &#x2F;&#x2F; defined, return type is int
+
+int main()&#123;
+    cout &lt;&lt; f() &lt;&lt; endl;
+&#125;</code></pre></div></figure>
+</li>
+<li>返回类型推导可以用在递归函数中，但是递归调用必须以至少一个返回语句作为先导，以便编译器推导出返回类型。 <figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">auto sum(int i)&#123;
+    if(i &#x3D;&#x3D; 1) return i;
+    else return sum(i - 1) + i;
+&#125;</code></pre></div></figure>
+</li>
+</ol>
+<h4 id="lambda参数auto"><a class="markdownIt-Anchor" href="#lambda参数auto"></a> lambda参数auto</h4>
+<p>在C++11中，lambda表达式参数需要使用具体的类型声明：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">auto f &#x3D; [](int a) &#123; return a; &#125;</code></pre></div></figure>
+<p>在C++14中，对此进行优化，lambda表达式参数可以直接是auto：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">auto f &#x3D; [](auto a)&#123; return a; &#125;
+cout &lt;&lt; f(1) &lt;&lt; endl;
+cout &lt;&lt; f(2.3f) &lt;&lt; endl;</code></pre></div></figure>
+<h4 id="变量模板"><a class="markdownIt-Anchor" href="#变量模板"></a> 变量模板</h4>
+<p>C++14支持变量模板：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;class T&gt;
+constexpr T pi &#x3D; T(3.1415926535897932385L);
+int main()&#123;
+    cout &lt;&lt; pi(int) &lt;&lt; endl;
+    cout &lt;&lt; pi(double) &lt;&lt; endl;
+&#125;</code></pre></div></figure>
+<h4 id="别名模板"><a class="markdownIt-Anchor" href="#别名模板"></a> 别名模板</h4>
+<p>C++14 也支持别名模板</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T, typename U&gt;
+struct A&#123;
+    T t;
+    U u;
+&#125;;
+
+template&lt;typename T&gt;
+using B &#x3D; A&lt;T, int&gt;;
+
+int main()&#123;
+    B&lt;double&gt; b;
+    b.t &#x3D; 10;
+    b.u &#x3D; 20;
+    cout &lt;&lt; b.t &lt;&lt; endl;
+    cout &lt;&lt; b.u &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+<h4 id="constexpr的限制"><a class="markdownIt-Anchor" href="#constexpr的限制"></a> constexpr的限制</h4>
+<p>C++14 相较于 C++11 对 constexpr 减少了一些限制：</p>
+<ol>
+<li>C++11 中constexpr函数可以递归使用，在 C++14 中可以使用局部变量和循环<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">constexpr int factorial(int n)&#123;  &#x2F;&#x2F; C++14 和 C++11 均可
+     return n &lt;&#x3D; 1 ? 1 : (n * factorial(n - 1));
+&#125;</code></pre></div></figure>
+在 C++14 中可以这样做：<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">constexpr int factorial(int n)&#123;  &#x2F;&#x2F; C++11 中不可以， C++14 中可以
+     int ret &#x3D; 0;
+     for(int i &#x3D; 0; i &lt; n; ++i)&#123;
+         ret +&#x3D; i;
+     &#125;
+     return ret;
+&#125;</code></pre></div></figure>
+</li>
+<li>C++11 中 constexpr 函数必须把所有的东西都放在一个单独的return语句中，而constexpr则无此限制：<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">constexpr int func(bool flag)&#123;   &#x2F;&#x2F; C++14 和 C++11 均可
+     return 0;
+&#125;</code></pre></div></figure>
+在 C++14 中可以这样：<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">constexpr int func(bool flag)&#123;   &#x2F;&#x2F; C++11 中不可以， C++14 中可以
+     if(flag) return 1;
+     else return 0;
+&#125;</code></pre></div></figure>
+</li>
+</ol>
+<h4 id="deprecated-标记"><a class="markdownIt-Anchor" href="#deprecated-标记"></a> [[deprecated]] 标记</h4>
+<p>C++14 中增加了 deprecated 标记，修饰类、变量、函数等，当程序中使用了被其修饰的代码的时候，编译时会产生警告，用来提示开发者该标记修饰的内容将来可能会被移除，尽量不要使用。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct [[deprecated]] A &#123;&#125;;
+
+int main()&#123;
+    A a;
+    return 0;
+&#125;</code></pre></div></figure>
+<p>当编译时，会出现如下警告：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">~&#x2F;test$ g++ test.cc -std&#x3D;c++14
+test.cc: In function ‘int main()’:
+test.cc:11:7: warning: ‘A’ is deprecated [-Wdeprecated-declarations]
+     A a;
+       ^
+test.cc:6:23: note: declared here
+ struct [[deprecated]] A &#123;</code></pre></div></figure>
+<h4 id="二进制字面量与整形字面量分隔符"><a class="markdownIt-Anchor" href="#二进制字面量与整形字面量分隔符"></a> 二进制字面量与整形字面量分隔符</h4>
+<p>C++14 引入了二进制字面量，也引入了分隔符。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int a &#x3D; 0b0001&#39;0010&#39;1010;
+double b &#x3D; 3.14&#39;1234&#39;1234&#39;1234;</code></pre></div></figure>
+<h4 id="stdmake_unique"><a class="markdownIt-Anchor" href="#stdmake_unique"></a> std::make_unique</h4>
+<p>我们都知道 C++11 中有std::make_shared，却没有std::make_unique，在 C++14 中已经完善。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct A &#123;&#125;;
+std::unique_ptr&lt;A&gt; ptr &#x3D; std::make_unique&lt;A&gt;();</code></pre></div></figure>
+<h4 id="stdmake_timed_mutex-与-stdshared_lock"><a class="markdownIt-Anchor" href="#stdmake_timed_mutex-与-stdshared_lock"></a> std::make_timed_mutex 与 std::shared_lock</h4>
+<p>C++14 通过 std::make_timed_mutex 与 std::shared_lock 来实现读写锁，保证多个线程可以同时读，写操作不可以同时和读操作一起进行。<br />
+实现方式如下：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct ThreadSafe&#123;
+    mutable std::make_timed_mutex mutex_;
+    int value_;
+    ThreadSafe()&#123;
+        value_ &#x3D; 0;
+    &#125;
+    int get() const &#123;
+        std::shared_lock&lt;std::shared_timed_mutex&gt; loc(mutex_);
+        return value_;
+    &#125;
+    void increase() &#123;
+        std::unique_lock&lt;std::shared_timed_mutex&gt; lock(mutex_);
+        value_ +&#x3D; 1;
+    &#125;
+&#125;</code></pre></div></figure>
+<p>timed锁可以带来超时时间。</p>
+<h4 id="stdinteger_sequence"><a class="markdownIt-Anchor" href="#stdinteger_sequence"></a> std::integer_sequence ⭐</h4>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T, T... ints&gt;
+void print_sequence(std::integer_sequence&lt;T, ints...&gt; int_seq)&#123;
+    std::cout &lt;&lt; &quot;the sequence of size &quot; &lt;&lt; int_seq.size() &lt;&lt; &quot;: &quot;;
+    ((std::cout &lt;&lt; ints &lt;&lt; &quot; &quot;), ...);
+    stdcout &lt;&lt; &quot;\n&quot;;
+&#125;</code></pre></div></figure>
+<p>std::integer_sequence 和 std::tuple 的配合使用：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template &lt;std::size_t... Is, typename F, typename T&gt;
+auto map_filter_tuple(F f, T&amp; t)&#123;
+    return std::make_tuple(f(std::get&lt;Is&gt;(t))...);
+&#125;
+template &lt;std::size_t... Is, typename F, typename T&gt;
+auto map_filter_tuple(std::index_sequence&lt;Is...&gt;, F f, T&amp; t)&#123;
+    return std::make_tuple(f(std::get&lt;Is&gt;(t))...);
+&#125;
+template &lt;typename S, typename F, typename T&gt;
+auto map_filter_tuple(F&amp;&amp; f, T&amp; t)&#123;
+    return map_filter_tuple(S&#123;&#125;, std::forward&lt;F&gt;(f), t);
+&#125;</code></pre></div></figure>
+<h4 id="stdexchange"><a class="markdownIt-Anchor" href="#stdexchange"></a> std::exchange</h4>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; exchange 的实现
+template&lt;class T, class U &#x3D; T&gt;
+constexpr T exchange(T&amp; obj, U&amp;&amp; new_value)&#123;
+    T old_value &#x3D; std::move(obj);
+    obj &#x3D; std::forward&lt;T&gt;(new_value);
+    return old_value;
+&#125;
+&#x2F;&#x2F; new_value 的值给了 obj，而没有对 new_value 赋值。
+int main()&#123;
+    std::vector&lt;int&gt; v;
+    std::exchange(v, &#123;1, 2, 3, 4&#125;);
+    cout &lt;&lt; v.size() &lt;&lt; endl;
+    for(int a: v)&#123;
+        cout &lt;&lt; a &lt;&lt; &quot; &quot;;
+    &#125;
+    return 0;
+&#125;</code></pre></div></figure>
+<h4 id="stdquoted"><a class="markdownIt-Anchor" href="#stdquoted"></a> std::quoted</h4>
+<p>C++14 引入 std::quoted 用于给字符串添加双引号</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int main()&#123;
+    string str &#x3D; &quot;hello world&quot;;
+    cout &lt;&lt; str &lt;&lt; endl;
+    cout &lt;&lt; std::quoted(str) &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+<h3 id="c17新特性-sup-idfnref3-classfootnote-refa-hreffn3-relfootnotespan-classhint-top-hint-rounded-aria-labelc17新特性httpssegmentfaultcoma11900000234567663spanasup"><a class="markdownIt-Anchor" href="#c17新特性-sup-idfnref3-classfootnote-refa-hreffn3-relfootnotespan-classhint-top-hint-rounded-aria-labelc17新特性httpssegmentfaultcoma11900000234567663spanasup"></a> C++17新特性 <sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="[C++17新特性](https://segmentfault.com/a/1190000023456766)">[3]</span></a></sup></h3>
+<h4 id="构造函数模板推导"><a class="markdownIt-Anchor" href="#构造函数模板推导"></a> 构造函数模板推导</h4>
+<p>在 C++17 前构造一个模板类对象需要指明类型：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">pair&lt;int, double&gt; p(1, 2.2);    &#x2F;&#x2F; before C++17</code></pre></div></figure>
+<p>C++17 就不需要特殊指定，直接可以推导出类型：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">pair p(1, 2.2); &#x2F;&#x2F; C++17 自动推导
+vector v &#x3D; &#123;1, 2, 3&#125;;   &#x2F;&#x2F; C++17</code></pre></div></figure>
+<h4 id="结构化绑定"><a class="markdownIt-Anchor" href="#结构化绑定"></a> 结构化绑定 ⭐</h4>
+<p>通过结构化绑定，对于<code>tuple</code>、<code>map</code> 等类型，获取相应值会方便很多</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">std::tuple&lt;int, double&gt; func()&#123;
+    return std::tuple(1, 2.2);
+&#125;
+int main()&#123;
+    auto [i, d] &#x3D; func();
+    cout &lt;&lt; i &lt;&lt; endl;
+    cout &lt;&lt; d &lt;&lt; endl;
+&#125;</code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void f()&#123;
+    map&lt;int, string&gt; m &#x3D; &#123;&#123;0, &quot;a&quot;&#125;, &#123;1, &quot;b&quot;&#125;&#125;;
+    for(const auto&amp; [i, s]: m)&#123;
+        cout &lt;&lt; i &lt;&lt; &quot; &quot; &lt;&lt; s &lt;&lt; endl;
+    &#125;
+&#125;
+int main()&#123;
+    std::pair a(1, 2.3f);
+    auto [i, f] &#x3D; a;
+    cout &lt;&lt; i &lt;&lt; endl;
+    cout &lt;&lt; f &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+<p>引用的结构化绑定还可以改变对象的值</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int main()&#123;
+    std::pair a(1, 2.3f);
+    auto&amp; [i, f] &#x3D; a;
+    i &#x3D; 2;
+    cout &lt;&lt; a.first &lt;&lt; endl;
+&#125;</code></pre></div></figure>
+<p><em>注意结构化绑定不能应用于constexpr</em></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">constexpr auto [x, y] &#x3D; std::pair(1, 2.3f); &#x2F;&#x2F; compile error, C++20 可以</code></pre></div></figure>
+<p>结构化绑定不仅可以绑定 pair 和 tuple ，还可以绑定数组和结构体等。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int array[3] &#x3D; &#123;1, 2, 3&#125;;
+auto [a, b, c] &#x3D; array;
+cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; b &lt;&lt; &quot; &quot; &lt;&lt; c &lt;&lt; endl;
+&#x2F;&#x2F; 注意这里的struct的成员一定是要public的
+struct Point&#123;
+    int x, y;
+&#125;;
+Point func()&#123;
+    return &#123;1, 2&#125;;
+&#125;
+const auto [x, y] &#x3D; func();</code></pre></div></figure>
+<p>这里其实可以实现自定义类的结构化绑定，代码如下：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 需要实现相关的tuple_size和tuple_element和get&lt;N&gt;方法。
+class Entry&#123;
+public:
+    void Init()&#123;
+        name_ &#x3D; &quot;name&quot;;
+        age_ &#x3D; 10;
+    &#125;
+    std::string GetName() const &#123; return name_; &#125;
+    int GetAge() const &#123; return age_; &#125;
+private:
+    std::string name_;
+    int age_;
+&#125;
+
+template &lt;size_t I&gt;
+auto get(const Entry&amp; e)&#123;
+    if constexpr (I &#x3D;&#x3D; 0) return e.GetName();
+    else if constexpr(I &#x3D;&#x3D; 1) return e.GetAge();
+&#125;
+
+namespace std&#123;
+    template&lt;&gt; struct tuple_size&lt;Entry&gt; : integral_constant&lt;size_t, 2&gt;&#123;&#125;;
+    template&lt;&gt; struct tuple_element&lt;0, Entry&gt; &#123; using type &#x3D; std::string; &#125;;
+    template&lt;&gt; struct tuple_element&lt;1, Entry&gt; &#123; using type &#x3D; int; &#125;;
+&#125;
+
+int main()&#123;
+    Entry e;
+    e.Init();
+    auto [name, age] &#x3D; e;
+    cout &lt;&lt; name &lt;&lt; &quot; &quot; &lt;&lt; age &lt;&lt; endl; &#x2F;&#x2F; name 10
+    return 0;
+&#125;</code></pre></div></figure>
+<h4 id="if-switch-语句初始化"><a class="markdownIt-Anchor" href="#if-switch-语句初始化"></a> if-switch 语句初始化</h4>
+<p>C++17 前if语句需要这样写代码：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int a &#x3D; GetValue();
+if(a &lt; 101)&#123;
+    cout &lt;&lt; a;
+&#125;</code></pre></div></figure>
+<p>C++17 之后可以这样：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; if (init; condition)
+
+if(int a &#x3D; GetValue(); a &lt; 101)&#123;
+    cout &lt;&lt; a;
+&#125;
+
+string str &#x3D; &quot;Hi World&quot;;
+if(auto [pos, size] &#x3D; pair(str.find(&quot;Hi&quot;), str.size()); pos !&#x3D; string::npos)&#123;
+    std::cout &lt;&lt; pos &lt;&lt; &quot; Hello, size is &quot; &lt;&lt; size;
+&#125;</code></pre></div></figure>
+<p>使用这种方式可以尽可能约束作用域，让代码更简洁，可读性略有下降，但是还好</p>
+<h4 id="内联变量"><a class="markdownIt-Anchor" href="#内联变量"></a> 内联变量</h4>
+<p>C++17 前只有内联函数，现在有了内联变量，我们印象中 C++ 类的静态成员变量在头文件中是不能初始化的，但是有了内联变量，就可以达到此目的了：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; header file
+struct A &#123;
+    static const int value;
+&#125;
+inline int const A::value &#x3D; 10;
+
+&#x2F;&#x2F; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 或者 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+struct A &#123;
+    inline static const int value &#x3D; 10;
+&#125;</code></pre></div></figure>
+<h4 id="折叠表达式"><a class="markdownIt-Anchor" href="#折叠表达式"></a> 折叠表达式</h4>
+<p>C++17 引入了折叠表达式使可变模板编程更方便：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template &lt;typename ... Ts&gt;
+auto sum(Ts ... ts)&#123;
+    return (ts + ...);
+&#125;
+int a &#x3D; &#123;sum(1, 2, 3, 4, 5)&#125;;   &#x2F;&#x2F; 15
+std::string a&#123;&quot;hello &quot;&#125;;
+std::string b&#123;&quot;world&quot;&#125;;
+cout &lt;&lt; sum(a, b) &lt;&lt; endl;      &#x2F;&#x2F; hello world</code></pre></div></figure>
+<h4 id="constexpr-lambda-表达式"><a class="markdownIt-Anchor" href="#constexpr-lambda-表达式"></a> constexpr lambda 表达式</h4>
+<p>C++17 前 lambda 表达式只能在运行时使用，C++17引入了constexpr lambda表达式，可以用于在编译期进行计算。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int main()&#123;     &#x2F;&#x2F; C++17可编译
+    constexpr auto lamb &#x3D; [](int n)&#123; return n * n; &#125;;
+    static_assert(lamb(3) &#x3D;&#x3D; 9, &quot;a&quot;);
+&#125;</code></pre></div></figure>
+<p><strong>注意</strong>：constexpr函数有如下限制：<br />
+函数体不能包含汇编语句、goto语句、label、try块、静态变量、线程局部存储、没有初始化的普通变量，不能动态分配内存，不能有new、delete等，不能虚函数。</p>
+<h4 id="namespace嵌套"><a class="markdownIt-Anchor" href="#namespace嵌套"></a> namespace嵌套</h4>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">namespace A&#123;
+    namespace B&#123;
+        namespace C&#123;
+            void func();
+        &#125;
+    &#125;
+&#125;
+
+&#x2F;&#x2F; C++17，更方便更舒适
+namespace A::B::C &#123;
+    void func();
+&#125;</code></pre></div></figure>
+<h4 id="__has_include预处理表达式"><a class="markdownIt-Anchor" href="#__has_include预处理表达式"></a> __has_include预处理表达式</h4>
+<p>可以判断是否有某个头文件，代码可能会在不同编译器下工作，不同编译器的可用头文件有可能不同，所以可以用此来判断：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#if defined __has_include
+#if __has_include(&lt;charconv&gt;)
+#define has_charconv 1
+#include &lt;charconv&gt;
+#endif
+#endif
+
+std::optional&lt;int&gt; ConvertToInt(const std::string&amp; str)&#123;
+    int value&#123;&#125;;
+#ifdef has_charconv
+    const auto last &#x3D; str.data() + str.size();
+    const auto res &#x3D; std::from_chars(str.data(), last, value);
+    if(res.ec &#x3D;&#x3D; std::errc&#123;&#125; and res.ptr &#x3D;&#x3D; last) return value;
+#else
+    &#x2F;&#x2F; alternative implementation...
+    &#x2F;&#x2F; 其他的实现方式
+#endif
+    return std::nullopt;
+&#125;</code></pre></div></figure>
+<h4 id="在lambda表达式中用this捕获对象副本"><a class="markdownIt-Anchor" href="#在lambda表达式中用this捕获对象副本"></a> 在lambda表达式中用*this捕获对象副本</h4>
+<p>正常情况下，lambda表达式中访问类的成员变量需要捕获this，但是这里捕获的是this指针，指向的是对象的引用，正常情况下可能没问题，但是如果多线程情况下，函数的作用域超过了对象的作用域，对象已经被析构，还访问了成员变量，就会有问题。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct A&#123;
+    int a;
+    void func()&#123;
+        auto f &#x3D; [this]&#123;
+            cout &lt;&lt; a &lt;&lt; endl;
+        &#125;;
+        f();
+    &#125;
+&#125;;
+
+int main()&#123;
+    A a;
+    a.func();
+    return 0;
+&#125;</code></pre></div></figure>
+<p>所以 C++17 增加了新特性，捕获*this，不持有this指针，而是持有对象的拷贝，这样生命周期就与对象的生命周期不相关了。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct A&#123;
+    int a;
+    void func()&#123;
+        auto f &#x3D; [*this]&#123;
+            cout &lt;&lt; a &lt;&lt; endl;
+        &#125;;
+        f();
+    &#125;
+&#125;;
+
+int main()&#123;
+    A a;
+    a.func();
+    return 0;
+&#125;</code></pre></div></figure>
+<h4 id="新增attribute"><a class="markdownIt-Anchor" href="#新增attribute"></a> 新增Attribute</h4>
+<p>我们可能平时在项目中见过__declspec、attribute, #pragma指示符，使用它们来给编译器提供一些额外的信息，来产生一些优化或特定的代码，也可以给其他开发者一些提示信息。<br />
+例如：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct A &#123; short f[3]; &#125; __attribute__((aligned(8)));
+
+void fatal() __attribute__((noreturn));</code></pre></div></figure>
+<p>在C++11和C++14中有更方便的方法：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">[[carries_dependency]] 让编译期跳过不必要的内存栅栏指令
+[[noreturn]] 函数不会返回
+[[deprecated]] 函数将弃用的警告
+
+[[noreturn]] void terminate() noexcept;
+[[deprecated(&quot;use new func instead&quot;)]] void func() &#123;&#125;</code></pre></div></figure>
+<p>C++17又新增了三个:<br />
+[[fallthrough]]，用在switch提示可以直接落下去，不需要break，让编译器忽略警告。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">switch (i) &#123;
+    case 1:
+        xxx;    &#x2F;&#x2F; warning
+    case 2:
+        xxx;
+        [[fallthrough]];    &#x2F;&#x2F; 消除警告
+    case 3:
+        xxx;
+        break;
+&#125;</code></pre></div></figure>
+<p>使得编译器和其他开发者都可以理解开发者的意图。</p>
+<p>[[nodiscard]]：表示修饰的内容不能被忽略，可用于修饰函数，标明返回值一定要被处理。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">[[nodiscard]] int func();
+void F()&#123;
+    func(); &#x2F;&#x2F; warning 没有处理函数返回值
+&#125;</code></pre></div></figure>
+<p>[[maybe_unused]]：提示编译器修饰的内容可能暂时没有使用，避免产生警告。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void func1() &#123;&#125;
+[[maybe_unused]] void func2() &#123;&#125;    &#x2F;&#x2F; 消除警告
+void func3() &#123;
+    int x &#x3D; 1;
+    [[maybe_unused]] int y &#x3D; 2;     &#x2F;&#x2F; 消除警告
+&#125;</code></pre></div></figure>
+<h4 id="字符串转换"><a class="markdownIt-Anchor" href="#字符串转换"></a> 字符串转换 ⭐</h4>
+<p>新增from_chars函数和to_chars函数，直接看代码：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;charconv&gt;
+
+int main()&#123;
+    const std::string str&#123;&quot;123456098&quot;&#125;;
+    int value &#x3D; 0;
+    const auto res &#x3D; std::from_chars(str.data(), str.data() + 4, value);
+    if (res.ec &#x3D;&#x3D; std::errc())&#123;
+        cout &lt;&lt; value &lt;&lt; &quot;, distance &quot; &lt;&lt; res.ptr - str.data() &lt;&lt; endl;
+    &#125;else if(res.ec &#x3D;&#x3D; std::errc::invalid_argument)&#123;
+        cout &lt;&lt; &quot;invalid&quot; &lt;&lt; endl;
+    &#125;
+
+    str &#x3D; std::string(&quot;12.34&quot;);
+    double val &#x3D; 0;
+    const auto format &#x3D; std::chars_format::general;
+    res &#x3D; std::from_chars(str.data(), str.data() + str.size(), value, format);
+
+    str &#x3D; std::string(&quot;xxxxxxxx&quot;);
+    const int v &#x3D; 1234;
+    res &#x3D; std::to_chars(str.data(), str.data() + str.size(), v);
+    cout &lt;&lt; str &lt;&lt; &quot;, filled &quot; &lt;&lt; res.ptr - str.data() &lt;&lt; &quot; characters \n&quot;;
+    &#x2F;&#x2F; 1234xxx, filled 4 characters.
+&#125;</code></pre></div></figure>
+<h4 id="stdvariant"><a class="markdownIt-Anchor" href="#stdvariant"></a> std::variant</h4>
+<p>C++17增加了std::variant实现类似union的功能，但却比union更高级，举个例子union里面不能有string这种类型，但std::variant却可以，还可以支持更多复杂类型，如map等，看代码：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int main()&#123; &#x2F;&#x2F; C++17可编译
+    std::variant&lt;int, std::string&gt; var(&quot;hello&quot;);
+    cout &lt;&lt; var.index() &lt;&lt; endl;
+    var &#x3D; 123;
+    cout &lt;&lt; var.index() &lt;&lt; endl;
+
+    try&#123;
+        var &#x3D; &quot;world&quot;;
+        std::string str &#x3D; std::get&lt;std::string&gt;(var);   &#x2F;&#x2F;通过类型获取值
+        var &#x3D; 3;
+        int i &#x3D; std::get&lt;0&gt;(var);   &#x2F;&#x2F; 通过index获取值
+        cout &lt;&lt; str &lt;&lt; endl;
+        cout &lt;&lt; i &lt;&lt; endl;
+    &#125;catch(...)&#123;
+        &#x2F;&#x2F; xxx
+    &#125;
+    return 0;
+&#125;</code></pre></div></figure>
+<p>注意：一般情况下variant的第一个类型要有对应的构造函数，否则编译失败：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct A&#123;
+    A(int i) &#123;&#125;
+&#125;;
+int main()&#123;
+    std::variant&lt;A, int&gt; var;   &#x2F;&#x2F; 编译失败
+&#125;</code></pre></div></figure>
+<p>如何避免这种情况，可以使用std::monostate来打个桩，模拟一个空状态。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">std::variant&lt;std::monostate, A&gt; var;    &#x2F;&#x2F; 可以编译成功</code></pre></div></figure>
+<h4 id="stdoptional"><a class="markdownIt-Anchor" href="#stdoptional"></a> std::optional</h4>
+<p>我们有时候可能会有需求，让函数返回一个对象，如下：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct A &#123;&#125;;
+A func()&#123;
+    if(flag) return A();
+    else &#123;
+        &#x2F;&#x2F; 异常情况下，怎么返回异常值，想返回一个空
+    &#125;
+&#125;</code></pre></div></figure>
+<p>有一种方法是返回对象指针，异常情况下就可以返回nullptr啦，但是这就涉及到了内存管理，也许你会使用智能指针，但是这里更方便的方法就是std::optional啦。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">std::optional&lt;int&gt; StoI(const std::string&amp; s)&#123;
+    try&#123;
+        return std::stoi(s);
+    &#125;catch(...)&#123;
+        return std::nullopt;
+    &#125;
+&#125;
+void func()&#123;
+    std::string s&#123;&quot;123&quot;&#125;;
+    std::optional&lt;int&gt; o &#x3D; StoI(s);
+    if(o)&#123;
+        cout &lt;&lt; *o &lt;&lt; endl;
+    &#125;else&#123;
+        cout &lt;&lt; &quot;error&quot; &lt;&lt; endl;
+    &#125;
+&#125;</code></pre></div></figure>
+<h4 id="stdany"><a class="markdownIt-Anchor" href="#stdany"></a> std::any ⭐</h4>
+<p>C++17引入了any可以用来存储任何类型的单个值，见代码：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int main()&#123;     &#x2F;&#x2F; C++17可编译
+    std::any a &#x3D; 1;
+    cout &lt;&lt; a.type().name() &lt;&lt; &quot; &quot; &lt;&lt; std::any_cast&lt;int&gt;(a) &lt;&lt; endl;
+    a &#x3D; 2.2f;
+    cout &lt;&lt; a.type().name() &lt;&lt; &quot; &quot; &lt;&lt; std::any_cast&lt;double&gt;(a) &lt;&lt; endl;
+    a.reset();
+    if(a.has_value())&#123;
+        cout &lt;&lt; a.type().name();
+    &#125;
+    a &#x3D; std::string(&quot;a&quot;);
+    cout &lt;&lt; a.type().name() &lt;&lt; &quot; &quot; &lt;&lt; std::any_cast&lt;std::string&gt;(a) &lt;&lt; endl;
+&#125;</code></pre></div></figure>
+<h4 id="stdapply"><a class="markdownIt-Anchor" href="#stdapply"></a> std::apply</h4>
+<p>使用std::apply可以将tuple展开作为函数参数传入，见代码：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int add(int first, int second) &#123; return first + second; &#125;
+
+auto add_lambda &#x3D; [](auto first, auto second) &#123; return first + second; &#125;
+
+int main()&#123;
+    std::cout &lt;&lt; std::apply(add, std::pair(1, 2)) &lt;&lt; &quot;\n&quot;;
+    std::cout &lt;&lt; add(std::pair(1, 2)) &lt;&lt; &quot;\n&quot;;
+    std::cout &lt;&lt; std::apply(add_lambda, std::tuple(2.0f, 3.0f)) &lt;&lt; &quot;\n&quot;;
+&#125;</code></pre></div></figure>
+<h4 id="stdmake_from_tuple"><a class="markdownIt-Anchor" href="#stdmake_from_tuple"></a> std::make_from_tuple</h4>
+<p>使用make_from_tuple可以将tuple展开作为构造函数参数</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">struct Foo&#123;
+    Foo(int first, int second, int third)&#123;
+        std::cout &lt;&lt; first &lt;&lt; &quot; &quot; &lt;&lt; second &lt;&lt; &quot; &quot; &lt;&lt; third &lt;&lt; std::endl;
+    &#125;
+&#125;;
+
+int main()&#123;
+    auto tuple &#x3D; std::make_tuple(42, 3.14f, 0);
+    std::make_from_tuple&lt;Foo&gt;(std::move(tuple));
+&#125;</code></pre></div></figure>
+<h4 id="stdstring_view"><a class="markdownIt-Anchor" href="#stdstring_view"></a> std::string_view</h4>
+<p>通常我们传递一个string的时候，会触发对象的拷贝操作，大字符串的拷贝赋值操作会触发堆的内存分配，很影响运行效率，有了string_view就可以避免拷贝操作，平时传递过程中传递string_view即可。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void func(std::string_view stv) &#123; cout &lt;&lt; stv &lt;&lt; endl; &#125;
+
+int main()&#123;
+    std::string str &#x3D; &quot;Hello World&quot;;
+    std::cout &lt;&lt; str &lt;&lt; std::endl;
+
+    std::string_view stv(str.c_str(), str.size());
+    cout &lt;&lt; stv &lt;&lt; endl;
+    func(stv);
+    return 0;
+&#125;</code></pre></div></figure>
+<h4 id="as_const"><a class="markdownIt-Anchor" href="#as_const"></a> as_const</h4>
+<p>C++17使用as_const可以将左值转成const类型</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">std::string str &#x3D; &quot;string&quot;;
+const std::string&amp; constStr &#x3D; std::as_const(str);</code></pre></div></figure>
+<h4 id="file_system"><a class="markdownIt-Anchor" href="#file_system"></a> file_system</h4>
+<p>C++17正式将file_system纳入到标准之中，提供了关于文件的大多数功能，基本上应有尽有，这里举几个简单例子</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">namespace fs &#x3D; std::filesystem;
+fs::create_directory(dir_path);
+fs::copy_file(src, dst, fs::copy_options::skip_existing);
+fs::exists(filename);
+fs::current_path(err_code);</code></pre></div></figure>
+<h4 id="stdshared_mutex"><a class="markdownIt-Anchor" href="#stdshared_mutex"></a> std::shared_mutex</h4>
+<p>C++17引入了shared_mutex，可以实现读写锁</p>
+<h3 id="c20新特性"><a class="markdownIt-Anchor" href="#c20新特性"></a> C++20新特性</h3>
+<h1 id="操作系统"><a class="markdownIt-Anchor" href="#操作系统"></a> 操作系统</h1>
+<h2 id="进程-线程和协程sup-idfnref5-classfootnote-refa-hreffn5-relfootnotespan-classhint-top-hint-rounded-aria-label面试必考-进程和线程的区别httpszhuanlanzhihucomp1144533095spanasup"><a class="markdownIt-Anchor" href="#进程-线程和协程sup-idfnref5-classfootnote-refa-hreffn5-relfootnotespan-classhint-top-hint-rounded-aria-label面试必考-进程和线程的区别httpszhuanlanzhihucomp1144533095spanasup"></a> 进程、线程和协程<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="[面试必考 | 进程和线程的区别](https://zhuanlan.zhihu.com/p/114453309)">[5]</span></a></sup></h2>
+<p><strong>进程</strong><br />
+进程是并发执行的程序在执行过程中的分配和资源管理的最小单位，是一个动态概念，竞争计算机系统资源的基本单位。<br />
+<strong>线程</strong><br />
+线程是进程的一个执行单元，是进程内的调度实体。比进程更小的独立运行单位。线程也被称为轻量级进程。<br />
+<strong>协程</strong><br />
+协程是一种用户态的轻量级线程，协程的调度完全由用户控制。协程拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈，直接操作栈则基本没有内核切换的开销，可以不加锁的访问全局变量，所以上下文的切换非常快。</p>
+<h3 id="进程和线程区别"><a class="markdownIt-Anchor" href="#进程和线程区别"></a> 进程和线程区别</h3>
+<p><strong>地址空间</strong><br />
+线程共享本进程的地址空间，而进程之间是独立的地址空间。<br />
+<strong>资源</strong><br />
+线程共享本进程的资源如内存，I/O，CPU等，不利于资源的管理和保护，而进程之间的资源是独立的，能够很好的进行资源管理和保护。<br />
+<strong>健壮性</strong><br />
+多进程要比多线程健壮，一个进程崩溃之后，在保护模式下不会对其他的进程产生影响，但是一个线程崩溃整个进程都死掉。<br />
+<strong>执行过程</strong><br />
+每个独立的进程有一个程序运行的入口，循序执行序列和程序出口，执行开销大。<br />
+但是线程不能独立执行，必须依存在应用程序中，由应用程序提供多个现成的执行控制，执行开销小。<br />
+<strong>可并发性</strong><br />
+两者均可并发执行。<br />
+<strong>切换时</strong><br />
+进程切换时，消耗的资源大，效率不高。所以涉及到频繁的切换时，使用线程要好于进程。同样如果要求同时进行并且又要共享某些变量的并发操作，只能用线程不能用进程。</p>
+<p><strong>其他</strong><br />
+线程是处理器调度的最小单位，进程不是。</p>
+<h3 id="协程与线程进行比较"><a class="markdownIt-Anchor" href="#协程与线程进行比较"></a> 协程与线程进行比较？</h3>
+<ol>
+<li>一个线程可以拥有多个协程，一个进程也可以单独拥有多个协程，这样python中则能使用多核CPU。</li>
+<li>线程进程都是同步机制，而协程则是异步</li>
+<li>协程能保留上一次调用时的状态，每次过程重入时，就相当于进入上一次调用的状态</li>
+</ol>
+<h3 id="进程间通信的方式"><a class="markdownIt-Anchor" href="#进程间通信的方式"></a> 进程间通信的方式</h3>
+<p><strong>无名管道</strong><br />
+速度慢，容量有限，只有父子进程能够通信。<br />
+<strong>FIFO（有名管道）</strong><br />
+去除了管道只能在父子进程中使用的限制<br />
+<strong>消息队列</strong></p>
+<p><strong>信号量</strong></p>
+<p><strong>共享内存</strong></p>
+<h2 id="什么是僵尸进程"><a class="markdownIt-Anchor" href="#什么是僵尸进程"></a> 什么是僵尸进程？</h2>
+<p>一个子进程结束后，它的父进程并没有等待它（调用wait或者waitpid），那么这个子进程将成为一个僵尸进程。僵尸进程是一个已经死亡的进程，但是并没有真正被销毁。它已经放弃了几乎所有内存空间，没有任何可执行代码，也不能被调度，仅仅在进程表中保留一个位置，记载该进程的进程ID、终止状态以及资源利用信息(CPU时间，内存使用量等等)供父进程收集，除此之外，僵尸进程不再占有任何内存空间。这个僵尸进程可能会一直留在系统中直到系统重启。</p>
+<p>危害：占用进程号，而系统所能使用的进程号是有限的；占用内存。</p>
+<p>以下情况不会产生僵尸进程：</p>
+<ul>
+<li>该进程的父进程先结束了。每个进程结束的时候，系统都会扫描是否存在子进程，如果有则用Init进程接管，成为该进程的父进程，并且会调用wait等待其结束。</li>
+<li>父进程调用wait或者waitpid等待子进程结束（需要每隔一段时间查询子进程是否结束）。wait系统调用会使父进程暂停执行，直到它的一个子进程结束为止。waitpid则可以加入<code>WNOHANG</code>(wait-no-hang)选项，如果没有发现结束的子进程，就会立即返回，不会将调用waitpid的进程阻塞。同时，waitpid还可以选择是等待任一子进程（同wait），还是等待指定pid的子进程，还是等待同一进程组下的任一子进程，还是等待组ID等于pid的任一子进程；</li>
+<li>子进程结束时，系统会产生<code>SIGCHLD</code>(signal-child)信号，可以注册一个信号处理函数，在该函数中调用waitpid，等待所有结束的子进程（注意：一般都需要循环调用waitpid，因为在信号处理函数开始执行之前，可能已经有多个子进程结束了，而信号处理函数只执行一次，所以要循环调用将所有结束的子进程回收）；</li>
+<li>也可以用<code>signal(SIGCLD, SIG_IGN)</code>(signal-ignore)通知内核，表示忽略<code>SIGCHLD</code>信号，那么子进程结束后，内核会进行回收。</li>
+</ul>
+<h2 id="什么是孤儿进程"><a class="markdownIt-Anchor" href="#什么是孤儿进程"></a> 什么是孤儿进程？</h2>
+<p>一个父进程已经结束了，但是它的子进程还在运行，那么这些子进程将成为孤儿进程。孤儿进程会被Init（进程ID为1）接管，当这些孤儿进程结束时由Init完成状态收集工作。</p>
+<h2 id="什么是io多路复用怎么实现"><a class="markdownIt-Anchor" href="#什么是io多路复用怎么实现"></a> 什么是IO多路复用？怎么实现？</h2>
+<p>IO多路复用（IO Multiplexing）是指单个进程/线程就可以同时处理多个IO请求。</p>
+<p>实现原理：用户将想要监视的文件描述符（File Descriptor）添加到select/poll/epoll函数中，由内核监视，函数阻塞。一旦有文件描述符就绪（读就绪或写就绪），或者超时（设置timeout），函数就会返回，然后该进程可以进行相应的读/写操作。</p>
+<h3 id="selectpollepoll三者的区别"><a class="markdownIt-Anchor" href="#selectpollepoll三者的区别"></a> select/poll/epoll三者的区别？</h3>
+<ul>
+<li><code>select</code>：将文件描述符放入一个集合中，调用select时，将这个集合从用户空间拷贝到内核空间（缺点1：每次都要复制，<strong>开销大</strong>），由内核根据就绪状态修改该集合的内容。（缺点2）<strong>集合大小有限制</strong>，32位机默认是1024（64位：2048）；采用水平触发机制。select函数返回后，需要通过遍历这个集合，找到就绪的文件描述符（缺点3：<strong>轮询的方式效率较低</strong>），当文件描述符的数量增加时，效率会线性下降；</li>
+<li><code>poll</code>：和select几乎没有区别，区别在于文件描述符的存储方式不同，poll采用链表的方式存储，没有最大存储数量的限制；</li>
+<li><code>epoll</code>：通过内核和用户空间共享内存，避免了不断复制的问题；支持的同时连接数上限很高（1G左右的内存支持10W左右的连接数）；文件描述符就绪时，采用回调机制，避免了轮询（回调函数将就绪的描述符添加到一个链表中，执行epoll_wait时，返回这个链表）；支持水平触发和边缘触发，采用边缘触发机制时，只有活跃的描述符才会触发回调函数。</li>
+</ul>
+<p>总结，区别主要在于：</p>
+<ul>
+<li>一个线程/进程所能打开的最大连接数</li>
+<li>文件描述符传递方式（是否复制）</li>
+<li>水平触发 or 边缘触发</li>
+<li>查询就绪的描述符时的效率（是否轮询）</li>
+</ul>
+<h3 id="什么时候使用selectpoll什么时候使用epoll"><a class="markdownIt-Anchor" href="#什么时候使用selectpoll什么时候使用epoll"></a> 什么时候使用select/poll，什么时候使用epoll？</h3>
+<p>当连接数较多并且有很多的不活跃连接时，epoll的效率比其它两者高很多；但是当连接数较少并且都十分活跃的情况下，由于epoll需要很多回调，因此性能可能低于其它两者。</p>
+<h3 id="什么是文件描述符"><a class="markdownIt-Anchor" href="#什么是文件描述符"></a> 什么是文件描述符？</h3>
+<p>文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。</p>
+<p>内核通过文件描述符来访问文件。文件描述符指向一个文件。</p>
+<h2 id="缺页中断"><a class="markdownIt-Anchor" href="#缺页中断"></a> 缺页中断</h2>
+<ul>
+<li>缺页异常：malloc和mmap函数在分配内存时只是建立了进程虚拟地址空间，并没有分配虚拟内存对应的物理内存。当进程访问这些没有建立映射关系的虚拟内存时，处理器自动触发一个缺页异常，引发缺页中断。</li>
+<li>缺页中断：缺页异常后将产生一个缺页中断，此时操作系统会根据页表中的外存地址在外存中找到所缺的一页，将其调入内存。</li>
+</ul>
+<h2 id="说说静态库和动态库的区别是什么sup-idfnref1-classfootnote-refa-hreffn1-relfootnotespan-classhint-top-hint-rounded-aria-labelc岗位面试真题宝典httpswwwnowcodercomissuetutorialtutorialid100691spanasup"><a class="markdownIt-Anchor" href="#说说静态库和动态库的区别是什么sup-idfnref1-classfootnote-refa-hreffn1-relfootnotespan-classhint-top-hint-rounded-aria-labelc岗位面试真题宝典httpswwwnowcodercomissuetutorialtutorialid100691spanasup"></a> 说说静态库和动态库的区别是什么<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[C++岗位面试真题宝典](https://www.nowcoder.com/issue/tutorial?tutorialId=10069)">[1]</span></a></sup></h2>
+<ol>
+<li>静态库代码装载的速度快，执行速度略比动态库快。</li>
+<li>动态库更加节省内存，可执行文件体积比静态库小很多。</li>
+<li>静态库是在编译时加载，动态库是在运行时加载。</li>
+<li>生成的静态链接库，Windows下以.lib为后缀，Linux下以.a为后缀。生成的动态链接库，Windows下以.dll为后缀，Linux下以.so为后缀。</li>
+</ol>
+<h3 id="虚拟内存"><a class="markdownIt-Anchor" href="#虚拟内存"></a> 虚拟内存</h3>
+<p>操作系统为每一个进程分配一个独立的地址空间，这就是虚拟内存。虚拟内存与物理内存存在映射关系，通过页表寻址完成虚拟地址和物理地址的转换。</p>
+<h4 id="为什么要用虚拟内存"><a class="markdownIt-Anchor" href="#为什么要用虚拟内存"></a> 为什么要用虚拟内存</h4>
+<p>因为早期的内存分配方法存在以下问题：</p>
+<ol>
+<li>进程地址空间不隔离。会导致数据被随意修改。</li>
+<li>内存使用效率低。</li>
+<li>程序运行的地址不确定。操作系统随机为进程分配内存空间，所以程序运行的地址是不确定的。</li>
+</ol>
+<h4 id="使用虚拟内存的好处"><a class="markdownIt-Anchor" href="#使用虚拟内存的好处"></a> 使用虚拟内存的好处</h4>
+<ol>
+<li>扩大地址空间。每个进程独占一个4G空间，虽然真实物理内存没那么多。</li>
+<li>内存保护：防止不同进程对物理内存的争夺和践踏，可以对特定内存地址提供写保护，防止恶意篡改。</li>
+<li>可以实现内存共享，方便进程通信。</li>
+<li>可以避免内存碎片，虽然物理内存可能不连续，但映射到虚拟内存上可以连续。</li>
+</ol>
+<h2 id="什么是死锁"><a class="markdownIt-Anchor" href="#什么是死锁"></a> 什么是死锁？</h2>
+<p>在两个或者多个并发进程中，每个进程持有某种资源而又等待其它进程释放它们现在保持着的资源，在未改变这种状态之前都不能向前推进，称这一组进程产生了死锁(deadlock)。</p>
+<h2 id="死锁产生的必要条件"><a class="markdownIt-Anchor" href="#死锁产生的必要条件"></a> 死锁产生的必要条件？</h2>
+<ul>
+<li><strong>互斥</strong>：一个资源一次只能被一个进程使用；</li>
+<li><strong>占有并等待</strong>：一个进程至少占有一个资源，并在等待另一个被其它进程占用的资源；</li>
+<li><strong>非抢占</strong>：已经分配给一个进程的资源不能被强制性抢占，只能由进程完成任务之后自愿释放；</li>
+<li><strong>循环等待</strong>：若干进程之间形成一种头尾相接的环形等待资源关系，该环路中的每个进程都在等待下一个进程所占有的资源。</li>
+</ul>
+<h2 id="有哪些页面置换算法"><a class="markdownIt-Anchor" href="#有哪些页面置换算法"></a> 有哪些页面置换算法？</h2>
+<p>在程序运行过程中，如果要访问的页面不在内存中，就发生缺页中断从而将该页调入内存中。此时如果内存已无空闲空间，系统必须从内存中调出一个页面到磁盘中来腾出空间。页面置换算法的主要目标是使页面置换频率最低（也可以说缺页率最低）。</p>
+<ul>
+<li><strong>最佳页面置换算法</strong>OPT（Optimal replacement algorithm）：置换以后不需要或者最远的将来才需要的页面，是一种理论上的算法，是最优策略；</li>
+<li><strong>先进先出</strong>FIFO：置换在内存中驻留时间最长的页面。缺点：有可能将那些经常被访问的页面也被换出，从而使缺页率升高；</li>
+<li><strong>第二次机会算法</strong>SCR：按FIFO选择某一页面，若其访问位为1，给第二次机会，并将访问位置0；</li>
+<li><strong>时钟算法</strong> Clock：SCR中需要将页面在链表中移动（第二次机会的时候要将这个页面从链表头移到链表尾），时钟算法使用环形链表，再使用一个指针指向最老的页面，避免了移动页面的开销；</li>
+<li><strong>最近未使用算法</strong>NRU（Not Recently Used）：检查访问位R、修改位M，优先置换R=M=0，其次是（R=0, M=1）；</li>
+<li><strong>最近最少使用算法</strong>LRU（Least Recently Used）：置换出未使用时间最长的一页；实现方式：维护时间戳，或者维护一个所有页面的链表。当一个页面被访问时，将这个页面移到链表表头。这样就能保证链表表尾的页面是最近最久未访问的。</li>
+<li><strong>最不经常使用算法</strong>LFU（Least Frequently Used）：置换出访问次数最少的页面</li>
+</ul>
+<h1 id="计算机网络"><a class="markdownIt-Anchor" href="#计算机网络"></a> 计算机网络</h1>
+<h2 id="什么是三次握手-three-way-handshake"><a class="markdownIt-Anchor" href="#什么是三次握手-three-way-handshake"></a> 什么是三次握手 (three-way handshake)？</h2>
+<ul>
+<li>第一次握手：Client将SYN置1，随机产生一个初始序列号seq发送给Server，进入SYN_SENT状态；</li>
+<li>第二次握手：Server收到Client的SYN=1之后，知道客户端请求建立连接，将自己的SYN置1，ACK置1，产生一个acknowledge number=sequence number+1，并随机产生一个自己的初始序列号，发送给客户端；进入SYN_RCVD状态；</li>
+<li>第三次握手：客户端检查acknowledge number是否为序列号+1，ACK是否为1，检查正确之后将自己的ACK置为1，产生一个acknowledge number=服务器发的序列号+1，发送给服务器；进入ESTABLISHED状态；服务器检查ACK为1和acknowledge number为序列号+1之后，也进入ESTABLISHED状态；完成三次握手，连接建立。</li>
+</ul>
+<p><img src="https://cdn.dianhsu.com/img/2022-08-08-17-14-55.png" srcset="/img/loading.gif" lazyload alt="TCP三次握手" /></p>
+<h2 id="什么是四次挥手"><a class="markdownIt-Anchor" href="#什么是四次挥手"></a> 什么是四次挥手？</h2>
+<ul>
+<li>第一次挥手：Client将FIN置为1，发送一个序列号seq给Server；进入FIN_WAIT_1状态</li>
+<li>第二次挥手：Server收到FIN之后，发送一个ACK=1，acknowledge number=收到的序列号+1；进入CLOSE_WAIT状态。此时客户端已经没有要发送的数据了，但仍可以接受服务器发来的数据</li>
+<li>第三次挥手：Server将FIN置1，发送一个序列号给Client；进入LAST_ACK状态</li>
+<li>第四次挥手：Client收到服务器的FIN后，进入TIME_WAIT状态；接着将ACK置1，发送一个acknowledge number=序列号+1给服务器；服务器收到后，确认acknowledge number后，变为CLOSED状态，不再向客户端发送数据。客户端等待2*MSL（报文段最长寿命）时间后，也进入CLOSED状态。完成四次挥手</li>
+</ul>
+<p><img src="https://cdn.dianhsu.com/img/2022-08-08-17-15-48.png" srcset="/img/loading.gif" lazyload alt="TCP四次挥手" /></p>
+<h2 id="tcp与udp"><a class="markdownIt-Anchor" href="#tcp与udp"></a> TCP与UDP</h2>
+<ul>
+<li>TCP是面向连接的，UDP是无连接的</li>
+<li>TCP是可靠的，UDP不可靠</li>
+<li>TCP只支持点对点通信，UDP支持一对一、一对多、多对一、多对多</li>
+<li>TCP是面向字节流的，UDP是面向报文的</li>
+<li>TCP有拥塞控制机制，UDP没有。网络出现的拥塞不会使源主机的发送速率降低，这对某些实时应用是很重要的，比如媒体通信，游戏</li>
+<li>TCP首部开销（20字节）比UDP首部开销（8字节）要大</li>
+<li>UDP的主机不需要维持复杂的连接状态表</li>
+</ul>
+<h2 id="拥塞控制"><a class="markdownIt-Anchor" href="#拥塞控制"></a> 拥塞控制</h2>
+<p>拥塞控制主要由四个算法组成：慢启动（Slow Start）、拥塞避免（Congestion voidance）、快重传 （Fast Retransmit）、快恢复（Fast Recovery）</p>
+<ol>
+<li>慢启动：刚开始发送数据时，先把拥塞窗口（congestion window）设置为一个最大报文段MSS的数值，每收到一个新的确认报文之后，就把拥塞窗口加1个MSS。这样每经过一个传输轮次（或者说是每经过一个往返时间RTT），拥塞窗口的大小就会加倍</li>
+<li>拥塞避免：当拥塞窗口的大小达到慢开始门限(slow start threshold)时，开始执行拥塞避免算法，拥塞窗口大小不再指数增加，而是线性增加，即每经过一个传输轮次只增加1MSS.</li>
+<li>快重传：快重传要求接收方在收到一个失序的报文段后就立即发出重复确认（为的是使发送方及早知道有报文段没有到达对方）而不要等到自己发送数据时捎带确认。快重传算法规定，发送方只要一连收到三个重复确认就应当立即重传对方尚未收到的报文段，而不必继续等待设置的重传计时器时间到期。</li>
+<li>快恢复：当发送方连续收到三个重复确认时，就把慢开始门限减半，然后执行拥塞避免算法。不执行慢开始算法的原因：因为如果网络出现拥塞的话就不会收到好几个重复的确认，所以发送方认为现在网络可能没有出现拥塞。<br />
+也有的快重传是把开始时的拥塞窗口cwnd值再增大一点，即等于 <code>ssthresh + 3*MSS</code> 。这样做的理由是：既然发送方收到三个重复的确认，就表明有三个分组已经离开了网络。这三个分组不再消耗网络的资源而是停留在接收方的缓存中。可见现在网络中减少了三个分组。因此可以适当把拥塞窗口扩大些。</li>
+</ol>
+<h2 id="tcp如何保证传输的可靠性"><a class="markdownIt-Anchor" href="#tcp如何保证传输的可靠性"></a> TCP如何保证传输的可靠性</h2>
+<ul>
+<li>数据包校验</li>
+<li>对失序数据包重新排序（TCP报文具有序列号）</li>
+<li>丢弃重复数据</li>
+<li>应答机制：接收方收到数据之后，会发送一个确认（通常延迟几分之一秒）；</li>
+<li>超时重发：发送方发出数据之后，启动一个定时器，超时未收到接收方的确认，则重新发送这个数据；</li>
+<li>流量控制：确保接收端能够接收发送方的数据而不会缓冲区溢出</li>
+</ul>
+<h2 id="https-通讯流程sup-idfnref6-classfootnote-refa-hreffn6-relfootnotespan-classhint-top-hint-rounded-aria-labelhttps-详解一附带最精美详尽的-https-原理图httpssegmentfaultcoma11900000214946766spanasup"><a class="markdownIt-Anchor" href="#https-通讯流程sup-idfnref6-classfootnote-refa-hreffn6-relfootnotespan-classhint-top-hint-rounded-aria-labelhttps-详解一附带最精美详尽的-https-原理图httpssegmentfaultcoma11900000214946766spanasup"></a> HTTPS 通讯流程<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span class="hint--top hint--rounded" aria-label="[HTTPS 详解一：附带最精美详尽的 HTTPS 原理图](https://segmentfault.com/a/1190000021494676)">[6]</span></a></sup></h2>
+<p><img src="https://cdn.dianhsu.com/img/2022-09-12-17-54-45.png" srcset="/img/loading.gif" lazyload alt="HTTPS加密、解密、验证及数据传输过程" /><br />
+看上去眼花缭乱，不要怕，且听我细细道来。HTTPS的整个通信阶段可以分为两大阶段：证书验证阶段和数据传输阶段，数据传输阶段又可以分为非对称加密阶段和对称加密阶段。具体流程按图中的序号讲解如下：</p>
+<ol>
+<li>客户端请求HTTPS网址，然后连接到Server的443端口（HTTPS默认的端口，类似于HTTP的80端口）。</li>
+<li>采用HTTPS协议的服务器必须要有一套数字CA（Certification Authority）证书，证书是需要申请的，并由专门的数字证书认证机构（CA）通过非常严格的审核之后颁发的电子证书（当然了是要钱的，安全级别越高价格越贵）。颁发证书的同时会产生一个私钥和公钥。私钥由服务端自己保存，不可泄露。公钥则是附带在证书的信息中，可以公开的。证书本身也附带了一个证书电子签名，这个签名用来验证证书的完整性和真实性，可以防止证书被篡改。</li>
+<li>服务器响应客户端请求，将证书传递给客户端，证书中包含公钥和大量其他信息，比如证书颁发机构信息、公司信息和证书有效期等。Chrome浏览器点击地址栏的锁标志再点击证书就可以看到证书的详细信息了。<br />
+<img src="https://cdn.dianhsu.com/img/2022-09-12-18-04-50.png" srcset="/img/loading.gif" lazyload alt="B站CA证书" /></li>
+<li>客户端解析证书并对其进行验证。如果证书不是由可信机构颁布，或者证书中的域名与实际域名不一致，或者证书已经过期，就会向访问者显示一个警告，由其选择是否还要继续通信，就像下面这样：<br />
+<img src="https://cdn.dianhsu.com/img/2022-09-12-18-06-49.png" srcset="/img/loading.gif" lazyload alt="浏览器安全警告" /><br />
+如果证书没有问题，客户端就会从服务器证书中取出服务器的公钥A。然后客户端还会生成一个随机码KEY，并使用公钥A将其加密。</li>
+<li>客户端把加密后的随机码KEY发送给服务器，作为后面对称加密的密钥。</li>
+<li>服务器在收到随机KEY之后，会使用私钥B将其解密。经过以上这些步骤，客户端和服务器终于建立了安全连接，完美解决了对称加密的密钥泄露问题，接下来就可以用对称加密愉快地进行通信了。</li>
+<li>服务器使用密钥（随机码KEY）对数据进行对称加密并发送给客户端，客户端使用相同的密钥（随机码KEY）解密数据。</li>
+<li>双方使用对称加密愉快地传输所有数据。</li>
+</ol>
+<h1 id="redis"><a class="markdownIt-Anchor" href="#redis"></a> Redis</h1>
+<h2 id="redis的数据类型"><a class="markdownIt-Anchor" href="#redis的数据类型"></a> Redis的数据类型</h2>
+<ul>
+<li>String：字符串类型，最简单的类型</li>
+<li>Hash：类似于Map的一种结构。</li>
+<li>List：有序列表。</li>
+<li>Set：无序集合。</li>
+<li>ZSet：带权值的无序集合，即每个ZSet元素还另有一个数字代表权值，集合通过权值进行排序。</li>
+</ul>
+<h2 id="redis数据持久化"><a class="markdownIt-Anchor" href="#redis数据持久化"></a> Redis数据持久化</h2>
+<p>为了能够重用Redis数据，或者防止系统故障，我们需要将Redis中的数据写入到磁盘空间中，即持久化。<br />
+Redis提供了两种不同的持久化方法可以将数据存储在磁盘中，一种叫快照RDB，另一种叫只追加文件AOF。</p>
+<h3 id="rdb"><a class="markdownIt-Anchor" href="#rdb"></a> RDB</h3>
+<p>在指定的时间间隔内将内存中的数据集快照写入磁盘(Snapshot)，它恢复时是将快照文件直接读到内存里。<br />
+优势：适合大规模的数据恢复；对数据完整性和一致性要求不高<br />
+劣势：在一定间隔时间做一次备份，所以如果Redis意外down掉的话，就会丢失最后一次快照后的所有修改。</p>
+<h3 id="aof"><a class="markdownIt-Anchor" href="#aof"></a> AOF</h3>
+<p>以日志的形式来记录每个写操作，将Redis执行过的所有写指令记录下来(读操作不记录)，只许追加文件但不可以改写文件，Redis启动之初会读取该文件重新构建数据，换言之，Redis重启的话就根据日志文件的内容将写指令从前到后执行一次以完成数据的恢复工作。<br />
+AOF采用文件追加方式，文件会越来越大，为避免出现此种情况，新增了重写机制，当AOF文件的大小超过所设定的阈值时， Redis就会启动AOF文件的内容压缩，只保留可以恢复数据的最小指令集.。</p>
+<h4 id="优势"><a class="markdownIt-Anchor" href="#优势"></a> 优势</h4>
+<ul>
+<li>每修改同步：appendfsync always 同步持久化，每次发生数据变更会被立即记录到磁盘，性能较差但数据完整性比较好</li>
+<li>每秒同步：appendfsync everysec 异步操作，每秒记录，如果一秒内宕机，有数据丢失</li>
+<li>不同步：appendfsync no 从不同步</li>
+</ul>
+<h4 id="劣势"><a class="markdownIt-Anchor" href="#劣势"></a> 劣势</h4>
+<p>相同数据集的数据而言AOF文件要远大于RDB文件，恢复速度慢于RDB<br />
+AOF运行效率要慢于RDB，每秒同步策略效率较好，不同步效率和RDB相同</p>
+<h2 id="简述缓存雪崩"><a class="markdownIt-Anchor" href="#简述缓存雪崩"></a> 简述缓存雪崩</h2>
+<p>缓存雪崩指缓存中一大批数据到过期时间，而从缓存中删除。但该批数据查询数据量巨大，查询全部走数据库，造成数据库压力过大。</p>
+<h1 id="软件设计模式"><a class="markdownIt-Anchor" href="#软件设计模式"></a> 软件设计模式</h1>
+<h2 id="说说什么是单例设计模式如何实现"><a class="markdownIt-Anchor" href="#说说什么是单例设计模式如何实现"></a> 说说什么是单例设计模式，如何实现</h2>
+<h3 id="单例模式定义"><a class="markdownIt-Anchor" href="#单例模式定义"></a> 单例模式定义</h3>
+<p>保证一个类仅有一个实例，并提供一个访问它的全局访问点，该实例被所有程序模块共享。<br />
+那么我们就必须保证：</p>
+<ul>
+<li>该类不能被复制。</li>
+<li>该类不能被公开的创造。<br />
+那么对于C++来说，它的构造函数，拷贝构造函数和赋值函数都不能被公开调用。</li>
+</ul>
+<h3 id="单例模式实现方式"><a class="markdownIt-Anchor" href="#单例模式实现方式"></a> 单例模式实现方式</h3>
+<p>单例模式通常有两种模式，分别为懒汉式单例和饿汉式单例。两种模式实现方式分别如下：</p>
+<ul>
+<li>懒汉式设计模式实现方式（2种）
+<ul>
+<li>静态指针 + 用到时初始化</li>
+<li>局部静态变量</li>
+</ul>
+</li>
+<li>饿汉式设计模式（2种）
+<ul>
+<li>直接定义静态对象</li>
+<li>静态指针 + 类外初始化时new空间实现</li>
+</ul>
+</li>
+</ul>
+<h1 id="编译原理"><a class="markdownIt-Anchor" href="#编译原理"></a> 编译原理</h1>
+<h2 id="cc程序编译从代码到可执行程序"><a class="markdownIt-Anchor" href="#cc程序编译从代码到可执行程序"></a> C/C++程序编译从代码到可执行程序</h2>
+<p>C++和C语言类似，一个C++程序从源码到执行文件，有四个过程，预编译、编译、汇编、链接。</p>
+<ul>
+<li>预编译：这个过程主要的处理操作如下：
+<ul>
+<li>将所有的#define删除，并且展开所有的宏定义</li>
+<li>处理所有的条件预编译指令，如#if、#ifdef</li>
+<li>处理#include预编译指令，将被包含的文件插入到该预编译指令的位置。</li>
+<li>过滤所有的注释</li>
+<li>添加行号和文件名标识。</li>
+</ul>
+</li>
+<li>编译：这个过程主要的处理操作如下：
+<ul>
+<li>词法分析：将源代码的字符序列分割成一系列的记号。</li>
+<li>语法分析：对记号进行语法分析，产生语法树。</li>
+<li>语义分析：判断表达式是否有意义。</li>
+<li>代码优化：</li>
+<li>目标代码生成：生成汇编代码。</li>
+<li>目标代码优化：</li>
+</ul>
+</li>
+<li>汇编：这个过程主要是将汇编代码转变成机器可以执行的指令。</li>
+<li>链接：将不同的源文件产生的目标文件进行链接，从而形成一个可以执行的程序。<br />
+链接分为静态链接和动态链接。<br />
+静态链接，是在链接的时候就已经把要调用的函数或者过程链接到了生成的可执行文件中，就算你在去把静态库删除也不会影响可执行程序的执行；生成的静态链接库，Windows下以.lib为后缀，Linux下以.a为后缀。<br />
+而动态链接，是在链接的时候没有把调用的函数代码链接进去，而是在执行的过程中，再去找要链接的函数，生成的可执行文件中没有函数代码，只包含函数的重定位信息，所以当你删除动态库时，可执行程序就不能运行。生成的动态链接库，Windows下以.dll为后缀，Linux下以.so为后缀。</li>
+</ul>
+<h1 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h1>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.nowcoder.com/issue/tutorial?tutorialId=10069">C++岗位面试真题宝典</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023441427">C++14新特性的所有知识点全在这儿啦！</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023456766">C++17新特性</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22958966/answer/23195612">为什么 C++ 中使用虚函数时会影响效率？</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/114453309">面试必考 | 进程和线程的区别</a>
+<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:6" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021494676">HTTPS 详解一：附带最精美详尽的 HTTPS 原理图</a>
+<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%9D%A2%E8%AF%95/" class="category-chain-item">面试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">#操作系统</a>
+      
+        <a href="/tags/C/">#C++</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">#计算机网络</a>
+      
+        <a href="/tags/Redis/">#Redis</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/">#数据库原理</a>
+      
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#软件设计模式</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">#计算机组成原理</a>
+      
+        <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">#编译原理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>八股文收集</div>
+      <div>https://dianhsu.com/2022/07/23/eight-legged-essay/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Dian Hsu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/17/neon-test/" title="一个ARM-NEON的demo">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">一个ARM-NEON的demo</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/22/autumn-interviews/" title="2022年秋天的面试经历">
+                        <span class="hidden-mobile">2022年秋天的面试经历</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"dianhsu/blog-raw","repo-id":"MDEwOlJlcG9zaXRvcnkzNzE1NzgxOTE=","category":"General","category-id":"MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyOTcxODAy","theme-light":"light","theme-dark":"dark","mapping":"title","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN","loading":"lazy"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      鄂ICP备2020020124号-2
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

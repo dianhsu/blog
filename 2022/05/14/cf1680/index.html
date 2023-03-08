@@ -1,0 +1,981 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <link rel="icon" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dian Hsu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="A. Minimums and Maximums  题目大意 一个beautiful数组需要同时具备一下两个条件：  在这个数组中至少有l1l_1l1​且至多有r1r_1r1​个元素的值等于数组中的最小值。 在这个数组中至少有l2l_2l2​且至多有r2r_2r2​个元素的值等于数组中的最大值。  给定l1,r1,l2,r2l_1, r_1, l_2, r_2l1​,r1​,l2​,r2​，你的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Educational Codeforces Round 128 (Rated for Div. 2)">
+<meta property="og:url" content="https://dianhsu.com/2022/05/14/cf1680/index.html">
+<meta property="og:site_name" content="dianhsuのblog">
+<meta property="og:description" content="A. Minimums and Maximums  题目大意 一个beautiful数组需要同时具备一下两个条件：  在这个数组中至少有l1l_1l1​且至多有r1r_1r1​个元素的值等于数组中的最小值。 在这个数组中至少有l2l_2l2​且至多有r2r_2r2​个元素的值等于数组中的最大值。  给定l1,r1,l2,r2l_1, r_1, l_2, r_2l1​,r1​,l2​,r2​，你的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.dianhsu.com/blog/af1830c6ab9a24d06182c90f4945008086171540.jpg%40942w_531h_progressive.webp">
+<meta property="article:published_time" content="2022-05-14T02:07:05.000Z">
+<meta property="article:modified_time" content="2023-03-08T02:21:06.621Z">
+<meta property="article:author" content="Dian Hsu">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Codeforces">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="模拟">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.dianhsu.com/blog/af1830c6ab9a24d06182c90f4945008086171540.jpg%40942w_531h_progressive.webp">
+  
+  
+  
+  <title>Educational Codeforces Round 128 (Rated for Div. 2) - dianhsuのblog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dianhsu.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gHBUbGnezwPEckLGQuK5MYV1-MdYXbMMI","app_key":"kokqnKgfEiMRyh31b4ofNY5k","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Educational Codeforces Round 128 (Rated for Div. 2)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-14 10:07" pubdate>
+          2022年5月14日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          61 分钟
+        
+      </span>
+    
+
+    
+    
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Educational Codeforces Round 128 (Rated for Div. 2)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="a-minimums-and-maximums"><a class="markdownIt-Anchor" href="#a-minimums-and-maximums"></a> A. Minimums and Maximums</h1>
+<h2 id="题目大意"><a class="markdownIt-Anchor" href="#题目大意"></a> 题目大意</h2>
+<p>一个<code>beautiful</code>数组需要同时具备一下两个条件：</p>
+<ul>
+<li>在这个数组中至少有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">l_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>且至多有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">r_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>个元素的值等于数组中的最小值。</li>
+<li>在这个数组中至少有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">l_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>且至多有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>个元素的值等于数组中的最大值。</li>
+</ul>
+<p>给定<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>r</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>l</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">l_1, r_1, l_2, r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，你的任务是计算数组中最少的的元素个数。</p>
+<h2 id="题目解析"><a class="markdownIt-Anchor" href="#题目解析"></a> 题目解析</h2>
+<p>如果$ [l_1, r_1] $ 和 $ [l_2, r_2] $ 的交集为空，那我们至少需要两种不同的元素来构造这个数组，那么最小的元素个数是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>l</mi><mn>1</mn></msub><mo>+</mo><msub><mi>l</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">l_1 + l_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。<br />
+如果$ [l_1, r_1] $ 和 $ [l_2, r_2] $ 的交集不为空，我们设定他们的交集是 $ [l, r] $ ，可以看出 $ l = \max(l_1, l_2), r = \min(r_1, r_2)$ 。这时可以用一种元素来构造这个数组，即最大值等于最小值，那么最小的元素个数就是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>l</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>l</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\max(l_1, l_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</p>
+<h2 id="参考代码"><a class="markdownIt-Anchor" href="#参考代码"></a> 参考代码</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int main() &#123;
+    int t;
+    cin &gt;&gt; t;
+    while(t--)&#123;
+        int l1, r1, l2, r2;
+        cin &gt;&gt; l1 &gt;&gt; r1 &gt;&gt; l2 &gt;&gt; r2;
+        int l &#x3D; l1, r &#x3D; r1;
+        l &#x3D; max(l, l2), r &#x3D; min(r, r2);
+        if(l &lt;&#x3D; r)&#123; &#x2F;&#x2F; 交集不为空
+            cout &lt;&lt; l &lt;&lt; endl;
+        &#125;else &#123;     &#x2F;&#x2F; 交集为空
+            cout &lt;&lt; l1 + l2 &lt;&lt; endl;
+        &#125;
+    &#125;
+    return 0;
+&#125;</code></pre></div></figure>
+<h1 id="b-robots"><a class="markdownIt-Anchor" href="#b-robots"></a> B. Robots</h1>
+<h2 id="题目大意-2"><a class="markdownIt-Anchor" href="#题目大意-2"></a> 题目大意</h2>
+<p>现在有一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 行 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span></span></span></span> 列区域，区域内有些格子是空闲的（用<code>E</code>来表示），有些格子是包含机器人（用<code>R</code>来表示）。</p>
+<p>现在可以同时将所有的机器人进行上下左右移动，不能将机器人移出区域。</p>
+<p>问能不能移动之后，使得一个机器人移动左上角。</p>
+<h2 id="题目解析-2"><a class="markdownIt-Anchor" href="#题目解析-2"></a> 题目解析</h2>
+<p>首先把机器人所在的最小矩形框出来，如下图黄色区域所示。</p>
+<p><img src="https://cdn.dianhsu.com/img%2FQQ20220514-103442%402x.png" srcset="/img/loading.gif" lazyload alt="一个样例" /></p>
+<p>当黄色矩形在区域内移动时，边界不能移出区域。又因为所有的机器人都在区域内，所以判断能不能移动机器人到左上角等于黄色区域的左上角是不是机器人。</p>
+<h2 id="参考代码-2"><a class="markdownIt-Anchor" href="#参考代码-2"></a> 参考代码</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int main() &#123;
+    fastIO();
+    int t;
+    cin &gt;&gt; t;
+    while(t--)&#123;
+        int n, m;
+        cin &gt;&gt; n &gt;&gt; m;
+        &#x2F;&#x2F; [mx, my] 黄色区域的左上角的位置
+        int mx &#x3D; inf, my &#x3D; inf; 
+        vector&lt;int&gt; arr(n, 0), brr(m, 0);
+        vector&lt;string&gt; vecs(n);
+        for(int i &#x3D; 0; i &lt; n; ++i)&#123;
+            cin &gt;&gt; vecs[i];
+            for(int j &#x3D; 0; j &lt; m; ++j)&#123;
+                if(vecs[i][j] &#x3D;&#x3D; &#39;R&#39;)&#123;
+                    mx &#x3D; min(mx, i);
+                    my &#x3D; min(my, j);
+                &#125;
+            &#125;
+        &#125;
+        if(vecs[mx][my] &#x3D;&#x3D; &#39;R&#39;) cout &lt;&lt; &quot;YES\n&quot;;
+        else cout &lt;&lt; &quot;NO\n&quot;;
+    &#125;
+    return 0;
+&#125;</code></pre></div></figure>
+<h1 id="c-binary-string"><a class="markdownIt-Anchor" href="#c-binary-string"></a> C. Binary String</h1>
+<h2 id="题目大意-3"><a class="markdownIt-Anchor" href="#题目大意-3"></a> 题目大意</h2>
+<p>给你一个只包含<code>0</code>和<code>1</code>的字符串。<br />
+你可以从字符串的头部或者删除一些字符（删除字符之后，字符串可能为空）。这个操作的花费是以下两个指标的最大值：</p>
+<ul>
+<li>操作完成之后，字符串中<strong>剩余</strong>的<code>0</code>的数目。</li>
+<li>操作完成之后，字符串中<strong>移除</strong>的<code>1</code>的数目。</li>
+</ul>
+<p>问最小的花费。</p>
+<h2 id="题目解析-3"><a class="markdownIt-Anchor" href="#题目解析-3"></a> 题目解析</h2>
+<p>二分枚举一下结果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span> 。<br />
+然后对于每个枚举值，使用双指针遍历一遍字符串，要求双指针的区间内的<code>0</code>的数目不超过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span> ，且区间长度越长越好 。然后判断双指针区间之外的部分的<code>1</code>的数目是否也满足不超过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span> 。</p>
+<h2 id="参考代码-3"><a class="markdownIt-Anchor" href="#参考代码-3"></a> 参考代码</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int main() &#123;
+    fastIO();
+    int t;
+    cin &gt;&gt; t;
+    while(t--)&#123;
+        string s;
+        cin &gt;&gt; s;
+        int n &#x3D; s.length();
+        &#x2F;&#x2F;前缀的1的数目
+        vector&lt;int&gt; sum1(n + 1, 0); 
+        &#x2F;&#x2F;前缀的0的数目
+        vector&lt;int&gt; sum0(n + 1, 0);
+        for(int i &#x3D; 0; i &lt; n; ++i)&#123;
+            sum1[i + 1] &#x3D; sum1[i] + s[i] - &#39;0&#39;;
+            sum0[i + 1] &#x3D; sum0[i] + ((s[i] - &#39;0&#39;) ^ 1);
+        &#125;
+        
+        &#x2F;&#x2F; 检查当前的 ans 是否满足条件
+        auto&amp;&amp; check &#x3D; [&amp;](int cur) -&gt; bool&#123;
+            for(int l &#x3D; 0, r &#x3D; 1; r &lt;&#x3D; n; ++r)&#123;
+                &#x2F;&#x2F; 调整左边的指针，使得区间内0的数目不超过cur
+                while(l &lt; r and sum0[r] - sum0[l] &gt; cur) l++;
+                &#x2F;&#x2F; 判断双指针外1的数目是否满足
+                if(sum1[n] - sum1[r] + sum1[l] - sum1[0] &lt;&#x3D; cur) return true;
+            &#125;
+            return false;
+        &#125;;
+        &#x2F;** 二分 ans **&#x2F;
+        int ans &#x3D; n;
+        for(int i &#x3D; (1 &lt;&lt; 20); i; i &gt;&gt;&#x3D; 1)&#123;
+            if(ans - i &gt;&#x3D; 0 and check(ans - i))&#123;
+                ans -&#x3D; i;
+            &#125;
+        &#125;
+        cout &lt;&lt; ans &lt;&lt; endl;
+    &#125;
+    return 0;
+&#125;</code></pre></div></figure>
+<h1 id="d-dog-walking"><a class="markdownIt-Anchor" href="#d-dog-walking"></a> D. Dog Walking</h1>
+<h2 id="题目大意-4"><a class="markdownIt-Anchor" href="#题目大意-4"></a> 题目大意</h2>
+<p>你在左右方向长廊上遛🐶，刚开始你站在位置为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 的地方。</p>
+<p>你想给🐶一些自由，所以你会解开绳子，让狗自己活动一下。<br />
+狗能活动的时间是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 分钟，对于第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 分钟，狗的行为由 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 来表示。</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_i &lt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 代表🐶往左走了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><msub><mi>a</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|a_i|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span></span></span></span> 米。</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_i = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 不确定🐶怎么走。(<code>Unknown</code>)</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_i &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 代表🐶往右走了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><msub><mi>a</mi><mi>i</mi></msub><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|a_i|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span></span></span></span> 米。</li>
+</ul>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 分钟之后，🐶会回到你身边，就是位置为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 的地方。</p>
+<p>对于 <code>Unknown</code> 的时刻，你可以设定了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>∈</mo><mo stretchy="false">[</mo><mo>−</mo><mi>k</mi><mo separator="true">,</mo><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a_i \in [-k, k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span>（如果将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 设定为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，那么它认为是原地不动）。</p>
+<p>问通过设定<code>Unknown</code>的时刻的🐶的行为，🐶最大的活动范围是多大？最大的活动范围指的是狗能到达的最左边和最右边之内的所有点。</p>
+<h2 id="题目解析-4"><a class="markdownIt-Anchor" href="#题目解析-4"></a> 题目解析</h2>
+<p>枚举中两个不同时刻，假定在这两个时刻 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i, j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 他们分别是🐶能到达最左边和最右边。</p>
+<p>如果在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i, j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 时刻内，没有<code>Unknown</code>的时刻。那么狗能活动的最大范围就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 时刻所处位置到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 时刻所处位置的距离的绝对值，和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i, j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 时刻中间的所处位置无关。</p>
+<p>如果在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i, j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 时刻内，有<code>Unknown</code>的时刻。那么可以通过调整 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i, j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 时刻内的<code>Unknown</code>时刻的狗子的行为，来调整狗子 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 时刻所处位置到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 时刻所处位置的距离的绝对值的最大值。首先假定<code>Unknown</code>时刻狗子原地不动，如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 时刻的狗子所在的位置在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 时刻的位置的左边，那么<code>Unknown</code>设定为满足条件的最大值的时候，那么狗子的移动范围就最大了。反之亦然。</p>
+<h2 id="参考代码-4"><a class="markdownIt-Anchor" href="#参考代码-4"></a> 参考代码</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int main() &#123;
+    int n;
+    ll k;
+    cin &gt;&gt; n &gt;&gt; k;
+    vector&lt;ll&gt; arr(n + 1, 0);
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++i) cin &gt;&gt; arr[i];
+    ll sum &#x3D; accumulate(itr(arr), 0ll); &#x2F;&#x2F;统计Unknown都设定为0的情况下，狗子的最终位置。
+    vector&lt;int&gt; zeros(n + 1, 0); &#x2F;&#x2F; 统计前缀中0的数目
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++i)&#123;
+        if(!arr[i])&#123;
+            zeros[i] &#x3D; zeros[i - 1] + 1;
+        &#125;else&#123;
+            zeros[i] &#x3D; zeros[i - 1];
+        &#125;
+    &#125;
+    vector&lt;ll&gt; pref(n + 1, 0); &#x2F;&#x2F; 统计Unknown都设定为0的情况下，狗子的前缀移动位置。
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++i) pref[i] &#x3D; pref[i - 1] + arr[i];
+    if(zeros[n] * k &lt; abs(sum))&#123;  &#x2F;&#x2F; 设定了所有Unknown的时刻，狗子都不能返回初始点
+        cout &lt;&lt; -1 &lt;&lt; endl;
+        return 0;
+    &#125;
+    vector&lt;ll&gt; vals(zeros[n], 0); &#x2F;&#x2F; 设定狗子的Unknown时刻的情况集合，要求所有元素的绝对值之和尽量大，并且所有元素之和等于-sum
+    ll tmp &#x3D; abs(sum);
+    for(int i &#x3D; 0; i &lt; zeros[n]; ++i)&#123;
+        vals[i] &#x3D; min(tmp, k);
+        tmp -&#x3D; vals[i];
+    &#125;
+    for(int i &#x3D; (int)zeros[n]- 1; i &gt; 0 and !vals[i]; i -&#x3D; 2)&#123;
+        vals[i] +&#x3D; k;
+        vals[i - 1] -&#x3D; k;
+    &#125;
+    int m &#x3D; zeros[n];
+    if(sum &gt; 0)&#123;
+        for(auto&amp; it: vals) it &#x3D; -it;
+    &#125;
+    sort(itr(vals));
+    vector&lt;ll&gt; prefv(m + 1, 0); 
+    for(int i &#x3D; 0; i &lt; m; ++i)&#123;
+        prefv[i + 1] &#x3D; prefv[i] + vals[i];
+    &#125;
+    ll ans &#x3D; 1;
+    for(int i &#x3D; 1; i &lt;&#x3D; n; ++i)&#123;
+        for(int j &#x3D; 0; j &lt; i; ++j)&#123;
+            int tmpz &#x3D; zeros[i] - zeros[j];
+            ll tv &#x3D; pref[i] - pref[j];
+            ll sv1 &#x3D; prefv[tmpz], sv2 &#x3D; prefv[m] - prefv[m - tmpz];
+            ans &#x3D; max(ans, max(abs(tv + sv1), abs(tv + sv2)) + 1);
+        &#125;
+    &#125;
+    cout &lt;&lt; ans &lt;&lt; endl;
+    return 0;
+&#125;</code></pre></div></figure>
+<h1 id="e-moving-chips"><a class="markdownIt-Anchor" href="#e-moving-chips"></a> E. Moving Chips</h1>
+<h2 id="题目大意-5"><a class="markdownIt-Anchor" href="#题目大意-5"></a> 题目大意</h2>
+<p>给你一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">2 \times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span> 的棋盘，棋盘上面的棋子可以往相邻的格子上面移动。每次可以将一枚棋子移动到相邻的格子上，如果格子上面存在棋子，那么移动的这枚棋子将会消失。</p>
+<p>问最少的操作次数，使得棋盘上面只存在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 枚棋子。</p>
+<h2 id="题目解析-5"><a class="markdownIt-Anchor" href="#题目解析-5"></a> 题目解析</h2>
+<p>对于第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i, j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 个位置，分别考虑将包含当前列的左边的所有棋子移动到当前位置所需要的最小操作次数<code>dpl[i][j]</code>。<br />
+对于第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i, j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 个位置，分别考虑将包含当前列的右边的所有棋子移动到当前位置所需要的最小操作次数<code>dpr[i][j]</code>。</p>
+<p>对于<code>dpl[i][j]</code>，它的转移方式是两种：</p>
+<ul>
+<li>从<code>dpl[i][j - 1]</code> 将包含 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 列的所有左边的棋子转移到当前位置。<br />
+<code>dpl[i][j] = dp[i][j - 1] + 1</code><br />
+如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>⊕</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i \oplus 1, j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 位置存在一枚棋子，那么也需要转移过来。<code>dpl[i][j]++</code></li>
+<li>从<code>dpl[i^1][j - 1]</code> 将包含 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 列的所有左边的棋子转移到当前位置。<br />
+<code>dpl[i][j] = dp[i^1][j - 1] + 2</code><br />
+如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 列及左边没有棋子，这种情况包含在上面一种情况当中了，就不再考虑。</li>
+</ul>
+<p>最后考虑左右合并位置是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i, j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span>，那么左右的花费就是<code>dpl[i][j - 1] + dpr[i][j]</code>，如果左边和右边都有棋子，那么还需要加上他们合并的花费 <code>1</code> 。</p>
+<h2 id="参考代码-5"><a class="markdownIt-Anchor" href="#参考代码-5"></a> 参考代码</h2>
+<p>PS: 代码中的 <code>dpl[i][j], dpr[i][j]</code>的两维和上述分析中不同。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int main() &#123;
+    int t;
+    cin &gt;&gt; t;
+    while(t--)&#123;
+        int n;
+        cin &gt;&gt; n;
+        vector&lt;string&gt; s(2);
+        for(auto&amp; it: s) cin &gt;&gt; it;
+        vector&lt;vector&lt;int&gt;&gt; dpl(n, vector&lt;int&gt;(2, 0)), dpr(n, vector&lt;int&gt;(2, 0));
+        for(int i &#x3D; 0; i &lt; n; ++i)&#123; &#x2F;&#x2F; 统计 dpl
+            if(i &#x3D;&#x3D; 0)&#123;
+                if(s[1][i] &#x3D;&#x3D; &#39;*&#39;) dpl[i][0] &#x3D; 1;
+                if(s[0][i] &#x3D;&#x3D; &#39;*&#39;) dpl[i][1] &#x3D; 1;
+            &#125;else&#123;
+                if(dpl[i - 1][0] &gt; 0 or s[0][i - 1] &#x3D;&#x3D; &#39;*&#39;) dpl[i][0] &#x3D; dpl[i - 1][0] + 1;
+                if(dpl[i - 1][1] &gt; 0 or s[1][i - 1] &#x3D;&#x3D; &#39;*&#39;) dpl[i][1] &#x3D; dpl[i - 1][1] + 1;
+                if(s[1][i] &#x3D;&#x3D; &#39;*&#39;) dpl[i][0]++;
+                if(s[0][i] &#x3D;&#x3D; &#39;*&#39;) dpl[i][1]++;
+                if(dpl[i - 1][1] or s[1][i - 1] &#x3D;&#x3D; &#39;*&#39;) dpl[i][0] &#x3D; min(dpl[i - 1][1] + 2, dpl[i][0]);
+                if(dpl[i - 1][0] or s[0][i - 1] &#x3D;&#x3D; &#39;*&#39;) dpl[i][1] &#x3D; min(dpl[i - 1][0] + 2, dpl[i][1]);
+            &#125;
+        &#125;
+        for(int i &#x3D; n - 1; i &gt;&#x3D; 0; --i)&#123;&#x2F;&#x2F; 统计 dpr
+            if(i &#x3D;&#x3D; n - 1)&#123;
+                if(s[1][i] &#x3D;&#x3D; &#39;*&#39;) dpr[i][0] &#x3D; 1;
+                if(s[0][i] &#x3D;&#x3D; &#39;*&#39;) dpr[i][1] &#x3D; 1;
+            &#125;else&#123;
+                if(dpr[i + 1][0] &gt; 0 or s[0][i + 1] &#x3D;&#x3D; &#39;*&#39;) dpr[i][0] &#x3D; dpr[i + 1][0] + 1;
+                if(dpr[i + 1][1] &gt; 0 or s[1][i + 1] &#x3D;&#x3D; &#39;*&#39;) dpr[i][1] &#x3D; dpr[i + 1][1] + 1;
+                if(s[1][i] &#x3D;&#x3D; &#39;*&#39;) dpr[i][0]++;
+                if(s[0][i] &#x3D;&#x3D; &#39;*&#39;) dpr[i][1]++;
+                if(dpr[i + 1][1] or s[1][i + 1] &#x3D;&#x3D; &#39;*&#39;) dpr[i][0] &#x3D; min(dpr[i + 1][1] + 2, dpr[i][0]);
+                if(dpr[i + 1][0] or s[0][i + 1] &#x3D;&#x3D; &#39;*&#39;) dpr[i][1] &#x3D; min(dpr[i + 1][0] + 2, dpr[i][1]);
+            &#125;
+        &#125;
+        int ans &#x3D; min(min(dpl[n - 1][0], dpl[n - 1][1]), min(dpr[0][0], dpr[0][1]));  &#x2F;&#x2F;处理两端的情况
+        for(int i &#x3D; 1; i &lt; n; ++i)&#123; &#x2F;&#x2F; 处理合并的情况
+            for(int j &#x3D; 0; j &lt; 2; ++j)&#123;
+                int tmp &#x3D; dpl[i - 1][j] + dpr[i][j];
+                if((dpl[i - 1][j] or s[j][i - 1] &#x3D;&#x3D; &#39;*&#39;) and (dpr[i][j] or s[j][i] &#x3D;&#x3D; &#39;*&#39;)) ++tmp;
+                ans &#x3D; min(ans, tmp);
+            &#125;
+        &#125;
+        cout &lt;&lt; ans &lt;&lt; endl;
+    &#125;
+    return 0;
+&#125;</code></pre></div></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Codeforces/" class="category-chain-item">Codeforces</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+      
+        <a href="/tags/Codeforces/">#Codeforces</a>
+      
+        <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+      
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+      
+        <a href="/tags/%E6%A8%A1%E6%8B%9F/">#模拟</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Educational Codeforces Round 128 (Rated for Div. 2)</div>
+      <div>https://dianhsu.com/2022/05/14/cf1680/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Dian Hsu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/14/cf1679/" title="Codeforces Round 791 (Div. 2)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Codeforces Round 791 (Div. 2)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/13/LCP58/" title="LCP 58. 积木拼接">
+                        <span class="hidden-mobile">LCP 58. 积木拼接</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"dianhsu/blog-raw","repo-id":"MDEwOlJlcG9zaXRvcnkzNzE1NzgxOTE=","category":"General","category-id":"MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyOTcxODAy","theme-light":"light","theme-dark":"dark","mapping":"title","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN","loading":"lazy"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      鄂ICP备2020020124号-2
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

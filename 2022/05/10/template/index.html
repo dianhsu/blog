@@ -1,0 +1,2320 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <link rel="icon" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dian Hsu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="算法竞赛编程模板，主要用于线上比赛，可以直接从这里复制代码提交到OJ平台，代码风格主要是函数式和面向对象。  字符串  KMP字符串匹配 class KMP &amp;#123; public:     &#x2F;**      * @brief 统计目标串中有多少个模式串      * @param target 目标字符串      * @param pattern 模式字符串      * *&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法模板">
+<meta property="og:url" content="https://dianhsu.com/2022/05/10/template/index.html">
+<meta property="og:site_name" content="dianhsuのblog">
+<meta property="og:description" content="算法竞赛编程模板，主要用于线上比赛，可以直接从这里复制代码提交到OJ平台，代码风格主要是函数式和面向对象。  字符串  KMP字符串匹配 class KMP &amp;#123; public:     &#x2F;**      * @brief 统计目标串中有多少个模式串      * @param target 目标字符串      * @param pattern 模式字符串      * *&amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.dianhsu.com/blog%2Ffd68b9d44d2dc4cf3606a9e01cdca850634b8d4f.jpeg">
+<meta property="article:published_time" content="2022-05-10T08:36:14.000Z">
+<meta property="article:modified_time" content="2023-03-08T02:21:06.631Z">
+<meta property="article:author" content="Dian Hsu">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="图论">
+<meta property="article:tag" content="几何">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.dianhsu.com/blog%2Ffd68b9d44d2dc4cf3606a9e01cdca850634b8d4f.jpeg">
+  
+  
+  
+  <title>算法模板 - dianhsuのblog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dianhsu.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gHBUbGnezwPEckLGQuK5MYV1-MdYXbMMI","app_key":"kokqnKgfEiMRyh31b4ofNY5k","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="算法模板"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-10 16:36" pubdate>
+          2022年5月10日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          38k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          316 分钟
+        
+      </span>
+    
+
+    
+    
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">算法模板</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>算法竞赛编程模板，主要用于线上比赛，可以直接从这里复制代码提交到OJ平台，代码风格主要是函数式和面向对象。</p>
+<h2 id="字符串"><a class="markdownIt-Anchor" href="#字符串"></a> 字符串</h2>
+<h3 id="kmp字符串匹配"><a class="markdownIt-Anchor" href="#kmp字符串匹配"></a> KMP字符串匹配</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class KMP &#123;
+public:
+    &#x2F;**
+     * @brief 统计目标串中有多少个模式串
+     * @param target 目标字符串
+     * @param pattern 模式字符串
+     * *&#x2F;
+    static int solve(string&amp; target, string&amp; pattern) &#123;
+        int ans &#x3D; 0;
+        int idxTarget &#x3D; 0, idxPattern &#x3D; 0;
+        vector&lt;int&gt; next(std::move(_prefix(pattern)));
+        while (idxTarget &lt; target.length()) &#123;
+            while (idxPattern !&#x3D; -1 and pattern[idxPattern] !&#x3D; target[idxTarget]) &#123;
+                idxPattern &#x3D; next[idxPattern];
+            &#125;
+            ++idxTarget; ++idxPattern;
+            if (idxPattern &gt;&#x3D; pattern.length()) &#123;
+                ++ans;
+                idxPattern &#x3D; next[idxPattern];
+            &#125;
+        &#125;
+        return ans;
+    &#125;
+private:
+    static vector&lt;int&gt; _prefix(const string&amp; pattern) &#123;
+        int i &#x3D; 0, j &#x3D; -1;
+        vector&lt;int&gt; ret(pattern.length() + 1, -1);
+        while (i &lt; pattern.length()) &#123;
+            while (j !&#x3D; -1 and pattern[i] !&#x3D; pattern[j]) j &#x3D; ret[j];
+            if (pattern[++i] &#x3D;&#x3D; pattern[++j]) &#123;
+                ret[i] &#x3D; ret[j];
+            &#125; else &#123;
+                ret[i] &#x3D; j;
+            &#125;
+        &#125;
+        return ret;
+    &#125;
+&#125;;</code></pre></div></figure>
+<h3 id="manacher算法"><a class="markdownIt-Anchor" href="#manacher算法"></a> Manacher算法</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class Manacher &#123;
+public:
+    static std::string forward(const std::string&amp; s) &#123;
+        std::string Ma &#x3D; &quot;^#&quot;;
+        for (auto it: s) &#123;
+            Ma +&#x3D; it;
+            Ma +&#x3D; &#39;#&#39;;
+        &#125;
+        Ma +&#x3D; &#39;$&#39;;
+        int len &#x3D; Ma.length();
+        std::vector&lt;int&gt; Mp(len, 0);
+        int mx &#x3D; 0, id &#x3D; 0;
+        int maxPos &#x3D; 0;
+        for (int i &#x3D; 1; i &lt; len - 1; ++i) &#123;
+            Mp[i] &#x3D; mx &gt; i ? std::min(Mp[(id &lt;&lt; 1) - i], mx - i) : 1;
+            while (Ma[i + Mp[i]] &#x3D;&#x3D; Ma[i - Mp[i]]) Mp[i]++;
+            if (Mp[i] &gt; Mp[maxPos]) &#123;
+                maxPos &#x3D; i;
+            &#125;
+            if (i + Mp[i] &gt; mx) &#123;
+                mx &#x3D; i + Mp[i];
+                id &#x3D; i;
+            &#125;
+        &#125;
+        std::string ret;
+        for (int i &#x3D; maxPos - Mp[maxPos] + 1; i &lt; maxPos + Mp[maxPos]; ++i) &#123;
+            if (isalnum(Ma[i])) &#123;
+                ret +&#x3D; Ma[i];
+            &#125;
+        &#125;
+        return ret;
+    &#125;
+&#125;;
+</code></pre></div></figure>
+<h3 id="字符串hash"><a class="markdownIt-Anchor" href="#字符串hash"></a> 字符串Hash</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class StringHash&#123;
+public:
+    static unsigned BKDR(const std::string&amp; str)&#123;
+        unsigned seed &#x3D; 131; &#x2F;&#x2F; 31 131 1313 13131 131313 etc..
+        unsigned hash &#x3D; 0;
+        for(auto c: str)&#123;
+            hash &#x3D; hash * seed + c;
+        &#125;
+        return (hash &amp; 0x7FFFFFFF);
+    &#125;
+    static unsigned AP(const std::string&amp; str)&#123;
+        unsigned hash &#x3D; 0;
+        for(int i &#x3D; 0; i &lt; str.length(); ++i)&#123;
+            if(i &amp; 1)&#123;
+                hash ^&#x3D; (~((hash &lt;&lt; 11) ^ str[i] ^ (hash &gt;&gt; 5)));
+            &#125;else&#123;
+                hash ^&#x3D; ((hash &lt;&lt; 7) ^ str[i] ^ (hash &gt;&gt; 3));
+            &#125;
+        &#125;
+        return (hash &amp; 0x7FFFFFFF);
+    &#125;
+    static unsigned DJB(const std::string&amp; str)&#123;
+        unsigned hash &#x3D; 5381;
+        for(auto c: str)&#123;
+            hash +&#x3D; (hash &lt;&lt; 5) + c;
+        &#125;
+        return (hash &amp; 0x7FFFFFFF);
+    &#125;
+    static unsigned JS(const std::string&amp; str)&#123;
+        unsigned hash &#x3D; 1315423911;
+        for(auto c: str) hash ^&#x3D; ((hash &lt;&lt; 5) + c + (hash &gt;&gt; 2));
+        return (hash &amp; 0x7FFFFFFF);
+    &#125;
+    static unsigned SDBM(const std::string&amp; str)&#123;
+        unsigned hash &#x3D; 0;
+        for(auto c: str) hash &#x3D; c + (hash &lt;&lt; 6) + (hash &lt;&lt; 16) - hash;
+        return (hash &amp; 0x7FFFFFFF);
+    &#125;
+    static unsigned PJW(const std::string&amp; str)&#123;
+        auto bits_in_unsigned_int &#x3D; (unsigned)(sizeof(unsigned) * 8);
+        auto three_quarters &#x3D; (unsigned)(bits_in_unsigned_int * 3 &#x2F; 4);
+        auto one_eighth &#x3D; (unsigned)(bits_in_unsigned_int &#x2F; 8);
+        unsigned high_bits &#x3D; (unsigned)(0xFFFFFFFF) &lt;&lt; (bits_in_unsigned_int - one_eighth);
+        unsigned hash &#x3D; 0;
+        unsigned test &#x3D; 0;
+        for(auto c: str)&#123;
+            hash &#x3D; (hash &lt;&lt; one_eighth) + c;
+            if((test &#x3D; hash &amp; high_bits) !&#x3D; 0)&#123;
+                hash &#x3D; (hash ^ (test &gt;&gt; three_quarters)) &amp; (~high_bits);
+            &#125;
+        &#125;
+        return (hash &amp; 0x7FFFFFFF);
+    &#125;
+    static unsigned ELF(const std::string&amp; str)&#123;
+        unsigned hash &#x3D; 0, x &#x3D; 0;
+        for(auto c: str)&#123;
+            hash &#x3D; (hash &lt;&lt; 4) + c;
+            if((x &#x3D; hash &amp; 0xF0000000ll) !&#x3D; 0)&#123;
+                hash ^&#x3D; (x &gt;&gt; 24);
+                hash &amp;&#x3D; (~x);
+            &#125;
+        &#125;
+        return (hash &amp; 0x7FFFFFFF);
+    &#125;
+&#125;;</code></pre></div></figure>
+<h3 id="ac自动机ac-automaton"><a class="markdownIt-Anchor" href="#ac自动机ac-automaton"></a> AC自动机(AC Automaton)</h3>
+<p>提供插入、构建、查询三个方法。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">namespace Automaton &#123;
+struct ACNode&#123;
+    vector&lt;int&gt; nex;
+    int fail;
+    int cnt;
+    ACNode() : nex(26, 0), cnt(0), fail(0) &#123; &#125;
+&#125;;
+class AC&#123;
+public:
+    AC(): nodes(1) &#123; &#125;
+    void insert(const string&amp; arg)&#123;
+        int cur &#x3D; 0;
+        for(auto&amp; c: arg)&#123;
+            int to &#x3D; c - &#39;a&#39;;
+            if(!nodes[cur].nex[to])&#123;
+                nodes[cur].nex[to] &#x3D; (int)nodes.size();
+                nodes.emplace_back();
+            &#125;
+            cur &#x3D; nodes[cur].nex[to];
+        &#125;
+        nodes[cur].cnt++;
+    &#125;
+    void build()&#123;
+        queue&lt;int&gt; Q;
+        for(int i &#x3D; 0; i &lt; 26; ++i) &#123;
+            if(nodes[0].nex[i])&#123;
+                Q.push(nodes[0].nex[i]);
+            &#125;
+        &#125;
+        while(!Q.empty())&#123;
+            int cur &#x3D; Q.front();
+            Q.pop();
+            for(int i &#x3D; 0; i &lt; 26; ++i)&#123;
+                if(nodes[cur].nex[i])&#123;
+                    nodes[nodes[cur].nex[i]].fail &#x3D; nodes[nodes[cur].fail].nex[i];
+                    Q.push(nodes[cur].nex[i]);
+                &#125;else&#123;
+                    nodes[cur].nex[i] &#x3D; nodes[nodes[cur].fail].nex[i];
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    int query(const string&amp; arg)&#123;
+        int cur &#x3D; 0, ans &#x3D; 0;
+        for(auto&amp; c: arg)&#123;
+            cur &#x3D; nodes[cur].nex[c - &#39;a&#39;];
+            for(int j &#x3D; cur; j and nodes[j].cnt !&#x3D; -1; j &#x3D; nodes[j].fail)&#123;
+                ans +&#x3D; nodes[j].cnt;
+                nodes[j].cnt &#x3D; -1;
+            &#125;
+        &#125;
+        return ans;
+    &#125;
+private:
+    vector&lt;ACNode&gt; nodes;
+&#125;;
+&#125;</code></pre></div></figure>
+<h3 id="后缀数组"><a class="markdownIt-Anchor" href="#后缀数组"></a> 后缀数组</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class SuffixArray &#123;
+private:
+    void radixSort(int n, int m, int w, vector&lt;int&gt;&amp; sa, vector&lt;int&gt;&amp; rk, vector&lt;int&gt;&amp; bucket, vector&lt;int&gt;&amp; idx) &#123;
+        fill(all(bucket), 0);
+        for (int i &#x3D; 0; i &lt; n; ++i) idx[i] &#x3D; sa[i];
+        for (int i &#x3D; 0; i &lt; n; ++i) ++bucket[rk[idx[i] + w]];
+        for (int i &#x3D; 1; i &lt; m; ++i) bucket[i] +&#x3D; bucket[i - 1];
+
+        for (int i &#x3D; n - 1; i &gt;&#x3D; 0; --i) sa[--bucket[rk[idx[i] + w]]] &#x3D; idx[i];
+        fill(all(bucket), 0);
+        for (int i &#x3D; 0; i &lt; n; ++i) idx[i] &#x3D; sa[i];
+        for (int i &#x3D; 0; i &lt; n; ++i) ++bucket[rk[idx[i]]];
+        for (int i &#x3D; 1; i &lt; m; ++i) bucket[i] +&#x3D; bucket[i - 1];
+        for (int i &#x3D; n - 1; i &gt;&#x3D; 0; --i) sa[--bucket[rk[idx[i]]]] &#x3D; idx[i];
+    &#125;
+public:
+    SuffixArray(const string&amp; s) :
+        n(s.length() + 1),
+        m(max((int) s.length() + 1, 300)),
+        rk(2, vector&lt;int&gt;((s.length() + 1) &lt;&lt; 1)),
+        bucket(max((int) s.length() + 1, 300)),
+        idx(s.length() + 1),
+        sa(s.length() + 1),
+        ht(s.length()) &#123;
+
+        for (int i &#x3D; 0; i &lt; n; ++i) ++bucket[rk[0][i] &#x3D; s[i]];
+        for (int i &#x3D; 1; i &lt; m; ++i) bucket[i] +&#x3D; bucket[i - 1];
+        for (int i &#x3D; n - 1; i &gt;&#x3D; 0; --i) sa[--bucket[rk[0][i]]] &#x3D; i;
+        int pre &#x3D; 1;
+        int cur &#x3D; 0;
+        for (int w &#x3D; 1; w &lt; n; w &lt;&lt;&#x3D; 1) &#123;
+            swap(cur, pre);
+            radixSort(n, m, w, sa, rk[pre], bucket, idx);
+            for (int i &#x3D; 1; i &lt; n; ++i) &#123;
+                if (rk[pre][sa[i]] &#x3D;&#x3D; rk[pre][sa[i - 1]] and rk[pre][sa[i] + w] &#x3D;&#x3D; rk[pre][sa[i - 1] + w]) &#123;
+                    rk[cur][sa[i]] &#x3D; rk[cur][sa[i - 1]];
+                &#125; else &#123;
+                    rk[cur][sa[i]] &#x3D; rk[cur][sa[i - 1]] + 1;
+                &#125;
+            &#125;
+        &#125;
+        for (int i &#x3D; 0, k &#x3D; 0; i &lt; n - 1; ++i) &#123;
+            if (k) --k;
+            while (s[i + k] &#x3D;&#x3D; s[sa[rk[cur][i] - 1] + k]) ++k;
+            ht[rk[cur][i] - 1] &#x3D; k;
+        &#125;
+    &#125;
+    vector&lt;int&gt; sa;
+    vector&lt;int&gt; ht;
+private:
+    int n, m;
+    vector&lt;vector&lt;int&gt;&gt; rk;
+    vector&lt;int&gt; bucket, idx;
+&#125;;</code></pre></div></figure>
+<h2 id="图论"><a class="markdownIt-Anchor" href="#图论"></a> 图论</h2>
+<h3 id="并查集dsu"><a class="markdownIt-Anchor" href="#并查集dsu"></a> 并查集（DSU）</h3>
+<blockquote>
+<p>能Copy的时候，就不用手搓了</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class DSU&#123;
+public:
+    explicit DSU(int size_): sz(size_), fa(size_, 0), cnt(size_, 1) &#123;
+        iota(fa.begin(), fa.end(), 0);
+    &#125;
+    int tf(int x)&#123;
+        return x &#x3D;&#x3D; fa[x] ? x : fa[x] &#x3D; tf(fa[x]);
+    &#125;
+    bool mg(int x, int y)&#123;
+        int tx &#x3D; tf(x), ty &#x3D; tf(y);
+        if(tx !&#x3D; ty)&#123;
+            if(cnt[tx] &gt;&#x3D; cnt[ty])&#123; &#x2F;&#x2F; 启发式合并
+                fa[ty] &#x3D; tx;
+                cnt[tx] +&#x3D; cnt[ty];
+            &#125;else&#123;
+                fa[tx] &#x3D; ty;
+                cnt[ty] +&#x3D; cnt[tx];
+            &#125;
+            return true;
+        &#125;
+        return false;
+    &#125;
+    pair&lt;int, int&gt; operator [] (const int idx) &#123;
+        return &#123;tf(idx), cnt[tf(idx)]&#125;;
+    &#125;
+    int size()&#123;
+        return sz;
+    &#125;
+private:
+    int sz;
+    vector&lt;int&gt; fa, cnt;
+&#125;;
+</code></pre></div></figure>
+<h3 id="网络流"><a class="markdownIt-Anchor" href="#网络流"></a> 网络流</h3>
+<h4 id="最大流dinic"><a class="markdownIt-Anchor" href="#最大流dinic"></a> 最大流(Dinic)</h4>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename cap_t&gt;
+class Dinic&#123;
+public:
+    explicit Dinic(int n): node_cnt(n), g(n)&#123;&#125;
+    int add_edge(int from, int to, cap_t cap)&#123;
+        int m &#x3D; int(pos.size());
+        pos.emplace_back(from, int(g[from].size()));
+        int from_id &#x3D; int(g[from].size());
+        int to_id &#x3D; int(g[to].size());
+        if(from &#x3D;&#x3D; to) to_id++;
+        g[from].push_back(PrivateEdge&#123;to, to_id, cap&#125;);
+        g[to].push_back(PrivateEdge&#123;from, from_id, 0&#125;);
+        return m;
+    &#125;
+    struct Edge&#123;
+        int from, to;
+        cap_t cap, flow;
+    &#125;;
+    Edge getEdge(int idx)&#123;
+        auto _e &#x3D; g[pos[idx].first][pos[idx].second];
+        auto _re &#x3D; g[_e.to][_e.rev];
+        return Edge&#123;pos[idx].first, _e.to, _e.cap + _re.cap, _re.cap&#125;;
+    &#125;
+    std::vector&lt;Edge&gt; getEdges()&#123;
+        std::vector&lt;Edge&gt; result;
+        for(int i &#x3D; 0; i &lt; pos.size(); ++i)&#123;
+            result.push_back(getEdge(i));
+        &#125;
+        return result;
+    &#125;
+    cap_t flow(int st, int ed)&#123;
+        return flow(st, ed, std::numeric_limits&lt;cap_t&gt;::max());
+    &#125;
+    cap_t flow(int st, int ed, cap_t flow_limit)&#123;
+        std::vector&lt;int&gt; level(node_cnt);
+        std::queue&lt;int&gt; que;
+        auto&amp;&amp; bfs &#x3D; [&amp;]()&#123;
+            std::fill(level.begin(), level.end(), -1);
+            level[st] &#x3D; 0;
+            while(!que.empty())&#123;
+                que.pop();
+            &#125;
+            que.push(st);
+            while(!que.empty())&#123;
+                int v &#x3D; que.front();
+                que.pop();
+                for(PrivateEdge&amp; e: g[v])&#123;
+                    if(e.cap &#x3D;&#x3D; 0 or level[e.to] &gt;&#x3D; 0) continue;
+                    level[e.to] &#x3D; level[v] + 1;
+                    if(e.to &#x3D;&#x3D; ed) continue;
+                    que.push(e.to);
+                &#125;
+            &#125;
+        &#125;;
+        auto&amp;&amp; dfs &#x3D; [&amp;](auto&amp;&amp; self, int v, cap_t up)&#123;
+            if(v &#x3D;&#x3D; st) return up;
+            cap_t res &#x3D; 0;
+            int level_v &#x3D; level[v];
+            for(int idx &#x3D; 0; idx &lt; int(g[v].size()); ++idx)&#123;
+                PrivateEdge&amp; edge &#x3D; g[v][idx];
+                if(level_v &lt;&#x3D; level[edge.to] or g[edge.to][edge.rev].cap &#x3D;&#x3D; 0) continue;
+                cap_t delta &#x3D; self(self, edge.to, std::min(up - res, g[edge.to][edge.rev].cap));
+                if(delta &lt;&#x3D; 0) continue;
+                g[v][idx].cap +&#x3D; delta;
+                g[edge.to][edge.rev].cap -&#x3D; delta;
+                res +&#x3D; delta;
+                if(res &#x3D;&#x3D; up) return res;
+            &#125;
+            level[v] &#x3D; node_cnt;
+            return res;
+        &#125;;
+        cap_t ans &#x3D; 0;
+        while (ans &lt; flow_limit)&#123;
+            bfs();
+            if(level[ed] &#x3D;&#x3D; -1) break;
+            cap_t delta &#x3D; dfs(dfs, ed, flow_limit - ans);
+            if(!delta) break;
+            ans +&#x3D; delta;
+        &#125;
+        return ans;
+    &#125;
+private:
+    struct PrivateEdge&#123;
+        int to, rev;
+        cap_t cap;
+    &#125;;
+    int node_cnt;
+    std::vector&lt;std::pair&lt;int, int&gt;&gt; pos;
+    std::vector&lt;std::vector&lt;PrivateEdge&gt;&gt; g;
+&#125;;</code></pre></div></figure>
+<h4 id="最小费用流dinic"><a class="markdownIt-Anchor" href="#最小费用流dinic"></a> 最小费用流(Dinic)</h4>
+<blockquote>
+<p>Atcoder</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template &lt;class Cap, class Cost&gt; struct mcf_graph &#123;
+public:
+    mcf_graph() &#123;&#125;
+    explicit mcf_graph(int n) : _n(n) &#123;&#125;
+
+    int add_edge(int from, int to, Cap cap, Cost cost) &#123;
+        assert(0 &lt;&#x3D; from &amp;&amp; from &lt; _n);
+        assert(0 &lt;&#x3D; to &amp;&amp; to &lt; _n);
+        assert(0 &lt;&#x3D; cap);
+        assert(0 &lt;&#x3D; cost);
+        int m &#x3D; int(_edges.size());
+        _edges.push_back(&#123;from, to, cap, 0, cost&#125;);
+        return m;
+    &#125;
+
+    struct edge &#123;
+        int from, to;
+        Cap cap, flow;
+        Cost cost;
+    &#125;;
+
+    template &lt;class E&gt; struct csr &#123;
+        std::vector&lt;int&gt; start;
+        std::vector&lt;E&gt; elist;
+        explicit csr(int n, const std::vector&lt;std::pair&lt;int, E&gt;&gt;&amp; edges)
+            : start(n + 1), elist(edges.size()) &#123;
+            for (auto e : edges) &#123;
+                start[e.first + 1]++;
+            &#125;
+            for (int i &#x3D; 1; i &lt;&#x3D; n; i++) &#123;
+                start[i] +&#x3D; start[i - 1];
+            &#125;
+            auto counter &#x3D; start;
+            for (auto e : edges) &#123;
+                elist[counter[e.first]++] &#x3D; e.second;
+            &#125;
+        &#125;
+    &#125;;
+
+    edge get_edge(int i) &#123;
+        int m &#x3D; int(_edges.size());
+        assert(0 &lt;&#x3D; i &amp;&amp; i &lt; m);
+        return _edges[i];
+    &#125;
+    std::vector&lt;edge&gt; edges() &#123; return _edges; &#125;
+
+    std::pair&lt;Cap, Cost&gt; flow(int s, int t) &#123;
+        return flow(s, t, std::numeric_limits&lt;Cap&gt;::max());
+    &#125;
+    std::pair&lt;Cap, Cost&gt; flow(int s, int t, Cap flow_limit) &#123;
+        return slope(s, t, flow_limit).back();
+    &#125;
+    std::vector&lt;std::pair&lt;Cap, Cost&gt;&gt; slope(int s, int t) &#123;
+        return slope(s, t, std::numeric_limits&lt;Cap&gt;::max());
+    &#125;
+    std::vector&lt;std::pair&lt;Cap, Cost&gt;&gt; slope(int s, int t, Cap flow_limit) &#123;
+        assert(0 &lt;&#x3D; s &amp;&amp; s &lt; _n);
+        assert(0 &lt;&#x3D; t &amp;&amp; t &lt; _n);
+        assert(s !&#x3D; t);
+
+        int m &#x3D; int(_edges.size());
+        std::vector&lt;int&gt; edge_idx(m);
+
+        auto g &#x3D; [&amp;]() &#123;
+            std::vector&lt;int&gt; degree(_n), redge_idx(m);
+            std::vector&lt;std::pair&lt;int, _edge&gt;&gt; elist;
+            elist.reserve(2 * m);
+            for (int i &#x3D; 0; i &lt; m; i++) &#123;
+                auto e &#x3D; _edges[i];
+                edge_idx[i] &#x3D; degree[e.from]++;
+                redge_idx[i] &#x3D; degree[e.to]++;
+                elist.push_back(&#123;e.from, &#123;e.to, -1, e.cap - e.flow, e.cost&#125;&#125;);
+                elist.push_back(&#123;e.to, &#123;e.from, -1, e.flow, -e.cost&#125;&#125;);
+            &#125;
+            auto _g &#x3D; csr&lt;_edge&gt;(_n, elist);
+            for (int i &#x3D; 0; i &lt; m; i++) &#123;
+                auto e &#x3D; _edges[i];
+                edge_idx[i] +&#x3D; _g.start[e.from];
+                redge_idx[i] +&#x3D; _g.start[e.to];
+                _g.elist[edge_idx[i]].rev &#x3D; redge_idx[i];
+                _g.elist[redge_idx[i]].rev &#x3D; edge_idx[i];
+            &#125;
+            return _g;
+        &#125;();
+
+        auto result &#x3D; slope(g, s, t, flow_limit);
+
+        for (int i &#x3D; 0; i &lt; m; i++) &#123;
+            auto e &#x3D; g.elist[edge_idx[i]];
+            _edges[i].flow &#x3D; _edges[i].cap - e.cap;
+        &#125;
+
+        return result;
+    &#125;
+
+private:
+    int _n;
+    std::vector&lt;edge&gt; _edges;
+
+    &#x2F;&#x2F; inside edge
+    struct _edge &#123;
+        int to, rev;
+        Cap cap;
+        Cost cost;
+    &#125;;
+
+    std::vector&lt;std::pair&lt;Cap, Cost&gt;&gt; slope(csr&lt;_edge&gt;&amp; g,
+        int s,
+        int t,
+        Cap flow_limit) &#123;
+        &#x2F;&#x2F; variants (C &#x3D; maxcost):
+        &#x2F;&#x2F; -(n-1)C &lt;&#x3D; dual[s] &lt;&#x3D; dual[i] &lt;&#x3D; dual[t] &#x3D; 0
+        &#x2F;&#x2F; reduced cost (&#x3D; e.cost + dual[e.from] - dual[e.to]) &gt;&#x3D; 0 for all edge
+
+        &#x2F;&#x2F; dual_dist[i] &#x3D; (dual[i], dist[i])
+        std::vector&lt;std::pair&lt;Cost, Cost&gt;&gt; dual_dist(_n);
+        std::vector&lt;int&gt; prev_e(_n);
+        std::vector&lt;bool&gt; vis(_n);
+        struct Q &#123;
+            Cost key;
+            int to;
+            bool operator&lt;(Q r) const &#123; return key &gt; r.key; &#125;
+        &#125;;
+        std::vector&lt;int&gt; que_min;
+        std::vector&lt;Q&gt; que;
+        auto dual_ref &#x3D; [&amp;]() &#123;
+            for (int i &#x3D; 0; i &lt; _n; i++) &#123;
+                dual_dist[i].second &#x3D; std::numeric_limits&lt;Cost&gt;::max();
+            &#125;
+            std::fill(vis.begin(), vis.end(), false);
+            que_min.clear();
+            que.clear();
+
+            &#x2F;&#x2F; que[0..heap_r) was heapified
+            size_t heap_r &#x3D; 0;
+
+            dual_dist[s].second &#x3D; 0;
+            que_min.push_back(s);
+            while (!que_min.empty() || !que.empty()) &#123;
+                int v;
+                if (!que_min.empty()) &#123;
+                    v &#x3D; que_min.back();
+                    que_min.pop_back();
+                &#125; else &#123;
+                    while (heap_r &lt; que.size()) &#123;
+                        heap_r++;
+                        std::push_heap(que.begin(), que.begin() + heap_r);
+                    &#125;
+                    v &#x3D; que.front().to;
+                    std::pop_heap(que.begin(), que.end());
+                    que.pop_back();
+                    heap_r--;
+                &#125;
+                if (vis[v]) continue;
+                vis[v] &#x3D; true;
+                if (v &#x3D;&#x3D; t) break;
+                &#x2F;&#x2F; dist[v] &#x3D; shortest(s, v) + dual[s] - dual[v]
+                &#x2F;&#x2F; dist[v] &gt;&#x3D; 0 (all reduced cost are positive)
+                &#x2F;&#x2F; dist[v] &lt;&#x3D; (n-1)C
+                Cost dual_v &#x3D; dual_dist[v].first, dist_v &#x3D; dual_dist[v].second;
+                for (int i &#x3D; g.start[v]; i &lt; g.start[v + 1]; i++) &#123;
+                    auto e &#x3D; g.elist[i];
+                    if (!e.cap) continue;
+                    &#x2F;&#x2F; |-dual[e.to] + dual[v]| &lt;&#x3D; (n-1)C
+                    &#x2F;&#x2F; cost &lt;&#x3D; C - -(n-1)C + 0 &#x3D; nC
+                    Cost cost &#x3D; e.cost - dual_dist[e.to].first + dual_v;
+                    if (dual_dist[e.to].second - dist_v &gt; cost) &#123;
+                        Cost dist_to &#x3D; dist_v + cost;
+                        dual_dist[e.to].second &#x3D; dist_to;
+                        prev_e[e.to] &#x3D; e.rev;
+                        if (dist_to &#x3D;&#x3D; dist_v) &#123;
+                            que_min.push_back(e.to);
+                        &#125; else &#123;
+                            que.push_back(Q&#123;dist_to, e.to&#125;);
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+            if (!vis[t]) &#123;
+                return false;
+            &#125;
+
+            for (int v &#x3D; 0; v &lt; _n; v++) &#123;
+                if (!vis[v]) continue;
+                &#x2F;&#x2F; dual[v] &#x3D; dual[v] - dist[t] + dist[v]
+                &#x2F;&#x2F;         &#x3D; dual[v] - (shortest(s, t) + dual[s] - dual[t]) +
+                &#x2F;&#x2F;         (shortest(s, v) + dual[s] - dual[v]) &#x3D; - shortest(s,
+                &#x2F;&#x2F;         t) + dual[t] + shortest(s, v) &#x3D; shortest(s, v) -
+                &#x2F;&#x2F;         shortest(s, t) &gt;&#x3D; 0 - (n-1)C
+                dual_dist[v].first -&#x3D; dual_dist[t].second - dual_dist[v].second;
+            &#125;
+            return true;
+        &#125;;
+        Cap flow &#x3D; 0;
+        Cost cost &#x3D; 0, prev_cost_per_flow &#x3D; -1;
+        std::vector&lt;std::pair&lt;Cap, Cost&gt;&gt; result &#x3D; &#123;&#123;Cap(0), Cost(0)&#125;&#125;;
+        while (flow &lt; flow_limit) &#123;
+            if (!dual_ref()) break;
+            Cap c &#x3D; flow_limit - flow;
+            for (int v &#x3D; t; v !&#x3D; s; v &#x3D; g.elist[prev_e[v]].to) &#123;
+                c &#x3D; std::min(c, g.elist[g.elist[prev_e[v]].rev].cap);
+            &#125;
+            for (int v &#x3D; t; v !&#x3D; s; v &#x3D; g.elist[prev_e[v]].to) &#123;
+                auto&amp; e &#x3D; g.elist[prev_e[v]];
+                e.cap +&#x3D; c;
+                g.elist[e.rev].cap -&#x3D; c;
+            &#125;
+            Cost d &#x3D; -dual_dist[s].first;
+            flow +&#x3D; c;
+            cost +&#x3D; c * d;
+            if (prev_cost_per_flow &#x3D;&#x3D; d) &#123;
+                result.pop_back();
+            &#125;
+            result.push_back(&#123;flow, cost&#125;);
+            prev_cost_per_flow &#x3D; d;
+        &#125;
+        return result;
+    &#125;
+&#125;;</code></pre></div></figure>
+<h3 id="tarjan"><a class="markdownIt-Anchor" href="#tarjan"></a> Tarjan</h3>
+<blockquote>
+<p>解决关键边和关键点很好用</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">const int maxn &#x3D; 100100;
+int dfn[maxn], low[maxn];
+int tim;
+int vis[maxn];
+int sd[maxn];
+std::stack&lt;int&gt; st;
+vector&lt;vector&lt;int&gt;&gt; g;
+void tarjan(int cur)&#123;
+    dfn[cur] &#x3D; low[cur] &#x3D; ++tim; 
+    vis[cur] &#x3D; 1;
+    st.push(cur);
+    for(auto&amp; nex: g[cur])&#123;
+        if(!dfn[nex])&#123;
+            tarjan(nex);
+            low[cur] &#x3D; min(low[cur], low[nex]);
+        &#125;else if(vis[nex])&#123;
+            low[cur] &#x3D; min(low[cur], dfn[nex]);
+        &#125;
+    &#125;
+    if(dfn[cur] &#x3D;&#x3D; low[cur])&#123;
+        while(!st.empty())&#123;
+            auto pos &#x3D; st.top();
+            st.pop();
+            vis[pos] &#x3D; 0;
+            sd[pos] &#x3D; cur;
+            if(pos &#x3D;&#x3D; cur) break;
+        &#125;
+    &#125;
+&#125;
+</code></pre></div></figure>
+<h2 id="计算几何"><a class="markdownIt-Anchor" href="#计算几何"></a> 计算几何</h2>
+<h3 id="极角排序"><a class="markdownIt-Anchor" href="#极角排序"></a> 极角排序</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+struct Point&#123;
+    ll x, y;
+    Point() &#x3D; default;
+    Point(int argx, int argy): x(argx), y(argy)&#123;&#125;
+    bool up() const&#123;
+        return y &gt; 0 or (y &#x3D;&#x3D; 0 and x &gt;&#x3D; 0);
+    &#125;
+&#125;;
+ll det(const Point&amp; a, const Point&amp; b) &#123;
+    return a.x * b.y - b.x * a.y;
+&#125;
+ 
+ll dot(const Point&amp; a, const Point&amp; b) &#123;
+    return a.x * b.x + a.y * b.y;
+&#125;
+ 
+bool cmp(const Point&amp; a, const Point&amp; b) &#123;
+    if (a.up() ^ b.up()) return a.up() &gt; b.up();
+    return det(a, b) &gt; 0;
+&#125;
+ 
+bool same(const Point&amp; a, const Point&amp; b) &#123;
+    ll d &#x3D; det (a, b);
+    if (d &gt; 0) return true;
+    if (d &lt; 0) return false;
+    return dot (a, b) &gt; 0;
+&#125;
+</code></pre></div></figure>
+<h3 id="凸包"><a class="markdownIt-Anchor" href="#凸包"></a> 凸包</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 基本数据类型，面积和边长的数据
+template&lt;typename T, typename AFT&gt;
+class Andrew&#123;
+    typedef pair&lt;T, T&gt; PTT;
+    PTT reduce(PTT a, PTT b)&#123;
+        return PTT&#123;a.first - b.first, a.second - b.second&#125;;
+    &#125;
+    T cross(PTT a, PTT b)&#123;
+        return a.first * b.second - a.second * b.first;
+    &#125;
+    T area(PTT a, PTT b, PTT c)&#123;
+        return cross(reduce(b , a), reduce(c , a));
+    &#125;
+    AFT dist(PTT a, PTT b)&#123;
+        AFT dx &#x3D; a.first - b.first;
+        AFT dy &#x3D; a.second - b.second;
+        return sqrt(dx * dx + dy * dy);
+    &#125;
+public:
+    Andrew()&#x3D; default;
+    Andrew(const vector&lt;PTT&gt;&amp; argv): vec(argv)&#123;&#125;
+    void addPoint(PTT p)&#123;
+        vec.push_back(p);
+    &#125;
+    &#x2F;&#x2F; 边长， 面积， 按节点顺序的边缘节点序列（第一个点和最后一个点是一样的）
+    &#x2F;&#x2F; 注意：如果考虑凸包上点的数目最少，需要将while循环允许面积等于0
+    tuple&lt;T, T, vector&lt;PTT&gt;&gt; run()&#123;
+        sort(vec.begin(), vec.end());
+        vector&lt;int&gt; st;
+        &#x2F;&#x2F; vis是用来记录第一遍访问的节点，而不是最终在凸包上面的点
+        vector&lt;bool&gt; vis(vec.size(), false);
+        for(int i &#x3D; 0; i &lt; vec.size(); ++i)&#123;
+            while(st.size() &gt;&#x3D; 2 and area(vec[*next(st.rbegin(), 1)], vec[*st.rbegin()], vec[i]) &lt; 0)&#123;
+                if(area(vec[*next(st.rbegin(), 1)], vec[*st.rbegin()], vec[i]) &lt; 0)&#123;
+                    vis[st.back()] &#x3D; false;
+                &#125;
+                st.pop_back();
+            &#125;
+            st.push_back(i);
+            vis[st.back()] &#x3D; true;
+        &#125;
+        vis[0] &#x3D; false;
+        for(int i &#x3D; (int)vec.size() - 1; i &gt;&#x3D; 0; --i)&#123;
+            if(vis[i]) continue;
+            while(st.size() &gt;&#x3D; 2 and area(vec[*next(st.rbegin(), 1)], vec[*st.rbegin()], vec[i]) &lt; 0)&#123;
+                st.pop_back();
+            &#125;
+            st.push_back(i);
+        &#125;
+        AFT dis &#x3D; 0;
+        AFT ars &#x3D; 0;
+        vector&lt;PTT&gt; res;
+        for(auto&amp; it: st) res.push_back(vec[it]);
+        for(int i &#x3D; 1; i &lt; st.size(); ++i)&#123;
+            dis +&#x3D; dist(vec[st[i - 1]], vec[st[i]]);
+            ars +&#x3D; area(vec[0], vec[st[i - 1]], vec[st[i]]);
+        &#125;
+        return &#123;dis, ars, res&#125;;
+    &#125;
+private:
+    vector&lt;PTT&gt; vec;
+&#125;;
+</code></pre></div></figure>
+<h3 id="方阵的三维操作模板"><a class="markdownIt-Anchor" href="#方阵的三维操作模板"></a> 方阵的三维操作模板</h3>
+<blockquote>
+<p>翻转，旋转和转置</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class Rectangle&#123;
+public:
+    typedef pair&lt;int, int&gt; Point;
+    Rectangle(int sx, int sy) : dx(&#123;1, 0&#125;), dy(&#123;0, 1&#125;), vec(&#123;Point&#123;0, 0&#125;, Point&#123;0, sy - 1&#125;, Point&#123;sx - 1, 0&#125;, Point&#123;sx - 1, sy - 1&#125;&#125;)&#123;&#125;
+    void mirror(int dr &#x3D; 1)&#123;
+        if(dr &#x3D;&#x3D; 1)&#123;
+            &#x2F;&#x2F; 沿着x轴翻转
+            swap(vec[0], vec[1]);
+            swap(vec[2], vec[3]);
+        &#125;else&#123;
+            &#x2F;&#x2F; 沿着y轴翻转
+            swap(vec[0], vec[2]);
+            swap(vec[1], vec[3]);
+        &#125;
+        update();
+    &#125;
+    void transpose(int dr &#x3D; 1)&#123;
+        if(dr &#x3D;&#x3D; 1)&#123;
+            &#x2F;&#x2F; 沿着y &#x3D; x 翻转
+            swap(vec[1], vec[2]);
+        &#125;else&#123;
+            &#x2F;&#x2F; 沿着x + y &#x3D; n 翻转
+            swap(vec[0], vec[3]);
+        &#125;
+        update();
+    &#125;
+    void rotate(int dr &#x3D; 1)&#123;
+        transpose();
+        if(dr &#x3D;&#x3D; 1)&#123;
+            &#x2F;&#x2F; 顺时针
+            mirror(1);
+        &#125;else&#123;
+            &#x2F;&#x2F; 逆时针
+            mirror(0);
+        &#125;
+        update();
+    &#125;
+    Point mapping(Point p)&#123;
+        return &#123;vec[0].first + dx.first * p.first + dy.first * p.second, vec[0].second + dx.second * p.first + dy.second * p.second&#125;;
+    &#125;
+    Point dx, dy;
+    array&lt;Point, 4&gt; vec;
+private:
+    void update()&#123;
+        int xlim &#x3D; abs(vec[2].first - vec[0].first) + abs(vec[2].second - vec[0].second);
+        int ylim &#x3D; abs(vec[1].first - vec[0].first) + abs(vec[1].second - vec[0].second);
+        assert(xlim &gt; 0 and ylim &gt; 0);
+        dx &#x3D; Point&#123;(vec[2].first - vec[0].first) &#x2F; xlim, (vec[2].second - vec[0].second) &#x2F; xlim&#125;;
+        dy &#x3D; Point&#123;(vec[1].first - vec[0].first) &#x2F; ylim, (vec[1].second - vec[0].second) &#x2F; ylim&#125;;
+    &#125;
+&#125;;</code></pre></div></figure>
+<h2 id="数据结构"><a class="markdownIt-Anchor" href="#数据结构"></a> 数据结构</h2>
+<h3 id="线段树"><a class="markdownIt-Anchor" href="#线段树"></a> 线段树</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; Luogu P3373
+template&lt;typename T &#x3D; int&gt;
+inline T read() &#123;
+    T ret;
+    cin &gt;&gt; ret;
+    return ret;
+&#125;
+
+template&lt;class Fun&gt;
+class Y_combinator &#123;
+private:
+    Fun fun_;
+public:
+    template&lt;class F&gt;
+    Y_combinator(F&amp;&amp; fun) : fun_(static_cast&lt;F&amp;&amp;&gt;(fun)) &#123;&#125;
+    template&lt;class... Args&gt;
+    decltype(auto) operator () (Args&amp;&amp;...args) const &#123;
+        return fun_(*this, static_cast&lt;Args&amp;&amp;&gt;(args)...);
+    &#125;
+&#125;;
+template&lt;class T&gt; Y_combinator(T)-&gt;Y_combinator&lt;T&gt;;
+
+#define MID ((l + r) &gt;&gt; 1)
+#define LEFT (cur &lt;&lt; 1)
+#define RIGHT ((cur &lt;&lt; 1) | 1)
+
+int main(int argc, char* argv[]) &#123;
+    fastIO();
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    vector&lt;ll&gt; arr&#123;0&#125;;
+    for (int i &#x3D; 0; i &lt; n; ++i) &#123;
+        arr.push_back(read&lt;ll&gt;());
+    &#125;
+    vector&lt;ll&gt; lazy((n &lt;&lt; 2) + 10);
+    vector&lt;ll&gt; node((n &lt;&lt; 2) + 10);
+    Y_combinator(
+        [&amp;](auto&amp;&amp; build, int cur, int l, int r) -&gt; void &#123;
+            if (l &#x3D;&#x3D; r) &#123;
+                node[cur] &#x3D; arr[l];
+            &#125; else &#123;
+                build(LEFT, l, MID);
+                build(RIGHT, MID + 1, r);
+                node[cur] &#x3D; node[LEFT] + node[RIGHT];
+            &#125;
+        &#125;
+    )(1, 1, n);
+    auto&amp;&amp; lazyUpdate &#x3D; [&amp;](int cur, int l, int r) -&gt; void &#123;
+        if (lazy[cur] !&#x3D; 0) &#123;
+            node[LEFT] +&#x3D; lazy[cur] * (MID - l + 1);
+            node[RIGHT] +&#x3D; lazy[cur] * (r - MID);
+            lazy[LEFT] +&#x3D; lazy[cur];
+            lazy[RIGHT] +&#x3D; lazy[cur];
+            lazy[cur] &#x3D; 0;
+        &#125;
+    &#125;;
+    auto&amp;&amp; update &#x3D; Y_combinator(
+        [&amp;](auto&amp;&amp; update, int cur, int l, int r, int s, int e, ll v) &#123;
+            if (s &gt; r or e &lt; l) return;
+            if (s &lt;&#x3D; l and r &lt;&#x3D; e) &#123;
+                node[cur] +&#x3D; (r - l + 1) * v;
+                lazy[cur] +&#x3D; v;
+            &#125; else &#123;
+                lazyUpdate(cur, l, r);
+                update(LEFT, l, MID, s, e, v);
+                update(RIGHT, MID + 1, r, s, e, v);
+                node[cur] &#x3D; node[LEFT] + node[RIGHT];
+            &#125;
+        &#125;
+    );
+    auto&amp;&amp; query &#x3D; Y_combinator(
+        [&amp;](auto&amp;&amp; query, int cur, int l, int r, int s, int e)-&gt;ll &#123;
+            if (s &gt; r or e &lt; l) return 0;
+            if (s &lt;&#x3D; l and e &gt;&#x3D; r) &#123;
+                return node[cur];
+            &#125;
+            lazyUpdate(cur, l, r);
+            ll ret &#x3D; query(LEFT, l, MID, s, e);
+            ret +&#x3D; query(RIGHT, MID + 1, r, s, e);
+            return ret;
+        &#125;
+    );
+    while (m--) &#123;
+        int q, x, y, k;
+        cin &gt;&gt; q &gt;&gt; x &gt;&gt; y;
+        if (q &#x3D;&#x3D; 1) &#123;
+            cin &gt;&gt; k;
+            update(1, 1, n, x, y, k);
+        &#125; else &#123;
+            cout &lt;&lt; query(1, 1, n, x, y) &lt;&lt; endl;
+        &#125;
+    &#125;
+    return 0;
+&#125;</code></pre></div></figure>
+<h3 id="st表稀疏表c17"><a class="markdownIt-Anchor" href="#st表稀疏表c17"></a> ST表（稀疏表）(C++17)</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename iter, typename BinOp&gt;
+class SparseTable &#123;
+    using T &#x3D; typename remove_reference&lt;decltype(*declval&lt;iter&gt;())&gt;::type;
+    vector&lt;vector&lt;T&gt;&gt; arr;
+    BinOp binOp;
+public:
+    SparseTable(iter begin, iter end, BinOp binOp) : arr(1), binOp(binOp) &#123;
+        int n &#x3D; distance(begin, end);
+        arr.assign(32 - __builtin_clz(n), vector&lt;T&gt;(n));
+        arr[0].assign(begin, end);
+        for (int i &#x3D; 1; i &lt; arr.size(); ++i) &#123;
+            for (int j &#x3D; 0; j &lt; n - (1 &lt;&lt; i) + 1; ++j) &#123;
+                arr[i][j] &#x3D; binOp(arr[i - 1][j], arr[i - 1][j + (1 &lt;&lt; (i - 1))]);
+            &#125;
+        &#125;
+    &#125;
+    T query(int lPos, int rPos) &#123;
+        int h &#x3D; floor(log2(rPos - lPos + 1));
+        return binOp(arr[h][lPos], arr[h][rPos - (1 &lt;&lt; h) + 1]);
+    &#125;
+&#125;;</code></pre></div></figure>
+<h3 id="树状数组"><a class="markdownIt-Anchor" href="#树状数组"></a> 树状数组</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T&gt;
+struct FenWick &#123;
+    int N;
+    vector&lt;T&gt; arr;
+    FenWick(int sz): N(sz), arr(sz + 1, 0) &#123;&#125;
+    void update(int pos, T val) &#123;
+        for (; pos &lt;&#x3D; N;pos |&#x3D; (pos + 1)) &#123;
+            arr[pos] +&#x3D; val;
+        &#125;
+    &#125;
+    &#x2F;&#x2F; 获取 [1, pos] 的和
+    T get(int pos) &#123;
+        T ret &#x3D; 0;
+        for (; pos &gt; 0; --pos) &#123;
+            ret +&#x3D; arr[pos];
+            pos &amp;&#x3D; (pos + 1);
+        &#125;
+        return ret;
+    &#125;
+    &#x2F;&#x2F; 获取 [l, r] 的和
+    T query(int l, int r) &#123;
+        return get(r) - get(l - 1);
+    &#125;
+&#125;;</code></pre></div></figure>
+<h3 id="珂朵莉树"><a class="markdownIt-Anchor" href="#珂朵莉树"></a> 珂朵莉树</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">namespace Chtholly&#123;
+struct Node&#123;
+    int l, r;
+    mutable int v;
+    Node(int il, int ir, int iv): l(il), r(ir), v(iv)&#123;&#125;
+    bool operator &lt; (const Node&amp; arg) const&#123;
+        return l &lt; arg.l;
+    &#125;
+&#125;;
+class Tree&#123;
+protected:
+    auto split(int pos)&#123;
+        if(pos &gt; _sz) return odt.end();
+        auto it &#x3D; --odt.upper_bound(Node&#123;pos, 0, 0&#125;);
+        if(it-&gt;l &#x3D;&#x3D; pos) return it;
+        auto tmp &#x3D; *it;
+        odt.erase(it);
+        odt.insert(&#123;tmp.l, pos - 1, tmp.v&#125;);
+        return odt.insert(&#123;pos, tmp.r, tmp.v&#125;).first;
+    &#125;  
+public:
+    Tree(int sz, int ini &#x3D; 1): _sz(sz), odt(&#123;Node&#123;1, sz, ini&#125;&#125;) &#123;&#125;
+    virtual void assign(int l, int r, int v)&#123;
+        auto itr &#x3D; split(r + 1), itl &#x3D; split(l);
+        &#x2F;&#x2F; operations here
+        odt.erase(itl, itr);
+        odt.insert(&#123;l, r, v&#125;);
+    &#125;
+protected:
+    int _sz;
+    set&lt;Node&gt; odt;
+&#125;;
+&#125;
+</code></pre></div></figure>
+<h3 id="splay树"><a class="markdownIt-Anchor" href="#splay树"></a> Splay树</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://loj.ac/p/104">https://loj.ac/p/104</a><br />
+有误，暂未修</p>
+</blockquote>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;array&gt;
+#include &lt;iostream&gt;
+#include &lt;cassert&gt;
+using namespace std;
+template&lt;typename T&gt;
+class SplayTree&#123;
+public:
+    struct Node&#123;
+        Node *parent&#123;&#125;;
+        std::array&lt;Node*, 2&gt; child&#123;&#125;;
+        T val;
+        &#x2F;&#x2F; cnt: repeat of current element, sz: element count of child tree, sum: repeats of child tree
+        size_t cnt, sz, sum;
+        explicit Node(T value_arg): val(value_arg), cnt(1), sz(1), sum(1)&#123;&#125;
+        bool side() const&#123;
+            return parent-&gt;child[1] &#x3D;&#x3D; this;
+        &#125;
+        &#x2F;&#x2F; maintain information of current element
+        void maintain()&#123;
+            if(!this) return;
+            this-&gt;sum &#x3D; this-&gt;cnt;
+            this-&gt;sz &#x3D; 1;
+            if(this-&gt;child[0]) &#123;
+                this-&gt;sum +&#x3D; this-&gt;child[0]-&gt;sum;
+                this-&gt;sz +&#x3D; this-&gt;child[0]-&gt;sz;
+            &#125;
+            if(this-&gt;child[1]) &#123;
+                this-&gt;sum +&#x3D; this-&gt;child[1]-&gt;sum;
+                this-&gt;sz +&#x3D; this-&gt;child[1]-&gt;sz;
+            &#125;
+        &#125;
+        &#x2F;&#x2F; left rotate and right rotate
+        void rotate()&#123;
+            const auto p &#x3D; parent;
+            const bool i &#x3D; side();
+            if(p-&gt;parent)&#123;
+                p-&gt;parent-&gt;attach(p-&gt;side(), this);
+            &#125;else&#123;
+                parent &#x3D; nullptr;
+            &#125;
+            p-&gt;attach(i, child[!i]);
+            attach(!i, p);
+            p-&gt;maintain();
+            maintain();
+        &#125;
+        void splay()&#123;
+            for(;parent;rotate())&#123;
+                if(parent-&gt;parent)&#123;
+                    (side() &#x3D;&#x3D; parent-&gt;side() ? parent: this)-&gt;rotate();
+                &#125;
+            &#125;
+        &#125;
+        &#x2F;&#x2F; attach node new_ as the node&#39;s side child
+        void attach(bool side, Node* const new_)&#123;
+            if(new_) new_-&gt;parent &#x3D; this;
+            child[side] &#x3D; new_;
+        &#125;
+    &#125;;
+    struct iterator&#123;
+        using iterator_category &#x3D; std::bidirectional_iterator_tag;
+        using value_type &#x3D; T;
+        using pointer &#x3D; T*;
+        using reference &#x3D; T&amp;;
+        using difference_type &#x3D; long long;
+    public:
+        Node* node;
+        void operator--()&#123; advance&lt;false&gt;();&#125;
+        void operator++()&#123; advance&lt;true&gt;();&#125;
+        const T&amp; operator*()&#123;return node-&gt;val;&#125;
+        explicit iterator(Node* node_arg): node(node_arg)&#123;&#125;
+        bool operator&#x3D;&#x3D;(const iterator oth) const&#123;
+            return node &#x3D;&#x3D; oth.node;
+        &#125;
+        bool operator !&#x3D; (const iterator oth) const&#123;
+            return *this !&#x3D; oth;
+        &#125;
+    private:
+        template&lt;bool dir&gt; void advance()&#123;
+            if(node-&gt;child[dir])&#123;
+                node &#x3D; extremum&lt;!dir&gt;(node-&gt;child[dir]);
+                return;
+            &#125;
+            for(;node-&gt;parent and node-&gt;side() &#x3D;&#x3D; dir; node &#x3D; node-&gt;parent);
+            node &#x3D; node-&gt;parent;
+        &#125;
+    &#125;;
+
+    template&lt;bool i&gt; static Node* extremum(Node* x)&#123;
+        assert(x);
+        for(;x-&gt;child[i]; x &#x3D; x-&gt;child[i]);
+        return x;
+    &#125;
+    Node* rt&#123;&#125;;
+    explicit SplayTree()&#x3D; default;
+    ~SplayTree()&#123; destroy(rt);&#125;
+    void insert(const T&amp; arg)&#123;
+        if(!rt)&#123;
+            rt &#x3D; new Node(arg);
+            rt-&gt;maintain();
+            return;
+        &#125;
+        Node* cur &#x3D; rt, *f &#x3D; nullptr;
+        while(true)&#123;
+            if(cur-&gt;val &#x3D;&#x3D; arg)&#123;
+                cur-&gt;cnt++;
+                cur-&gt;maintain();
+                f-&gt;maintain();
+                cur-&gt;splay();
+                rt &#x3D; cur;
+                break;
+            &#125;
+            f &#x3D; cur;
+            cur &#x3D; cur-&gt;child[cur-&gt;val &lt; arg];
+            if(!cur)&#123;
+                Node* tmp &#x3D; new Node(arg);
+                f-&gt;child[f-&gt;val &lt; arg] &#x3D; tmp;
+                tmp-&gt;parent &#x3D; f;
+                tmp-&gt;maintain();
+                f-&gt;maintain();
+                tmp-&gt;splay();
+                rt &#x3D; tmp;
+                break;
+            &#125;
+        &#125;
+    &#125;
+
+    &#x2F;&#x2F; size, sum
+    std::pair&lt;size_t, size_t&gt; rank(const T&amp; arg)&#123;
+        std::pair&lt;size_t, size_t&gt; res&#123;0, 0&#125;;
+        Node* cur &#x3D; rt;
+        while(cur)&#123;
+            if(arg &lt; cur-&gt;val)&#123;
+                cur &#x3D; cur-&gt;child[0];
+            &#125;else&#123;
+                if(cur-&gt;child[0]) &#123;
+                    res.first +&#x3D; cur-&gt;child[0]-&gt;sz;
+                    res.second +&#x3D; cur-&gt;child[0]-&gt;sum;
+                &#125;
+                res.first ++;
+                res.second +&#x3D; cur-&gt;cnt;
+                if(arg &#x3D;&#x3D; cur-&gt;val)&#123;
+                    cur-&gt;splay();
+                    rt &#x3D; cur;
+                    break;
+                &#125;
+                cur &#x3D; cur-&gt;child[1];
+            &#125;
+        &#125;
+        return res;
+    &#125;
+    template&lt;bool unique &#x3D; false&gt;
+    iterator kth(size_t k)&#123;
+        assert(k &lt;&#x3D; (rt !&#x3D; nullptr ? (unique ? rt-&gt;sz : rt-&gt;sum) : 0));
+        Node* cur &#x3D; rt;
+        while(true)&#123;
+            if(cur-&gt;child[0] and k &lt;&#x3D; (unique ? cur-&gt;child[0]-&gt;sz : cur-&gt;child[0]-&gt;sum))&#123;
+                cur &#x3D; cur-&gt;child[0];
+            &#125;else&#123;
+                if(cur-&gt;child[0]) k -&#x3D; (unique ? cur-&gt;child[0]-&gt;sz : cur-&gt;child[0]-&gt;sum);
+                if(k &lt;&#x3D; cur-&gt;cnt)&#123;
+                    cur-&gt;splay();
+                    rt &#x3D; cur;
+                    return iterator&#123;cur&#125;;
+                &#125;
+                k -&#x3D; (unique ? 1 : cur-&gt;cnt);
+                cur &#x3D; cur-&gt;child[1];
+            &#125;
+        &#125;
+    &#125;
+    static void destroy(Node* const node)&#123;
+        if(!node) return;
+        for(Node* const child: node-&gt;child)&#123;
+            destroy(child);
+        &#125;
+        delete node;
+    &#125;
+    bool empty() const&#123;
+        return rt &#x3D;&#x3D; nullptr;
+    &#125;
+    size_t sum() const&#123;
+        return (rt &#x3D;&#x3D; nullptr ? 0 : rt-&gt;sum);
+    &#125;
+    size_t size() const&#123;
+        return (rt &#x3D;&#x3D; nullptr ? 0 : rt-&gt;sz);
+    &#125;
+
+    template&lt;bool side &#x3D; false&gt;
+    iterator begin()&#123;
+        return iterator&#123;extremum&lt;side&gt;(rt)&#125;;
+    &#125;
+    iterator rend()&#123;
+        return iterator&#123;nullptr&#125;;
+    &#125;
+    iterator end()&#123;
+        return iterator&#123;nullptr&#125;;
+    &#125;
+    iterator find(const T&amp; key)&#123;
+        Node* cur &#x3D; rt;
+        while(cur and key !&#x3D; cur-&gt;val)&#123;
+            const auto nex &#x3D; cur-&gt;child[key &gt; cur-&gt;val];
+            if(!nex) &#123;
+                cur-&gt;splay();
+                rt &#x3D; cur;
+            &#125;
+            cur &#x3D; nex;
+        &#125;
+        return iterator&#123;cur&#125;;
+    &#125;
+    iterator lower_bound(const T&amp; key)&#123;
+        Node* cur &#x3D; rt;
+        Node* ret &#x3D; nullptr;
+        while(cur)&#123;
+            if(cur-&gt;val &gt; key)&#123;
+                ret &#x3D; cur;
+                cur &#x3D; cur-&gt;child[0];
+            &#125;else if(cur-&gt;val &#x3D;&#x3D; key)&#123;
+                ret &#x3D; cur;
+                break;
+            &#125;else&#123;
+                cur &#x3D; cur-&gt;child[1];
+            &#125;
+        &#125;
+        if(ret)&#123;
+            ret-&gt;splay();
+            rt &#x3D; ret;
+        &#125;
+        return iterator&#123;ret&#125;;
+    &#125;
+    Node* join(Node* const arg1, Node* const arg2)&#123;
+        if(!arg1)&#123;
+            arg2-&gt;parent &#x3D; nullptr;
+            return arg2;
+        &#125;
+        arg1-&gt;parent &#x3D; nullptr;
+        Node* const mx &#x3D; extremum&lt;true&gt;(arg1);
+        mx-&gt;splay();
+        rt &#x3D; mx;
+        assert(mx-&gt;child[1] &#x3D;&#x3D; nullptr);
+        mx-&gt;child[1] &#x3D; arg2;
+        mx-&gt;parent &#x3D; nullptr;
+        if(arg2) arg2-&gt;parent &#x3D; mx;
+        mx-&gt;maintain();
+        return mx;
+    &#125;
+    void erase(const iterator itr)&#123;
+        if(!itr.node) return;
+        Node* x &#x3D; itr.node;
+        x-&gt;splay();
+        rt &#x3D; x;
+        rt &#x3D; join(x-&gt;child[0], x-&gt;child[1]);
+    &#125;
+    void extract(const iterator itr)&#123;
+        if(!itr.node) return;
+        if(itr.node-&gt;cnt &#x3D;&#x3D; 1) erase(itr);
+        else&#123;
+            itr.node-&gt;cnt--;
+            itr.node-&gt;splay();
+            rt &#x3D; itr.node;
+        &#125;
+    &#125;
+&#125;;
+typedef pair&lt;int, int&gt; PII;
+
+int main()&#123;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    SplayTree&lt;int&gt; st;
+    int n;
+    cin &gt;&gt; n;
+    while(n--)&#123;
+        int op;
+        cin &gt;&gt; op;
+        if(op &#x3D;&#x3D; 1)&#123;
+            int tv;
+            cin &gt;&gt; tv;
+            st.insert(tv);
+        &#125;else if(op &#x3D;&#x3D; 2)&#123;
+            int tv;
+            cin &gt;&gt; tv;
+            st.extract(st.find(tv));
+        &#125;else if(op &#x3D;&#x3D; 3)&#123;
+            int tv;
+            cin &gt;&gt; tv;
+            auto itr &#x3D; st.find(tv);
+            auto res &#x3D; st.rank(tv);
+            cout &lt;&lt; res.second - (itr.node-&gt;cnt) + 1 &lt;&lt; endl;
+        &#125;else if(op &#x3D;&#x3D; 4)&#123;
+            int tv;
+            cin &gt;&gt; tv;
+            auto itr &#x3D; st.kth(tv);
+            cout &lt;&lt; itr.node-&gt;val &lt;&lt; endl;
+        &#125;else if(op &#x3D;&#x3D; 5)&#123;
+            int tv;
+            cin &gt;&gt; tv;
+            auto itr &#x3D; st.lower_bound(tv);
+            if(itr &#x3D;&#x3D; st.end()) itr &#x3D; st.begin&lt;true&gt;();
+            else --itr;
+            cout &lt;&lt; itr.node-&gt;val &lt;&lt; endl;
+        &#125;else&#123;
+            int tv;
+            cin &gt;&gt; tv;
+            auto itr &#x3D; st.lower_bound(tv);
+            if(itr.node-&gt;val &#x3D;&#x3D; tv) ++itr;
+            cout &lt;&lt; itr.node-&gt;val &lt;&lt; endl;
+        &#125;
+    &#125;
+    return 0;
+&#125;</code></pre></div></figure>
+<h3 id="avl树"><a class="markdownIt-Anchor" href="#avl树"></a> AVL树</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;**
+ * @brief AVL 树
+ * @author dianhsu
+ * @date 2021&#x2F;05&#x2F;25
+ * @ref https:&#x2F;&#x2F;zh.wikipedia.org&#x2F;wiki&#x2F;AVL树
+ * *&#x2F;
+#include &lt;bits&#x2F;stdc++.h&gt;
+
+template&lt;class T&gt;
+struct AVLNode &#123;
+    T data;
+    AVLNode&lt;T&gt; *leftChild;
+    AVLNode&lt;T&gt; *rightChild;
+    int height;
+
+    AVLNode(T data): data(data), height(1), leftChild(nullptr), rightChild(nullptr) &#123; &#125;
+
+    ~AVLNode() &#123;
+        delete leftChild;
+        delete rightChild;
+    &#125;
+&#125;;
+
+template&lt;class T&gt;
+class AVL &#123;
+public:
+    AVL() &#123;
+        root &#x3D; nullptr;
+    &#125;
+
+    ~AVL() &#123;
+        delete root;
+    &#125;
+
+    &#x2F;**
+     * @brief 将结点插入到AVL树中
+     * @param val 需要插入的值
+     * @note 如果发现这个树中已经有这个值存在了，就不会进行任何操作
+     * *&#x2F;
+    void insert(T val) &#123;
+        _insert(&amp;root, val);
+    &#125;
+
+    &#x2F;**
+     * @brief 检查结点是否在AVL树中
+     * @param val 需要检查的值
+     * *&#x2F;
+    bool exist(T val) &#123;
+        auto ptr &#x3D; &amp;root;
+        while (*ptr !&#x3D; nullptr) &#123;
+            if (val &#x3D;&#x3D; (*ptr)-&gt;data) &#123;
+                return true;
+            &#125; else if (val &lt; (*ptr)-&gt;data) &#123;
+                *ptr &#x3D; (*ptr)-&gt;leftChild;
+            &#125; else &#123;
+                *ptr &#x3D; (*ptr)-&gt;rightChild;
+            &#125;
+        &#125;
+        return false;
+    &#125;
+
+    &#x2F;**
+     * @brief 找到值为val的结点
+     * @param val 目标值
+     * @return 返回值为指向该结点的指针的地址
+     *&#x2F;
+    AVLNode&lt;T&gt; **find(T val) &#123;
+        auto ptr &#x3D; &amp;root;
+        while ((*ptr) !&#x3D; nullptr) &#123;
+            if (val &#x3D;&#x3D; (*ptr)-&gt;data) &#123;
+                break;
+            &#125; else if (val &lt; (*ptr)-&gt;data) &#123;
+                *ptr &#x3D; (*ptr)-&gt;leftChild;
+            &#125; else &#123;
+                *ptr &#x3D; (*ptr)-&gt;rightChild;
+            &#125;
+        &#125;
+        return ptr;
+    &#125;
+
+    &#x2F;**
+     * @brief 删除结点
+     * @note 首先找到结点，然后将结点旋转到叶子结点，然后回溯检查树的平衡性
+     * @param val 需要删除的结点的值
+     * @note 这个地方需要递归寻找该值的结点，因为需要回溯更新平衡树
+     * *&#x2F;
+    void remove(T val) &#123;
+        _remove(&amp;root, val);
+    &#125;
+
+
+private:
+    void _remove(AVLNode&lt;T&gt; **ptr, T val) &#123;
+        if (*ptr &#x3D;&#x3D; nullptr) &#123;
+            return;
+        &#125;
+        if ((*ptr)-&gt;data &#x3D;&#x3D; val) &#123;
+            _rotateNodeToLeaf(ptr);
+        &#125; else if ((*ptr)-&gt;data &lt; val) &#123;
+            _remove(&amp;((*ptr)-&gt;rightChild), val);
+        &#125; else &#123;
+            _remove(&amp;((*ptr)-&gt;leftChild), val);
+        &#125;
+        &#x2F;&#x2F; 完了之后回溯，重新平衡二叉树
+        _balance(ptr);
+        _updateHeight(*ptr);
+    &#125;
+
+    &#x2F;**
+     * @brief 将一个结点旋转到叶子结点
+     * @param ptr 将要被旋转至叶子的结点的指针的地址
+     * @note 旋转的时候，将当前结点旋转到高度比较小的一边。
+     *&#x2F;
+    void _rotateNodeToLeaf(AVLNode&lt;T&gt; **ptr) &#123;
+        &#x2F;&#x2F; 当前结点已经是叶子结点了
+        if ((*ptr)-&gt;leftChild &#x3D;&#x3D; nullptr and (*ptr)-&gt;rightChild &#x3D;&#x3D; nullptr) &#123;
+            *ptr &#x3D; nullptr;
+            return;
+        &#125;
+        int leftHeight &#x3D; (*ptr)-&gt;leftChild !&#x3D; nullptr ? (*ptr)-&gt;leftChild-&gt;height : 0;
+        int rightHeight &#x3D; (*ptr)-&gt;rightChild !&#x3D; nullptr ? (*ptr)-&gt;rightChild-&gt;height : 0;
+        &#x2F;&#x2F; 左边高度比较小，左旋
+        if (leftHeight &lt;&#x3D; rightHeight) &#123;
+            _leftRotate(ptr);
+            _rotateNodeToLeaf(&amp;((*ptr)-&gt;leftChild));
+        &#125; else &#123;
+            &#x2F;&#x2F; 右旋
+            _rightRotate(ptr);
+            _rotateNodeToLeaf(&amp;((*ptr)-&gt;rightChild));
+        &#125;
+        _balance(ptr);
+        _updateHeight(*ptr);
+    &#125;
+
+    &#x2F;**
+     * @brief 插入结点
+     *
+     * *&#x2F;
+    void _insert(AVLNode&lt;T&gt; **ptr, T val) &#123;
+        if (*ptr &#x3D;&#x3D; nullptr) &#123;
+            *ptr &#x3D; new AVLNode&lt;T&gt;(val);
+            return;
+        &#125;
+        if (val &lt; (*ptr)-&gt;data) &#123;
+            _insert(&amp;((*ptr)-&gt;leftChild), val);
+        &#125; else if (val &gt; (*ptr)-&gt;data) &#123;
+            _insert(&amp;((*ptr)-&gt;rightChild), val);
+        &#125; else &#123;
+            &#x2F;&#x2F; 如果当前平衡二叉树中已经存在这个结点了，不做任何处理
+            return;
+        &#125;
+        _balance(ptr);
+        _updateHeight(*ptr);
+    &#125;
+
+    &#x2F;**
+     * @brief 平衡结点
+     *
+     * *&#x2F;
+    void _balance(AVLNode&lt;T&gt; **ptr) &#123;
+        if (*ptr &#x3D;&#x3D; nullptr) return;
+        int leftHeight &#x3D; (*ptr)-&gt;leftChild !&#x3D; nullptr ? (*ptr)-&gt;leftChild-&gt;height : 0;
+        int rightHeight &#x3D; (*ptr)-&gt;rightChild !&#x3D; nullptr ? (*ptr)-&gt;rightChild-&gt;height : 0;
+        if (abs(leftHeight - rightHeight) &lt;&#x3D; 1) return;
+
+        if (leftHeight &lt; rightHeight) &#123;
+            auto rightElement &#x3D; (*ptr)-&gt;rightChild;
+            int rightElementLeftHeight &#x3D; rightElement-&gt;leftChild !&#x3D; nullptr ? rightElement-&gt;leftChild-&gt;height : 0;
+            int rightElementRightHeight &#x3D; rightElement-&gt;rightChild !&#x3D; nullptr ? rightElement-&gt;rightChild-&gt;height : 0;
+            if (rightElementLeftHeight &lt; rightElementRightHeight) &#123;
+                &#x2F;&#x2F; RR
+                _leftRotate(ptr);
+            &#125; else &#123;
+                &#x2F;&#x2F; RL
+                _rightRotate(&amp;((*ptr)-&gt;rightChild));
+                _leftRotate(ptr);
+            &#125;
+        &#125; else &#123;
+            auto leftElement &#x3D; (*ptr)-&gt;leftChild;
+            int leftElementLeftHeight &#x3D; leftElement-&gt;leftChild !&#x3D; nullptr ? leftElement-&gt;leftChild-&gt;height : 0;
+            int leftElementRightHeight &#x3D; leftElement-&gt;rightChild !&#x3D; nullptr ? leftElement-&gt;rightChild-&gt;height : 0;
+            if (leftElementLeftHeight &gt; leftElementRightHeight) &#123;
+                &#x2F;&#x2F; LL
+                _rightRotate(ptr);
+            &#125; else &#123;
+                &#x2F;&#x2F; LR
+                _leftRotate(&amp;((*ptr)-&gt;leftChild));
+                _rightRotate(ptr);
+            &#125;
+        &#125;
+    &#125;
+
+    &#x2F;**
+     * @brief 右旋
+     *
+     * *&#x2F;
+    void _rightRotate(AVLNode&lt;T&gt; **ptr) &#123;
+        auto tmp &#x3D; (*ptr)-&gt;leftChild;
+        (*ptr)-&gt;leftChild &#x3D; tmp-&gt;rightChild;
+        tmp-&gt;rightChild &#x3D; *ptr;
+        _updateHeight(tmp);
+        _updateHeight(*ptr);
+        *ptr &#x3D; tmp;
+    &#125;
+
+    &#x2F;**
+     * @brief 左旋
+     * *&#x2F;
+    void _leftRotate(AVLNode&lt;T&gt; **ptr) &#123;
+        auto tmp &#x3D; (*ptr)-&gt;rightChild;
+        (*ptr)-&gt;rightChild &#x3D; tmp-&gt;leftChild;
+        tmp-&gt;leftChild &#x3D; *ptr;
+        _updateHeight(tmp);
+        _updateHeight(*ptr);
+        *ptr &#x3D; tmp;
+    &#125;
+
+    void _updateHeight(AVLNode&lt;T&gt; *ptr) &#123;
+        if (ptr &#x3D;&#x3D; nullptr) return;
+        int leftHeight &#x3D; ptr-&gt;leftChild !&#x3D; nullptr ? ptr-&gt;leftChild-&gt;height : 0;
+        int rightHeight &#x3D; ptr-&gt;rightChild !&#x3D; nullptr ? ptr-&gt;rightChild-&gt;height : 0;
+        ptr-&gt;height &#x3D; std::max(leftHeight, rightHeight) + 1;
+    &#125;
+
+    AVLNode&lt;T&gt; *root;
+&#125;;
+
+int main() &#123;
+    auto avl &#x3D; new AVL&lt;int&gt;();
+    int n &#x3D; 20;
+    std::random_device rd&#123;&#125;;
+    std::mt19937 gen&#123;rd()&#125;;
+    std::normal_distribution&lt;&gt; d&#123;100, 100&#125;;
+    std::uniform_int_distribution&lt;int&gt; u(0, INT_MAX &gt;&gt; 1);
+    std::vector&lt;int&gt; vec;
+    for (int i &#x3D; 0; i &lt; n; ++i) &#123;
+        vec.push_back((int) std::round(d(gen)));
+        &#x2F;&#x2F;vec.push_back(i);
+    &#125;
+    for (auto it : vec) &#123;
+        avl-&gt;insert(it);
+    &#125;
+    avl-&gt;remove(15);
+    avl-&gt;remove(32);
+    avl-&gt;remove(31);
+    std::cout &lt;&lt; *avl &lt;&lt; std::endl;
+    delete avl;
+    return 0;
+&#125;</code></pre></div></figure>
+<h2 id="tricks"><a class="markdownIt-Anchor" href="#tricks"></a> Tricks</h2>
+<h3 id="fast-io"><a class="markdownIt-Anchor" href="#fast-io"></a> Fast I/O</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;typename T &#x3D; int&gt;
+inline T fRead() &#123;
+    T x &#x3D; 0, w &#x3D; 1; char c &#x3D; getchar();
+    while (c &lt; &#39;0&#39; || c&gt;&#39;9&#39;) &#123; if (c &#x3D;&#x3D; &#39;-&#39;) w &#x3D; -1; c &#x3D; getchar(); &#125;
+    while (c &lt;&#x3D; &#39;9&#39; &amp;&amp; c &gt;&#x3D; &#39;0&#39;) &#123; x &#x3D; (x &lt;&lt; 1) + (x &lt;&lt; 3) + c - &#39;0&#39;; c &#x3D; getchar(); &#125;
+    return w &#x3D;&#x3D; 1 ? x : -x;
+&#125;
+template&lt;typename T &#x3D; int&gt;
+inline T cRead() &#123;
+    T ret;
+    cin &gt;&gt; ret;
+    return ret;
+&#125;
+template&lt;typename T &#x3D; int&gt;
+inline void fWrite(T x)&#123;
+    if(x &lt; 0)&#123;
+        x &#x3D; -x;
+        putchar(&#39;-&#39;);
+    &#125;
+    if(x &gt;&#x3D; 10) fWrite(x &#x2F; 10);
+    putchar(x % 10 + &#39;0&#39;);
+&#125;
+template&lt;typename T &#x3D; int&gt;
+inline void cWrite(T x)&#123;
+    cout &lt;&lt; x;
+&#125;</code></pre></div></figure>
+<h3 id="y-combinator-c17"><a class="markdownIt-Anchor" href="#y-combinator-c17"></a> Y combinator (C++17)</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">template&lt;class Fun&gt;
+class Y_combinator &#123;
+private:
+    Fun fun_;
+public:
+    template&lt;class F&gt;
+    Y_combinator(F&amp;&amp; fun) : fun_(static_cast&lt;F&amp;&amp;&gt;(fun)) &#123;&#125;
+    template&lt;class... Args&gt;
+    decltype(auto) operator () (Args&amp;&amp;...args) const &#123;
+        return fun_(*this, static_cast&lt;Args&amp;&amp;&gt;(args)...);
+    &#125;
+&#125;;
+template&lt;class T&gt; Y_combinator(T)-&gt;Y_combinator&lt;T&gt;;</code></pre></div></figure>
+<h3 id="numeric-binary-search"><a class="markdownIt-Anchor" href="#numeric-binary-search"></a> Numeric Binary Search</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int lower_bound(int target, vector&lt;int&gt;&amp; vec)&#123;
+    int pos &#x3D; -1;
+    for(int i &#x3D; (32 - __builtin_clz(vec.size())); i; i &gt;&gt;&#x3D; 1)&#123;
+        if(pos + i &lt; vec.size() and vec[pos + i] &lt; target)&#123;
+            pos +&#x3D; i;
+        &#125;
+    &#125;
+    return pos + 1;
+&#125;</code></pre></div></figure>
+<h3 id="least-power-of-2-and-greater-power-of-2"><a class="markdownIt-Anchor" href="#least-power-of-2-and-greater-power-of-2"></a> Least Power of 2 and Greater Power of 2</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int leastPowerOfTwo(int val)&#123;
+    return 32 - __builtin_clz(val - 1);
+&#125;
+int greaterPowerOfTwo(int val)&#123;
+    return 32 - __builtin_clz(val);
+&#125;</code></pre></div></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
+      
+        <a href="/tags/%E5%9B%BE%E8%AE%BA/">#图论</a>
+      
+        <a href="/tags/%E5%87%A0%E4%BD%95/">#几何</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>算法模板</div>
+      <div>https://dianhsu.com/2022/05/10/template/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Dian Hsu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/10/cantor/" title="康托展开">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">康托展开</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"dianhsu/blog-raw","repo-id":"MDEwOlJlcG9zaXRvcnkzNzE1NzgxOTE=","category":"General","category-id":"MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyOTcxODAy","theme-light":"light","theme-dark":"dark","mapping":"title","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN","loading":"lazy"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      鄂ICP备2020020124号-2
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

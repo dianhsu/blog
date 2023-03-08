@@ -1,0 +1,1090 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <link rel="icon" href="https://cdn.dianhsu.com/blog/icons/QQ20220507-11.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dian Hsu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;De4qBB&#x2F;  这个题目比较困难的地方就是记录方阵的翻转、旋转状态  方阵的翻转，旋转和转置模板 为了能够高效的表示当前方阵的状态，我们用方阵的四个角点表示方阵当前的状态。 比如一个3×33 \times 33×3的方阵，我们用array&lt;pair&lt;int, int&gt;, 4&gt;来存放这个方阵的四个角，依次分别是：左">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LCP 58. 积木拼接">
+<meta property="og:url" content="https://dianhsu.com/2022/05/13/LCP58/index.html">
+<meta property="og:site_name" content="dianhsuのblog">
+<meta property="og:description" content="https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;De4qBB&#x2F;  这个题目比较困难的地方就是记录方阵的翻转、旋转状态  方阵的翻转，旋转和转置模板 为了能够高效的表示当前方阵的状态，我们用方阵的四个角点表示方阵当前的状态。 比如一个3×33 \times 33×3的方阵，我们用array&lt;pair&lt;int, int&gt;, 4&gt;来存放这个方阵的四个角，依次分别是：左">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.dianhsu.com/blog/505102-anime-series-love-live.jpeg">
+<meta property="article:published_time" content="2022-05-13T06:25:24.000Z">
+<meta property="article:modified_time" content="2023-03-08T02:21:06.617Z">
+<meta property="article:author" content="Dian Hsu">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="LC春季赛">
+<meta property="article:tag" content="立体几何">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.dianhsu.com/blog/505102-anime-series-love-live.jpeg">
+  
+  
+  
+  <title>LCP 58. 积木拼接 - dianhsuのblog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"dianhsu.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gHBUbGnezwPEckLGQuK5MYV1-MdYXbMMI","app_key":"kokqnKgfEiMRyh31b4ofNY5k","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="LCP 58. 积木拼接"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-13 14:25" pubdate>
+          2022年5月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          75 分钟
+        
+      </span>
+    
+
+    
+    
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">LCP 58. 积木拼接</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/De4qBB/">https://leetcode.cn/problems/De4qBB/</a></p>
+</blockquote>
+<p>这个题目比较困难的地方就是记录方阵的翻转、旋转状态</p>
+<h1 id="方阵的翻转旋转和转置模板"><a class="markdownIt-Anchor" href="#方阵的翻转旋转和转置模板"></a> 方阵的翻转，旋转和转置模板</h1>
+<p>为了能够高效的表示当前方阵的状态，我们用方阵的四个角点表示方阵当前的状态。</p>
+<p>比如一个<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>×</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">3 \times 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>的方阵，我们用<code>array&lt;pair&lt;int, int&gt;, 4&gt;</code>来存放这个方阵的四个角，依次分别是：左上角<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span>、右上角<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>、左下角<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x, 0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span>和右下角<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x, y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>。</p>
+<h2 id="翻转操作"><a class="markdownIt-Anchor" href="#翻转操作"></a> 翻转操作</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">110    上下进行翻转    000
+010  -------------&gt;  010
+000                  110</code></pre></div></figure>
+<p>那么他四个点的坐标就是</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">(0,0)  (0,3)      上下进行翻转      (3,0)  (3,3) 
+                -------------&gt;
+(3,0)  (3,3)                      (0,0)  (0,3)</code></pre></div></figure>
+<p>对应代码：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void mirror(int dr &#x3D; 1)&#123;
+    if(dr &#x3D;&#x3D; 1)&#123;
+        &#x2F;&#x2F; 左右翻转
+        swap(vec[0], vec[1]);
+        swap(vec[2], vec[3]);
+    &#125;else&#123;
+        &#x2F;&#x2F; 上下翻转
+        swap(vec[0], vec[2]);
+        swap(vec[1], vec[3]);
+    &#125;
+&#125;</code></pre></div></figure>
+<h2 id="转置操作"><a class="markdownIt-Anchor" href="#转置操作"></a> 转置操作</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">110      转置方阵     100
+010  -------------&gt;  110
+000                  000</code></pre></div></figure>
+<p>那么他四个点的坐标就是</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">(0,0)  (0,3)        转置方阵       (0,0)  (3,0) 
+                -------------&gt;
+(3,0)  (3,3)                      (0,3)  (3,3)</code></pre></div></figure>
+<p>对应代码：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void transpose(int dr &#x3D; 1)&#123;
+    if(dr &#x3D;&#x3D; 1)&#123;
+        &#x2F;&#x2F; 沿着y &#x3D; x 翻转
+        swap(vec[1], vec[2]);
+    &#125;else&#123;
+        &#x2F;&#x2F; 沿着x + y &#x3D; n 翻转
+        swap(vec[0], vec[3]);
+    &#125;
+&#125;</code></pre></div></figure>
+<h2 id="旋转操作"><a class="markdownIt-Anchor" href="#旋转操作"></a> 旋转操作</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">110   顺时针旋转90度   001
+010  -------------&gt;  011
+000                  000</code></pre></div></figure>
+<p>那么他四个点的坐标就是</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">(0,0)  (0,3)     顺时针旋转90度     (3,0)  (0,0) 
+                -------------&gt;
+(3,0)  (3,3)                      (3,3)  (0,3)</code></pre></div></figure>
+<p>对应代码（旋转可以用转置+翻转来实现）：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void rotate(int dr &#x3D; 1)&#123;
+    transpose();
+    if(dr &#x3D;&#x3D; 1)&#123;
+        &#x2F;&#x2F; 顺时针
+        mirror(1);
+    &#125;else&#123;
+        &#x2F;&#x2F; 逆时针
+        mirror(0);
+    &#125;
+&#125;</code></pre></div></figure>
+<p>可以从上面看出来，对图形的操作，就可以表示为对四个角的二维方阵的操作。</p>
+<p>因为翻转之后，我们需要知道新的图形的x，y的坐标轴的变化，比如</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">(0,0)  (0,3)     顺时针旋转90度     (3,0)  (0,0) 
+                -------------&gt;
+(3,0)  (3,3)                      (3,3)  (0,3)</code></pre></div></figure>
+<p>这个图形旋转之前的坐标轴的单位变化分别是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dx = (1, 0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>y</mi><mo>=</mo><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dy = (0, 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，顺时针旋转90度之后的单位变化<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi><mo>=</mo><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dx = (0, 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>y</mi><mo>=</mo><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dy = (-1, 0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span>。<br />
+为了方便记录当前的单位变化<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">x</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>，我们在每次翻转、旋转和转置的时候，重新计算一次<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">x</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>。计算的代码如下：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void update()&#123;
+    int xlim &#x3D; abs(vec[2].first - vec[0].first) + abs(vec[2].second - vec[0].second);
+    int ylim &#x3D; abs(vec[1].first - vec[0].first) + abs(vec[1].second - vec[0].second);
+    assert(xlim &gt; 0 and ylim &gt; 0);
+    dx &#x3D; Point&#123;(vec[2].first - vec[0].first) &#x2F; xlim, (vec[2].second - vec[0].second) &#x2F; xlim&#125;;
+    dy &#x3D; Point&#123;(vec[1].first - vec[0].first) &#x2F; ylim, (vec[1].second - vec[0].second) &#x2F; ylim&#125;;
+&#125;</code></pre></div></figure>
+<p>那么最终，我们就可以通过左上角的坐标，和单位坐标的变化<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">dx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">x</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">dy</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>，来映射得到原始的坐标。<br />
+代码如下所示：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Point mapping(Point p)&#123;
+    return &#123;vec[0].first + dx.first * p.first + dy.first * p.second, vec[0].second + dx.second * p.first + dy.second * p.second&#125;;
+&#125;</code></pre></div></figure>
+<p>那么最终完整的矩阵模板：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class Rectangle&#123;
+public:
+    typedef pair&lt;int, int&gt; Point;
+    Rectangle(int sx, int sy) : dx(&#123;1, 0&#125;), dy(&#123;0, 1&#125;), vec(&#123;Point&#123;0, 0&#125;, Point&#123;0, sy - 1&#125;, Point&#123;sx - 1, 0&#125;, Point&#123;sx - 1, sy - 1&#125;&#125;)&#123;&#125;
+    void mirror(int dr &#x3D; 1)&#123;
+        if(dr &#x3D;&#x3D; 1)&#123;
+            &#x2F;&#x2F; 左右翻转
+            swap(vec[0], vec[1]);
+            swap(vec[2], vec[3]);
+        &#125;else&#123;
+            &#x2F;&#x2F; 上下翻转
+            swap(vec[0], vec[2]);
+            swap(vec[1], vec[3]);
+        &#125;
+        update();
+    &#125;
+    void transpose(int dr &#x3D; 1)&#123;
+        if(dr &#x3D;&#x3D; 1)&#123;
+            &#x2F;&#x2F; 沿着y &#x3D; x 翻转
+            swap(vec[1], vec[2]);
+        &#125;else&#123;
+            &#x2F;&#x2F; 沿着x + y &#x3D; n 翻转
+            swap(vec[0], vec[3]);
+        &#125;
+        update();
+    &#125;
+    void rotate(int dr &#x3D; 1)&#123;
+        transpose();
+        if(dr &#x3D;&#x3D; 1)&#123;
+            &#x2F;&#x2F; 顺时针
+            mirror(1);
+        &#125;else&#123;
+            &#x2F;&#x2F; 逆时针
+            mirror(0);
+        &#125;
+        update();
+    &#125;
+    Point mapping(Point p)&#123;
+        return &#123;vec[0].first + dx.first * p.first + dy.first * p.second, vec[0].second + dx.second * p.first + dy.second * p.second&#125;;
+    &#125;
+    &#x2F;&#x2F; 当前状态下，x轴的方向和y轴的方向
+    Point dx, dy;
+    &#x2F;&#x2F; 当前状态下的方阵四个角点的坐标
+    array&lt;Point, 4&gt; vec;
+private:
+    void update()&#123;
+        int xlim &#x3D; abs(vec[2].first - vec[0].first) + abs(vec[2].second - vec[0].second);
+        int ylim &#x3D; abs(vec[1].first - vec[0].first) + abs(vec[1].second - vec[0].second);
+        assert(xlim &gt; 0 and ylim &gt; 0);
+        dx &#x3D; Point&#123;(vec[2].first - vec[0].first) &#x2F; xlim, (vec[2].second - vec[0].second) &#x2F; xlim&#125;;
+        dy &#x3D; Point&#123;(vec[1].first - vec[0].first) &#x2F; ylim, (vec[1].second - vec[0].second) &#x2F; ylim&#125;;
+    &#125;
+
+&#125;;</code></pre></div></figure>
+<h1 id="本题的实现"><a class="markdownIt-Anchor" href="#本题的实现"></a> 本题的实现</h1>
+<h2 id="前置内容"><a class="markdownIt-Anchor" href="#前置内容"></a> 前置内容</h2>
+<p>我们首先设计了6个位置，就是立方体的展开图。如下所示：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">      00000             
+      00000             
+      00000             
+      00000             
+      00000             
+
+11111 22222 33333 44444 
+11111 22222 33333 44444 
+11111 22222 33333 44444 
+11111 22222 33333 44444 
+11111 22222 33333 44444 
+
+55555                   
+55555                   
+55555                   
+55555                   
+55555                   </code></pre></div></figure>
+<p>我们把位置按照这个形状进行设计，是因为可以和方便的计算他的相邻边。具体可看后面相邻边的数字变化。</p>
+<p>然后定义每个矩阵的边的顺序【0，1，2，3】，依次是【上，右，下，左】。<br />
+比如0号位置的下方和2号位置的上方相邻，就构成一个边的四元组「0号位置，2号位置，下方，上方」，[0, 2, 2, 0]。<br />
+比如0号位置的左边和1号位置的上方相邻，就构成一个边的四元组「0号位置，1号位置，左边，上方」，[0, 1, 3, 0]。</p>
+<p>那么写出0号位置所相邻边的四元组：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[0, 1, 3, 0]
+[0, 2, 2, 0]
+[0, 3, 1, 0]
+[0, 4, 0, 0]</code></pre></div></figure>
+<p>然后是5号位置相邻边的四元组：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[5, 1, 0, 2]
+[5, 2, 1, 2]
+[5, 3, 2, 2]
+[5, 4, 3, 2]</code></pre></div></figure>
+<p>然后就是其他四条边：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[1, 2, 1, 3]
+[2, 3, 1, 3]
+[3, 4, 1, 3]
+[4, 1, 1, 3]</code></pre></div></figure>
+<p>为了按照顺序获取方阵的四条边，我们先定义了个方阵，然后逆时针旋转四次，每次旋转，获取一次当前位置的第一条边。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Rectangle rec(sz, sz);
+vector&lt;Rectangle&gt; recd;
+for(int i &#x3D; 0; i &lt; 4; ++i)&#123;
+    recd.push_back(rec);
+    rec.rotate(0);
+&#125;</code></pre></div></figure>
+<h2 id="题目思路"><a class="markdownIt-Anchor" href="#题目思路"></a> 题目思路</h2>
+<p>我们本题使用搜索检查每个位置是否满足。首先固定第一个方阵，我们把它固定放在0位置。然后每个位置尝试将其他的方阵旋转或者翻转放入。<br />
+对于立体图形的边，我们要求不能相邻的边在同一个位置具有相同的元素。<br />
+对于立体图形的角，我们要求不能两个边同时出现<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，为了避免三个相邻面共享的同一个角都是0，我们一开始就先计算1个总个数，要求1个总个数刚刚好。<br />
+完整代码如下：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">class Rectangle&#123;
+public:
+    typedef pair&lt;int, int&gt; Point;
+    Rectangle(int sx, int sy) : dx(&#123;1, 0&#125;), dy(&#123;0, 1&#125;), vec(&#123;Point&#123;0, 0&#125;, Point&#123;0, sy - 1&#125;, Point&#123;sx - 1, 0&#125;, Point&#123;sx - 1, sy - 1&#125;&#125;)&#123;&#125;
+    void mirror(int dr &#x3D; 1)&#123;
+        if(dr &#x3D;&#x3D; 1)&#123;
+            &#x2F;&#x2F; 沿着x轴翻转
+            swap(vec[0], vec[1]);
+            swap(vec[2], vec[3]);
+        &#125;else&#123;
+            &#x2F;&#x2F; 沿着y轴翻转
+            swap(vec[0], vec[2]);
+            swap(vec[1], vec[3]);
+        &#125;
+        update();
+    &#125;
+    void transpose(int dr &#x3D; 1)&#123;
+        if(dr &#x3D;&#x3D; 1)&#123;
+            &#x2F;&#x2F; 沿着y &#x3D; x 翻转
+            swap(vec[1], vec[2]);
+        &#125;else&#123;
+            &#x2F;&#x2F; 沿着x + y &#x3D; n 翻转
+            swap(vec[0], vec[3]);
+        &#125;
+        update();
+    &#125;
+    void rotate(int dr &#x3D; 1)&#123;
+        transpose();
+        if(dr &#x3D;&#x3D; 1)&#123;
+            &#x2F;&#x2F; 顺时针
+            mirror(1);
+        &#125;else&#123;
+            &#x2F;&#x2F; 逆时针
+            mirror(0);
+        &#125;
+        update();
+    &#125;
+    Point mapping(Point p)&#123;
+        return &#123;vec[0].first + dx.first * p.first + dy.first * p.second, vec[0].second + dx.second * p.first + dy.second * p.second&#125;;
+    &#125;
+    Point dx, dy;
+    array&lt;Point, 4&gt; vec;
+private:
+    void update()&#123;
+        int xlim &#x3D; abs(vec[2].first - vec[0].first) + abs(vec[2].second - vec[0].second);
+        int ylim &#x3D; abs(vec[1].first - vec[0].first) + abs(vec[1].second - vec[0].second);
+        assert(xlim &gt; 0 and ylim &gt; 0);
+        dx &#x3D; Point&#123;(vec[2].first - vec[0].first) &#x2F; xlim, (vec[2].second - vec[0].second) &#x2F; xlim&#125;;
+        dy &#x3D; Point&#123;(vec[1].first - vec[0].first) &#x2F; ylim, (vec[1].second - vec[0].second) &#x2F; ylim&#125;;
+    &#125;
+
+&#125;;
+class Solution &#123;
+public:
+    bool composeCube(vector&lt;vector&lt;string&gt;&gt;&amp; shapes) &#123;
+        int sz &#x3D; shapes[0].size();
+        int cnt &#x3D; sz * sz * 2 + (sz - 1) * (sz - 2) * 4;
+        for(auto&amp; vec: shapes) &#123;
+            for(auto&amp; row: vec)&#123;
+                for(auto&amp; c: row)&#123;
+                    if(c &#x3D;&#x3D; &#39;1&#39;) --cnt;
+                &#125;
+            &#125;
+        &#125;
+        if(cnt !&#x3D; 0) return false;
+        typedef Rectangle::Point Point;
+        Rectangle rec(sz, sz);
+        vector&lt;Rectangle&gt; recd;
+        for(int i &#x3D; 0; i &lt; 4; ++i)&#123;
+            recd.push_back(rec);
+            &#x2F;&#x2F;recd.back().debug();
+            rec.rotate(0);
+        &#125;
+        vector&lt;Rectangle&gt; recs(6, Rectangle&#123;sz, sz&#125;);
+        auto&amp;&amp; isCon &#x3D; [&amp;](int x, int y, int sx, int sy)&#123;
+            for(int i &#x3D; 0; i &lt; sz; ++i)&#123;
+                auto px &#x3D; recd[sx].mapping(&#123;0, i&#125;);
+                auto py &#x3D; recd[sy].mapping(&#123;0, sz - 1 - i&#125;);
+                auto ppx &#x3D; recs[x].mapping(px);
+                auto ppy &#x3D; recs[y].mapping(py);
+                if(i &#x3D;&#x3D; 0 or i &#x3D;&#x3D; sz - 1)&#123;
+                    if(shapes[x][ppx.first][ppx.second] &#x3D;&#x3D; shapes[y][ppy.first][ppy.second] and shapes[y][ppy.first][ppy.second] &#x3D;&#x3D; &#39;1&#39;)&#123;
+                        return false;
+                    &#125;
+                &#125;else if(shapes[x][ppx.first][ppx.second] &#x3D;&#x3D; shapes[y][ppy.first][ppy.second])&#123;
+                    return false;
+                &#125;
+            &#125;
+            return true;
+        &#125;;
+        auto&amp;&amp; show &#x3D; [&amp;](int i, int x, int y)&#123;
+            return recs[i].mapping(&#123;x, y&#125;);
+        &#125;;
+        vector&lt;int&gt; idx(6);
+        vector&lt;vector&lt;int&gt;&gt; dr &#x3D; &#123;&#123;-1, 0, -1, -1&#125;, &#123;1, 2, 3, 4&#125;, &#123;5, -1, -1, -1&#125;&#125;;
+        auto&amp;&amp; print &#x3D; [&amp;](int q)&#123;
+            for(int i &#x3D; 0; i &lt; 3; ++i)&#123;
+                for(int j &#x3D; 0; j &lt; sz; ++j)&#123;
+                    for(int k &#x3D; 0; k &lt; 4; ++k)&#123;
+                        for(int l &#x3D; 0; l &lt; sz; ++l)&#123;
+                            if(dr[i][k] &lt; 0) cout &lt;&lt; &quot; &quot;;
+                            else if(dr[i][k]  &gt; q) cout &lt;&lt; &quot;?&quot;;
+                            else&#123;
+                                auto rt &#x3D; show(idx[dr[i][k]], j, l);
+                                cout &lt;&lt; shapes[idx[dr[i][k]]][rt.first][rt.second];
+                            &#125;
+                        &#125;
+                        cout &lt;&lt; &quot; &quot;;
+                    &#125;
+                    cout &lt;&lt; endl;
+                &#125;
+                cout &lt;&lt; endl;
+            &#125;
+        &#125;;
+        auto&amp;&amp; check &#x3D; [&amp;](int sz)&#123;
+
+            bool ok &#x3D; true;
+            for(int i &#x3D; 0; i &lt; 4 and i + 1 &lt;&#x3D; sz and ok; ++i)&#123;
+                if(!isCon(idx[0], idx[i + 1], 3 - i, 0))&#123;
+                    ok &#x3D; false;
+                &#125;
+            &#125;
+            for(int i &#x3D; 0; i &lt; 4 and i + 1 &lt;&#x3D; sz and (i + 1) % 4 + 1 &lt;&#x3D; sz and ok; ++i)&#123;
+                if(!isCon(idx[i + 1], idx[(i + 1) % 4 + 1], 1, 3)) ok &#x3D; false;
+            &#125;
+            if(sz &#x3D;&#x3D; 5)&#123;
+                for(int i &#x3D; 0; i &lt; 4 and ok; ++i)&#123;
+                    if(!isCon(idx[5], idx[i + 1], i, 2)) ok &#x3D; false;
+                &#125;
+            &#125;
+
+&#x2F;&#x2F;            if(ok)&#123;
+&#x2F;&#x2F;                print(sz);
+&#x2F;&#x2F;                cout &lt;&lt; &quot;ok&quot; &lt;&lt; endl;
+&#x2F;&#x2F;            &#125;
+
+            return ok;
+        &#125;;
+        idx[0] &#x3D; 0;
+        vector&lt;int&gt; vis(6, 0);
+        vis[0] &#x3D; 1;
+        auto&amp;&amp; dfs &#x3D; [&amp;](auto&amp;&amp; self, int cur) -&gt; bool&#123;
+            if(cur &gt;&#x3D; 6) &#123;
+                return true;
+            &#125;
+            for(int i &#x3D; 1; i &lt; 6; ++i)&#123;
+                if(vis[i] &#x3D;&#x3D; 0)&#123;
+                    idx[cur] &#x3D; i;
+                    vis[i] &#x3D; 1;
+                    for(int m &#x3D; 0; m &lt; 2; ++m)&#123;
+                        for(int r &#x3D; 0; r &lt; 4; ++r)&#123;
+                            if(check(cur)) &#123;
+                                if(self(self, cur + 1)) return true;
+                            &#125;
+                            recs[i].rotate();
+                        &#125;
+                        recs[i].mirror();
+                    &#125;
+                    vis[i] &#x3D; 0;
+                &#125;
+            &#125;
+            return false;
+        &#125;;
+        if(dfs(dfs, 1)) return true;
+        recs[0].mirror();
+        if(dfs(dfs, 1)) return true;
+        return false;
+    &#125;
+&#125;;</code></pre></div></figure>
+<p>最后打印一下第一个样例的匹配情况：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 样例1
+    000         
+    110         
+    000         
+
+001 011 011 011 
+011 010 110 111 
+010 000 011 011 
+
+001             
+011             
+001   </code></pre></div></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/LeetCode/" class="category-chain-item">LeetCode</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/LeetCode/">#LeetCode</a>
+      
+        <a href="/tags/LC%E6%98%A5%E5%AD%A3%E8%B5%9B/">#LC春季赛</a>
+      
+        <a href="/tags/%E7%AB%8B%E4%BD%93%E5%87%A0%E4%BD%95/">#立体几何</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>LCP 58. 积木拼接</div>
+      <div>https://dianhsu.com/2022/05/13/LCP58/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Dian Hsu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/14/cf1680/" title="Educational Codeforces Round 128 (Rated for Div. 2)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Educational Codeforces Round 128 (Rated for Div. 2)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/11/intern-interviews/" title="2022春天的实习面试经历">
+                        <span class="hidden-mobile">2022春天的实习面试经历</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"dianhsu/blog-raw","repo-id":"MDEwOlJlcG9zaXRvcnkzNzE1NzgxOTE=","category":"General","category-id":"MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyOTcxODAy","theme-light":"light","theme-dark":"dark","mapping":"title","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN","loading":"lazy"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      鄂ICP备2020020124号-2
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
