@@ -63,7 +63,7 @@ code:
       # 在链接中挑选 style 填入
       # Select a style in the link
       # See: https://highlightjs.org/static/demo/
-      style: "github gist"
+      style: "Github Gist"
       style_dark: "dark"
 
     prismjs:
@@ -75,7 +75,7 @@ code:
 
       # 设为 true 高亮将本地静态生成（但只支持部分 prismjs 插件），设为 false 高亮将在浏览器通过 js 生成
       # If true, it will be generated locally (but some prismjs plugins are not supported). If false, it will be generated via JS in the browser
-      preprocess: true
+      preprocess: false
 
 # 一些好玩的功能
 # Some fun features
