@@ -28,7 +28,19 @@ jobs:
         run: |
           corepack enable
           npm install -g hexo-cli
+      
+      - name: Build page
+        run: |
           yarn install
           hexo generate
-          ls public/
       
+      - name: Upload to qiniu
+        uses: bonaysoft/uptoc@v1.4.3
+        with:
+          driver: qiniu
+          region: cn-east-1
+          bucket: dianhsu-blog
+          dist: public
+        env:
+          UPTOC_UPLOADER_AK: ${{ secrets.QINIU_AK }}
+          UPTOC_UPLOADER_SK: ${{ secrets.QINIU_SK }}
