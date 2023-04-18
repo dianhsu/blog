@@ -28,7 +28,7 @@ jobs:
         run: |
           corepack enable
           npm install -g hexo-cli
-          yarn .
+          yarn install
           hexo generate
           ls public/
       
