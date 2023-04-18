@@ -6,6 +6,7 @@ categories: 工具
 tags:
     - 虚拟机
     - vagrant
+index_img: https://cdn.dianhsu.com/img/2023-04-18-10-22-54.jpg
 ---
 
 最近在编译OpenWrt，因为Windows下面无法交叉编译，装个虚拟机临时用一用。下载Archlinux的时候，发现一个好用的虚拟机管理工具——vagrant。vagrant主要有以下几个功能：
@@ -70,10 +71,12 @@ vagrant up
 ```
 
 这套环境是基于ArchLinux的镜像的，里面主要安装的软件如下所示：
-- vim9 + SpaceVim[^5] + coc[^9]: Vim配置环境
-- nvm[^6]: NodeJs版本管理器
-- cf-tool[^7]: Codeforces命令行工具
+
+- vim9 + SpaceVim[^5] + coc[^9]（Vim配置环境）
+- nvm[^6]（NodeJs版本管理器）
+- cf-tool[^7]（Codeforces命令行工具）
 - oh-my-zsh[^8]
+
 
 ## 参考
 [^1]: https://developer.hashicorp.com/vagrant/docs/installation
