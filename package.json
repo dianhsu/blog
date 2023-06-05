@@ -1,13 +1,12 @@
 {
-  "name": "hexo-site",
+  "name": "dianhsu-blog",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server",
-    "publish": "qshell qupload qiniu-upload.json"
+    "server": "hexo server"
   },
   "hexo": {
     "version": "6.3.0"
