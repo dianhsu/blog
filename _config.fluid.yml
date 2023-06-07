@@ -886,7 +886,7 @@ giscus:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/default.png
+  banner_img: https://cdn.dianhsu.com/blog/karakai-jouzu-no-takagi-san-5cfaff1352fb6.jpeg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 

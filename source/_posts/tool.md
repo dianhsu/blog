@@ -4,7 +4,7 @@ date: 2022-05-10 19:09:43
 tags:
     - 工具
 categories: 工具
-index_img: https://cdn.dianhsu.com/blog%2F518834.jpg
+index_img: https://cdn.dianhsu.com/img/2023-06-07-18-11-25.jpeg
 ---
 
 # 工具

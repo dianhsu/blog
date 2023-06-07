@@ -1,10 +1,10 @@
 ---
 title: Vagrant：一款方便、快捷虚拟机管理工具
-math: true
+math: false
 date: 2023-04-17 16:04:50
 categories: 工具
 tags:
-    - 虚拟机
+    - 虚拟环境
     - vagrant
 index_img: https://cdn.dianhsu.com/img/2023-04-18-10-22-54.jpg
 ---

@@ -8,7 +8,7 @@ tags:
     - 面试
     - 八股文
     - 数据库
-index_img: https://cdn.dianhsu.com/img/2022-08-28-15-51-59.jpeg
+index_img: https://cdn.dianhsu.com/img/2023-06-07-17-56-39.jpg
 ---
 
 # 数据库的三范式是什么？
