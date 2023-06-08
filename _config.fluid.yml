@@ -869,7 +869,7 @@ cusdis:
 # Based on GitHub Discussions, similar to Utterances
 # See: https://giscus.app/
 giscus:
-  repo: dianhsu/blog-raw
+  repo: dianhsu/blog
   repo-id: MDEwOlJlcG9zaXRvcnkzNzE1NzgxOTE=
   category: General
   category-id: MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyOTcxODAy
