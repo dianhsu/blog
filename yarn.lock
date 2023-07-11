@@ -192,7 +192,7 @@ chalk@^2.3.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@^4.0.0, chalk@^4.0.2:
+chalk@^4.0.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
   integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
@@ -643,13 +643,6 @@ hexo-i18n@^1.0.0:
   dependencies:
     sprintf-js "^1.0.3"
 
-hexo-log@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/hexo-log/-/hexo-log-2.0.0.tgz#1dcc8e960029b08b21994fe2c56c4e3d6346e893"
-  integrity sha512-U7zdDae74pXcyhQEyNmpJdq3UI6zWKxQ7/zLoMr/d3CBRdIfB5yO8DWqKUnewfibYv0gODyTWUIhxQDWuwloow==
-  dependencies:
-    chalk "^4.0.0"
-
 hexo-log@^3.0.0, hexo-log@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/hexo-log/-/hexo-log-3.2.0.tgz#958c8ea681f7575afcd554f39c8e09f46461d317"
@@ -718,15 +711,13 @@ hexo-server@^3.0.0:
     picocolors "^1.0.0"
     serve-static "^1.14.1"
 
-hexo-tag-mmedia@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/hexo-tag-mmedia/-/hexo-tag-mmedia-1.1.7.tgz#abe8bdea68925fc4faea6613e6b35207ecb7669d"
-  integrity sha512-k5xiqDo6ELsxkf/7AsnU6XX+xjML1dW2lO4PmUR22nux27wSD85rJjcnsbIrfjzpK66MJ09xZ98l26L4KxU2pQ==
+hexo-tag-mmedia@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/hexo-tag-mmedia/-/hexo-tag-mmedia-1.2.0.tgz#4a9ba581d2d07b32d6dcf614dae02f2f9bc1f45a"
+  integrity sha512-1kFkHZJvpm3c/SI8aCYYVKtqiFS7nXwS4+P4ctO9za94o5OfQnrgFWUK0SgBu9mx+iYPXvduIBVe6w2GsH+Nww==
   dependencies:
-    deepmerge "^4.2.2"
-    hexo-log "^2.0.0"
-    json5 "^2.2.0"
-    utility "^1.17.0"
+    hexo-fs "^4.1.1"
+    utility "^1.18.0"
 
 hexo-theme-fluid@^1.9.4:
   version "1.9.4"
@@ -897,11 +888,6 @@ js-yaml@^4.1.0:
   integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
   dependencies:
     argparse "^2.0.1"
-
-json5@^2.2.0:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
-  integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
 jsonparse@^1.3.1:
   version "1.3.1"
@@ -1581,7 +1567,7 @@ util-deprecate@^1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
-utility@^1.17.0:
+utility@^1.18.0:
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/utility/-/utility-1.18.0.tgz#af55f62e6d5a272e0cb02b0ab3e7f37c46435f36"
   integrity sha512-PYxZDA+6QtvRvm//++aGdmKG/cI07jNwbROz0Ql+VzFV1+Z0Dy55NI4zZ7RHc9KKpBePNFwoErqIuqQv/cjiTA==
