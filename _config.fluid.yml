@@ -1036,16 +1036,10 @@ links:
       avatar: "https://jiucherish.com/images/avatar.jpg"
     }
     - {
-      title: "SantoriN2k's blog",
-      intro: "WUST KING!!!",
-      link: "http://nzk520.top/",
-      avatar: "https://userpic.codeforces.org/2084239/title/7953f100da99db23.jpg"
-    }
-    - {
-      title: "kongfang",
-      intro: "国奖收割机，经典算法、数据算法双开选手",
-      link: "https://www.cm4k3r.cn",
-      avatar: "https://www.cm4k3r.cn/images/avatar.png"
+      title: "MoyichenのBlog",
+      intro: "可爱又努力的高中生女孩",
+      link: "https://moyichen2007.github.io/",
+      avatar: "https://moyichen2007.github.io/img/%E5%A4%B4%E5%83%8F.jpg"
     }
 
   # 当成员头像加载失败时，替换为指定图片
