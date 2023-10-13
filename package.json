@@ -9,10 +9,10 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "6.3.0"
+    "version": "7.0.0-rc2"
   },
   "dependencies": {
-    "hexo": "^6.3.0",
+    "hexo": "^7.0.0-rc2",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-index": "^3.0.0",
@@ -21,7 +21,6 @@
     "hexo-renderer-markdown-it-plus": "^1.0.6",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
-    "hexo-tag-mmedia": "^1.2.1",
     "hexo-theme-fluid": "^1.9.4"
   },
   "resolutions": {
