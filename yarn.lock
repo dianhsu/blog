@@ -601,10 +601,10 @@ hexo-server@^3.0.0:
     picocolors "^1.0.0"
     serve-static "^1.14.1"
 
-hexo-theme-fluid@^1.9.4:
-  version "1.9.5"
-  resolved "https://registry.yarnpkg.com/hexo-theme-fluid/-/hexo-theme-fluid-1.9.5.tgz#8c53de20ec1c915ec4afdfe808e730777014395d"
-  integrity sha512-VY3h6R5ojXGzHI5IomD9SkdZRA2UBDfj7T+iOsBN1G+t7kuImvfMO/WhateVzQUDQX9lHwTbcJpf5fDY5Dz/hQ==
+hexo-theme-fluid@^1.9.6:
+  version "1.9.6"
+  resolved "https://registry.yarnpkg.com/hexo-theme-fluid/-/hexo-theme-fluid-1.9.6.tgz#a860f254dc65f13dcb30164d2f21adbc5d31e1ab"
+  integrity sha512-l/OmaqG7HYEVBwHhc+lNkH/sYqJ14qoEu+LUkcKTwn1EARnquPmvXZEFVkn4LZZ7RO3wbcDvig5ERsfh3v/6vw==
 
 hexo-util@^2.5.0, hexo-util@^2.7.0:
   version "2.7.0"
