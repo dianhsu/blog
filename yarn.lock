@@ -488,10 +488,10 @@ hexo-cli@^4.3.0:
     resolve "^1.20.0"
     tildify "^2.0.0"
 
-hexo-front-matter@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/hexo-front-matter/-/hexo-front-matter-4.0.0.tgz#73ba7dce374b0048e215b21c9e3ab01507487951"
-  integrity sha512-2pQ24inDCdqbxuKQ4cK+1ak0AhSEVC1zTY/kVVyqi5m3lB/wYtAjSWp+elp+FqBmJOynogMpoBnUry/4fJkmAg==
+hexo-front-matter@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/hexo-front-matter/-/hexo-front-matter-4.2.1.tgz#c28ee74f66ab76c98fa73877b5ff7a9cc14161cc"
+  integrity sha512-sJJI0GNmejYiwBvgnGRKn5V3sbODB4dNPr8jyw2Qp0PRHr4Uuyv8iyxw6WfK3+T7yvzYvJOh+tZ7jnwr2BYARA==
   dependencies:
     js-yaml "^4.1.0"
 
@@ -633,16 +633,16 @@ hexo-util@^3.0.1:
     prismjs "^1.29.0"
     strip-indent "^3.0.0"
 
-hexo@^7.0.0-rc2:
-  version "7.0.0-rc2"
-  resolved "https://registry.yarnpkg.com/hexo/-/hexo-7.0.0-rc2.tgz#c1450eb0dc5473a9505a0c7b20e6d56ba223df6f"
-  integrity sha512-+s0lm5e5QKWo+vdb+5C/tDaU0FI0tRqoJze9/2Gvakrykhq96/xfmqBhSo7FvfObgnN1u1ff+pJ66lrWN46NBw==
+hexo@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/hexo/-/hexo-7.0.0.tgz#3e1fb70373478668ba7e091737052e436a44b263"
+  integrity sha512-3iRSYReDcYd+bdCrDYS53aFjR717M+eSwKVXdM1tF2QETi8urcwDdDDoD7Nm2E0trqN4oeoHJ7FoXbn2UsZxqw==
   dependencies:
     abbrev "^2.0.0"
     archy "^1.0.0"
     bluebird "^3.7.2"
     hexo-cli "^4.3.0"
-    hexo-front-matter "4.0.0"
+    hexo-front-matter "^4.2.1"
     hexo-fs "^4.1.1"
     hexo-i18n "^2.0.0"
     hexo-log "^4.0.1"
