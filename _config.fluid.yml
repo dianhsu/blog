@@ -1046,6 +1046,12 @@ links:
       link: "https://docs.selfknow.cn/",
       avatar: "https://docs.selfknow.cn/img/avatar.jpg"
     }
+    - {
+      title: "Xin_Chen",
+      intro: "我们的目标是星辰大海~",
+      link: "https://herestars.github.io/",
+      avatar: "https://q1.qlogo.cn/g?b=qq&nk=2278461857&s=640"
+    }
 
   # 当成员头像加载失败时，替换为指定图片
   # When the member avatar fails to load, replace the specified image
