@@ -1040,6 +1040,12 @@ links:
       link: "https://moyichen2007.github.io/",
       avatar: "https://moyichen2007.github.io/img/%E5%A4%B4%E5%83%8F.jpg"
     }
+    - {
+      title: "selfknowのknowledge",
+      intro: "⭐ 来看看我的知识库吧 ⭐",
+      link: "https://docs.selfknow.cn/",
+      avatar: "https://docs.selfknow.cn/img/avatar.jpg"
+    }
 
   # 当成员头像加载失败时，替换为指定图片
   # When the member avatar fails to load, replace the specified image
