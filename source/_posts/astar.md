@@ -4,7 +4,7 @@ date: 2022-05-10 18:12:34
 tags: [算法, 搜索, 启发式搜索]
 categories: 算法
 math: true
-index_img: https://cdn.dianhsu.com/img/2023-06-07-18-17-53.jpg
+index_img: https://cdn.dianhsu.com/img/2023-06-07-18-17-53.jpg-400x250
 ---
 
 

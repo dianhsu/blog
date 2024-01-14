@@ -6,7 +6,7 @@ categories: 工具
 tags:
     - 虚拟环境
     - vagrant
-index_img: https://cdn.dianhsu.com/img/2023-04-18-10-22-54.jpg
+index_img: https://cdn.dianhsu.com/img/2023-04-18-10-22-54.jpg-400x250
 ---
 
 最近在编译OpenWrt，因为Windows下面无法交叉编译，装个虚拟机临时用一用。下载Archlinux的时候，发现一个好用的虚拟机管理工具——vagrant。vagrant主要有以下几个功能：

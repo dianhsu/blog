@@ -8,7 +8,7 @@ tags:
     - ISA
     - NEON
     - C/C++
-index_img: https://cdn.dianhsu.com/img/2023-06-07-17-57-54.jpg
+index_img: https://cdn.dianhsu.com/img/2023-06-07-17-57-54.jpg-400x250
 ---
 
 之前和炮姐聊天的时候，打开了新世界的大门。手边有一台Macbook Pro M1，就用这台设备写了一个简单的demo。Apple M1 chip 支持ARMv8-a指令集，同时支持NEON拓展指令集。 测试数据基于google benchmark。

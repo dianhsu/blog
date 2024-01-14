@@ -9,7 +9,7 @@ tags:
     - Hulu
 categories: 面试
 math: true
-index_img: https://cdn.dianhsu.com/img/2023-06-07-18-10-39.jpg
+index_img: https://cdn.dianhsu.com/img/2023-06-07-18-10-39.jpg-400x250
 ---
 
 > 目前已经接到微软的实习offer，所以将之前的面试内容都贴在这里了

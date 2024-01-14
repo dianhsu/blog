@@ -5,7 +5,7 @@ categories: 工具
 tags:
     - 工具
     - Codeforces
-index_img: https://cdn.dianhsu.com/img/2023-06-07-18-05-28.jpg
+index_img: https://cdn.dianhsu.com/img/2023-06-07-18-05-28.jpg-400x250
 ---
 
 # 简介

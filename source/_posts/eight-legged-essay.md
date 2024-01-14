@@ -13,7 +13,7 @@ tags:
     - 软件设计模式
     - 计算机组成原理
     - 编译原理
-index_img: https://cdn.dianhsu.com/img/2023-06-07-17-59-15.png
+index_img: https://cdn.dianhsu.com/img/2023-06-07-17-59-15.png-400x250
 ---
 
 # C\+\+

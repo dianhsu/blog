@@ -5,7 +5,7 @@ tags:
     - LeetCode
     - LC春季赛
     - 立体几何
-index_img: https://cdn.dianhsu.com/img/2023-06-07-18-09-52.jpg
+index_img: https://cdn.dianhsu.com/img/2023-06-07-18-09-52.jpg-400x250
 categories: LeetCode
 ---
 
