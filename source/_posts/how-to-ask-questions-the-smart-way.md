@@ -26,9 +26,9 @@ Copyleft 2001 by D.H.Grand(nOBODY/Ginux), 2010 by Gasolin, 2015 by Ryan Wu
 
 协助指出翻译问题，**请[发 issue](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/issues/new)，或直接[发 pull request](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/compare) 给我。**
 
-本文另有[繁體中文版](README.md)。
+本文另有[繁體中文版](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README.md)。
 
-## [原文版本历史](history.md)
+## [原文版本历史](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/history.md)
 
 ## 目录
 - [提问的智慧](#提问的智慧)
