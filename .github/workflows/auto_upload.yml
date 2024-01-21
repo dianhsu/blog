@@ -22,8 +22,11 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.5.2
-      
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: latest
+          
+        
       - name: Install Hexo
         run: |
           corepack enable
