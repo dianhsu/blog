@@ -479,17 +479,17 @@ hasown@^2.0.0:
   dependencies:
     function-bind "^1.1.2"
 
-hexo-cli@^4.3.0, hexo-cli@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/hexo-cli/-/hexo-cli-4.3.1.tgz#eb40e0ab2479ea089a9913eb0b1b5d3db58133a3"
-  integrity sha512-nYe7yJhXT7MwlDEpIAjneMfz0wnWTdIhRv+cVW2OPTw8JtG2X+8Y/sYhPDvQz/ZqjFRZ4qgiKFXN5orFJ/u1vg==
+hexo-cli@^4.3.0, hexo-cli@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/hexo-cli/-/hexo-cli-4.3.2.tgz#7e7d02da137d9fa461a4356964793c56e92b29e6"
+  integrity sha512-druJeBgLpG9ncDS5AhBHdAXk0G4CFj8Qes09pApyZ6bR+nJW1JYiDMuilhudaKDdq+1l49jWXVTidkcb7p0Jbw==
   dependencies:
     abbrev "^2.0.0"
     bluebird "^3.7.2"
     command-exists "^1.2.9"
     hexo-fs "^4.1.1"
     hexo-log "^4.0.1"
-    hexo-util "^2.5.0"
+    hexo-util "^3.3.0"
     minimist "^1.2.5"
     picocolors "^1.0.0"
     resolve "^1.20.0"
@@ -613,7 +613,7 @@ hexo-theme-fluid@^1.9.7:
   resolved "https://registry.yarnpkg.com/hexo-theme-fluid/-/hexo-theme-fluid-1.9.7.tgz#53a2ef5e7de2dd237af93a6f6cf76df093178afe"
   integrity sha512-rLpUNcs8XhAQZ9Iq8nZ27XbMDtbJs/y35kkpPmebUqV9hV+j3/Yy3tf3zKJW3nzZhTO/8bXYrtNDvmoj1TRmBQ==
 
-hexo-util@^2.5.0, hexo-util@^2.7.0:
+hexo-util@^2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/hexo-util/-/hexo-util-2.7.0.tgz#13d09292e79d260db35399710b3e19f3995443a3"
   integrity sha512-hQM3h34nhDg0bSe/Tg1lnpODvNkz7h2u0+lZGzlKL0Oufp+5KCAEUX9wal7/xC7ax3/cwEn8IuoU75kNpZLpJQ==
@@ -627,10 +627,10 @@ hexo-util@^2.5.0, hexo-util@^2.7.0:
     prismjs "^1.17.1"
     strip-indent "^3.0.0"
 
-hexo-util@^3.0.1:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/hexo-util/-/hexo-util-3.1.0.tgz#0f2cfc907c91d3f9d69e119d7a521563617ceed2"
-  integrity sha512-LmztAhkJHQ59VHqz6AnvwEKiNA0pCBBI0qW08cCzjhnpGoqZ8tlGDwElzy7oTxCvMChkiqg5V8VflhdI8tHsGg==
+hexo-util@^3.0.1, hexo-util@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/hexo-util/-/hexo-util-3.3.0.tgz#448927fb22e167f2159306666cc2c7e82c777513"
+  integrity sha512-YvGngXijE2muEh5L/VI4Fmjqb+/yAkmY+VuyhWVoRwQu1X7bmWodsfYRXX7CUYhi5LqsvH8FAe/yBW1+f6ZX4Q==
   dependencies:
     camel-case "^4.1.2"
     cross-spawn "^7.0.3"
