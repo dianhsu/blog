@@ -2,14 +2,14 @@
 title: "如何打造一个舒适的算法竞赛编程环境"
 math: true
 date: 2023-12-30 15:27:12
-categories: 工具
+categories: Tool
 tags:
-    - 算法
-    - 工具
-    - 命令行
+    - Algorithm
+    - Tool
+    - Shell
     - Rust
     - VSCode
-    - 容器
+    - Container
     - DevContainer
 index_img: https://cdn.dianhsu.com/img/2023-10-14-00-08-24.png-400x250
 ---
