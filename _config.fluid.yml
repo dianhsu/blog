@@ -771,7 +771,7 @@ gitalk:
   repo:
   owner:
   admin: ['name']
-  language: zh-CN
+  language: en
   labels: ['Gitalk']
   perPage: 10
   pagerDirection: last
@@ -796,7 +796,7 @@ valine:
   meta: ['nick', 'mail', 'link']
   requiredFields: []
   pageSize: 10
-  lang: 'zh-CN'
+  lang: 'en'
   highlight: false
   recordIP: false
   serverURLs: ''
@@ -878,7 +878,7 @@ giscus:
   reactions-enabled: 1
   emit-metadata: 0
   input-position: top
-  lang: zh-CN
+  lang: en
 
 #---------------------------
 # 归档页

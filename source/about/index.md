@@ -3,6 +3,8 @@ title: about
 date: 2022-05-10 18:08:19
 layout: about
 ---
-![2023年06月02日 于 武科大](https://cdn.dianhsu.com/img/2023-10-13-23-08-21.JPG)
+![Jun 7th, 2024 at Seattle](https://cdn.dianhsu.com/img/2024-06-29-11-09-52.jpg)
 
-![2022年08月21日 于 上海](https://cdn.dianhsu.com/img/2022-08-30-20-26-01.jpg)
+![Jun 2rd, 2023 at Wuhan Univerisity of Science and Technology](https://cdn.dianhsu.com/img/2023-10-13-23-08-21.JPG)
+
+![Aug 21st, 2022 at Shanghai](https://cdn.dianhsu.com/img/2022-08-30-20-26-01.jpg)
