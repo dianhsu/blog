@@ -441,7 +441,7 @@ footer:
   # 国内大陆服务器的备案信息
   # For Chinese mainland website policy, other areas keep disable
   beian:
-    enable: true
+    enable: false
     # ICP证号
     icp_text: 鄂ICP备2020020124号-2
     # 公安备案号，不填则只显示ICP
