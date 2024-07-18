@@ -11,7 +11,7 @@ tags:
     - VSCode
     - Container
     - DevContainer
-index_img: https://cdn.dianhsu.com/img/2023-10-14-00-08-24.png-400x250
+index_img: https://cdn.dianhsu.com/img/2023-10-14-00-08-24.png
 ---
 
 从开始接触算法竞赛到现在堪堪入门算法竞赛以来，写算法题的平台改变了很多次，但是追求舒适、方便、快捷的开发环境的想法从来没有改变过。

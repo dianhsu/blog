@@ -4,7 +4,7 @@ date: 2022-05-10 18:10:51
 tags: [算法, 数论]
 categories: 算法
 math: true
-index_img: https://cdn.dianhsu.com/img/2023-06-07-18-19-46.webp-400x250
+index_img: https://cdn.dianhsu.com/img/2023-06-07-18-19-46.webp
 ---
 
 > 参考：[http://oi-wiki.com/math/combination/#_11](http://oi-wiki.com/math/combination/#_11)

@@ -7,7 +7,7 @@ categories:
 tags:
     - 沟通技巧
     - 提问
-index_img: https://cdn.dianhsu.com/img/2024-01-15-01-16-57.png-400x250
+index_img: https://cdn.dianhsu.com/img/2024-01-15-01-16-57.png
 ---
 
 # 提问的智慧

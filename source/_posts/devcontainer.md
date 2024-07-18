@@ -7,7 +7,7 @@ tags:
     - 虚拟环境
     - Docker
 
-index_img: https://cdn.dianhsu.com/img/2023-06-07-18-00-17.jpg-400x250
+index_img: https://cdn.dianhsu.com/img/2023-06-07-18-00-17.jpg
 ---
 
 ## Dev Container介绍
