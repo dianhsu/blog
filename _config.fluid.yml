@@ -1005,22 +1005,10 @@ links:
       avatar: "https://q1.qlogo.cn/g?b=qq&nk=977162804&s=640"
     }
     - {
-      title: "金毛败犬の秘密空间",
-      intro: "梦想是成为golang后端工程师！",
-      link: "https://www.eririspace.cn/",
-      avatar: "https://www.eririspace.cn/medias/err2.jpg"
-    }
-    - {
       title: "宫水三叶",
       intro: "人美心善可爱大方",
       link: "https://sharingsource.github.io/",
       avatar: "https://sharingsource.github.io/oimg/RoundCorner.png"
-    }
-    - {
-      title: "Ximena's story",
-      intro: "只道寻常",
-      link: "https://blog.ximena.top/",
-      avatar: "https://blog.ximena.top/medias/logo.png"
     }
     - {
       title: "Bruce12138",
@@ -1033,12 +1021,6 @@ links:
       intro: "数学大佬，快膜",
       link: "https://jiucherish.com/",
       avatar: "https://jiucherish.com/images/avatar.jpg"
-    }
-    - {
-      title: "MoyichenのBlog",
-      intro: "可爱又努力的高中生",
-      link: "https://moyichen2007.github.io/",
-      avatar: "https://moyichen2007.github.io/img/%E5%A4%B4%E5%83%8F.jpg"
     }
     - {
       title: "selfknowのknowledge",
