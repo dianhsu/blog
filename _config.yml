@@ -8,7 +8,10 @@ subtitle: ''
 description: ''
 keywords:
 author: Dian Hsu
-language: en
+language: 
+  - zh-CN
+  - en
+  - ja
 timezone: 'Asia/Shanghai'
 
 # URL
