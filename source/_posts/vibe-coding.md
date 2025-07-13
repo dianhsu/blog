@@ -57,3 +57,8 @@ Vibe Coding与传统的瀑布模型或严格的敏捷开发方法不同，它更
 - 学习新技术和框架
 
 Vibe Coding并不是要替代传统的软件开发方法，而是为程序员提供一种更加个性化和富有创造性的编程体验。
+
+
+
+-------------------
+This message is used to verify that this feed (feedId:167276495534030848) belongs to me (userId:166948930268923904). Join me in enjoying the next generation information browser https://folo.is.
